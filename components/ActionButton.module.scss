@@ -1,0 +1,40 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover .hotkey {
+    background: var(--theme-success);
+  }
+
+  &:hover .content {
+    background: var(--theme-success-subdued);
+  }
+}
+
+.hotkey {
+  background: var(--theme-foreground-secondary);
+  color: var(--theme-text);
+  flex-shrink: 0;
+  user-select: none;
+  cursor: pointer;
+  transition: 200ms ease all;
+  font-weight: 600;
+  transition-property: background;
+  padding: 0 1ch 0 1ch;
+}
+
+.content {
+  box-shadow: inset 0 0 0 1px var(--theme-foreground-secondary);
+  background: var(--theme-foreground);
+  min-width: 10%;
+  width: 100%;
+  font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+  padding: 0 1ch 0 1ch;
+  text-transform: uppercase;
+  transition: 200ms ease all;
+  transition-property: background;
+}

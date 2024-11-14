@@ -1,0 +1,32 @@
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  &:hover {
+    background: var(--theme-focused-foreground);
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+.content {
+  min-width: 10%;
+  width: 100%;
+  user-select: none;
+  cursor: pointer;
+  transition: 200ms ease all;
+  transition-property: padding;
+  padding-left: 0ch;
+}
+
+.active {
+
+  .content {
+    padding-left: 1ch;
+  }
+}

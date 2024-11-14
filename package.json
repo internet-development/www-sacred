@@ -1,0 +1,27 @@
+{
+  "name": "srcl",
+  "description": "A open source monospace component library crafted for React interfaces built with variable fonts, React applications, and React websites that prioritize simplicity",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next -p 10000",
+    "build": "next build",
+    "start": "PORT=10000 next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.2.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "1.81.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "@types/react": "^18.3.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

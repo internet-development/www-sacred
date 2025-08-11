@@ -1,0 +1,15 @@
+.root {
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+
+  transition: transform 0.5s ease;
+  border-spacing: 0px;
+  -webkit-text-size-adjust: 100%;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+    outline: 0;
+  }
+}

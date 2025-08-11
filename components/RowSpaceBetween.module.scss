@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  outline: 0;
+  border: 0;
+  transition: 200ms ease background;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+  }
+}

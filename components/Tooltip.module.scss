@@ -1,0 +1,7 @@
+.root {
+  display: block;
+  background: var(--theme-border);
+  box-shadow: 0.5ch 0.5ch 0 0 var(--theme-border-subdued);
+  font-weight: 400;
+  max-width: 24ch;
+}

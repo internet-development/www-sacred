@@ -1,0 +1,35 @@
+.root {
+  display: block;
+  background: var(--theme-border);
+  box-shadow: 1ch 1ch 0 0 var(--theme-border-subdued);
+  font-weight: 400;
+  max-width: 56ch;
+  min-width: 24ch;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: var(--theme-text);
+  color: var(--theme-background);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.message {
+  display: block;
+  margin: 0;
+  text-align: center;
+  padding: 0 2ch 0 2ch;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 24ch;
+  margin: 0 auto 0 auto;
+  padding: 0 2ch 0 2ch;
+}

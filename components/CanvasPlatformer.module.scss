@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.root {
+  display: block;
+  width: 100%;
+  background: transparent;
+
+  &:focus {
+    outline: 0;
+    box-shadow: inset 0 0 0 1px var(--theme-focused-foreground);
+  }
+}

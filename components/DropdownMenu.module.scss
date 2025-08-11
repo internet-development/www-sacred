@@ -1,0 +1,10 @@
+.root {
+  display: block;
+  background: var(--theme-border);
+  font-weight: 400;
+}
+
+.footer {
+  background: var(--theme-background-modal-footer);
+  padding: calc(var(--font-size) * 0.5 * var(--theme-line-height-base)) 1ch calc(var(--font-size) * 0.5 * var(--theme-line-height-base)) 1ch;
+}

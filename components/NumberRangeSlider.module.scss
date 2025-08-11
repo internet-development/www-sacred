@@ -1,0 +1,103 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amount {
+  flex-shrink: 0;
+  background: var(--theme-text);
+  color: var(--theme-background);
+  font-weight: 400;
+  padding: 0 1ch 0 1ch;
+}
+
+.slider {
+  border-radius: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 10%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background: var(--theme-border-subdued);
+
+  &:focus {
+    background: linear-gradient(to right, transparent, var(--theme-focused-foreground));
+    outline: none;
+  }
+
+  &:hover {
+    background: linear-gradient(to right, transparent, var(--theme-focused-foreground));
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: var(--font-size);
+    width: 1ch;
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: var(--theme-button-foreground);
+    vertical-align: bottom;
+    cursor: pointer;
+    border-radius: 0;
+  }
+
+  /* Customizing the track */
+  &::-webkit-slider-runnable-track {
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: var(--theme-border-subdued);
+    border-radius: 0;
+  }
+
+  &::-moz-range-thumb {
+    -moz-appearance: none;
+    appearance: none;
+    font-size: var(--font-size);
+    width: 1ch;
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: var(--theme-button-foreground);
+    vertical-align: bottom;
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-moz-range-track {
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: var(--theme-border-subdued);
+    border-radius: 0;
+  }
+
+  &::-ms-thumb {
+    appearance: none;
+    font-size: var(--font-size);
+    width: 1ch;
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: var(--theme-button-foreground);
+    vertical-align: bottom;
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-ms-track {
+    height: calc(var(--font-size) * var(--theme-line-height-base));
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: var(--theme-border-subdued);
+  }
+
+  &::-ms-fill-upper {
+    background: var(--theme-border-subdued);
+  }
+}

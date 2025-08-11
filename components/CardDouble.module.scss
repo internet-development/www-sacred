@@ -1,0 +1,86 @@
+.card {
+  --card-double-border-width: 6px;
+  --card-double-half-gutter: (var(--font-size) * 0.5);
+  --card-double-top-gutter: 6px;
+
+  position: relative;
+  display: block;
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.children {
+  border-left: var(--card-double-border-width) solid var(--theme-text);
+  border-left-style: double;
+  border-bottom: var(--card-double-border-width) solid var(--theme-text);
+  border-bottom-style: double;
+  border-right: var(--card-double-border-width) solid var(--theme-text);
+  border-right-style: double;
+  display: block;
+  padding-top: calc(var(--theme-line-height-base) * 0.5rem);
+  padding-left: calc(2ch - var(--card-double-border-width));
+  padding-right: calc(2ch - var(--card-double-border-width));
+  padding-bottom: calc(var(--theme-line-height-base) * 1rem - var(--card-double-border-width));
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+}
+
+.action {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.left {
+  min-width: 10%;
+  width: 100%;
+  border-top: var(--card-double-border-width) solid var(--theme-text);
+  border-top-style: double;
+  border-left: var(--card-double-border-width) solid var(--theme-text);
+  border-left-style: double;
+  padding: calc(var(--card-double-top-gutter) * var(--theme-line-height-base)) 2ch 0px 1ch;
+}
+
+.leftCorner {
+  flex-shrink: 0;
+  border-top: var(--card-double-border-width) solid var(--theme-text);
+  border-top-style: double;
+  border-left: var(--card-double-border-width) solid var(--theme-text);
+  border-left-style: double;
+  padding: calc(var(--card-double-top-gutter) * var(--theme-line-height-base)) calc(1ch - 6px) 0px 1ch;
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  border-top: var(--card-double-border-width) solid var(--theme-text);
+  border-top-style: double;
+  border-right: var(--card-double-border-width) solid var(--theme-text);
+  border-right-style: double;
+  padding: calc(var(--card-double-top-gutter) * var(--theme-line-height-base)) 2ch 0px 1ch;
+}
+
+.rightCorner {
+  flex-shrink: 0;
+  border-top: var(--card-double-border-width) solid var(--theme-text);
+  border-top-style: double;
+  border-right: var(--card-double-border-width) solid var(--theme-text);
+  border-right-style: double;
+  padding: calc(var(--card-double-top-gutter) * var(--theme-line-height-base)) 1ch 0px calc(1ch - 6px);
+}
+
+.title {
+  flex-shrink: 0;
+  padding: 0 1ch 0 1ch;
+  font-size: var(--font-size);
+  font-weight: 400;
+}

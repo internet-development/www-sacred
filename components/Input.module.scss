@@ -1,0 +1,79 @@
+.root {
+  position: relative;
+  display: block;
+}
+
+.label {
+  background: var(--theme-border);
+  display: block;
+}
+
+.placeholder {
+  font-style: italic;
+  color: var(--theme-overlay);
+}
+
+.displayed {
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  overflow-wrap: anywhere;
+  background: var(--theme-background-input);
+  box-shadow: inset 0 0 0 2px var(--theme-border);
+}
+
+.focused {
+  .block {
+    background: var(--theme-focused-foreground);
+  }
+
+  .placeholder {
+    background: var(--theme-focused-foreground);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1s step-start 0s infinite;
+}
+
+.block {
+  display: inline-block;
+  min-width: 1ch;
+  background: var(--theme-text);
+  color: var(--theme-background);
+  height: calc(var(--font-size) * var(--theme-line-height-base));
+  vertical-align: bottom;
+}
+
+.inputContainer {
+  position: relative;
+  display: block;
+}
+
+.hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: transparent;
+  background: transparent;
+  caret-color: transparent;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  line-height: var(--theme-line-height-base);
+  font-size: var(--font-size);
+  font-family: inherit;
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--theme-focused-foreground) inset;
+  }
+}

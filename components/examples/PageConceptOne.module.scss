@@ -1,0 +1,73 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100dvh);
+  width: 100%;
+}
+
+.top {
+  min-height: 10%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: calc(var(--theme-line-height-base) * 1rem);
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.heading {
+  flex-shrink: 0;
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle {
+  min-height: 10%;
+  min-width: 10%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.base {
+  flex-shrink: 0;
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  flex-shrink: 0;
+  padding: calc(var(--theme-line-height-base) * 1rem) 2ch calc(var(--theme-line-height-base) * 1rem) 2ch;
+}
+
+.right {
+  flex-shrink: 0;
+  padding: calc(var(--theme-line-height-base) * 1rem) 2ch calc(var(--theme-line-height-base) * 1rem) 2ch;
+}
+
+.center {
+  min-width: 10%;
+  width: 100%;
+}
+
+.col {
+  width: 20%;
+  padding: calc(var(--theme-line-height-base) * 1rem) 2ch calc(var(--theme-line-height-base) * 1rem) 2ch;
+}

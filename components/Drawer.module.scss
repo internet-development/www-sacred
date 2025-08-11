@@ -1,0 +1,56 @@
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.root {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.side {
+  animation: fadeInLeft 0.2s ease-out;
+  min-width: 10%;
+  width: 100%;
+  align-self: stretch;
+  min-width: 22ch;
+}
+
+.right {
+  flex-shrink: 0;
+  align-self: stretch;
+  background: var(--theme-background-input);
+  display: flex;
+  align-items: center;
+  width: 3ch;
+}
+
+.action {
+  display: inline-flex;
+  height: calc(var(--font-size) * var(--theme-line-height-base));
+  font-size: var(--font-size);
+  user-select: none;
+  cursor: pointer;
+  color: var(--theme-text);
+  background: var(--theme-button-foreground);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  &:focus {
+    border: 0;
+    outline: 0;
+    background: var(--theme-focused-foreground);
+  }
+}

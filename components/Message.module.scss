@@ -1,0 +1,41 @@
+.message {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: calc(var(--font-size) * var(--theme-line-height-base));
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.left {
+  align-self: stretch;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: calc((var(--font-size) * var(--theme-line-height-base)) / 2) solid transparent;
+  border-bottom: calc((var(--font-size) * var(--theme-line-height-base)) / 2) solid transparent;
+  border-right: 1ch solid var(--theme-border);
+  margin-bottom: calc((var(--font-size) * var(--theme-line-height-base)) / 2);
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  text-align: left;
+}
+
+.bubble {
+  padding: calc(8px * var(--theme-line-height-base)) 1ch calc(8px * var(--theme-line-height-base)) 1ch;
+  background: var(--theme-border);
+  display: inline-block;
+  box-shadow: 1ch 1ch 0 0 var(--theme-border-subdued);
+}

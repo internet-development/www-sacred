@@ -1,0 +1,25 @@
+.gradient {
+  background: linear-gradient(to right, transparent, var(--theme-border), transparent);
+  height: calc(var(--font-size) * var(--theme-line-height-base));
+  width: 100%;
+}
+
+.divider {
+  align-items: center;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: calc(var(--font-size) * var(--theme-line-height-base));
+  justify-content: center;
+  outline: 0;
+  width: 100%;
+}
+
+.line {
+  background: var(--theme-text);
+  display: block;
+  flex-shrink: 0;
+  height: 2px;
+  width: 100%;
+}

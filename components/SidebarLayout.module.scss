@@ -1,0 +1,55 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  white-space: pre-wrap;
+}
+
+.sidebar {
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 20ch;
+}
+
+.handle {
+  align-self: stretch;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3ch;
+  outline: 0;
+  border: 0;
+  cursor: col-resize;
+
+  &:hover {
+    .line {
+      background: var(--theme-focused-foreground);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    border: 0;
+
+    .line {
+      background: var(--theme-focused-foreground);
+    }
+  }
+}
+
+.line {
+  align-self: stretch;
+  width: 2px;
+  background: var(--theme-text);
+
+  &:first-child {
+    margin-left: 1px;
+    margin-right: 2px;
+  }
+}
+
+.content {
+  min-width: 10%;
+  width: 100%;
+}

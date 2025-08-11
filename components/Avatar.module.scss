@@ -1,0 +1,119 @@
+.parent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.placeholder {
+  background: var(--theme-border);
+  display: inline-block;
+  width: 4ch;
+  height: calc(var(--font-size) * var(--theme-line-height-base) * 2);
+  vertical-align: bottom;
+  flex-shrink: 0;
+  position: relative;
+
+  &:hover {
+    &::before {
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.5;
+      background: var(--theme-focused-foreground);
+    }
+  }
+}
+
+.root {
+  background: unset;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 4ch;
+  height: calc(var(--font-size) * var(--theme-line-height-base) * 2);
+  vertical-align: bottom;
+  flex-shrink: 0;
+  position: relative;
+
+  &:hover {
+    background: unset;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    &::before {
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.5;
+      background: var(--theme-focused-foreground);
+    }
+  }
+}
+
+a {
+  &.root {
+    background: unset;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 4ch;
+    height: calc(var(--font-size) * var(--theme-line-height-base) * 2);
+    vertical-align: bottom;
+    flex-shrink: 0;
+    position: relative;
+
+    &:hover {
+      background: unset;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      &::before {
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.5;
+        background: var(--theme-focused-foreground);
+      }
+    }
+
+    &:focus {
+      background: unset;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      outline: 0;
+
+      &::before {
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.5;
+        background: var(--theme-focused-foreground);
+      }
+    }
+  }
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  background: var(--theme-foreground);
+}

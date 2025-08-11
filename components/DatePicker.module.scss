@@ -1,0 +1,62 @@
+.root {
+  display: inline-block;
+  user-select: none;
+}
+
+.controls {
+  align-items: center;
+  background: var(--theme-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  align-self: stretch;
+  background: none;
+  border: none;
+  color: var(--theme-text);
+  cursor: pointer;
+  display: inline-block;
+  line-height: calc(var(--theme-line-height-base) * 1em);
+  margin: 0;
+  outline: 0;
+  padding: 0 1ch 0 1ch;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+    outline: 0;
+  }
+}
+
+.date {
+  min-width: 10%;
+  padding: 0 1ch 0 1ch;
+  text-align: left;
+  width: 100%;
+}
+
+.header {
+  background: var(--theme-border);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.days {
+  background: var(--theme-border-subdued);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, min-content);
+  align-items: start;
+  min-height: calc(var(--theme-line-height-base) * 6em);
+}
+
+.cell {
+  outline: none;
+  padding: 0 1ch 0 1ch;
+  text-align: center;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+  }
+}

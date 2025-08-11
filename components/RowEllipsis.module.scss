@@ -1,0 +1,13 @@
+.row {
+  display: block;
+  outline: 0;
+  border: 0;
+  transition: 200ms ease background;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+  }
+}

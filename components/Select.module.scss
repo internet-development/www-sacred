@@ -1,0 +1,77 @@
+.select {
+  align-items: flex-start;
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  outline: none;
+  position: relative;
+  z-index: var(--z-index-page-select);
+}
+
+.control {
+  align-self: stretch;
+  background: var(--theme-button-foreground);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0 1ch 0 1ch;
+
+  &.focused {
+    background: var(--theme-text);
+    color: var(--theme-background);
+  }
+}
+
+.display {
+  background: var(--theme-border);
+  border: 0;
+  color: var(--theme-text);
+  cursor: pointer;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size);
+  line-height: calc(var(--theme-line-height-base) * 1rem);
+  margin: 0;
+  min-width: 10%;
+  outline: 0;
+  padding: 0;
+  padding-left: 3ch;
+  text-align: left;
+  user-select: none;
+  width: 100%;
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+    border: 0;
+    outline: 0;
+  }
+
+  &:hover {
+    background: var(--theme-focused-foreground);
+  }
+}
+
+.menu {
+  background-color: var(--theme-border-subdued);
+  left: 3ch;
+  list-style-type: none;
+  padding: 0;
+  right: 0;
+  z-index: var(--z-index-page-select);
+}
+
+.item {
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  padding-left: 6ch;
+  user-select: none;
+
+  &:hover {
+    background: var(--theme-focused-foreground);
+  }
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+    border: 0;
+    outline: 0;
+  }
+}

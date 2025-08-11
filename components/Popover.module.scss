@@ -1,0 +1,7 @@
+.root {
+  display: block;
+  background: var(--theme-border);
+  box-shadow: 0 0 0 1ch var(--theme-border-subdued);
+  padding: calc(var(--font-size) * var(--theme-line-height-base)) 2ch calc(var(--font-size) * var(--theme-line-height-base)) 2ch;
+  font-weight: 400;
+}

@@ -1,0 +1,43 @@
+.root {
+  position: relative;
+  width: 100%;
+  border-spacing: 0px;
+  max-width: 64ch;
+}
+
+.body {
+}
+
+.row {
+  transition: transform 0.5s ease;
+  border-spacing: 0px;
+
+  &:first-child {
+    font-weight: 400;
+  }
+
+  &:focus {
+    background: var(--theme-focused-foreground);
+    outline: 0;
+  }
+}
+
+.column {
+  border: 0;
+  outline: 0;
+  padding-right: 1ch;
+  transition: background-color 0.5s ease;
+}
+
+.changed {
+  animation: flash 2000ms ease;
+}
+
+@keyframes flash {
+  0% {
+    background-color: var(--theme-focused-foreground-subdued);
+  }
+  100% {
+    background-color: transparent;
+  }
+}

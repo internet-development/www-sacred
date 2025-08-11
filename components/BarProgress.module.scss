@@ -1,0 +1,15 @@
+.root {
+  display: block;
+  background: var(--theme-border-subdued);
+  white-space: nowrap;
+  text-align: left;
+  vertical-align: bottom;
+  overflow: hidden;
+  position: relative;
+}
+
+.measure {
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}

@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px,
+}
+
+.grid {
+  display: grid;
+  &:focus {
+    outline: 0;
+    box-shadow: inset 0 0 0 1px var(--theme-focused-foreground);
+  }
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+}
+
+.snake {
+  background-color: var(--theme-text);
+}
+
+.food {
+  background-color: var(--theme-focused-foreground);
+}

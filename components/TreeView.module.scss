@@ -1,0 +1,18 @@
+.root {
+  white-space: nowrap;
+  -webkit-text-size-adjust: 100%;
+}
+
+.item {
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+    border: 0;
+    background: var(--theme-focused-foreground);
+  }
+}
+
+.empty {
+  opacity: 0.5;
+}

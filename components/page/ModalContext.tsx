@@ -20,7 +20,17 @@ export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [modalStack, setModalStack] = React.useState<ModalState<any>[]>([]);
 
   const open = <P,>(component: ModalComponent<P>, props: P): string => {
-    const key = `modal-${Date.now()}-${Math.random()}`;
+    if (!component) {
+      console.warn('Modal component is required - modal will not open');
+      return '';
+    }
+    
+    if (typeof component !== 'function' && typeof component !== 'object') {
+      console.warn('Modal component must be a valid React component - modal will not open');
+      return '';
+    }
+
+    const key = `modal-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
 
     const newModal: ModalState<P> = { key, component, props };
 
@@ -30,22 +40,40 @@ export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const close = (key?: string): void => {
-    setModalStack((prev) =>
-      key ? prev.filter((modal) => modal.key !== key) : prev.slice(0, -1)
-    );
+    setModalStack((prev) => {
+      if (prev.length === 0) {
+        return prev;
+      }
+      
+      if (key) {
+        if (typeof key !== 'string') {
+          console.warn('Modal key must be a string');
+          return prev;
+        }
+        return prev.filter((modal) => modal.key !== key);
+      }
+      
+      return prev.slice(0, -1);
+    });
   };
 
-  return (
-    <ModalContext.Provider value={{ modalStack, open, close }}>
-      {children}
-    </ModalContext.Provider>
-  );
+  return <ModalContext.Provider value={{ modalStack, open, close }}>{children}</ModalContext.Provider>;
 };
 
 export const useModals = (): ModalContextType => {
   const context = React.useContext(ModalContext);
   if (!context) {
-    throw new Error('useModals must be used within a ModalProvider and use client');
+    console.warn('useModals must be used within a ModalProvider');
+    return {
+      modalStack: [],
+      open: () => {
+        console.warn('Modal open called outside of ModalProvider - modal will not open');
+        return '';
+      },
+      close: () => {
+        console.warn('Modal close called outside of ModalProvider - modal will not close');
+      }
+    };
   }
   return context;
 };

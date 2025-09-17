@@ -18,6 +18,11 @@ const ModalStack: React.FC<ModalStackProps> = () => {
       {modalStack.map((modalState, index) => {
         const { key, component: ModalComponent, props } = modalState;
 
+        if (!ModalComponent) {
+          console.warn(`ModalComponent is undefined for modal with key: ${key}`);
+          return null;
+        }
+
         const offsetFromLast = totalModals - 1 - index;
         const translateY = -offsetFromLast * 40;
         const blur = offsetFromLast * 1.1;

@@ -195,7 +195,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               {
                 icon: '⊹',
                 children: 'Refined White',
-                onClick: () => Utilities.onHandleThemeChange(''),
+                onClick: () => Utilities.onHandleThemeChange('theme-white'),
               },
               {
                 icon: '⊹',

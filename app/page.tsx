@@ -611,7 +611,7 @@ using asio::ip::tcp;
 
 void handle_client(tcp::socket socket) {
     try {
-        std::string message = 
+        std::string message =
             "HTTP/1.1 200 OK\\r\\n"
             "Content-Type: text/plain\\r\\n"
             "Connection: close\\r\\n"
@@ -624,11 +624,11 @@ void handle_client(tcp::socket socket) {
 int main() {
     asio::io_context context;
 
-    tcp::acceptor acceptor(context, 
+    tcp::acceptor acceptor(context,
         tcp::endpoint(tcp::v4(), 8080));
 
     std::cout << "Server running on port 8080...\\n";
-              
+
     while (true) {
         tcp::socket socket(context);
         acceptor.accept(socket);

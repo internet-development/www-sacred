@@ -1,4 +1,3 @@
-'use client';
 
 import Avatar from '@components/Avatar';
 import ActionButton from '@components/ActionButton';

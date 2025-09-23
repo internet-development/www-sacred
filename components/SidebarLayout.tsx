@@ -1,4 +1,3 @@
-'use client';
 
 import styles from '@components/SidebarLayout.module.scss';
 import * as React from 'react';

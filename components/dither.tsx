@@ -1,4 +1,3 @@
-'use client';
 
 import { ditherCanvas, type RGBColor } from '@lib/dither';
 import { cn } from '@lib/utils';

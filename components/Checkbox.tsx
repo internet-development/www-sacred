@@ -1,4 +1,3 @@
-'use client';
 
 import styles from '@components/Checkbox.module.scss';
 import * as React from 'react';

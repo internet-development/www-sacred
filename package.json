@@ -6,24 +6,38 @@
   },
   "license": "MIT",
   "version": "1.1.7",
+  "type": "module",
   "scripts": {
-    "dev": "next -p 10000",
-    "build": "next build",
-    "start": "PORT=10000 next start",
-    "lint": "next lint"
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "vite --port 10000",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "tsc && vite build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "start": "NODE_ENV=production node dist/server/index.js",
+    "preview": "vite preview --port 10000",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "next": "^15.3.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-helmet-async": "^2.0.4",
+    "react-router-dom": "^6.22.3",
     "sass": "1.89.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "@types/node": "^24.5.1",
     "@types/react": "^19.1.13",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.9.2",
+    "vite": "^5.1.6"
   }
 }

@@ -343,15 +343,39 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               // Light themes
               {
-<<<<<<< HEAD
                 icon: '─',
                 children: '─── Light ───',
                 disabled: true,
               },
               {
                 icon: currentTheme === 'theme-light' ? '●' : '○',
-                children: 'Refined White',
+                children: 'White',
                 onClick: () => handleThemeChange('theme-light'),
+              },
+              {
+                icon: currentTheme === 'theme-solar-light' ? '●' : '○',
+                children: 'Solarized Light',
+                onClick: () => handleThemeChange('theme-solar-light'),
+              },
+              {
+                icon: currentTheme === 'theme-minority' ? '●' : '○',
+                children: 'Minority Report',
+                onClick: () => handleThemeChange('theme-minority'),
+              },
+              {
+                icon: currentTheme === 'theme-sepia' ? '●' : '○',
+                children: 'Sepia Vintage',
+                onClick: () => handleThemeChange('theme-sepia'),
+              },
+              {
+                icon: currentTheme === 'theme-westworld' ? '●' : '○',
+                children: 'Westworld',
+                onClick: () => handleThemeChange('theme-westworld'),
+              },
+              {
+                icon: currentTheme === 'theme-aperture' ? '●' : '○',
+                children: 'Aperture Science',
+                onClick: () => handleThemeChange('theme-aperture'),
               },
 
               // Dark themes
@@ -362,18 +386,48 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-dark' ? '●' : '○',
-                children: 'Midnight Vapor',
+                children: 'Midnight',
                 onClick: () => handleThemeChange('theme-dark'),
               },
               {
                 icon: currentTheme === 'theme-blue' ? '●' : '○',
-                children: 'Operation Blue',
+                children: 'Safe Blue',
                 onClick: () => handleThemeChange('theme-blue'),
               },
               {
                 icon: currentTheme === 'theme-green' ? '●' : '○',
-                children: 'Neon Garden',
+                children: 'Neon Green',
                 onClick: () => handleThemeChange('theme-green'),
+              },
+              {
+                icon: currentTheme === 'theme-dracula' ? '●' : '○',
+                children: 'Dracula Night',
+                onClick: () => handleThemeChange('theme-dracula'),
+              },
+              {
+                icon: currentTheme === 'theme-solar' ? '●' : '○',
+                children: 'Solarized Dark',
+                onClick: () => handleThemeChange('theme-solar'),
+              },
+              {
+                icon: currentTheme === 'theme-zen' ? '●' : '○',
+                children: 'Zenburn',
+                onClick: () => handleThemeChange('theme-zen'),
+              },
+              {
+                icon: currentTheme === 'theme-nord' ? '●' : '○',
+                children: 'Nord Ice',
+                onClick: () => handleThemeChange('theme-nord'),
+              },
+              {
+                icon: currentTheme === 'theme-monokai' ? '●' : '○',
+                children: 'Monokai Classic',
+                onClick: () => handleThemeChange('theme-monokai'),
+              },
+              {
+                icon: currentTheme === 'theme-onedark' ? '●' : '○',
+                children: 'One Dark Pro',
+                onClick: () => handleThemeChange('theme-onedark'),
               },
 
               // Terminal/CRT themes
@@ -384,7 +438,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-black-amber' || !currentTheme ? '●' : '○',
-                children: 'Amber CRT (Default)',
+                children: 'Amber CRT',
                 onClick: () => handleThemeChange('theme-black-amber'),
               },
               {
@@ -394,143 +448,127 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-black-teal' ? '●' : '○',
-                children: 'Bioluminescence',
+                children: 'Bioluminescent',
                 onClick: () => handleThemeChange('theme-black-teal'),
               },
               {
                 icon: currentTheme === 'theme-black-green' ? '●' : '○',
-                children: 'AS/400 Green',
-                onClick: () => handleThemeChange('theme-black-green'),
-=======
-                icon: '⊹',
-                children: 'Amber CRT',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-amber'),
-              },
-              {
-                icon: '⊹',
-                children: 'White',
-                onClick: () => Utilities.onHandleThemeChange('theme-light'),
-              },
-              {
-                icon: '⊹',
-                children: 'Midnight',
-                onClick: () => Utilities.onHandleThemeChange('theme-dark'),
-              },
-              {
-                icon: '⊹',
-                children: 'Code Red',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-red'),
-              },
-              {
-                icon: '⊹',
-                children: 'Bioluminescent',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-teal'),
-              },
-              {
-                icon: '⊹',
-                children: 'Safe Blue',
-                onClick: () => Utilities.onHandleThemeChange('theme-blue'),
-              },
-              {
-                icon: '⊹',
-                children: 'Neon Green',
-                onClick: () => Utilities.onHandleThemeChange('theme-green'),
-              },
-              {
-                icon: '⊹',
                 children: 'AS/400',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-green'),
->>>>>>> bffebd4 (Add 30+ new themed color schemes from sci-fi and retro UIs)
+                onClick: () => handleThemeChange('theme-black-green'),
               },
               {
-                icon: '⊹',
-                children: 'LCARS',
-                onClick: () => Utilities.onHandleThemeChange('theme-lcars'),
+                icon: currentTheme === 'theme-matrix' ? '●' : '○',
+                children: 'Matrix Digital Rain',
+                onClick: () => handleThemeChange('theme-matrix'),
               },
               {
-                icon: '⊹',
-                children: 'Hologram',
-                onClick: () => Utilities.onHandleThemeChange('theme-hologram'),
+                icon: currentTheme === 'theme-ibm' ? '●' : '○',
+                children: 'IBM 3270 Terminal',
+                onClick: () => handleThemeChange('theme-ibm'),
               },
               {
-                icon: '⊹',
-                children: 'Blade Runner 2049',
-                onClick: () => Utilities.onHandleThemeChange('theme-blade'),
+                icon: currentTheme === 'theme-pipboy' ? '●' : '○',
+                children: 'Fallout Pip-Boy',
+                onClick: () => handleThemeChange('theme-pipboy'),
               },
               {
-                icon: '⊹',
-                children: 'Nostromo',
-                onClick: () => Utilities.onHandleThemeChange('theme-nostromo'),
+                icon: currentTheme === 'theme-c64' ? '●' : '○',
+                children: 'Commodore 64',
+                onClick: () => handleThemeChange('theme-c64'),
               },
               {
-                icon: '⊹',
-                children: 'Tron',
-                onClick: () => Utilities.onHandleThemeChange('theme-tron'),
-              },
-              {
-                icon: '⊹',
+                icon: currentTheme === 'theme-wopr' ? '●' : '○',
                 children: 'WOPR',
-                onClick: () => Utilities.onHandleThemeChange('theme-wopr'),
+                onClick: () => handleThemeChange('theme-wopr'),
+              },
+
+              // Sci-Fi themes
+              {
+                icon: '─',
+                children: '─── Sci-Fi ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
-                children: 'Minority Report',
-                onClick: () => Utilities.onHandleThemeChange('theme-minority'),
+                icon: currentTheme === 'theme-lcars' ? '●' : '○',
+                children: 'LCARS',
+                onClick: () => handleThemeChange('theme-lcars'),
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-hologram' ? '●' : '○',
+                children: 'Hologram',
+                onClick: () => handleThemeChange('theme-hologram'),
+              },
+              {
+                icon: currentTheme === 'theme-blade' ? '●' : '○',
+                children: 'Blade Runner 2049',
+                onClick: () => handleThemeChange('theme-blade'),
+              },
+              {
+                icon: currentTheme === 'theme-nostromo' ? '●' : '○',
+                children: 'Nostromo',
+                onClick: () => handleThemeChange('theme-nostromo'),
+              },
+              {
+                icon: currentTheme === 'theme-tron' ? '●' : '○',
+                children: 'Tron',
+                onClick: () => handleThemeChange('theme-tron'),
+              },
+              {
+                icon: currentTheme === 'theme-gits' ? '●' : '○',
                 children: 'GitS',
-                onClick: () => Utilities.onHandleThemeChange('theme-gits'),
+                onClick: () => handleThemeChange('theme-gits'),
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-mcrn' ? '●' : '○',
                 children: 'MCRN',
-                onClick: () => Utilities.onHandleThemeChange('theme-mcrn'),
+                onClick: () => handleThemeChange('theme-mcrn'),
               },
               {
-                icon: '⊹',
-                children: 'Westworld',
-                onClick: () => Utilities.onHandleThemeChange('theme-westworld'),
-              },
-              {
-                icon: '⊹',
-                children: 'Windows 95',
-                onClick: () => Utilities.onHandleThemeChange('theme-win95'),
-              },
-              {
-                icon: '⊹',
-                children: 'Mac OS 9',
-                onClick: () => Utilities.onHandleThemeChange('theme-macos9'),
-              },
-              {
-                icon: '⊹',
+                icon: currentTheme === 'theme-nerv' ? '●' : '○',
                 children: 'NERV',
-                onClick: () => Utilities.onHandleThemeChange('theme-nerv'),
+                onClick: () => handleThemeChange('theme-nerv'),
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-akira' ? '●' : '○',
                 children: 'Neo-Tokyo',
-                onClick: () => Utilities.onHandleThemeChange('theme-akira'),
+                onClick: () => handleThemeChange('theme-akira'),
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-deus' ? '●' : '○',
                 children: 'Deus Ex',
-                onClick: () => Utilities.onHandleThemeChange('theme-deus'),
+                onClick: () => handleThemeChange('theme-deus'),
+              },
+
+              // Retro/Gaming themes
+              {
+                icon: '─',
+                children: '─── Retro ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-win95' ? '●' : '○',
+                children: 'Windows 95',
+                onClick: () => handleThemeChange('theme-win95'),
+              },
+              {
+                icon: currentTheme === 'theme-macos9' ? '●' : '○',
+                children: 'Mac OS 9',
+                onClick: () => handleThemeChange('theme-macos9'),
+              },
+              {
+                icon: currentTheme === 'theme-hotline' ? '●' : '○',
                 children: 'Hotline Miami',
-                onClick: () => Utilities.onHandleThemeChange('theme-hotline'),
+                onClick: () => handleThemeChange('theme-hotline'),
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-outrun' ? '●' : '○',
                 children: 'Outrun',
-                onClick: () => Utilities.onHandleThemeChange('theme-outrun'),
+                onClick: () => handleThemeChange('theme-outrun'),
               },
               {
-                icon: '⊹',
-                children: 'Aperture Science',
-                onClick: () => Utilities.onHandleThemeChange('theme-aperture'),
+                icon: currentTheme === 'theme-cyber' ? '●' : '○',
+                children: 'Cyberpunk 2077',
+                onClick: () => handleThemeChange('theme-cyber'),
               },
             ],
           },

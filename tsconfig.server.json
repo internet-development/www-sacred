@@ -1,12 +1,23 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "module": "commonjs",
     "outDir": "./dist/server",
     "rootDir": "./server",
     "noEmit": false,
     "allowImportingTsExtensions": false,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": false,
+    "strictNullChecks": true
   },
   "include": ["server/**/*"],
   "exclude": ["node_modules", "dist"]

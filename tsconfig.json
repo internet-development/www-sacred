@@ -37,7 +37,7 @@
     "esModuleInterop": true,
     "allowJs": true
   },
-  "include": ["src", "server", "components", "common", "lib", "modules"],
+  "include": ["src", "components", "common", "lib", "modules"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"],
   "references": [{ "path": "./tsconfig.server.json" }]
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import MetaTags from '@/components/MetaTags';import '@root/global.scss';
+import MetaTags from '@/components/MetaTags';
+import '@root/global.scss';
 
 import * as Constants from '@common/constants';
 import * as Utilities from '@common/utilities';

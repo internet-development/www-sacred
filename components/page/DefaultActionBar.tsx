@@ -131,6 +131,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               {
                 icon: '⊹',
+                children: 'Iosevka Term [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-iosevka-term'),
+              },
+              {
+                icon: '⊹',
                 children: 'Commit Mono V143 [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-commit-mono'),
               },
@@ -152,13 +157,9 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               {
                 icon: '⊹',
                 children: 'Geist Mono [OFL] [DEFAULT]',
-                onClick: () => Utilities.onHandleFontChange(''),
+                onClick: () => Utilities.onHandleFontChange('font-use-geist-mono'),
               },
-              {
-                icon: '⊹',
-                children: 'Iosevka Term [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-iosevka-term'),
-              },
+
               {
                 icon: '⊹',
                 children: 'JetBrains Mono [OFL]',
@@ -188,8 +189,13 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               {
                 icon: '⊹',
-                children: 'Refined White [DEFAULT]',
-                onClick: () => Utilities.onHandleThemeChange(''),
+                children: 'Amber CRT [DEFAULT]',
+                onClick: () => Utilities.onHandleThemeChange('theme-black-amber'),
+              },
+              {
+                icon: '⊹',
+                children: 'Refined White',
+                onClick: () => Utilities.onHandleThemeChange('theme-light'),
               },
               {
                 icon: '⊹',

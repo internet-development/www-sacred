@@ -55,7 +55,7 @@ export function onHandleThemeChange(className?: string) {
   if (className) {
     body.classList.add(className);
   } else {
-    body.classList.add('theme-light');
+    body.classList.add('theme-black-amber');
   }
 }
 

@@ -14,6 +14,7 @@ import AS400 from '@components/examples/AS400';
 import Avatar from '@components/Avatar';
 import Badge from '@components/Badge';
 import BarLoader from '@components/BarLoader';
+import HalftoneImage from '@components/examples/HalftoneImage';
 import BarProgress from '@components/BarProgress';
 import Block from '@components/Block';
 import BlockLoader from '@components/BlockLoader';
@@ -361,6 +362,18 @@ export default async function Page(props) {
           <br />
         </Accordion>
 
+        <Accordion defaultValue={true} title="HALFTONE IMAGES">
+          Apply the theme-driven two-color halftone effect to any image. Base ink uses the theme text color, and hover swaps the ink to the focused foreground color.
+          <br />
+          <br />
+          <Card title="EXAMPLE">
+            <HalftoneImage src="https://upload.wikimedia.org/wikipedia/commons/0/0f/ChristopherAlexander2012_cropped.jpg" alt="Christopher Alexander" width={240} height={240} />
+            <span style={{ display: 'inline-block', width: 12 }} />
+            <HalftoneImage src="https://pbs.twimg.com/profile_images/1934755236364865537/OxJve4Jp_400x400.jpg" alt="Portrait" width={240} height={240} />
+          </Card>
+          <br />
+        </Accordion>
+
         <Accordion defaultValue={true} title="BLOG POST">
           A blog post can be composed of various components from our component repository. Typically, blog posts include breadcrumbs, an avatar, the author’s name, the publication date, and the blog post content.
           <br />
@@ -620,7 +633,7 @@ using asio::ip::tcp;
 
 void handle_client(tcp::socket socket) {
     try {
-        std::string message = 
+        std::string message =
             "HTTP/1.1 200 OK\\r\\n"
             "Content-Type: text/plain\\r\\n"
             "Connection: close\\r\\n"
@@ -633,11 +646,11 @@ void handle_client(tcp::socket socket) {
 int main() {
     asio::io_context context;
 
-    tcp::acceptor acceptor(context, 
+    tcp::acceptor acceptor(context,
         tcp::endpoint(tcp::v4(), 8080));
 
     std::cout << "Server running on port 8080...\\n";
-              
+
     while (true) {
         tcp::socket socket(context);
         acceptor.accept(socket);

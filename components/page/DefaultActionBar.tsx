@@ -215,9 +215,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
 
               // Monaspace Family
+              // Monospace fonts - spacer
               {
-                icon: '─',
-                children: '─── Monaspace ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -303,10 +304,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleFontChange('font-use-xanh-mono'),
               },
 
-              // Downloaded fonts
+              // Downloaded fonts - spacer
               {
-                icon: '─',
-                children: '─── Downloaded ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -341,10 +342,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Theme',
             openHotkey: 'ctrl+t',
             items: [
-              // Light themes
+              // Light themes - spacer
               {
-                icon: '─',
-                children: '─── Light ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -368,10 +369,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleThemeChange('theme-aperture'),
               },
 
-              // Dark themes
+              // Dark themes - spacer
               {
-                icon: '─',
-                children: '─── Dark ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -390,10 +391,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleThemeChange('theme-green'),
               },
 
-              // Terminal/CRT themes
+              // Terminal/CRT themes - spacer
               {
-                icon: '─',
-                children: '─── Terminal ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -423,9 +424,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
 
               // Sci-Fi themes
+              // System fonts - spacer
               {
-                icon: '─',
-                children: '─── Sci-Fi ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {
@@ -479,10 +481,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleThemeChange('theme-deus'),
               },
 
-              // Retro/Gaming themes
+              // Retro/Gaming themes - spacer
               {
-                icon: '─',
-                children: '─── Retro ───',
+                icon: '',
+                children: '',
                 disabled: true,
               },
               {

@@ -17,11 +17,23 @@ const Dialog: React.FC<DialogProps> = ({ title, children, style, onConfirm, onCa
   const titleId = React.useId();
   const descId = React.useId();
 
+  const hasTitle = title !== undefined && title !== null && !(typeof title === 'string' && title.trim() === '');
+  const hasDescription = React.Children.count(children) > 0;
+
   return (
-    <div className={styles.root} style={style} role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descId}>
-      <header className={styles.header}>{title}</header>
+    <div
+      className={styles.root}
+      style={style}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={hasTitle ? titleId : undefined}
+      aria-describedby={hasDescription ? descId : undefined}
+    >
+      <header className={styles.header} id={hasTitle ? titleId : undefined}>
+        {title}
+      </header>
       <br />
-      <article className={styles.message} id={descId}>
+      <article className={styles.message} id={hasDescription ? descId : undefined}>
         {children}
       </article>
       <br />

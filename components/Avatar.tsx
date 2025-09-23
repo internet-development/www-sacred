@@ -123,14 +123,16 @@ const Avatar: React.FC<AvatarProps> = (props) => {
     return () => observer.disconnect();
   }, [parseColor]);
 
-  // Use a safe src to avoid tainted canvas for remote images via the shared helper.
-  const safeSrc = React.useMemo(() => getSafeImageSrc(src), [src]);
+
+  // Trim the raw src once; Dither handles proxying/fallback logic internally.
+  const imageSrc = React.useMemo(() => (typeof src === 'string' ? src.trim() : ''), [src]);
+
 
   let avatarElement: React.ReactNode;
 
-  if (safeSrc && palette) {
+  if (imageSrc && palette) {
     const twoColor: [RGBColor, RGBColor] = [palette[0], active && hoverInk ? hoverInk : palette[1]];
-    const ditherElement = <Dither src={safeSrc} alt={alt ?? ''} width={38} height={38} twoColor={twoColor} className={styles.ditherCanvas} />;
+    const ditherElement = <Dither src={imageSrc} alt={alt ?? ''} width={38} height={38} twoColor={twoColor} className={styles.ditherCanvas} />;
 
     if (href) {
       avatarElement = (

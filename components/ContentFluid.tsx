@@ -7,7 +7,11 @@ interface ContentFluidProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const ContentFluid: React.FC<ContentFluidProps> = ({ children, ...rest }) => {
-  return <div className={styles.root}>{children}</div>;
+  return (
+    <div className={styles.root} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 export default ContentFluid;

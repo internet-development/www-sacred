@@ -1,7 +1,6 @@
 import styles from '@components/CardDouble.module.scss';
 
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -40,7 +39,7 @@ const CardDouble: React.FC<CardProps> = ({ children, mode, title, style, ...rest
   }
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} {...rest}>
       {titleElement}
       <section className={styles.children}>
         <section className={styles.borderChildren} style={style}>

@@ -1,4 +1,3 @@
-
 import styles from '@components/CanvasPlatformer.module.scss';
 
 import * as React from 'react';
@@ -207,7 +206,7 @@ const CanvasPlatformer: React.FC<PlatformerProps> = ({ rows = 25 }) => {
     if (!canvas) return;
     const pos = positionRef.current;
     const vel = velocityRef.current;
-    let w = canvas.width;
+
     let h = canvas.height;
     let groundY = h;
     for (const b of platformBlocksRef.current) {

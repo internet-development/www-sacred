@@ -2,6 +2,7 @@
 import React from 'react';
 import Dither from '@components/dither';
 import type { RGBColor } from '@lib/dither';
+import getSafeImageSrc from '@lib/getSafeImageSrc';
 import useThemeTwoColor from '@lib/useThemeTwoColor';
 
 export interface HalftoneImageProps extends React.HTMLAttributes<HTMLElement> {
@@ -34,23 +35,7 @@ const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 32
   const { palette, hoverInk, ready } = useThemeTwoColor();
   const [active, setActive] = React.useState(false);
 
-  const safeSrc = React.useMemo(() => {
-    try {
-      if (!src) return '';
-      // Allow data/blob as-is
-      if (/^(data:|blob:)/i.test(src)) return src;
-      const u = new URL(src, typeof window !== 'undefined' ? window.location.href : 'http://localhost');
-      // Same-origin or relative: keep as-is
-      if (typeof window !== 'undefined' && u.origin === window.location.origin) return src;
-      // Proxy absolute http(s) to avoid tainted canvas
-      if (u.protocol === 'http:' || u.protocol === 'https:') {
-        return `/api/image-proxy?url=${encodeURIComponent(u.toString())}`;
-      }
-      return src;
-    } catch {
-      return src;
-    }
-  }, [src]);
+  const safeSrc = React.useMemo(() => getSafeImageSrc(src) ?? '', [src]);
 
   if (!ready || !palette) return null;
 

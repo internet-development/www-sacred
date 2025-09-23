@@ -1,4 +1,3 @@
-'use client';
 
 import styles from '@components/HoverComponentTrigger.module.scss';
 

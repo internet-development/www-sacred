@@ -1,7 +1,9 @@
+import React from 'react';
+
+
 import '@root/global.scss';
 
 import * as Constants from '@common/constants';
-import * as Utilities from '@common/utilities';
 
 // NOTE(jimmylee): This is a kitchen sink of all components.
 // When forking or remixing, you'll likely only need a few.
@@ -63,7 +65,6 @@ import Package from '@root/package.json';
 import RadioButtonGroup from '@components/RadioButtonGroup';
 import Row from '@components/Row';
 import RowSpaceBetween from '@components/RowSpaceBetween';
-import Script from 'next/script';
 import Select from '@components/Select';
 import SidebarLayout from '@components/SidebarLayout';
 import Table from '@components/Table';
@@ -75,59 +76,14 @@ import TreeView from '@components/TreeView';
 import UpdatingDataTable from '@components/examples/UpdatingDataTable';
 import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
 
-export const dynamic = 'force-static';
+
 
 // NOTE(jimmylee)
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
-export async function generateMetadata({ params, searchParams }) {
-  const title = Package.name;
-  const description = Package.description;
-  const url = 'https://sacred.computer';
-  const handle = '@internetxstudio';
-
-  return {
-    description,
-    icons: {
-      apple: [{ url: '/apple-touch-icon.png' }, { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-      icon: '/favicon-32x32.png',
-      other: [
-        {
-          rel: 'apple-touch-icon-precomposed',
-          url: '/apple-touch-icon-precomposed.png',
-        },
-      ],
-      shortcut: '/favicon-16x16.png',
-    },
-    metadataBase: new URL('https://sacred.computer'),
-    openGraph: {
-      description,
-      images: [
-        {
-          url: 'https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/57a5715d-d332-47d0-8ec8-40cfa75bf36f.png',
-          width: 1500,
-          height: 785,
-        },
-      ],
-      title,
-      type: 'website',
-      url,
-    },
-    title,
-    twitter: {
-      card: 'summary_large_image',
-      description,
-      handle,
-      images: ['https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/57a5715d-d332-47d0-8ec8-40cfa75bf36f.png'],
-      title,
-      url,
-    },
-    url,
-  };
-}
 
 // NOTE(jimmylee)
 // https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts
-export default async function Page(props) {
+export default function HomePage(props) {
   return (
     <DefaultLayout previewPixelSRC="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png">
       <br />

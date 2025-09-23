@@ -1,4 +1,3 @@
-'use client';
 
 import styles from '@components/Avatar.module.scss';
 import Dither from '@components/dither';

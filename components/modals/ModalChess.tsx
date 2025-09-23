@@ -1,4 +1,3 @@
-'use client';
 
 import styles from '@components/modals/ModalChess.module.scss';
 

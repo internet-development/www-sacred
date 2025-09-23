@@ -4,6 +4,7 @@ import Dither from '@components/dither';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 import type { RGBColor } from '@lib/dither';
+import getSafeImageSrc from '@lib/getSafeImageSrc';
 
 interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
   src?: string;
@@ -122,32 +123,8 @@ const Avatar: React.FC<AvatarProps> = (props) => {
     return () => observer.disconnect();
   }, [parseColor]);
 
-  // Use a safe src to avoid tainted canvas for remote images.
-  // - Keep relative or same-origin URLs as-is.
-  // - Proxy absolute remote http(s) URLs via /api/image-proxy.
-  const safeSrc = React.useMemo(() => {
-    if (!src) return undefined;
-    try {
-      // Data/blob URLs: return as-is
-      if (/^(data:|blob:)/i.test(src)) return src;
-
-      const u = new URL(src, typeof window !== 'undefined' ? window.location.href : 'http://localhost');
-      if (typeof window !== 'undefined' && u.origin === window.location.origin) {
-        // Same-origin; keep original href (preserve relative if provided)
-        return src;
-      }
-
-      if (u.protocol === 'http:' || u.protocol === 'https:') {
-        return `/api/image-proxy?url=${encodeURIComponent(u.toString())}`;
-      }
-
-      // Unknown scheme: best effort, return src as-is
-      return src;
-    } catch {
-      // If URL parsing fails, return original
-      return src;
-    }
-  }, [src]);
+  // Use a safe src to avoid tainted canvas for remote images via the shared helper.
+  const safeSrc = React.useMemo(() => getSafeImageSrc(src), [src]);
 
   let avatarElement: React.ReactNode;
 

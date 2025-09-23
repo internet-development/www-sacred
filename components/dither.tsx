@@ -1,7 +1,8 @@
 
 import { ditherCanvas, type RGBColor } from '@lib/dither';
+import getSafeImageSrc from '@lib/getSafeImageSrc';
 import { cn } from '@lib/utils';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export interface DitherProps {
   src: string;
@@ -29,6 +30,8 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
   const baseRef = useRef<ImageData | null>(null);
   const [loaded, setLoaded] = useState(false);
 
+  const safeSrc = useMemo(() => getSafeImageSrc(src), [src]);
+
   // Render from cached base image with current halftone parameters
   const renderCurrent = useCallback(() => {
     const canvas = canvasRef.current;
@@ -44,11 +47,19 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
   // Load the image once per src/size and cache base pixels
   useEffect(() => {
     let canceled = false;
+    baseRef.current = null;
     setLoaded(false);
+
+    if (!safeSrc) {
+      return () => {
+        canceled = true;
+      };
+    }
 
     const img = new window.Image();
     // Do not force crossOrigin here; upstream should proxy/handle CORS if needed.
-    img.src = src;
+    img.decoding = 'async';
+    img.src = safeSrc;
 
     img.onload = () => {
       if (canceled) return;
@@ -71,9 +82,13 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
         baseRef.current = ctx.getImageData(0, 0, w, h);
         setLoaded(true);
         renderCurrent();
-      } catch {
+      } catch (error) {
         // If canvas is tainted (CORS), we cannot read pixels; leave as-is.
         // Still mark loaded so layout isn't blocked.
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.warn('Dither: unable to access pixel data (likely due to CORS). Rendering unfiltered image.', error);
+        }
         setLoaded(true);
       }
     };
@@ -85,7 +100,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
     return () => {
       canceled = true;
     };
-  }, [src, width, height, renderCurrent]);
+  }, [safeSrc, width, height, renderCurrent]);
 
   // Re-apply halftone when parameters change without reloading
   useEffect(() => {

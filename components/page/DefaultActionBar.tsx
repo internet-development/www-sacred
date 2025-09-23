@@ -343,6 +343,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               // Light themes
               {
+<<<<<<< HEAD
                 icon: '─',
                 children: '─── Light ───',
                 disabled: true,
@@ -400,6 +401,136 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentTheme === 'theme-black-green' ? '●' : '○',
                 children: 'AS/400 Green',
                 onClick: () => handleThemeChange('theme-black-green'),
+=======
+                icon: '⊹',
+                children: 'Amber CRT',
+                onClick: () => Utilities.onHandleThemeChange('theme-black-amber'),
+              },
+              {
+                icon: '⊹',
+                children: 'White',
+                onClick: () => Utilities.onHandleThemeChange('theme-light'),
+              },
+              {
+                icon: '⊹',
+                children: 'Midnight',
+                onClick: () => Utilities.onHandleThemeChange('theme-dark'),
+              },
+              {
+                icon: '⊹',
+                children: 'Code Red',
+                onClick: () => Utilities.onHandleThemeChange('theme-black-red'),
+              },
+              {
+                icon: '⊹',
+                children: 'Bioluminescent',
+                onClick: () => Utilities.onHandleThemeChange('theme-black-teal'),
+              },
+              {
+                icon: '⊹',
+                children: 'Safe Blue',
+                onClick: () => Utilities.onHandleThemeChange('theme-blue'),
+              },
+              {
+                icon: '⊹',
+                children: 'Neon Green',
+                onClick: () => Utilities.onHandleThemeChange('theme-green'),
+              },
+              {
+                icon: '⊹',
+                children: 'AS/400',
+                onClick: () => Utilities.onHandleThemeChange('theme-black-green'),
+>>>>>>> bffebd4 (Add 30+ new themed color schemes from sci-fi and retro UIs)
+              },
+              {
+                icon: '⊹',
+                children: 'LCARS',
+                onClick: () => Utilities.onHandleThemeChange('theme-lcars'),
+              },
+              {
+                icon: '⊹',
+                children: 'Hologram',
+                onClick: () => Utilities.onHandleThemeChange('theme-hologram'),
+              },
+              {
+                icon: '⊹',
+                children: 'Blade Runner 2049',
+                onClick: () => Utilities.onHandleThemeChange('theme-blade'),
+              },
+              {
+                icon: '⊹',
+                children: 'Nostromo',
+                onClick: () => Utilities.onHandleThemeChange('theme-nostromo'),
+              },
+              {
+                icon: '⊹',
+                children: 'Tron',
+                onClick: () => Utilities.onHandleThemeChange('theme-tron'),
+              },
+              {
+                icon: '⊹',
+                children: 'WOPR',
+                onClick: () => Utilities.onHandleThemeChange('theme-wopr'),
+              },
+              {
+                icon: '⊹',
+                children: 'Minority Report',
+                onClick: () => Utilities.onHandleThemeChange('theme-minority'),
+              },
+              {
+                icon: '⊹',
+                children: 'GitS',
+                onClick: () => Utilities.onHandleThemeChange('theme-gits'),
+              },
+              {
+                icon: '⊹',
+                children: 'MCRN',
+                onClick: () => Utilities.onHandleThemeChange('theme-mcrn'),
+              },
+              {
+                icon: '⊹',
+                children: 'Westworld',
+                onClick: () => Utilities.onHandleThemeChange('theme-westworld'),
+              },
+              {
+                icon: '⊹',
+                children: 'Windows 95',
+                onClick: () => Utilities.onHandleThemeChange('theme-win95'),
+              },
+              {
+                icon: '⊹',
+                children: 'Mac OS 9',
+                onClick: () => Utilities.onHandleThemeChange('theme-macos9'),
+              },
+              {
+                icon: '⊹',
+                children: 'NERV',
+                onClick: () => Utilities.onHandleThemeChange('theme-nerv'),
+              },
+              {
+                icon: '⊹',
+                children: 'Neo-Tokyo',
+                onClick: () => Utilities.onHandleThemeChange('theme-akira'),
+              },
+              {
+                icon: '⊹',
+                children: 'Deus Ex',
+                onClick: () => Utilities.onHandleThemeChange('theme-deus'),
+              },
+              {
+                icon: '⊹',
+                children: 'Hotline Miami',
+                onClick: () => Utilities.onHandleThemeChange('theme-hotline'),
+              },
+              {
+                icon: '⊹',
+                children: 'Outrun',
+                onClick: () => Utilities.onHandleThemeChange('theme-outrun'),
+              },
+              {
+                icon: '⊹',
+                children: 'Aperture Science',
+                onClick: () => Utilities.onHandleThemeChange('theme-aperture'),
               },
             ],
           },

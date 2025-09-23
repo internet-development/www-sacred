@@ -408,6 +408,330 @@ body.theme-black-amber {
   --theme-focused-foreground-subdued: var(--color-amber-40);
 }
 
+/* LCARS Star Trek Theme */
+body.theme-lcars {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-gray-90);
+  --theme-background-modal-footer: var(--color-gray-80);
+  --theme-background-input: var(--color-black-100);
+  --theme-border: var(--color-lcars-orange);
+  --theme-border-subdued: var(--color-lcars-purple-3);
+  --theme-text: var(--color-lcars-tan);
+  --theme-button: var(--color-lcars-orange);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-lcars-purple-light);
+  --theme-button-background: var(--color-lcars-purple-dark);
+  --theme-focused-foreground: var(--color-lcars-blue);
+  --theme-focused-foreground-subdued: var(--color-lcars-pink);
+}
+
+/* Star Wars Hologram Theme */
+body.theme-hologram {
+  --theme-overlay: var(--color-hologram-blue-4);
+  --theme-background: var(--color-hologram-dark);
+  --theme-background-modal: var(--color-hologram-dark-blue);
+  --theme-background-modal-footer: var(--color-hologram-darker-blue);
+  --theme-background-input: var(--color-hologram-mid-blue);
+  --theme-border: var(--color-hologram-blue);
+  --theme-border-subdued: var(--color-hologram-blue-3);
+  --theme-text: var(--color-hologram-cyan);
+  --theme-button: var(--color-hologram-white);
+  --theme-button-text: var(--color-hologram-dark);
+  --theme-button-foreground: var(--color-hologram-blue);
+  --theme-button-background: var(--color-hologram-mid-blue);
+  --theme-focused-foreground: var(--color-hologram-bright);
+  --theme-focused-foreground-subdued: var(--color-hologram-cyan-5);
+}
+
+/* Blade Runner 2049 Theme */
+body.theme-blade {
+  --theme-overlay: var(--color-blade-orange-4);
+  --theme-background: var(--color-blade-dark);
+  --theme-background-modal: var(--color-blade-gray);
+  --theme-background-modal-footer: var(--color-blade-gray-dark);
+  --theme-background-input: var(--color-blade-gray-mid);
+  --theme-border: var(--color-blade-orange);
+  --theme-border-subdued: var(--color-blade-orange-3);
+  --theme-text: var(--color-blade-yellow);
+  --theme-button: var(--color-blade-cyan);
+  --theme-button-text: var(--color-blade-dark);
+  --theme-button-foreground: var(--color-blade-orange);
+  --theme-button-background: var(--color-blade-gray);
+  --theme-focused-foreground: var(--color-blade-pink);
+  --theme-focused-foreground-subdued: var(--color-blade-cyan-5);
+}
+
+/* Alien Nostromo Theme */
+body.theme-nostromo {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-nostromo-dark);
+  --theme-background-modal: var(--color-nostromo-gray);
+  --theme-background-modal-footer: var(--color-nostromo-gray-dark);
+  --theme-background-input: var(--color-nostromo-olive);
+  --theme-border: var(--color-nostromo-green);
+  --theme-border-subdued: var(--color-nostromo-green-3);
+  --theme-text: var(--color-nostromo-lime);
+  --theme-button: var(--color-nostromo-amber);
+  --theme-button-text: var(--color-nostromo-dark);
+  --theme-button-foreground: var(--color-nostromo-green);
+  --theme-button-background: var(--color-nostromo-olive);
+  --theme-focused-foreground: var(--color-nostromo-white);
+  --theme-focused-foreground-subdued: var(--color-nostromo-amber-5);
+}
+
+/* Tron Legacy Theme */
+body.theme-tron {
+  --theme-overlay: var(--color-tron-black-4);
+  --theme-background: var(--color-tron-black);
+  --theme-background-modal: var(--color-tron-dark);
+  --theme-background-modal-footer: var(--color-tron-darker);
+  --theme-background-input: var(--color-tron-gray);
+  --theme-border: var(--color-tron-cyan);
+  --theme-border-subdued: var(--color-tron-cyan-3);
+  --theme-text: var(--color-tron-cyan);
+  --theme-button: var(--color-tron-orange);
+  --theme-button-text: var(--color-tron-black);
+  --theme-button-foreground: var(--color-tron-cyan);
+  --theme-button-background: var(--color-tron-dark);
+  --theme-focused-foreground: var(--color-tron-white);
+  --theme-focused-foreground-subdued: var(--color-tron-orange-5);
+}
+
+/* War Games WOPR Theme */
+body.theme-wopr {
+  --theme-overlay: var(--color-wopr-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-wopr-90);
+  --theme-background-modal-footer: var(--color-wopr-80);
+  --theme-background-input: var(--color-wopr-70);
+  --theme-border: var(--color-wopr-60);
+  --theme-border-subdued: var(--color-wopr-60-3);
+  --theme-text: var(--color-wopr-50);
+  --theme-button: var(--color-wopr-50);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-wopr-70);
+  --theme-button-background: var(--color-wopr-80);
+  --theme-focused-foreground: var(--color-wopr-30);
+  --theme-focused-foreground-subdued: var(--color-wopr-40);
+}
+
+/* Minority Report Theme */
+body.theme-minority {
+  --theme-overlay: var(--color-minority-100-4);
+  --theme-background: var(--color-minority-10);
+  --theme-background-modal: var(--color-minority-20);
+  --theme-background-modal-footer: var(--color-minority-30);
+  --theme-background-input: var(--color-minority-20);
+  --theme-border: var(--color-minority-40);
+  --theme-border-subdued: var(--color-minority-40-3);
+  --theme-text: var(--color-minority-90);
+  --theme-button: var(--color-minority-90);
+  --theme-button-text: var(--color-minority-10);
+  --theme-button-foreground: var(--color-minority-30);
+  --theme-button-background: var(--color-minority-20);
+  --theme-focused-foreground: var(--color-minority-100);
+  --theme-focused-foreground-subdued: var(--color-minority-80);
+}
+
+/* Ghost in the Shell Theme */
+body.theme-gits {
+  --theme-overlay: var(--color-gits-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-gits-90);
+  --theme-background-modal-footer: var(--color-gits-80);
+  --theme-background-input: var(--color-gits-70);
+  --theme-border: var(--color-gits-60);
+  --theme-border-subdued: var(--color-gits-60-3);
+  --theme-text: var(--color-gits-50);
+  --theme-button: var(--color-gits-50);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-gits-70);
+  --theme-button-background: var(--color-gits-80);
+  --theme-focused-foreground: var(--color-gits-30);
+  --theme-focused-foreground-subdued: var(--color-gits-40);
+}
+
+/* The Expanse MCRN Theme */
+body.theme-mcrn {
+  --theme-overlay: var(--color-mcrn-100-4);
+  --theme-background: var(--color-mcrn-100);
+  --theme-background-modal: var(--color-mcrn-90);
+  --theme-background-modal-footer: var(--color-mcrn-80);
+  --theme-background-input: var(--color-mcrn-70);
+  --theme-border: var(--color-mcrn-60);
+  --theme-border-subdued: var(--color-mcrn-60-3);
+  --theme-text: var(--color-mcrn-50);
+  --theme-button: var(--color-mcrn-50);
+  --theme-button-text: var(--color-mcrn-100);
+  --theme-button-foreground: var(--color-mcrn-70);
+  --theme-button-background: var(--color-mcrn-80);
+  --theme-focused-foreground: var(--color-mcrn-30);
+  --theme-focused-foreground-subdued: var(--color-mcrn-40);
+}
+
+/* Westworld Theme */
+body.theme-westworld {
+  --theme-overlay: var(--color-westworld-10-4);
+  --theme-background: var(--color-westworld-10);
+  --theme-background-modal: var(--color-westworld-20);
+  --theme-background-modal-footer: var(--color-westworld-30);
+  --theme-background-input: var(--color-westworld-20);
+  --theme-border: var(--color-westworld-40);
+  --theme-border-subdued: var(--color-westworld-40-3);
+  --theme-text: var(--color-westworld-90);
+  --theme-button: var(--color-westworld-90);
+  --theme-button-text: var(--color-westworld-10);
+  --theme-button-foreground: var(--color-westworld-30);
+  --theme-button-background: var(--color-westworld-20);
+  --theme-focused-foreground: var(--color-westworld-100);
+  --theme-focused-foreground-subdued: var(--color-westworld-80);
+}
+
+/* Windows 95 Theme */
+body.theme-win95 {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-win95-teal);
+  --theme-background-modal: var(--color-win95-gray);
+  --theme-background-modal-footer: var(--color-win95-gray-dark);
+  --theme-background-input: var(--color-white);
+  --theme-border: var(--color-win95-border);
+  --theme-border-subdued: var(--color-win95-border-light);
+  --theme-text: var(--color-black-100);
+  --theme-button: var(--color-win95-blue);
+  --theme-button-text: var(--color-white);
+  --theme-button-foreground: var(--color-win95-gray);
+  --theme-button-background: var(--color-win95-gray-light);
+  --theme-focused-foreground: var(--color-win95-navy);
+  --theme-focused-foreground-subdued: var(--color-win95-yellow);
+}
+
+/* Mac OS 9 Theme */
+body.theme-macos9 {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-macos9-platinum);
+  --theme-background-modal: var(--color-macos9-gray);
+  --theme-background-modal-footer: var(--color-macos9-stripe);
+  --theme-background-input: var(--color-white);
+  --theme-border: var(--color-macos9-border);
+  --theme-border-subdued: var(--color-macos9-border-3);
+  --theme-text: var(--color-black-100);
+  --theme-button: var(--color-macos9-aqua);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-macos9-purple);
+  --theme-button-background: var(--color-macos9-gray-light);
+  --theme-focused-foreground: var(--color-macos9-red);
+  --theme-focused-foreground-subdued: var(--color-macos9-yellow);
+}
+
+/* Evangelion NERV Theme */
+body.theme-nerv {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-nerv-dark-red);
+  --theme-background-modal-footer: var(--color-nerv-darker-red);
+  --theme-background-input: var(--color-nerv-gray);
+  --theme-border: var(--color-nerv-red);
+  --theme-border-subdued: var(--color-nerv-red-3);
+  --theme-text: var(--color-nerv-orange);
+  --theme-button: var(--color-nerv-yellow);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-nerv-orange);
+  --theme-button-background: var(--color-nerv-dark-red);
+  --theme-focused-foreground: var(--color-nerv-green);
+  --theme-focused-foreground-subdued: var(--color-nerv-purple);
+}
+
+/* Akira Neo-Tokyo Theme */
+body.theme-akira {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-akira-dark);
+  --theme-background-modal: var(--color-akira-gray);
+  --theme-background-modal-footer: var(--color-akira-gray-dark);
+  --theme-background-input: var(--color-akira-gray-mid);
+  --theme-border: var(--color-akira-red);
+  --theme-border-subdued: var(--color-akira-red-3);
+  --theme-text: var(--color-akira-white);
+  --theme-button: var(--color-akira-cyan);
+  --theme-button-text: var(--color-akira-dark);
+  --theme-button-foreground: var(--color-akira-yellow);
+  --theme-button-background: var(--color-akira-gray);
+  --theme-focused-foreground: var(--color-akira-pink);
+  --theme-focused-foreground-subdued: var(--color-akira-blue);
+}
+
+/* Deus Ex Theme */
+body.theme-deus {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-deus-dark-gold);
+  --theme-background-modal-footer: var(--color-deus-darker-gold);
+  --theme-background-input: var(--color-deus-gray);
+  --theme-border: var(--color-deus-gold);
+  --theme-border-subdued: var(--color-deus-gold-3);
+  --theme-text: var(--color-deus-amber);
+  --theme-button: var(--color-deus-cyan);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-deus-gold);
+  --theme-button-background: var(--color-deus-dark-gold);
+  --theme-focused-foreground: var(--color-deus-white);
+  --theme-focused-foreground-subdued: var(--color-deus-cyan-5);
+}
+
+/* Hotline Miami Theme */
+body.theme-hotline {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-hotline-dark);
+  --theme-background-modal: var(--color-hotline-purple);
+  --theme-background-modal-footer: var(--color-hotline-purple-dark);
+  --theme-background-input: var(--color-hotline-blue);
+  --theme-border: var(--color-hotline-pink);
+  --theme-border-subdued: var(--color-hotline-pink-3);
+  --theme-text: var(--color-hotline-cyan);
+  --theme-button: var(--color-hotline-yellow);
+  --theme-button-text: var(--color-hotline-dark);
+  --theme-button-foreground: var(--color-hotline-pink);
+  --theme-button-background: var(--color-hotline-purple);
+  --theme-focused-foreground: var(--color-hotline-white);
+  --theme-focused-foreground-subdued: var(--color-hotline-green);
+}
+
+/* Outrun Synthwave Theme */
+body.theme-outrun {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-outrun-dark);
+  --theme-background-modal: var(--color-outrun-purple);
+  --theme-background-modal-footer: var(--color-outrun-purple-dark);
+  --theme-background-input: var(--color-outrun-blue);
+  --theme-border: var(--color-outrun-pink);
+  --theme-border-subdued: var(--color-outrun-pink-3);
+  --theme-text: var(--color-outrun-cyan);
+  --theme-button: var(--color-outrun-yellow);
+  --theme-button-text: var(--color-outrun-dark);
+  --theme-button-foreground: var(--color-outrun-magenta);
+  --theme-button-background: var(--color-outrun-purple);
+  --theme-focused-foreground: var(--color-outrun-white);
+  --theme-focused-foreground-subdued: var(--color-outrun-orange);
+}
+
+/* Aperture Science Theme */
+body.theme-aperture {
+  --theme-overlay: var(--color-aperture-gray-4);
+  --theme-background: var(--color-white);
+  --theme-background-modal: var(--color-aperture-gray-light);
+  --theme-background-modal-footer: var(--color-aperture-gray);
+  --theme-background-input: var(--color-aperture-white);
+  --theme-border: var(--color-aperture-orange);
+  --theme-border-subdued: var(--color-aperture-blue-3);
+  --theme-text: var(--color-aperture-gray-dark);
+  --theme-button: var(--color-aperture-orange);
+  --theme-button-text: var(--color-white);
+  --theme-button-foreground: var(--color-aperture-blue);
+  --theme-button-background: var(--color-aperture-gray-light);
+  --theme-focused-foreground: var(--color-aperture-blue-dark);
+  --theme-focused-foreground-subdued: var(--color-aperture-orange-5);
+}
+
 body.font-use-berkeley-mono {
   --font-family-mono: 'TX02Mono-Regular', sans-serif;
 }
@@ -676,6 +1000,234 @@ body {
   --color-white-1: rgba(255, 255, 255, 0.1);
   --color-white-2: rgba(255, 255, 255, 0.2);
   --color-white-4: rgba(255, 255, 255, 0.4);
+
+  /* LCARS Star Trek */
+  --color-lcars-orange: rgba(255, 153, 0, 1);
+  --color-lcars-orange-3: rgba(255, 153, 0, 0.3);
+  --color-lcars-purple: rgba(153, 153, 204, 1);
+  --color-lcars-purple-3: rgba(153, 153, 204, 0.3);
+  --color-lcars-purple-dark: rgba(102, 102, 153, 1);
+  --color-lcars-purple-light: rgba(204, 153, 255, 1);
+  --color-lcars-tan: rgba(255, 204, 153, 1);
+  --color-lcars-pink: rgba(255, 153, 204, 1);
+  --color-lcars-blue: rgba(153, 204, 255, 1);
+  --color-lcars-peach: rgba(255, 204, 204, 1);
+  --color-lcars-yellow: rgba(255, 255, 153, 1);
+
+  /* Star Wars Hologram */
+  --color-hologram-dark: rgba(0, 5, 15, 1);
+  --color-hologram-dark-blue: rgba(0, 20, 40, 1);
+  --color-hologram-darker-blue: rgba(0, 15, 30, 1);
+  --color-hologram-mid-blue: rgba(0, 40, 80, 1);
+  --color-hologram-blue: rgba(0, 150, 255, 1);
+  --color-hologram-blue-4: rgba(0, 150, 255, 0.4);
+  --color-hologram-blue-3: rgba(0, 150, 255, 0.3);
+  --color-hologram-cyan: rgba(0, 255, 255, 1);
+  --color-hologram-cyan-5: rgba(0, 255, 255, 0.5);
+  --color-hologram-bright: rgba(150, 255, 255, 1);
+  --color-hologram-white: rgba(200, 230, 255, 1);
+
+  /* Blade Runner 2049 */
+  --color-blade-dark: rgba(10, 10, 15, 1);
+  --color-blade-gray: rgba(40, 40, 50, 1);
+  --color-blade-gray-dark: rgba(25, 25, 35, 1);
+  --color-blade-gray-mid: rgba(60, 60, 70, 1);
+  --color-blade-orange: rgba(255, 140, 0, 1);
+  --color-blade-orange-4: rgba(255, 140, 0, 0.4);
+  --color-blade-orange-3: rgba(255, 140, 0, 0.3);
+  --color-blade-yellow: rgba(255, 230, 100, 1);
+  --color-blade-cyan: rgba(100, 200, 255, 1);
+  --color-blade-cyan-5: rgba(100, 200, 255, 0.5);
+  --color-blade-pink: rgba(255, 100, 150, 1);
+
+  /* Alien Nostromo */
+  --color-nostromo-dark: rgba(5, 10, 5, 1);
+  --color-nostromo-gray: rgba(30, 35, 30, 1);
+  --color-nostromo-gray-dark: rgba(20, 25, 20, 1);
+  --color-nostromo-olive: rgba(50, 60, 40, 1);
+  --color-nostromo-green: rgba(100, 200, 100, 1);
+  --color-nostromo-green-3: rgba(100, 200, 100, 0.3);
+  --color-nostromo-lime: rgba(200, 255, 100, 1);
+  --color-nostromo-amber: rgba(255, 200, 50, 1);
+  --color-nostromo-amber-5: rgba(255, 200, 50, 0.5);
+  --color-nostromo-white: rgba(240, 255, 230, 1);
+
+  /* Tron Legacy */
+  --color-tron-black: rgba(0, 0, 0, 1);
+  --color-tron-black-4: rgba(0, 0, 0, 0.4);
+  --color-tron-dark: rgba(10, 15, 20, 1);
+  --color-tron-darker: rgba(5, 10, 15, 1);
+  --color-tron-gray: rgba(30, 35, 40, 1);
+  --color-tron-cyan: rgba(0, 230, 240, 1);
+  --color-tron-cyan-3: rgba(0, 230, 240, 0.3);
+  --color-tron-orange: rgba(255, 160, 0, 1);
+  --color-tron-orange-5: rgba(255, 160, 0, 0.5);
+  --color-tron-white: rgba(230, 240, 250, 1);
+
+  /* War Games WOPR Red */
+  --color-wopr-100: rgba(10, 0, 0, 1);
+  --color-wopr-100-4: rgba(10, 0, 0, 0.4);
+  --color-wopr-90: rgba(25, 0, 0, 1);
+  --color-wopr-80: rgba(40, 0, 0, 1);
+  --color-wopr-70: rgba(55, 0, 0, 1);
+  --color-wopr-60: rgba(70, 0, 0, 1);
+  --color-wopr-60-3: rgba(70, 0, 0, 0.3);
+  --color-wopr-50: rgba(255, 68, 68, 1);
+  --color-wopr-40: rgba(255, 102, 102, 1);
+  --color-wopr-30: rgba(255, 136, 136, 1);
+  --color-wopr-20: rgba(255, 170, 170, 1);
+  --color-wopr-10: rgba(255, 221, 221, 1);
+
+  /* Minority Report Blue-White */
+  --color-minority-100: rgba(0, 20, 40, 1);
+  --color-minority-100-4: rgba(0, 20, 40, 0.4);
+  --color-minority-90: rgba(0, 40, 80, 1);
+  --color-minority-80: rgba(0, 60, 120, 1);
+  --color-minority-70: rgba(51, 102, 153, 1);
+  --color-minority-60: rgba(102, 153, 204, 1);
+  --color-minority-50: rgba(153, 204, 255, 1);
+  --color-minority-40: rgba(178, 217, 255, 1);
+  --color-minority-40-3: rgba(178, 217, 255, 0.3);
+  --color-minority-30: rgba(204, 229, 255, 1);
+  --color-minority-20: rgba(229, 242, 255, 1);
+  --color-minority-10: rgba(240, 248, 255, 1);
+
+  /* Ghost in the Shell Cyan */
+  --color-gits-100: rgba(0, 10, 10, 1);
+  --color-gits-100-4: rgba(0, 10, 10, 0.4);
+  --color-gits-90: rgba(0, 20, 20, 1);
+  --color-gits-80: rgba(0, 30, 30, 1);
+  --color-gits-70: rgba(0, 40, 40, 1);
+  --color-gits-60: rgba(0, 50, 50, 1);
+  --color-gits-60-3: rgba(0, 50, 50, 0.3);
+  --color-gits-50: rgba(0, 255, 204, 1);
+  --color-gits-40: rgba(51, 255, 214, 1);
+  --color-gits-30: rgba(102, 255, 224, 1);
+  --color-gits-20: rgba(153, 255, 234, 1);
+  --color-gits-10: rgba(204, 255, 244, 1);
+
+  /* The Expanse MCRN Red-Orange */
+  --color-mcrn-100: rgba(20, 5, 0, 1);
+  --color-mcrn-100-4: rgba(20, 5, 0, 0.4);
+  --color-mcrn-90: rgba(40, 10, 0, 1);
+  --color-mcrn-80: rgba(60, 15, 0, 1);
+  --color-mcrn-70: rgba(80, 20, 0, 1);
+  --color-mcrn-60: rgba(100, 25, 0, 1);
+  --color-mcrn-60-3: rgba(100, 25, 0, 0.3);
+  --color-mcrn-50: rgba(255, 102, 51, 1);
+  --color-mcrn-40: rgba(255, 128, 85, 1);
+  --color-mcrn-30: rgba(255, 153, 119, 1);
+  --color-mcrn-20: rgba(255, 179, 153, 1);
+  --color-mcrn-10: rgba(255, 230, 217, 1);
+
+  /* Westworld Clean Blue */
+  --color-westworld-100: rgba(0, 30, 60, 1);
+  --color-westworld-90: rgba(0, 51, 102, 1);
+  --color-westworld-80: rgba(0, 71, 143, 1);
+  --color-westworld-70: rgba(51, 102, 163, 1);
+  --color-westworld-60: rgba(102, 143, 184, 1);
+  --color-westworld-50: rgba(153, 184, 204, 1);
+  --color-westworld-40: rgba(178, 204, 217, 1);
+  --color-westworld-40-3: rgba(178, 204, 217, 0.3);
+  --color-westworld-30: rgba(204, 224, 230, 1);
+  --color-westworld-20: rgba(229, 240, 242, 1);
+  --color-westworld-10: rgba(242, 248, 250, 1);
+  --color-westworld-10-4: rgba(242, 248, 250, 0.4);
+
+  /* Windows 95 */
+  --color-win95-teal: rgba(0, 128, 128, 1);
+  --color-win95-gray: rgba(192, 192, 192, 1);
+  --color-win95-gray-dark: rgba(128, 128, 128, 1);
+  --color-win95-gray-light: rgba(223, 223, 223, 1);
+  --color-win95-blue: rgba(0, 0, 128, 1);
+  --color-win95-navy: rgba(0, 0, 255, 1);
+  --color-win95-yellow: rgba(255, 255, 0, 1);
+  --color-win95-border: rgba(0, 0, 0, 1);
+  --color-win95-border-light: rgba(255, 255, 255, 1);
+
+  /* Mac OS 9 */
+  --color-macos9-platinum: rgba(221, 221, 221, 1);
+  --color-macos9-gray: rgba(238, 238, 238, 1);
+  --color-macos9-gray-light: rgba(246, 246, 246, 1);
+  --color-macos9-stripe: rgba(156, 156, 206, 1);
+  --color-macos9-aqua: rgba(102, 204, 255, 1);
+  --color-macos9-purple: rgba(153, 102, 204, 1);
+  --color-macos9-red: rgba(255, 102, 102, 1);
+  --color-macos9-yellow: rgba(255, 204, 0, 1);
+  --color-macos9-border: rgba(102, 102, 102, 1);
+  --color-macos9-border-3: rgba(102, 102, 102, 0.3);
+
+  /* Evangelion NERV */
+  --color-nerv-dark-red: rgba(40, 10, 10, 1);
+  --color-nerv-darker-red: rgba(25, 5, 5, 1);
+  --color-nerv-gray: rgba(40, 40, 40, 1);
+  --color-nerv-red: rgba(200, 50, 50, 1);
+  --color-nerv-red-3: rgba(200, 50, 50, 0.3);
+  --color-nerv-orange: rgba(255, 150, 50, 1);
+  --color-nerv-yellow: rgba(255, 255, 100, 1);
+  --color-nerv-green: rgba(150, 255, 150, 1);
+  --color-nerv-purple: rgba(200, 150, 255, 1);
+
+  /* Akira Neo-Tokyo */
+  --color-akira-dark: rgba(10, 10, 20, 1);
+  --color-akira-gray: rgba(40, 40, 50, 1);
+  --color-akira-gray-dark: rgba(25, 25, 35, 1);
+  --color-akira-gray-mid: rgba(60, 60, 70, 1);
+  --color-akira-red: rgba(255, 50, 50, 1);
+  --color-akira-red-3: rgba(255, 50, 50, 0.3);
+  --color-akira-white: rgba(240, 240, 250, 1);
+  --color-akira-cyan: rgba(100, 255, 255, 1);
+  --color-akira-yellow: rgba(255, 255, 100, 1);
+  --color-akira-pink: rgba(255, 100, 200, 1);
+  --color-akira-blue: rgba(100, 150, 255, 1);
+
+  /* Deus Ex */
+  --color-deus-dark-gold: rgba(30, 25, 10, 1);
+  --color-deus-darker-gold: rgba(20, 15, 5, 1);
+  --color-deus-gray: rgba(50, 50, 50, 1);
+  --color-deus-gold: rgba(218, 165, 32, 1);
+  --color-deus-gold-3: rgba(218, 165, 32, 0.3);
+  --color-deus-amber: rgba(255, 204, 0, 1);
+  --color-deus-cyan: rgba(0, 200, 200, 1);
+  --color-deus-cyan-5: rgba(0, 200, 200, 0.5);
+  --color-deus-white: rgba(250, 250, 240, 1);
+
+  /* Hotline Miami */
+  --color-hotline-dark: rgba(20, 10, 20, 1);
+  --color-hotline-purple: rgba(80, 20, 80, 1);
+  --color-hotline-purple-dark: rgba(50, 10, 50, 1);
+  --color-hotline-blue: rgba(40, 20, 100, 1);
+  --color-hotline-pink: rgba(255, 0, 150, 1);
+  --color-hotline-pink-3: rgba(255, 0, 150, 0.3);
+  --color-hotline-cyan: rgba(0, 255, 255, 1);
+  --color-hotline-yellow: rgba(255, 255, 0, 1);
+  --color-hotline-white: rgba(255, 255, 255, 1);
+  --color-hotline-green: rgba(0, 255, 150, 1);
+
+  /* Outrun Synthwave */
+  --color-outrun-dark: rgba(15, 0, 30, 1);
+  --color-outrun-purple: rgba(50, 0, 100, 1);
+  --color-outrun-purple-dark: rgba(30, 0, 60, 1);
+  --color-outrun-blue: rgba(40, 0, 80, 1);
+  --color-outrun-pink: rgba(255, 71, 184, 1);
+  --color-outrun-pink-3: rgba(255, 71, 184, 0.3);
+  --color-outrun-cyan: rgba(71, 255, 255, 1);
+  --color-outrun-yellow: rgba(255, 215, 0, 1);
+  --color-outrun-magenta: rgba(255, 0, 255, 1);
+  --color-outrun-white: rgba(255, 255, 255, 1);
+  --color-outrun-orange: rgba(255, 150, 0, 1);
+
+  /* Aperture Science */
+  --color-aperture-gray: rgba(150, 150, 150, 1);
+  --color-aperture-gray-4: rgba(150, 150, 150, 0.4);
+  --color-aperture-gray-light: rgba(230, 230, 230, 1);
+  --color-aperture-gray-dark: rgba(60, 60, 60, 1);
+  --color-aperture-white: rgba(250, 250, 250, 1);
+  --color-aperture-orange: rgba(255, 125, 0, 1);
+  --color-aperture-orange-5: rgba(255, 125, 0, 0.5);
+  --color-aperture-blue: rgba(0, 150, 255, 1);
+  --color-aperture-blue-3: rgba(0, 150, 255, 0.3);
+  --color-aperture-blue-dark: rgba(0, 100, 200, 1);
 
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
   --font-family-mono: 'GeistMono-Regular', Consolas, monaco, monospace;

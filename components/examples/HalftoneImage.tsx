@@ -27,30 +27,14 @@ export interface HalftoneImageProps extends React.HTMLAttributes<HTMLElement> {
  *   <HalftoneImage src="https://..." width={320} height={200} />
  *
  * Notes:
- * - For cross-origin images, the app's image proxy will be used by Avatar,
- *   but this example assumes the passed `src` is same-origin or already proxied.
+ * - Cross-origin images are proxied automatically when available and fall back
+ *   to an unfiltered render if the proxy cannot be reached.
  */
 const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 320, height = 200, caption = 'Hover to highlight', style, className, ...rest }) => {
   const { palette, hoverInk, ready } = useThemeTwoColor();
   const [active, setActive] = React.useState(false);
 
-  const safeSrc = React.useMemo(() => {
-    try {
-      if (!src) return '';
-      // Allow data/blob as-is
-      if (/^(data:|blob:)/i.test(src)) return src;
-      const u = new URL(src, typeof window !== 'undefined' ? window.location.href : 'http://localhost');
-      // Same-origin or relative: keep as-is
-      if (typeof window !== 'undefined' && u.origin === window.location.origin) return src;
-      // Proxy absolute http(s) to avoid tainted canvas
-      if (u.protocol === 'http:' || u.protocol === 'https:') {
-        return `/api/image-proxy?url=${encodeURIComponent(u.toString())}`;
-      }
-      return src;
-    } catch {
-      return src;
-    }
-  }, [src]);
+  const imageSrc = React.useMemo(() => (typeof src === 'string' ? src.trim() : ''), [src]);
 
   if (!ready || !palette) return null;
 
@@ -58,7 +42,7 @@ const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 32
 
   return (
     <figure {...rest} className={className} style={{ display: 'inline-block', margin: 0, ...style }} onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)} tabIndex={0}>
-      <Dither src={safeSrc} alt={alt} width={width} height={height} twoColor={twoColor} />
+      <Dither src={imageSrc} alt={alt} width={width} height={height} twoColor={twoColor} />
       {caption !== null ? <figcaption style={{ opacity: 0.6, fontSize: '0.8em', marginTop: 4 }}>{caption}</figcaption> : null}
     </figure>
   );

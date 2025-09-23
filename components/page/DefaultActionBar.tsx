@@ -303,10 +303,10 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleFontChange('font-use-xanh-mono'),
               },
 
-              // Premium/Self-hosted
+              // Downloaded fonts
               {
                 icon: '─',
-                children: '─── Premium ───',
+                children: '─── Downloaded ───',
                 disabled: true,
               },
               {

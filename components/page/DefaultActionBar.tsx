@@ -115,9 +115,41 @@ interface DefaultActionBarProps {
 
 const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
   const [isGrid, setGrid] = React.useState(false);
+  const [currentFont, setCurrentFont] = React.useState<string>('');
+  const [currentTheme, setCurrentTheme] = React.useState<string>('');
+
+  // Track current font and theme from body classes
+  React.useEffect(() => {
+    const updateCurrent = () => {
+      const bodyClasses = Array.from(document.body.classList);
+      const fontClass = bodyClasses.find(c => c.startsWith('font-use-')) || '';
+      const themeClass = bodyClasses.find(c => c.startsWith('theme-')) || 'theme-black-amber';
+      setCurrentFont(fontClass);
+      setCurrentTheme(themeClass);
+    };
+
+    updateCurrent();
+
+    // Watch for class changes
+    const observer = new MutationObserver(updateCurrent);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
   useHotkeys('ctrl+g', () => toggleDebugGrid());
 
   useGlobalNavigationHotkeys();
+
+  const handleFontChange = (className: string) => {
+    Utilities.onHandleFontChange(className);
+    setCurrentFont(className);
+  };
+
+  const handleThemeChange = (className: string) => {
+    Utilities.onHandleThemeChange(className);
+    setCurrentTheme(className);
+  };
 
   return (
     <div className={styles.root}>
@@ -128,56 +160,179 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Fonts',
             openHotkey: 'ctrl+o',
             items: [
+              // Default
               {
-                icon: '⊹',
-                children: 'Iosevka Term [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-iosevka-term'),
-              },
-              {
-                icon: '⊹',
-                children: 'Commit Mono V143 [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-commit-mono'),
-              },
-              {
-                icon: '⊹',
-                children: 'Departure Mono [MIT]',
-                onClick: () => Utilities.onHandleFontChange('font-use-departure-mono'),
-              },
-              {
-                icon: '⊹',
-                children: 'Fira Code [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-fira-code'),
-              },
-              {
-                icon: '⊹',
-                children: 'Fragment Mono [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-fragment-mono'),
-              },
-              {
-                icon: '⊹',
-                children: 'Geist Mono [OFL] [DEFAULT]',
-                onClick: () => Utilities.onHandleFontChange('font-use-geist-mono'),
+                icon: currentFont === 'font-use-geist-mono' || !currentFont ? '●' : '○',
+                children: 'Geist Mono (Default)',
+                onClick: () => handleFontChange('font-use-geist-mono'),
               },
 
+              // Open Source Fonts
               {
-                icon: '⊹',
-                children: 'JetBrains Mono [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-jet-brains-mono'),
+                icon: '─',
+                children: '─── Open Source ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
-                children: 'SFMono Square [FOSS]',
-                onClick: () => Utilities.onHandleFontChange('font-use-sfmono-square'),
+                icon: currentFont === 'font-use-iosevka-term' ? '●' : '○',
+                children: 'Iosevka Term',
+                onClick: () => handleFontChange('font-use-iosevka-term'),
               },
               {
-                icon: '⊹',
-                children: 'Server Mono [OFL]',
-                onClick: () => Utilities.onHandleFontChange('font-use-server-mono'),
+                icon: currentFont === 'font-use-commit-mono' ? '●' : '○',
+                children: 'Commit Mono',
+                onClick: () => handleFontChange('font-use-commit-mono'),
               },
               {
-                icon: '⊹',
-                children: 'TX-02 Berkeley Mono™',
-                onClick: () => Utilities.onHandleFontChange('font-use-berkeley-mono'),
+                icon: currentFont === 'font-use-departure-mono' ? '●' : '○',
+                children: 'Departure Mono',
+                onClick: () => handleFontChange('font-use-departure-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-fira-code' ? '●' : '○',
+                children: 'Fira Code',
+                onClick: () => handleFontChange('font-use-fira-code'),
+              },
+              {
+                icon: currentFont === 'font-use-fragment-mono' ? '●' : '○',
+                children: 'Fragment Mono',
+                onClick: () => handleFontChange('font-use-fragment-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-jet-brains-mono' ? '●' : '○',
+                children: 'JetBrains Mono',
+                onClick: () => handleFontChange('font-use-jet-brains-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-sfmono-square' ? '●' : '○',
+                children: 'SFMono Square',
+                onClick: () => handleFontChange('font-use-sfmono-square'),
+              },
+              {
+                icon: currentFont === 'font-use-server-mono' ? '●' : '○',
+                children: 'Server Mono',
+                onClick: () => handleFontChange('font-use-server-mono'),
+              },
+
+              // Monaspace Family
+              {
+                icon: '─',
+                children: '─── Monaspace ───',
+                disabled: true,
+              },
+              {
+                icon: currentFont === 'font-use-monaspace-neon' ? '●' : '○',
+                children: 'Neon',
+                onClick: () => handleFontChange('font-use-monaspace-neon'),
+              },
+              {
+                icon: currentFont === 'font-use-monaspace-argon' ? '●' : '○',
+                children: 'Argon',
+                onClick: () => handleFontChange('font-use-monaspace-argon'),
+              },
+              {
+                icon: currentFont === 'font-use-monaspace-krypton' ? '●' : '○',
+                children: 'Krypton',
+                onClick: () => handleFontChange('font-use-monaspace-krypton'),
+              },
+              {
+                icon: currentFont === 'font-use-monaspace-radon' ? '●' : '○',
+                children: 'Radon',
+                onClick: () => handleFontChange('font-use-monaspace-radon'),
+              },
+              {
+                icon: currentFont === 'font-use-monaspace-xenon' ? '●' : '○',
+                children: 'Xenon',
+                onClick: () => handleFontChange('font-use-monaspace-xenon'),
+              },
+
+              // Google Fonts
+              {
+                icon: '─',
+                children: '─── Google Fonts ───',
+                disabled: true,
+              },
+              {
+                icon: currentFont === 'font-use-anonymous-pro' ? '●' : '○',
+                children: 'Anonymous Pro',
+                onClick: () => handleFontChange('font-use-anonymous-pro'),
+              },
+              {
+                icon: currentFont === 'font-use-chivo-mono' ? '●' : '○',
+                children: 'Chivo Mono',
+                onClick: () => handleFontChange('font-use-chivo-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-doto' ? '●' : '○',
+                children: 'Doto',
+                onClick: () => handleFontChange('font-use-doto'),
+              },
+              {
+                icon: currentFont === 'font-use-share-tech-mono' ? '●' : '○',
+                children: 'Share Tech Mono',
+                onClick: () => handleFontChange('font-use-share-tech-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-space-mono' ? '●' : '○',
+                children: 'Space Mono',
+                onClick: () => handleFontChange('font-use-space-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-syne-mono' ? '●' : '○',
+                children: 'Syne Mono',
+                onClick: () => handleFontChange('font-use-syne-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-vt323' ? '●' : '○',
+                children: 'VT323',
+                onClick: () => handleFontChange('font-use-vt323'),
+              },
+              {
+                icon: currentFont === 'font-use-victor-mono' ? '●' : '○',
+                children: 'Victor Mono',
+                onClick: () => handleFontChange('font-use-victor-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-workbench' ? '●' : '○',
+                children: 'Workbench',
+                onClick: () => handleFontChange('font-use-workbench'),
+              },
+              {
+                icon: currentFont === 'font-use-xanh-mono' ? '●' : '○',
+                children: 'Xanh Mono',
+                onClick: () => handleFontChange('font-use-xanh-mono'),
+              },
+
+              // Premium/Self-hosted
+              {
+                icon: '─',
+                children: '─── Premium ───',
+                disabled: true,
+              },
+              {
+                icon: currentFont === 'font-use-berkeley-mono' ? '●' : '○',
+                children: 'Berkeley Mono™',
+                onClick: () => handleFontChange('font-use-berkeley-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-julia-mono' ? '●' : '○',
+                children: 'JuliaMono',
+                onClick: () => handleFontChange('font-use-julia-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-tt2020' ? '●' : '○',
+                children: 'TT2020',
+                onClick: () => handleFontChange('font-use-tt2020'),
+              },
+              {
+                icon: currentFont === 'font-use-latin-modern-mono' ? '●' : '○',
+                children: 'Latin Modern Mono',
+                onClick: () => handleFontChange('font-use-latin-modern-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-serious-shanns' ? '●' : '○',
+                children: 'Serious Shanns',
+                onClick: () => handleFontChange('font-use-serious-shanns'),
               },
             ],
           },
@@ -186,45 +341,65 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Theme',
             openHotkey: 'ctrl+t',
             items: [
+              // Light themes
               {
-                icon: '⊹',
-                children: 'Amber CRT [DEFAULT]',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-amber'),
+                icon: '─',
+                children: '─── Light ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
+                icon: currentTheme === 'theme-light' ? '●' : '○',
                 children: 'Refined White',
-                onClick: () => Utilities.onHandleThemeChange('theme-light'),
+                onClick: () => handleThemeChange('theme-light'),
+              },
+
+              // Dark themes
+              {
+                icon: '─',
+                children: '─── Dark ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
-                children: 'Black Midnight Vapor',
-                onClick: () => Utilities.onHandleThemeChange('theme-dark'),
+                icon: currentTheme === 'theme-dark' ? '●' : '○',
+                children: 'Midnight Vapor',
+                onClick: () => handleThemeChange('theme-dark'),
               },
               {
-                icon: '⊹',
-                children: 'U-571 Code Red',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-red'),
+                icon: currentTheme === 'theme-blue' ? '●' : '○',
+                children: 'Operation Blue',
+                onClick: () => handleThemeChange('theme-blue'),
               },
               {
-                icon: '⊹',
-                children: 'Digital Bioluminescence',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-teal'),
+                icon: currentTheme === 'theme-green' ? '●' : '○',
+                children: 'Neon Garden',
+                onClick: () => handleThemeChange('theme-green'),
+              },
+
+              // Terminal/CRT themes
+              {
+                icon: '─',
+                children: '─── Terminal ───',
+                disabled: true,
               },
               {
-                icon: '⊹',
-                children: 'Operation Safe Blue',
-                onClick: () => Utilities.onHandleThemeChange('theme-blue'),
+                icon: currentTheme === 'theme-black-amber' || !currentTheme ? '●' : '○',
+                children: 'Amber CRT (Default)',
+                onClick: () => handleThemeChange('theme-black-amber'),
               },
               {
-                icon: '⊹',
-                children: 'Neon Green Garden',
-                onClick: () => Utilities.onHandleThemeChange('theme-green'),
+                icon: currentTheme === 'theme-black-red' ? '●' : '○',
+                children: 'Code Red',
+                onClick: () => handleThemeChange('theme-black-red'),
               },
               {
-                icon: '⊹',
-                children: 'Kirkland Signature AS/400',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-green'),
+                icon: currentTheme === 'theme-black-teal' ? '●' : '○',
+                children: 'Bioluminescence',
+                onClick: () => handleThemeChange('theme-black-teal'),
+              },
+              {
+                icon: currentTheme === 'theme-black-green' ? '●' : '○',
+                children: 'AS/400 Green',
+                onClick: () => handleThemeChange('theme-black-green'),
               },
             ],
           },

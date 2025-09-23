@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="H" format="1">
+  <advance width="500"/>
+  <unicode hex="0048"/>
+  <outline>
+    <contour>
+      <point x="448" y="790" type="line"/>
+      <point x="448" y="0" type="line"/>
+      <point x="340" y="0" type="line"/>
+      <point x="340" y="376" type="line"/>
+      <point x="156" y="376" type="line"/>
+      <point x="156" y="0" type="line"/>
+      <point x="48" y="0" type="line"/>
+      <point x="48" y="790" type="line"/>
+      <point x="156" y="790" type="line"/>
+      <point x="156" y="436" type="line"/>
+      <point x="340" y="436" type="line"/>
+      <point x="340" y="790" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>0</integer>
+            <key>width</key>
+            <integer>790</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>376</integer>
+            <key>width</key>
+            <integer>60</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>48</integer>
+            <key>width</key>
+            <integer>108</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>340</integer>
+            <key>width</key>
+            <integer>108</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

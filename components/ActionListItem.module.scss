@@ -28,6 +28,28 @@
   }
 }
 
+.disabled {
+  align-items: flex-start;
+  background: transparent;
+  color: var(--theme-border);
+  cursor: not-allowed;
+  display: flex;
+  justify-content: space-between;
+  outline: 0;
+  border: 0;
+  text-decoration: none;
+  opacity: 0.5;
+  pointer-events: none;
+
+  .icon {
+    background: var(--theme-border);
+  }
+
+  .text {
+    color: var(--theme-border);
+  }
+}
+
 .icon {
   align-items: center;
   background: var(--theme-button-foreground);

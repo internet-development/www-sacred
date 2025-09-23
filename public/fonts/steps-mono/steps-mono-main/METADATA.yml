@@ -1,0 +1,20 @@
+---
+unified font repository version: "0.2"
+unified font repository url: https://github.com/raphaelbastide/Unified-Font-Repository/
+typeface family:
+  name: Steps Mono
+  tags:
+  - monospace
+  - 90s
+  - condesed
+  - incomplete
+  repository url: https://github.com/raphaelbastide/steps-mono
+  project url: https://github.com/raphaelbastide/steps-mono
+  tools:
+  - Inkscape
+  - Fontforge
+  similar fonts:
+  - whois mono
+  - OCR A
+  sample text: The quick brown fox jumps over the lazy dog
+...

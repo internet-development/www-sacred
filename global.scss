@@ -1,4 +1,39 @@
 @font-face {
+  font-family: 'MonaspaceNeon-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.200/fonts/webfonts/MonaspaceNeon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceArgon-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.200/fonts/webfonts/MonaspaceArgon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceKrypton-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.200/fonts/webfonts/MonaspaceKrypton-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceRadon-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.200/fonts/webfonts/MonaspaceRadon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaspaceXenon-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@v1.200/fonts/webfonts/MonaspaceXenon-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'CommitMono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/3fecb478-80cf-41c5-b834-8562ab0baae0.woff2') format('woff2');
 }
@@ -50,6 +85,36 @@
 @font-face {
   font-family: 'TX02Mono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e049dfb6-9c5d-4ac4-97c2-eb6e95c61d09.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JuliaMono';
+  src: url('/fonts/JuliaMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT2020';
+  src: url('/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
+       url('/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Latin Modern Mono';
+  src: url('/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
+       url('/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SeriousShanns';
+  src: url('/fonts/SeriousShanns/SeriousShanns-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
 
 a,
@@ -347,6 +412,82 @@ body.font-use-berkeley-mono {
   --font-family-mono: 'TX02Mono-Regular', sans-serif;
 }
 
+body.font-use-geist-mono {
+  --font-family-mono: 'GeistMono-Regular', sans-serif;
+}
+
+body.font-use-monaspace-neon {
+  --font-family-mono: 'MonaspaceNeon-Regular', monospace;
+}
+
+body.font-use-monaspace-argon {
+  --font-family-mono: 'MonaspaceArgon-Regular', monospace;
+}
+
+body.font-use-monaspace-krypton {
+  --font-family-mono: 'MonaspaceKrypton-Regular', monospace;
+}
+
+body.font-use-monaspace-radon {
+  --font-family-mono: 'MonaspaceRadon-Regular', monospace;
+}
+
+body.font-use-monaspace-xenon {
+  --font-family-mono: 'MonaspaceXenon-Regular', monospace;
+}
+
+body.font-use-anonymous-pro {
+  --font-family-mono: 'AnonymousPro-Regular', monospace;
+}
+
+body.font-use-chivo-mono {
+  --font-family-mono: 'ChivoMono-Regular', monospace;
+}
+
+body.font-use-doto {
+  --font-family-mono: 'Doto-Regular', monospace;
+}
+
+body.font-use-share-tech-mono {
+  --font-family-mono: 'ShareTechMono-Regular', monospace;
+}
+
+body.font-use-space-mono {
+  --font-family-mono: 'SpaceMono-Regular', monospace;
+}
+
+body.font-use-syne-mono {
+  --font-family-mono: 'SyneMono-Regular', monospace;
+}
+
+body.font-use-vt323 {
+  --font-family-mono: 'VT323-Regular', monospace;
+}
+
+body.font-use-victor-mono {
+  --font-family-mono: 'VictorMono-Regular', monospace;
+}
+
+body.font-use-workbench {
+  --font-family-mono: 'Workbench-Regular', monospace;
+}
+
+body.font-use-xanh-mono {
+  --font-family-mono: 'XanhMono-Regular', monospace;
+}
+
+body.font-use-julia-mono {
+  --font-family-mono: 'JuliaMono', monospace;
+}
+
+body.font-use-tt2020 {
+  --font-family-mono: 'TT2020', monospace;
+}
+
+body.font-use-latin-modern-mono {
+  --font-family-mono: 'Latin Modern Mono', monospace;
+}
+
 body.font-use-commit-mono {
   --font-family-mono: 'CommitMono-Regular', sans-serif;
 }
@@ -377,6 +518,10 @@ body.font-use-server-mono {
 
 body.font-use-sfmono-square {
   --font-family-mono: 'SFMonoSquare-Regular', sans-serif;
+}
+
+body.font-use-serious-shanns {
+  --font-family-mono: 'SeriousShanns', monospace;
 }
 
 #__next {

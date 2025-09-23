@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Lab Mono Web';
+    src: url( 'labmono-regular-web.woff2' ) format( 'woff2' ),
+         url( 'labmono-regular-web.woff' ) format( 'woff' );
+    font-weight: normal;
+    font-style: normal;
+}

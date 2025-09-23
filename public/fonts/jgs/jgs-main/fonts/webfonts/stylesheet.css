@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'jgs7';
+    src: url('jgs7.woff2') format('woff2'),
+        url('jgs7.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'jgs5';
+    src: url('jgs5.woff2') format('woff2'),
+        url('jgs5.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'jgs9';
+    src: url('jgs9.woff2') format('woff2'),
+        url('jgs9.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

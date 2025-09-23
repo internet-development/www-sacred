@@ -1,0 +1,33 @@
+
+#Mark attachment classes (defined in GDEF, used in lookupflags)
+
+@GDEF_Simple = [\scaron \yacute \Thorn \thorn \CR \zcaron \minus \space \exclam 
+	\quotedbl \numbersign \dollar \percent \quotesingle \parenleft \parenright 
+	\asterisk \plus \comma \hyphen \period \slash \zero \one \two \three \four \five 
+	\six \seven \eight \nine \colon \semicolon \less \greater \question \A \B \C \D \E \F 
+	\G \H \I \J \K \L \M \N \O \P \Q \R \S \T \U \V \W \X \Y \Z \backslash \asciicircum 
+	\underscore \grave \a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t \u \v \w \x \y \z 
+	\Ccedilla \Eacute \aacute \agrave \acircumflex \adieresis \ccedilla \eacute 
+	\egrave \ecircumflex \edieresis \iacute \igrave \icircumflex \idieresis \oacute 
+	\ograve \ocircumflex \odieresis \uacute \ugrave \ucircumflex \udieresis \cent 
+	\sterling \bullet \acute \dieresis \AE \yen \ae \questiondown \exclamdown 
+	\ellipsis \nbspace \Agrave \OE \oe \endash \emdash \quotedblleft \quotedblright 
+	\quoteleft \quoteright \fraction \currency \guilsinglleft \guilsinglright 
+	\periodcentered \quotesinglbase \quotedblbase \perthousand \Acircumflex 
+	\Aacute \Egrave \Iacute \Igrave \Oacute \dotlessi \circumflex \tilde \macron 
+	\breve \dotaccent \ring \cedilla \hungarumlaut \ogonek \caron \Abreve \Cacute 
+	\Ccircumflex \Ldot \amacron \abreve \cacute \ccircumflex \cdotaccent \ccaron 
+	\emacron \edotaccent \ecaron \gcircumflex \jcircumflex \nacute \ncaron \omacron 
+	\ohungarumlaut \racute \rcaron \sacute \scircumflex \scedilla \umacron 
+	\uhungarumlaut \wcircumflex \wgrave \wacute \ycircumflex \ygrave \zacute 
+	\zdotaccent \dotlessj \guillemetleft \guillemetright \euro \.null \commaaccent 
+	\cedilla.case \acute.cap \grave.cap \hungarumlaut.cap \circumflex.cap 
+	\caron.cap \breve.cap \tilde.cap \macron.cap \dieresis.cap \dotaccent.cap 
+	\ring.cap \cedilla.cap \ogonek.cap \commaaccent.cap \i.dot \ampersand \uni0243 
+	\uni0000 ];
+
+table GDEF {
+  GlyphClassDef @GDEF_Simple, , , ;
+
+} GDEF;
+

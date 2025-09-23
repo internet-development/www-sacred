@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ohungarumlaut" format="1">
+  <advance width="500"/>
+  <unicode hex="0151"/>
+  <outline>
+    <contour>
+      <point x="304" y="545" type="line"/>
+      <point x="196" y="545" type="line"/>
+      <point x="176" y="527" type="line"/>
+      <point x="176" y="66" type="line"/>
+      <point x="196" y="48" type="line"/>
+      <point x="304" y="48" type="line"/>
+      <point x="324" y="66" type="line"/>
+      <point x="324" y="527" type="line"/>
+    </contour>
+    <contour>
+      <point x="425" y="87" type="line"/>
+      <point x="339" y="0" type="line"/>
+      <point x="161" y="0" type="line"/>
+      <point x="75" y="87" type="line"/>
+      <point x="75" y="506" type="line"/>
+      <point x="161" y="593" type="line"/>
+      <point x="339" y="593" type="line"/>
+      <point x="425" y="506" type="line"/>
+    </contour>
+    <contour>
+      <point x="316" y="647" type="line"/>
+      <point x="309" y="654" type="line"/>
+      <point x="365" y="816" type="line"/>
+      <point x="418" y="816" type="line"/>
+      <point x="436" y="801" type="line"/>
+      <point x="348" y="647" type="line"/>
+    </contour>
+    <contour>
+      <point x="159" y="654" type="line"/>
+      <point x="215" y="816" type="line"/>
+      <point x="268" y="816" type="line"/>
+      <point x="286" y="801" type="line"/>
+      <point x="198" y="647" type="line"/>
+      <point x="166" y="647" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>0</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>545</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>647</integer>
+            <key>width</key>
+            <integer>7</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>801</integer>
+            <key>width</key>
+            <integer>15</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>75</integer>
+            <key>width</key>
+            <integer>101</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>324</integer>
+            <key>width</key>
+            <integer>101</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

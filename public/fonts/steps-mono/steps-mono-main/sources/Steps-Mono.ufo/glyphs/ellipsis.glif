@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="ellipsis" format="1">
+  <advance width="500"/>
+  <unicode hex="2026"/>
+  <outline>
+    <contour>
+      <point x="112" y="115" type="line"/>
+      <point x="112" y="0" type="line"/>
+      <point x="33" y="0" type="line"/>
+      <point x="33" y="115" type="line"/>
+    </contour>
+    <contour>
+      <point x="290" y="115" type="line"/>
+      <point x="290" y="0" type="line"/>
+      <point x="210" y="0" type="line"/>
+      <point x="210" y="115" type="line"/>
+    </contour>
+    <contour>
+      <point x="465" y="115" type="line"/>
+      <point x="465" y="0" type="line"/>
+      <point x="386" y="0" type="line"/>
+      <point x="386" y="115" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>0</integer>
+            <key>width</key>
+            <integer>115</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>33</integer>
+            <key>width</key>
+            <integer>99</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>200</integer>
+            <key>width</key>
+            <integer>100</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>366</integer>
+            <key>width</key>
+            <integer>99</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,78 @@
+/* Google Fonts Local @font-face declarations */
+
+@font-face {
+  font-family: 'AnonymousPro-Regular';
+  src: url('./Anonymous_Pro/AnonymousPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BIZUDMincho-Regular';
+  src: url('./BIZ_UDMincho/BIZUDMincho-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ChivoMono-Regular';
+  src: url('./Chivo_Mono/static/ChivoMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Doto-Regular';
+  src: url('./Doto/static/Doto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ShareTechMono-Regular';
+  src: url('./Share_Tech_Mono/ShareTechMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceMono-Regular';
+  src: url('./Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SyneMono-Regular';
+  src: url('./Syne_Mono/SyneMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VT323-Regular';
+  src: url('./VT323/VT323-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VictorMono-Regular';
+  src: url('./Victor_Mono/static/VictorMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Workbench-Regular';
+  src: url('./Workbench/Workbench-Variable.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'XanhMono-Regular';
+  src: url('./Xanh_Mono/XanhMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

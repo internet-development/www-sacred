@@ -17,6 +17,7 @@ interface DropdownMenuItemProps {
   onClick?: () => void;
   modal?: any;
   modalProps?: Record<string, unknown>;
+  disabled?: boolean;
 }
 
 interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -40,7 +41,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>((props,
           if (each.modal) {
             return (
               <ModalTrigger key={`action-items-${index}`} modal={each.modal} modalProps={each.modalProps}>
-                <ActionListItem children={each.children} icon={each.icon} />
+                <ActionListItem children={each.children} icon={each.icon} disabled={each.disabled} />
               </ModalTrigger>
             );
           }
@@ -52,6 +53,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>((props,
               icon={each.icon}
               href={each.href}
               target={each.target}
+              disabled={each.disabled}
               onClick={() => {
                 if (each.onClick) {
                   each.onClick();

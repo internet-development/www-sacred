@@ -35,9 +35,6 @@ const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 32
   const { palette, hoverInk, ready } = useThemeTwoColor();
   const [active, setActive] = React.useState(false);
 
-  if (!ready || !palette) return null;
-
-  const twoColor: [RGBColor, RGBColor] = [palette[0], active && hoverInk ? hoverInk : palette[1]];
   const safeSrc = React.useMemo(() => {
     try {
       if (!src) return '';
@@ -55,6 +52,10 @@ const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 32
       return src;
     }
   }, [src]);
+
+  if (!ready || !palette) return null;
+
+  const twoColor: [RGBColor, RGBColor] = [palette[0], active && hoverInk ? hoverInk : palette[1]];
 
   return (
     <figure {...rest} className={className} style={{ display: 'inline-block', margin: 0, ...style }} onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)} onFocus={() => setActive(true)} onBlur={() => setActive(false)} tabIndex={0}>

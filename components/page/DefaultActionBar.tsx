@@ -353,19 +353,9 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleThemeChange('theme-light'),
               },
               {
-                icon: currentTheme === 'theme-solar-light' ? '●' : '○',
-                children: 'Solarized Light',
-                onClick: () => handleThemeChange('theme-solar-light'),
-              },
-              {
                 icon: currentTheme === 'theme-minority' ? '●' : '○',
                 children: 'Minority Report',
                 onClick: () => handleThemeChange('theme-minority'),
-              },
-              {
-                icon: currentTheme === 'theme-sepia' ? '●' : '○',
-                children: 'Sepia Vintage',
-                onClick: () => handleThemeChange('theme-sepia'),
               },
               {
                 icon: currentTheme === 'theme-westworld' ? '●' : '○',
@@ -399,36 +389,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 children: 'Neon Green',
                 onClick: () => handleThemeChange('theme-green'),
               },
-              {
-                icon: currentTheme === 'theme-dracula' ? '●' : '○',
-                children: 'Dracula Night',
-                onClick: () => handleThemeChange('theme-dracula'),
-              },
-              {
-                icon: currentTheme === 'theme-solar' ? '●' : '○',
-                children: 'Solarized Dark',
-                onClick: () => handleThemeChange('theme-solar'),
-              },
-              {
-                icon: currentTheme === 'theme-zen' ? '●' : '○',
-                children: 'Zenburn',
-                onClick: () => handleThemeChange('theme-zen'),
-              },
-              {
-                icon: currentTheme === 'theme-nord' ? '●' : '○',
-                children: 'Nord Ice',
-                onClick: () => handleThemeChange('theme-nord'),
-              },
-              {
-                icon: currentTheme === 'theme-monokai' ? '●' : '○',
-                children: 'Monokai Classic',
-                onClick: () => handleThemeChange('theme-monokai'),
-              },
-              {
-                icon: currentTheme === 'theme-onedark' ? '●' : '○',
-                children: 'One Dark Pro',
-                onClick: () => handleThemeChange('theme-onedark'),
-              },
 
               // Terminal/CRT themes
               {
@@ -455,26 +415,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentTheme === 'theme-black-green' ? '●' : '○',
                 children: 'AS/400',
                 onClick: () => handleThemeChange('theme-black-green'),
-              },
-              {
-                icon: currentTheme === 'theme-matrix' ? '●' : '○',
-                children: 'Matrix Digital Rain',
-                onClick: () => handleThemeChange('theme-matrix'),
-              },
-              {
-                icon: currentTheme === 'theme-ibm' ? '●' : '○',
-                children: 'IBM 3270 Terminal',
-                onClick: () => handleThemeChange('theme-ibm'),
-              },
-              {
-                icon: currentTheme === 'theme-pipboy' ? '●' : '○',
-                children: 'Fallout Pip-Boy',
-                onClick: () => handleThemeChange('theme-pipboy'),
-              },
-              {
-                icon: currentTheme === 'theme-c64' ? '●' : '○',
-                children: 'Commodore 64',
-                onClick: () => handleThemeChange('theme-c64'),
               },
               {
                 icon: currentTheme === 'theme-wopr' ? '●' : '○',
@@ -564,11 +504,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentTheme === 'theme-outrun' ? '●' : '○',
                 children: 'Outrun',
                 onClick: () => handleThemeChange('theme-outrun'),
-              },
-              {
-                icon: currentTheme === 'theme-cyber' ? '●' : '○',
-                children: 'Cyberpunk 2077',
-                onClick: () => handleThemeChange('theme-cyber'),
               },
             ],
           },

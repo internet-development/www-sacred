@@ -108,7 +108,9 @@ function trimTrailingSlash(path: string): string {
   if (path.length > 1 && path.endsWith('/')) {
     return path.replace(/\/+$/, '');
   }
-  return path || '/';
+
+  return path;
+
 }
 
 export default getSafeImageSrc;

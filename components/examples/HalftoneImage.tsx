@@ -2,6 +2,7 @@
 import React from 'react';
 import Dither from '@components/dither';
 import type { RGBColor } from '@lib/dither';
+import getSafeImageSrc from '@lib/getSafeImageSrc';
 import useThemeTwoColor from '@lib/useThemeTwoColor';
 
 export interface HalftoneImageProps extends React.HTMLAttributes<HTMLElement> {
@@ -34,7 +35,9 @@ const HalftoneImage: React.FC<HalftoneImageProps> = ({ src, alt = '', width = 32
   const { palette, hoverInk, ready } = useThemeTwoColor();
   const [active, setActive] = React.useState(false);
 
+
   const imageSrc = React.useMemo(() => (typeof src === 'string' ? src.trim() : ''), [src]);
+
 
   if (!ready || !palette) return null;
 

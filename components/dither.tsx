@@ -36,10 +36,12 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
   const [loaded, setLoaded] = useState(false);
 
   const safeSrc = useMemo(() => getSafeImageSrc(src), [src]);
+  
   const rawSrc = useMemo(() => {
     const trimmed = src?.trim?.();
     return trimmed ? trimmed : undefined;
   }, [src]);
+
 
   // Render from cached base image with current halftone parameters
   const renderCurrent = useCallback(() => {
@@ -59,6 +61,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
     baseRef.current = null;
     setLoaded(false);
 
+
     const candidates: LoadCandidate[] = [];
     if (safeSrc) {
       candidates.push({ url: safeSrc });
@@ -74,6 +77,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
       };
     }
 
+
     let img: HTMLImageElement | null = null;
 
     const loadFromIndex = (index: number) => {
@@ -85,6 +89,7 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
 
       img = new window.Image();
       img.decoding = 'async';
+
 
       if (typeof candidate.crossOrigin !== 'undefined') {
         img.crossOrigin = candidate.crossOrigin;
@@ -136,7 +141,9 @@ const Dither: React.FC<DitherProps> = ({ src, alt = '', width, height, className
       canceled = true;
       img = null;
     };
+
   }, [safeSrc, rawSrc, width, height, renderCurrent]);
+
 
   // Re-apply halftone when parameters change without reloading
   useEffect(() => {

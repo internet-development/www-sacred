@@ -4,6 +4,7 @@ import Dither from '@components/dither';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 import type { RGBColor } from '@lib/dither';
+import getSafeImageSrc from '@lib/getSafeImageSrc';
 
 interface AvatarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style' | 'className' | 'children'> {
   src?: string;
@@ -122,8 +123,10 @@ const Avatar: React.FC<AvatarProps> = (props) => {
     return () => observer.disconnect();
   }, [parseColor]);
 
+
   // Trim the raw src once; Dither handles proxying/fallback logic internally.
   const imageSrc = React.useMemo(() => (typeof src === 'string' ? src.trim() : ''), [src]);
+
 
   let avatarElement: React.ReactNode;
 

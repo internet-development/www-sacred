@@ -442,12 +442,5 @@
     <string>ampersand.glif</string>
     <key>uni0243</key>
     <string>uni0243.glif</string>
-<<<<<<< HEAD
-=======
-    <key>uni0243</key>
-    <string>uni0243000000000000001.glif</string>
-    <key>ampersand</key>
-    <string>ampersand000000000000001.glif</string>
->>>>>>> master
   </dict>
 </plist>

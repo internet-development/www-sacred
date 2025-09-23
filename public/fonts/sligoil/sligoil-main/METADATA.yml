@@ -1,0 +1,20 @@
+---
+unified font repository version: "0.2"
+unified font repository url: https://github.com/raphaelbastide/Unified-Font-Repository/
+typeface family:
+  name: Sligoil
+  tags:
+  - monospace
+  - micro
+  - sans
+  - medium
+  - bold
+  - Vietnamese
+  project url: https://gitlab.com/velvetyne/sligoil
+  project status: published
+  tools:
+  - Glyphs
+  similar fonts:
+  sample text:
+  - en_us: Sphinx of black quartz, judge my vow.
+...

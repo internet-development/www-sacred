@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="six" format="1">
+  <advance width="500"/>
+  <unicode hex="0036"/>
+  <outline>
+    <contour>
+      <point x="172" y="313" type="line"/>
+      <point x="172" y="64" type="line"/>
+      <point x="192" y="46" type="line"/>
+      <point x="300" y="46" type="line"/>
+      <point x="320" y="64" type="line"/>
+      <point x="320" y="323" type="line"/>
+      <point x="300" y="341" type="line"/>
+    </contour>
+    <contour>
+      <point x="320" y="526" type="line"/>
+      <point x="320" y="613" type="line"/>
+      <point x="300" y="631" type="line"/>
+      <point x="192" y="631" type="line"/>
+      <point x="172" y="613" type="line"/>
+      <point x="172" y="355" type="line"/>
+      <point x="335" y="394" type="line"/>
+      <point x="421" y="302" type="line"/>
+      <point x="421" y="85" type="line"/>
+      <point x="335" y="-2" type="line"/>
+      <point x="157" y="-2" type="line"/>
+      <point x="71" y="85" type="line"/>
+      <point x="71" y="592" type="line"/>
+      <point x="157" y="679" type="line"/>
+      <point x="335" y="679" type="line"/>
+      <point x="421" y="592" type="line"/>
+      <point x="421" y="526" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>-2</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>631</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>71</integer>
+            <key>width</key>
+            <integer>101</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>320</integer>
+            <key>width</key>
+            <integer>101</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

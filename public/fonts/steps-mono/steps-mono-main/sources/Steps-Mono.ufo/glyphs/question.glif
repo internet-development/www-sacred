@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="question" format="1">
+  <advance width="500"/>
+  <unicode hex="003F"/>
+  <outline>
+    <contour>
+<<<<<<< HEAD
+      <point x="326" y="137" type="line"/>
+      <point x="326" y="0" type="line"/>
+      <point x="182" y="0" type="line"/>
+      <point x="182" y="137" type="line"/>
+    </contour>
+    <contour>
+      <point x="310" y="294" type="line"/>
+      <point x="310" y="389" type="line"/>
+      <point x="464" y="532" type="line"/>
+      <point x="464" y="687" type="line"/>
+      <point x="368" y="790" type="line"/>
+      <point x="130" y="790" type="line"/>
+      <point x="34" y="687" type="line"/>
+      <point x="34" y="621" type="line"/>
+      <point x="145" y="621" type="line"/>
+      <point x="145" y="710" type="line"/>
+      <point x="168" y="730" type="line"/>
+      <point x="330" y="730" type="line"/>
+      <point x="353" y="710" type="line"/>
+      <point x="353" y="577" type="line"/>
+      <point x="199" y="430" type="line"/>
+      <point x="199" y="294" type="line"/>
+=======
+      <point x="377" y="491" type="line"/>
+      <point x="280" y="394" type="line"/>
+      <point x="179" y="496" type="line"/>
+      <point x="276" y="593" type="line"/>
+>>>>>>> master
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+<<<<<<< HEAD
+            <integer>0</integer>
+            <key>width</key>
+            <integer>60</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>730</integer>
+            <key>width</key>
+            <integer>60</integer>
+          </dict>
+=======
+            <integer>394</integer>
+            <key>width</key>
+            <integer>199</integer>
+          </dict>
+>>>>>>> master
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+<<<<<<< HEAD
+            <integer>38</integer>
+            <key>width</key>
+            <integer>111</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>62</integer>
+            <key>width</key>
+            <integer>111</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>337</integer>
+            <key>width</key>
+            <integer>111</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>357</integer>
+            <key>width</key>
+            <integer>111</integer>
+=======
+            <integer>179</integer>
+            <key>width</key>
+            <integer>198</integer>
+>>>>>>> master
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

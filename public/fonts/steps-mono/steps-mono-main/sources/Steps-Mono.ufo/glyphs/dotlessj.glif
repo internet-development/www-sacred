@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="dotlessj" format="1">
+  <advance width="500"/>
+  <unicode hex="0237"/>
+  <outline>
+    <contour>
+      <point x="381" y="593" type="line"/>
+      <point x="381" y="-130" type="line"/>
+      <point x="297" y="-199" type="line"/>
+      <point x="138" y="-199" type="line"/>
+      <point x="54" y="-130" type="line"/>
+      <point x="54" y="-65" type="line"/>
+      <point x="147" y="-65" type="line"/>
+      <point x="147" y="-133" type="line"/>
+      <point x="163" y="-151" type="line"/>
+      <point x="272" y="-151" type="line"/>
+      <point x="288" y="-133" type="line"/>
+      <point x="288" y="530" type="line"/>
+      <point x="273" y="545" type="line"/>
+      <point x="102" y="545" type="line"/>
+      <point x="102" y="593" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>-199</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>-130</integer>
+            <key>width</key>
+            <integer>65</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>545</integer>
+            <key>width</key>
+            <integer>48</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>54</integer>
+            <key>width</key>
+            <integer>93</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>288</integer>
+            <key>width</key>
+            <integer>93</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

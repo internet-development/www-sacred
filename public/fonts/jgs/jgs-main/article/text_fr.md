@@ -1,0 +1,342 @@
+% À propos de lʼASCII Art et de la Jgs Font
+% Adel Faure
+% 2023
+---
+lang: fr-FR
+---
+
+Introduction
+------------
+
+Je suis Adel Faure, artiste ASCII au sein du groupe Mistigris et Textmode
+Friends. Jʼai été généreusement invité par Velvetyne à publier Jgs Font via
+leur fonderie. Jgs Font est une police de caractères que jʼai créée en hommage
+à lʼartiste Joan G. Stark et que jʼutilise pour faire de lʼart ASCII.
+
+Dans cet article je contextualise ce quʼest lʼASCII art, qui est Joan G. Stark,
+ce que pourrait être «une histoire des arts en mode texte», ce que signifie
+lʼASCII art de nos jours, et ce que sont les spécificités de la Jgs Font.
+
+Je tiens à remercier chaleureusement Heikki Lotvonen pour avoir partagé avec
+moi deux références iconographiques (_The Printerʼs Grammar_, John Smith, 1755
+et _Improvisation_, Alfred P. Fluhr, fin XVIIIe) ainsi que pour son texte
+_ASCII art : From a Commodity Into an Obscurity_, qui mʼa beaucoup aidé.
+
+Je remercie également Raphaël Bastide, Ève Gauthier et Vincent Maillard pour
+mʼavoir relu et aidé à écrire ce texte.
+
+Enfin, un grand merci à Ariel Martín Pérez et Julien Imbert pour leur travail
+de correction et de finalisation du texte et à Ariel pour la traduction
+anglaise.
+
+Bonne lecture !
+
+LʼASCII Art cʼest quoi ?
+------------------------
+
+![Starry Night, Veni, Vidi, ASCII, 2020](img/starry_night_by_venividiascii.png)
+
+Expliquer ce que signifie Art ASCII nʼest pas simple. Plutôt que de délimiter
+une pratique bien définie, lʼASCII Art vient brouiller une distinction commune
+entre texte et image dans le domaine artistique, et entre «interface graphique»
+et «mode texte» en informatique.
+
+Au sens strict, lʼexpression désigne les images composées en utilisant les 128
+caractères présents dans lʼAmerican Standard Code for Information Interchange
+(abrégé ASCII). Bien que les termes «Text Art» ou «Textmode Art» soient aussi
+employés, «ASCII Art» ou plus simplement «ASCII» est devenu une manière de
+décrire toute image produite à lʼaide dʼéléments typographiques. En 1999, dans
+_The History of ASCII (text) Art_, Joan G. Stark décrit lʼASCII de la manière
+suivante :
+
+> Ce sont des «éléments graphiques non-graphiques». Leur palette se limite aux
+> symboles et caractères qui sont disponibles sur votre clavier
+> dʼordinateur.[^1]
+
+![Un autoportrait de Joan G. Stark accompagné de sa signature standard](img/jgs.png)
+
+Joan G. Stark, aussi connue sous les noms de jgs ou Spunk, est probablement
+lʼASCII artiste la plus populaire et prolifique des années ʼ90 et 2000,
+laissant une très forte empreinte sur les pratiques et les esthétiques
+amatrices dʼinternet. Stark commence à faire de lʼASCII art en 1995 au sein du
+newsgroup <alt.ascii-art> de USENET. Passionnée de folklore et dʼart populaire,
+elle sʼattache à représenter dans un mode «line-style» (que lʼon pourrait
+rapprocher de ce que la ligne claire est à la bande dessinée) dʼinnombrables
+créatures mythologiques, animaux, éléments de paysage, objets et scènes du
+quotidien. Elle publie lʼensemble de ses dessins ainsi que des textes sur
+lʼASCII, sa pratique et son histoire, sur son site www.ascii-art.com. Bien
+quʼil soit aujourdʼhui hors-ligne, on le trouve archivé sur de nombreuses
+adresses [comme
+celle-ci](https://web.archive.org/web/20091028013825/http://www.geocities.com/SoHo/7373/).
+
+Sa définition de lʼASCII comme «éléments graphiques non-graphiques» joue sur la
+polysémie du terme anglais «graphic», qui signifie soit «objet figuratif», soit
+«élément dʼune interface graphique». À lʼépoque où Stark écrit, les premiers
+réseaux sociaux électroniques (Usenet, BBS, Minitel, Ceefax, etc.), encore très
+populaires à lʼépoque, fonctionnent «en mode texte». Ils présentent des
+interfaces dans lesquelles lʼécran est comme un quadrillage dont chaque case
+permet dʼafficher un glyphe. Tandis que ces dernières disparaissent
+progressivement au profit des interfaces graphiques, Stark souligne avec ironie
+le caractère nouvellement singulier de lʼASCII art : des éléments graphiques au
+sein dʼenvironnements textuels.
+
+Tout en assumant sa complexité, Stark ramène la pratique de lʼASCII à une chose
+très simple : il sʼagit pour le créateur de dessiner avec les possibilités
+tapuscrites que lui offrent sa machine. «Leur palette se limite aux symboles et
+caractères que votre clavier dʼordinateur vous permet dʼutiliser». Partant de
+ce principe, il faut imaginer que chaque système associé à un clavier mène à un
+ASCII différent. Cʼest ainsi que nous trouvons des termes comme le PETSCII
+associé au Commodore PET/CBM, lʼANSI avec les BBS (Bulletin Board Systems),
+lʼATASCII avec Atari, le Shift-JIS avec le mode Katakana des claviers japonais,
+le Teletext pour le Videotext (Prestel, Minitel). Dans cette galaxie,
+lʼexpression «ASCII» désigne plus spécifiquement le style Amiga (oldschool et
+newschool) ou le style Usenet (line-style et solid-style). Chacun de ces ASCII
+ayant sa propre scène, avec ses groupes, ses artistes et parfois même sa propre
+plateforme de publication.
+
+- [www.asciiarena.se](https://www.asciiarena.se) - Amiga ASCII
+- [www.16colo.rs](https://www.16colo.rs) - ANSI
+- [www.csdb.dk](https://www.csdb.dk) - PETSCII
+- [www.teletextart.co.uk](https://www.teletextart.co.uk) - Teletext
+
+Quelques exemples
+-----------------
+
+De la même manière que chaque système peut posséder son ASCII art spécifique,
+chaque style a sa propre origine, pratique et histoire.
+
+Le jeu de caractères PETSCII, dessiné en grande partie par Chuck Peddle, le
+designer du Commodore PET, et par Leonard Tramiel (fils de Jack Tramiel,
+fondateur de Commodore International), inclut des trames et des formes
+géométriques, ce qui facilite la création de jeux sur un système strictement
+limité à un affichage en mode texte.
+
+![Joust, The Code Works, 1980, Commodore PET/CBM, image dʼun jeu composé de
+caractères PETSCII](img/joust-commodore-pet-cbm-screenshot-unhorsed.png)
+
+Dans _ASCII art : From a Commodity Into an Obscurity_, Heikki Lotvonen rappelle
+le rôle social de lʼASCII art dans la scène ANSI émergente. Des
+utilisateurs·ices qui nʼétaient pas des hackers mais qui étaient doué·es en art
+ASCII pouvaient obtenir lʼaccès à des contenus de BBS pirates en échange de
+leurs illustrations.[^2]
+
+![Menu de statistiques BBS, Sole Assassin, 1994, capture dʼécran dʼune page
+dʼun BBS composé de caractères ANSI](img/SA-STAT.CIA.png)
+
+Du fait quʼil est très simple de le reproduire et de le modifier (par
+copier-coller), LʼASCII était le moyen de prédilection pour afficher des mèmes
+sur les premiers réseaux de forums, notamment visible dans lʼimmense archive de
+[www.asciiartfarts.com
+(archivé)](https://web.archive.org/web/20230208045620/http://www.asciiartfarts.com/)
+(qui contient malheureusement de très nombreux exemples de contenus homophobes,
+misogynes et/ou racistes).
+
+![MEMENTS, 2006, art ASCII](img/mements.png)
+
+Certains des personnages populaires dʼinternet viennent spécifiquement de
+lʼASCII art. Cʼest le cas par exemple de «Kuma» (plus tard connu sous le nom de
+Pedobear) ou de «Domo», dont la forme et les postures particulières tirent leur
+origine de SHIFT-JIS partagées sur 2chan.
+
+![Le «Kuma» originel de 2chan (trouvé sur
+[www.knowyourmeme.com](https://knowyourmeme.com/memes/pedobear)) et son
+équivalent contemporain](img/kuma.gif)
+
+![Compilation de personnages 2chan (trouvé sur
+[www.outsiderjapan.pbworks.com)](http://outsiderjapan.pbworks.com/w/page/9758331/2channel?mode=print)
+et une peluche du personnage «Domo»](img/2ch_AA_Characters.gif)
+
+Une histoire des Arts en mode texte
+-----------------------------------
+
+À la fin des années 2000, lʼUnicode devient le standard international et
+universel pour lʼencodage informatique des caractères, rendant de ce fait
+obsolète les spécificités techniques liées à lʼASCII, lʼANSI, lʼATASCII, le
+PETSCII, le SHIFT-JIS, etc. En conséquence, tandis que lʼémulation dʼanciens
+systèmes et lʼapplication stricte de leurs standards fait partie intégrante des
+pratiques de scènes ASCII contemporaines, il est devenu clair pour de nombreux
+artistes que lʼASCII est une pratique qui sʼaffranchit des spécificités
+techniques de telle ou telle machine — certains dʼentre eux préfèrant de fait
+user du terme «Textmode Art», soit «art en mode texte» comme le suggère le nom
+du groupe «Textmode Friends».
+
+Ce positionnement rejoins lʼapproche de Stark : une pratique de lʼart ASCII qui
+ne repose pas fondamentalement sur les différents système dʼencodage mais sur
+la possibilité de créer avec toute forme issue de la mécanisation du texte. De
+fait, au-delà de lʼinformatique, partout où se sont imposées les contraintes du
+texte mécanisé, on peut retrouver des formes dʼart en mode texte, des formes
+dʼASCII.
+
+Dans _Neither Good, Fast, Nor Cheap: Challenges of Early Arabic Letterpress
+Printing_, Hala Auji décrit comment les imprimeurs des premières presses du
+Moyen-Orient contournent les limites de la composition au plomb pour produire
+des ornements.
+
+> Les manuscrits, par exemple, comportaient des enluminures à la manière de
+> frontispices, appelés sarlawh ou ʼunwan. Ces derniers, souvent très élaborés,
+> étaient colorés et dorés à la main afin dʼindiquer le début de chaque livre
+> et des chapitres suivants […]. Pour rappeler ces motifs dans leurs livres
+> imprimés, les employés de cette presse ont utilisé divers types dʼornements,
+> ainsi que des signes de ponctuation, reproduisant de manière créative des
+> compositions similaires.[^3]
+
+![Page de_ Nasif al-Yaziji, Kitab Fasl al-Khitab fi Usul Lughat al-I‘rab_,
+Beirut: American Mission Press,
+1836](img/FIG3_NasifYaziji_Fasl_al_khitab_Widener.jpg)
+
+Cette manière de détourner lʼart de la composition typographique pour produire
+des images nʼest pas rare dans le domaine de lʼimpression au plomb, qui
+devenait une nécessité quand les pièces venaient à manquer et un loisir pour
+les employé.es les plus passionnés.
+
+![Page de _The Printerʼs Grammar_, John Smith,
+1755](img/printersgrammarw0000smit_0153.jpg)
+
+> Voici les adaptations qui sont parfois faites quand ni séparateur ni fleurons
+> ne sont fournis pour habiller la première page dʼun ouvrage. Dans ce cas une
+> règle double est souvent utilisée ; dʼautant plus quʼelle nous évite
+> dʼimproviser des frontispices sans les pièces adéquates
+
+![Improvisation, Alfred P. Fluhr, fin
+XVIII<sup>e</sup>](img/alfred_p_fluhr_improvisation.png)
+
+> Une illustration improvisée créée par Alfred P. Fluhr, un apprenti de la
+> Martin B. Brown Compagny, New York city, est reproduite. Le dessin fut
+> élaboré à lʼaide de parenthèses et de règles dans une humeur espiègle durant
+> les moments de pauses. De temps à autre, ce genre dʼexpérimentation peut
+> aider à développer lʼhabilité de composition, mais cette tendance ne doit pas
+> devenir une habitude. La composition concrète sera plus bénéfique à un garçon
+> qui souhaite obtenir la qualification dʼimprimeur.
+
+Certains imprimeurs, comme Albert Schiller, qui choisissent spécifiquement
+dʼexploiter ce type de méthodes pour produire des œuvres furent en quelque
+sorte les artistes ASCII de leur temps.
+
+![La Boutique dʼAntiquités, Albert Schiller,
+1938](img/TheAntiqueshop_AlbertSchiller.jpg)
+
+LʼASCII art est-il une relique du passé ?
+-----------------------------------------
+
+De la même manière que la généralisation des interfaces graphiques et lʼarrivée
+de lʼUnicode auraient pu envoyer aux oubliettes lʼart ASCII, lʼordinateur
+personnel aurait pu faire disparaître le dessin à la machine à écrire. Pourtant
+la pratique de cette dernière ne cesse dʼêtre revisitée. Ci-après un extrait de
+_Bob Neillʼs book of typewriter_ dans lequel des images tapées à la machine à
+écrire sont accompagnées du protocole permettant de les reproduire, à la main
+ou à lʼaide dʼune machine. Ce livre, publié quelques années à peine avant le
+déclin rapide et la quasi-disparition de lʼusage des machines à écrire,
+supplantées par le clavier dʼordinateur et les logiciels de traitement de
+texte, vient en quelque sorte confirmer la survivance du médium machine à
+écrire avant même la réelle mise en obsolescence de cette dernière.
+
+![Kojak, page extraite de [_Bob Neillʼs book of typewriter
+art_](https://archive.org/details/bob-neills-book-of-typewriter-art/), Bob
+Neill, 1982](img/kojak_bob_neil.jpg)
+
+La popularité de lʼartiste James Cook est un bon exemple contemporain de cette
+survivance. Cook, pour le coup loin de la pratique de lʼinformatique, nous
+propose des œuvres à la machine à écrire directement réalisées devant le
+modèle, même en extérieur, à la manière dʼun peintre traditionnel.
+
+![James Cook, rendu en plein air, 2020, trouvé sur
+[mymodernmet.com](https://mymodernmet.com/james-cook-typewriter-art/)](img/james_cook.jpg)
+
+Au travers de la longue histoire de la mécanisation du texte, malgré
+lʼobsolescence qui découle des processus dʼinnovations, les arts ASCII ont
+permis à de nombreuses machines oubliées, jugées inutiles, de ressurgir. Ils
+ont ainsi permis de révéler des spécificités formelles et culturelles
+impossibles à remplacer. Une manière, en quelque sorte, de prouver quʼun moyen
+technique ne peut jamais vraiment être réduit à lʼimpertinence ou à la
+nostalgie.
+
+> Lʼattrait de lʼASCII art ne réside peut-être pas dans son apparente
+> nostalgie, mais plutôt dans ce quʼil représente : les idéaux du
+> «cyber-espace». Il transmet la mémoire de nos réseaux avant lʼavènement
+> dʼinternet, lorsque les industriels nʼavaient pas encore pris le contrôle
+> denotre vie quotidienne en ligne, et que les communautés avaient encore le
+> pouvoir de sʼauto-organiser.[^2]
+
+Jgs Font : une fonte monospace libre conçue pour dessiner. Faite en hommage à Joan G. Stark, pionnière de lʼart ASCII
+---------------------------------------------------------------------------------------------------------------------
+
+![](img/jgs_font.png)
+
+Lʼaspect des dessins en mode texte dépend largement de la fonte utilisée. Pour
+cette raison, lʼart ASCII est une affaire très typographique.
+
+Les fontes les plus populaires auprès des artistes ASCII sont généralement
+celles livrées par défaut sur les systèmes classiques dits du «Legacy
+Computing». Cʼest le cas par exemple de la Monaco puis de la Menlo, pendant
+longtemps les monospaces par défaut de macOS, associées à lʼASCII «line style».
+Un autre cas emblématique est celui de la MS PGothic, police inséparable du
+style SHIFT-JIS, première fonte de Microsoft contenant les «CJK characters»,
+cʼest à dire contenant des tables de caractères pour les langues chinoise,
+japonaise et coréenne.
+
+Tout en étant très inspiré par le travail de Joan Stark qui dessinait avec des
+fontes Microsoft comme la Courier ou la FixedSys, jʼai débuté lʼASCII art en
+utilisant une adaptation TrueType de la TopazPlus, une fonte du Commodore 64.
+Cette adaptation est issue du projet [Multi Platform Fonts In Amiga
+Aspect](https://web.archive.org/web/20220526153300/https://www.trueschool.se/html/fonts.html),
+créé par le groupe TrueSchool ascii en 2009. On y trouve les versions
+vectorielles des fontes les plus populaires de la scène Amiga. La majorité de
+ces fontes sont conçues par des artistes de la scène, comme la P0T-NOoDLE de
+Leo "Nudel" Davidson ou la MicroKnight dont lʼauteur·ice est inconnu·e.
+
+![Écran BBS, rendu avec MicroKnightPlus (Probablement AEROHOLiCS, 2o, 2009)](img/ty_microknightplus_2.png)
+
+La TopazPlus, comme la plupart des fontes Amiga, possède des barres obliques
+qui se rejoignent dʼune ligne sur lʼautre, particularité au coeur de la fameuse
+commande BASIC «[10 PRINT CHR$(205.5+RND(1)); : GOTO 10](https://10print.org/)»
+permettant de dessiner un labyrinthe infini. 
+
+![Résultat de la commande 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 sur lʼAmiga
+Commodore 64](img/c64_maze.png)
+
+Cette particularité mʼa impressionné et jʼai vu dans cet effet de continuité
+lʼaccomplissement de mon intention graphique en tant quʼartiste ASCII. Jʼai
+alors cherché à dessiner un caractère dont lʼensemble des glyphes se
+rapprocherait le plus de cette intention.
+
+![Slanted City, Adel Faure, rendu avec Jgs Font](img/jgs_city.png)
+
+Jgs font est le résultat de cette recherche. Son aspect bitmap et ses formes
+accentuent lʼambiguïté entre texte et dessin. Les propriétés formelles des
+caractères ont été caricaturées en fonction de la manière dont les ASCII
+artistes les utilisent.
+
+![Aspect bitmap de Jgs Font](img/jgs_bitmap_matching.png)
+
+Il en résulte une police avec de nombreux glyphes qui se combinent, parfois
+dans toutes les directions. Celle-ci permet, par association de caractères, de
+produire des lignes continues, des courbes, des trames, des motifs, des niveaux
+de gris.
+
+![Jgs Font en comparaison de la DejaVu Sans Mono](img/jgs_vs_dejavu.png)
+
+Lorsque ses caractères ne se combinent pas tout à fait, leur forme est faite
+pour entrer en correspondance à distance également.
+
+![Correspondances formelles de Jgs Font](img/jgs_shape_matching.png)
+
+Jgs Font contient les tables de caractère ASCII, Latin-1 Supplement ainsi que les
+glyphes présent dans la Code Page 437, utilisée pour lʼANSI art.
+
+![La table de caractère ASCII, Latin-1 Supplement et glyphes issus de la Code Page 437 de Jgs Font](img/ascii_latin.png)
+
+Pour conclure, sachez que cette fonte est sous license libre. Vous êtes donc
+libre de la télécharger, la diffuser et même la modifier à condition dʼen citer
+lʼorigine. Jʼespère quʼelle vous permettera de bien vous amuser et de dessiner
+plein de belles choses !
+
+[^1]: [_What is ASCII art
+?_](https://web.archive.org/web/19980705033611/http://www6.geocities.com/SoHo/7373/asciinfo.htm),
+Joan G. Stark, 1998 
+[^2]: [_ASCII art: From a Commodity Into an
+Obscurity_](https://blog.glyphdrawing.club/ascii-art-from-a-commodity-into-an-obscurity/),
+Heikki Lotvonen, 2022 
+[^3]: [_Neither Good, Fast, Nor Cheap: Challenges of
+Early Arabic Letterpress
+Printing_](https://printinghistory.org/challenges-of-early-arabic-printing/),
+Hala Auji, 2017

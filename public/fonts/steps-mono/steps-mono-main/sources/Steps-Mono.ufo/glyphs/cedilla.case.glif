@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="cedilla.case" format="1">
+  <advance width="500"/>
+  <outline>
+    <contour>
+      <point x="347" y="-147" type="line"/>
+      <point x="297" y="-191" type="line"/>
+      <point x="205" y="-191" type="line"/>
+      <point x="168" y="-147" type="line"/>
+      <point x="168" y="-128" type="line"/>
+      <point x="212" y="-128" type="line"/>
+      <point x="212" y="-157" type="line"/>
+      <point x="223" y="-167" type="line"/>
+      <point x="279" y="-167" type="line"/>
+      <point x="290" y="-157" type="line"/>
+      <point x="290" y="-72" type="line"/>
+      <point x="279" y="-62" type="line"/>
+      <point x="195" y="-62" type="line"/>
+      <point x="195" y="-37" type="line"/>
+      <point x="297" y="-37" type="line"/>
+      <point x="347" y="-82" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>-191</integer>
+            <key>width</key>
+            <integer>24</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>-62</integer>
+            <key>width</key>
+            <integer>25</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>168</integer>
+            <key>width</key>
+            <integer>44</integer>
+          </dict>
+          <dict>
+            <key>position</key>
+            <integer>290</integer>
+            <key>width</key>
+            <integer>57</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

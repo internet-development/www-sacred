@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="fraction" format="1">
+  <advance width="500"/>
+  <unicode hex="2044"/>
+  <outline>
+    <contour>
+      <point x="37" y="0" type="line"/>
+      <point x="188" y="301" type="line"/>
+      <point x="229" y="301" type="line"/>
+      <point x="112" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="443" y="680" type="line"/>
+      <point x="292" y="379" type="line"/>
+      <point x="251" y="379" type="line"/>
+      <point x="368" y="680" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+        <key>hhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>379</integer>
+            <key>width</key>
+            <integer>301</integer>
+          </dict>
+        </array>
+        <key>vhints</key>
+        <array>
+          <dict>
+            <key>position</key>
+            <integer>37</integer>
+            <key>width</key>
+            <integer>406</integer>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

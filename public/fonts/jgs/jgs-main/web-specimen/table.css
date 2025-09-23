@@ -1,0 +1,103 @@
+/* stylesheet */
+
+body {
+  padding-left: 1rem;
+}
+
+header article {
+  display: inline-block;
+  vertical-align: top;
+  width: 15rem;
+}
+
+.jgs5 pre {
+  font-family: 'jgs5';
+}
+
+.jgs7 pre {
+  font-family: 'jgs7';
+}
+
+.jgs9 pre {
+  font-family: 'jgs9';
+}
+
+.x1.jgs5 pre {
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.x2.jgs5 pre {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.x3.jgs5 pre {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.x1.jgs7 pre {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.x2.jgs7 pre {
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.x3.jgs7 pre {
+  font-size: 42px;
+  line-height: 42px;
+}
+
+.x1.jgs9 pre {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.x2.jgs9 pre {
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.x3.jgs9 pre {
+  font-size: 54px;
+  line-height: 54px;
+}
+
+.day {
+  color: black;
+  background-color: white;
+}
+
+.night {
+  color: white;
+  background-color: black;
+}
+
+#jgs_table tr > td:nth-of-type(2) {
+  font-family: "jgs5";
+  font-size: 50px;
+  line-height: 50px;
+}
+#jgs_table tr > td:nth-of-type(3) {
+  font-family: "jgs7";
+  font-size: 56px;
+  line-height: 56px;
+}
+#jgs_table tr > td:nth-of-type(4) {
+  font-family: "jgs9";
+  font-size: 54px;
+  line-height: 54px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: solid 1px;
+  padding: 0.25rem;
+}

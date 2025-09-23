@@ -179,6 +179,101 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 children: 'TX-02 Berkeley Mono™',
                 onClick: () => Utilities.onHandleFontChange('font-use-berkeley-mono'),
               },
+              {
+                icon: '⊹',
+                children: 'Monaspace Neon [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-neon'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Argon [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-argon'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Krypton [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-krypton'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Radon [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-radon'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Xenon [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-xenon'),
+              },
+              {
+                icon: '⊹',
+                children: 'Anonymous Pro [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-anonymous-pro'),
+              },
+              {
+                icon: '⊹',
+                children: 'Chivo Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-chivo-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Doto [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-doto'),
+              },
+              {
+                icon: '⊹',
+                children: 'Share Tech Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-share-tech-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Space Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-space-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Syne Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-syne-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'VT323 [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-vt323'),
+              },
+              {
+                icon: '⊹',
+                children: 'Victor Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-victor-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Workbench [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-workbench'),
+              },
+              {
+                icon: '⊹',
+                children: 'Xanh Mono [Google]',
+                onClick: () => Utilities.onHandleFontChange('font-use-xanh-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'JuliaMono [Self-host]',
+                onClick: () => Utilities.onHandleFontChange('font-use-julia-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'TT2020 [Self-host]',
+                onClick: () => Utilities.onHandleFontChange('font-use-tt2020'),
+              },
+              {
+                icon: '⊹',
+                children: 'Latin Modern Mono [Self-host]',
+                onClick: () => Utilities.onHandleFontChange('font-use-latin-modern-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Serious Shanns [Self-host]',
+                onClick: () => Utilities.onHandleFontChange('font-use-serious-shanns'),
+              },
             ],
           },
           {

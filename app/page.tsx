@@ -14,6 +14,7 @@ import AS400 from '@components/examples/AS400';
 import Avatar from '@components/Avatar';
 import Badge from '@components/Badge';
 import BarLoader from '@components/BarLoader';
+import HalftoneImage from '@components/examples/HalftoneImage';
 import BarProgress from '@components/BarProgress';
 import Block from '@components/Block';
 import BlockLoader from '@components/BlockLoader';
@@ -348,6 +349,18 @@ export default async function Page(props) {
             <BlockLoader mode={10} />
             <br />
             <BlockLoader mode={11} />
+          </Card>
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="HALFTONE IMAGES">
+          Apply the theme-driven two-color halftone effect to any image. Base ink uses the theme text color, and hover swaps the ink to the focused foreground color.
+          <br />
+          <br />
+          <Card title="EXAMPLE">
+            <HalftoneImage src="https://upload.wikimedia.org/wikipedia/commons/0/0f/ChristopherAlexander2012_cropped.jpg" alt="Christopher Alexander" width={240} height={240} />
+            <span style={{ display: 'inline-block', width: 12 }} />
+            <HalftoneImage src="https://pbs.twimg.com/profile_images/1934755236364865537/OxJve4Jp_400x400.jpg" alt="Portrait" width={240} height={240} />
           </Card>
           <br />
         </Accordion>

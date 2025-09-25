@@ -65,6 +65,14 @@
       "types": "./dist/common/*.d.ts",
       "import": "./dist/common/*.js"
     },
+    "./lib/*": {
+      "types": "./dist/lib/*.d.ts",
+      "import": "./dist/lib/*.js"
+    },
+    "./modules/hotkeys/*": {
+      "types": "./dist/modules/hotkeys/*.d.ts",
+      "import": "./dist/modules/hotkeys/*.js"
+    },
     "./global.css": "./dist/assets/global.css",
     "./global.scss": "./global.scss"
   },
@@ -75,6 +83,12 @@
       ],
       "common/*": [
         "dist/common/*"
+      ],
+      "lib/*": [
+        "dist/lib/*"
+      ],
+      "modules/hotkeys/*": [
+        "dist/modules/hotkeys/*"
       ],
       "*": [
         "dist/*"

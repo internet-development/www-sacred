@@ -73,6 +73,10 @@
       "types": "./dist/src/pages/HomePage.d.ts",
       "import": "./dist/src/pages/HomePage.js"
     },
+    "./ShowcasePage": {
+      "types": "./dist/src/pages/ShowcasePage.d.ts",
+      "import": "./dist/src/pages/ShowcasePage.js"
+    },
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
       "import": "./dist/lib/*.js"
@@ -97,6 +101,9 @@
       ],
       "HomePage": [
         "dist/src/pages/HomePage"
+      ],
+      "ShowcasePage": [
+        "dist/src/pages/ShowcasePage"
       ],
       "lib/*": [
         "dist/lib/*"

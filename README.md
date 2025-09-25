@@ -1,5 +1,72 @@
 # SRCL
 
+## Showcase and Home pages
+
+SRCL includes two optional pages you can use to demo components quickly:
+
+- ShowcasePage: lightweight, minimal dependencies; great for docs/playgrounds.
+- HomePage: full “kitchen sink” demo of SRCL components.
+
+Both are optional and only included in your bundle if you import them.
+
+### Quick start (ShowcasePage)
+
+```/dev/null/App.tsx#L1-20
+import 'srcl/global.css';
+import ShowcasePage from 'srcl/ShowcasePage';
+// or: import ShowcasePage from 'srcl/pages/ShowcasePage';
+
+export default function App() {
+  return (
+    <ShowcasePage
+      title="My App"
+      version="1.0.0"
+      links={[
+        { label: 'Studio', href: 'https://internet.dev', target: '_blank' },
+        { label: 'SRCL Source', href: 'https://github.com/internet-development/www-sacred', target: '_blank' },
+      ]}
+      actions={[{ label: 'Primary Action', onClick: () => console.log('clicked!') }]}
+    />
+  );
+}
+```
+
+### Full demo (HomePage)
+
+```/dev/null/App.tsx#L1-12
+import 'srcl/global.css';
+import HomePage from 'srcl/HomePage';
+// or: import HomePage from 'srcl/pages/HomePage';
+
+export default function App() {
+  return <HomePage />;
+}
+```
+
+### How to avoid bundling these pages
+
+- Don’t import them. With ESM and subpath exports, unused modules are excluded from the final bundle by default.
+- Prefer subpath component imports elsewhere:
+  - import Button from 'srcl/components/Button'
+  - import Grid from 'srcl/components/Grid'
+- If you only need a docs route or on-demand demo, lazy-load the page:
+```/dev/null/routes.tsx#L1-20
+import * as React from 'react';
+const ShowcasePage = React.lazy(() => import('srcl/pages/ShowcasePage'));
+
+export function DocsRoute() {
+  return (
+    <React.Suspense fallback={null}>
+      <ShowcasePage />
+    </React.Suspense>
+  );
+}
+```
+
+Notes:
+- Global styles: import 'srcl/global.css' once in your app (recommended). You can also use 'srcl/global.scss' if your build supports Sass.
+- Fonts are self-hosted and bundled via the CSS pipeline; no extra configuration is needed.
+
 ## Using SRCL via subpath exports
 
 SRCL can be consumed as a library using subpath exports so you can import individual components directly without app-level aliases.

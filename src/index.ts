@@ -10,6 +10,7 @@
 /* Layout and structure */
 export { default as Grid } from '../components/Grid';
 export { default as HomePage } from './pages/HomePage';
+export { default as ShowcasePage } from './pages/ShowcasePage';
 export { default as Row } from '../components/Row';
 export { default as RowEllipsis } from '../components/RowEllipsis';
 export { default as RowSpaceBetween } from '../components/RowSpaceBetween';

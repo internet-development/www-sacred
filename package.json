@@ -65,6 +65,14 @@
       "types": "./dist/common/*.d.ts",
       "import": "./dist/common/*.js"
     },
+    "./pages/*": {
+      "types": "./dist/src/pages/*.d.ts",
+      "import": "./dist/src/pages/*.js"
+    },
+    "./HomePage": {
+      "types": "./dist/src/pages/HomePage.d.ts",
+      "import": "./dist/src/pages/HomePage.js"
+    },
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
       "import": "./dist/lib/*.js"
@@ -83,6 +91,12 @@
       ],
       "common/*": [
         "dist/common/*"
+      ],
+      "pages/*": [
+        "dist/src/pages/*"
+      ],
+      "HomePage": [
+        "dist/src/pages/HomePage"
       ],
       "lib/*": [
         "dist/lib/*"

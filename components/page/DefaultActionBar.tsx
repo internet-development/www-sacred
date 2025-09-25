@@ -1,4 +1,3 @@
-
 import styles from '@components/page/DefaultActionBar.module.scss';
 
 import * as React from 'react';
@@ -122,8 +121,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
   React.useEffect(() => {
     const updateCurrent = () => {
       const bodyClasses = Array.from(document.body.classList);
-      const fontClass = bodyClasses.find(c => c.startsWith('font-use-')) || '';
-      const themeClass = bodyClasses.find(c => c.startsWith('theme-')) || 'theme-black-amber';
+      const fontClass = bodyClasses.find((c) => c.startsWith('font-use-')) || '';
+      const themeClass = bodyClasses.find((c) => c.startsWith('theme-')) || 'theme-black-amber';
       setCurrentFont(fontClass);
       setCurrentTheme(themeClass);
     };
@@ -309,6 +308,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: '',
                 children: '',
                 disabled: true,
+              },
+              {
+                icon: currentFont === 'font-use-atkinson-hyperlegible-mono' ? '●' : '○',
+                children: 'Atkinson Hyperlegible Mono',
+                onClick: () => handleFontChange('font-use-atkinson-hyperlegible-mono'),
               },
               {
                 icon: currentFont === 'font-use-berkeley-mono' ? '●' : '○',

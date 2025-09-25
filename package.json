@@ -13,6 +13,7 @@
     "dev:server": "tsx watch server/index.ts",
     "build": "tsc && vite build",
     "build:server": "tsc -p tsconfig.server.json",
+    "build:lib": "tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json && vite build -c vite.lib.config.ts",
     "start": "NODE_ENV=production node dist/server/index.js",
     "preview": "vite preview --port 10000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -21,8 +22,6 @@
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.4",
     "react-router-dom": "^6.22.3",
     "sass": "1.89.0",
@@ -42,8 +41,53 @@
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.2.1",
     "concurrently": "^8.2.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tsx": "^4.7.1",
     "typescript": "^5.9.2",
-    "vite": "^5.1.6"
-  }
+    "vite": "^5.1.6",
+    "tsc-alias": "^1.8.10"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js"
+    },
+    "./common/*": {
+      "types": "./dist/common/*.d.ts",
+      "import": "./dist/common/*.js"
+    },
+    "./global.css": "./dist/assets/global.css",
+    "./global.scss": "./global.scss"
+  },
+  "typesVersions": {
+    "*": {
+      "components/*": [
+        "dist/components/*"
+      ],
+      "common/*": [
+        "dist/common/*"
+      ],
+      "*": [
+        "dist/*"
+      ]
+    }
+  },
+  "module": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "sideEffects": [
+    "**/*.scss"
+  ],
+  "files": [
+    "dist",
+    "global.scss"
+  ]
 }

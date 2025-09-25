@@ -1,118 +1,132 @@
 @font-face {
   font-family: 'MonaspaceNeon-Regular';
-  src: url('./public/fonts/monaspace/MonaspaceNeon-Regular.woff2') format('woff2');
+  src: url('/fonts/monaspace/MonaspaceNeon-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MonaspaceArgon-Regular';
-  src: url('./public/fonts/monaspace/MonaspaceArgon-Regular.woff2') format('woff2');
+  src: url('/fonts/monaspace/MonaspaceArgon-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MonaspaceKrypton-Regular';
-  src: url('./public/fonts/monaspace/MonaspaceKrypton-Regular.woff2') format('woff2');
+  src: url('/fonts/monaspace/MonaspaceKrypton-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MonaspaceRadon-Regular';
-  src: url('./public/fonts/monaspace/MonaspaceRadon-Regular.woff2') format('woff2');
+  src: url('/fonts/monaspace/MonaspaceRadon-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'MonaspaceXenon-Regular';
-  src: url('./public/fonts/monaspace/MonaspaceXenon-Regular.woff2') format('woff2');
+  src: url('/fonts/monaspace/MonaspaceXenon-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'CommitMono-Regular';
-  src: url('./public/fonts/commit-mono/CommitMono-Regular.woff2') format('woff2');
+  src: url('/fonts/commit-mono/CommitMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'DepartureMono-Regular';
-  src: url('./public/fonts/departure-mono/DepartureMono-Regular.woff') format('woff');
+  src: url('/fonts/departure-mono/DepartureMono-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'FiraCode-Regular';
-  src: url('./public/fonts/fira-code/FiraCode-Regular.woff') format('woff');
+  src: url('/fonts/fira-code/FiraCode-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'FragmentMono-Regular';
-  src: url('./public/fonts/fragment-mono/FragmentMono-Regular.woff2') format('woff2');
+  src: url('/fonts/fragment-mono/FragmentMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'GeistMono-Regular';
-  src: url('./public/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  src: url('/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'IosevkaTerm-Regular';
-  src: url('./public/fonts/iosevka-term/IosevkaTerm-Regular.woff2') format('woff2');
+  src: url('/fonts/iosevka-term/IosevkaTerm-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'JetBrainsMono-Regular';
-  src: url('./public/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2') format('woff2');
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'SFMonoSquare-Regular';
-  src: url('./public/fonts/sfmono-square/SFMonoSquare-Regular.woff') format('woff');
+  src: url('/fonts/sfmono-square/SFMonoSquare-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'ServerMono';
-  src: url('./public/fonts/server-mono/ServerMono-Regular.woff2') format('woff2'),
-       url('./public/fonts/server-mono/ServerMono-Regular.woff') format('woff'),
-       url('./public/fonts/server-mono/ServerMono-Regular.otf') format('opentype');
+  src: url('/fonts/server-mono/ServerMono-Regular.woff2') format('woff2'),
+       url('/fonts/server-mono/ServerMono-Regular.woff') format('woff'),
+       url('/fonts/server-mono/ServerMono-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'TX02Mono-Regular';
-  src: url('./public/fonts/tx02mono/TX02Mono-Regular.woff2') format('woff2');
+  src: url('/fonts/tx02mono/TX02Mono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegibleMono-Regular';
+  src: url('/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegibleMono-Italic';
+  src: url('/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
   font-family: 'JuliaMono';
-  src: url('./public/fonts/JuliaMono-Regular.woff2') format('woff2');
+  src: url('/fonts/JuliaMono-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'TT2020';
-  src: url('./public/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
-       url('./public/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
+  src: url('/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
+       url('/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Latin Modern Mono';
-  src: url('./public/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
-       url('./public/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
+  src: url('/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
+       url('/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SeriousShanns';
-  src: url('./public/fonts/SeriousShanns/SeriousShanns-Regular.otf') format('opentype');
+  src: url('/fonts/SeriousShanns/SeriousShanns-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
@@ -846,6 +860,10 @@ body.font-use-sfmono-square {
 
 body.font-use-serious-shanns {
   --font-family-mono: 'SeriousShanns', monospace;
+}
+
+body.font-use-atkinson-hyperlegible-mono {
+  --font-family-mono: 'AtkinsonHyperlegibleMono-Regular', monospace;
 }
 
 #__next {

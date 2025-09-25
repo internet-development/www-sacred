@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "stripInternal": true
+  },
+  "include": [
+    "src/**/*",
+    "components/**/*",
+    "common/**/*",
+    "lib/**/*",
+    "modules/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "server",
+    "api",
+    "public",
+    "pages",
+    "demos",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
+}

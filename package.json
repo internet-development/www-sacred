@@ -85,7 +85,7 @@
       "types": "./dist/modules/hotkeys/*.d.ts",
       "import": "./dist/modules/hotkeys/*.js"
     },
-    "./global.css": "./dist/assets/global.css",
+    "./global.css": "./dist/src/global.css",
     "./global.scss": "./global.scss"
   },
   "typesVersions": {

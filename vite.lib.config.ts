@@ -61,7 +61,12 @@ export default defineConfig({
         preserveModulesRoot: '.',
         entryFileNames: '[name].js',
         chunkFileNames: 'chunks/[name]-[hash].js',
-        assetFileNames: 'assets/[name][extname]',
+        // Route the compiled global.css into dist/src for a stable export path,
+        // keep all other assets under dist/assets
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || '';
+          return name === 'global.css' ? 'src/[name][extname]' : 'assets/[name][extname]';
+        },
       },
     },
   },

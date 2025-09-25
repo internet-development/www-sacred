@@ -89,30 +89,30 @@
 
 @font-face {
   font-family: 'JuliaMono';
-  src: url('/fonts/JuliaMono-Regular.woff2') format('woff2');
+  src: url('./public/fonts/JuliaMono-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'TT2020';
-  src: url('/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
-       url('/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
+  src: url('./public/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
+       url('./public/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Latin Modern Mono';
-  src: url('/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
-       url('/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
+  src: url('./public/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
+       url('./public/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SeriousShanns';
-  src: url('/fonts/SeriousShanns/SeriousShanns-Regular.otf') format('opentype');
+  src: url('./public/fonts/SeriousShanns/SeriousShanns-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }

@@ -38,6 +38,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
     cssCodeSplit: true,
+    assetsInlineLimit: 0,
     target: 'esnext',
     lib: {
       // Single entry to expose the root export (.)

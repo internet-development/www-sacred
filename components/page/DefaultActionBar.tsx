@@ -159,6 +159,12 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             body: 'Fonts',
             openHotkey: 'ctrl+o',
             items: [
+              // Open Source Fonts
+              {
+                icon: '─',
+                children: '',
+                disabled: true,
+              },
               // Default
               {
                 icon: currentFont === 'font-use-geist-mono' || !currentFont ? '●' : '○',
@@ -166,12 +172,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleFontChange('font-use-geist-mono'),
               },
 
-              // Open Source Fonts
-              {
-                icon: '─',
-                children: '─── Open Source ───',
-                disabled: true,
-              },
               {
                 icon: currentFont === 'font-use-iosevka-term' ? '●' : '○',
                 children: 'Iosevka Term',
@@ -183,34 +183,15 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleFontChange('font-use-commit-mono'),
               },
               {
-                icon: currentFont === 'font-use-departure-mono' ? '●' : '○',
-                children: 'Departure Mono',
-                onClick: () => handleFontChange('font-use-departure-mono'),
-              },
-              {
                 icon: currentFont === 'font-use-fira-code' ? '●' : '○',
                 children: 'Fira Code',
                 onClick: () => handleFontChange('font-use-fira-code'),
               },
-              {
-                icon: currentFont === 'font-use-fragment-mono' ? '●' : '○',
-                children: 'Fragment Mono',
-                onClick: () => handleFontChange('font-use-fragment-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-jet-brains-mono' ? '●' : '○',
-                children: 'JetBrains Mono',
-                onClick: () => handleFontChange('font-use-jet-brains-mono'),
-              },
+
               {
                 icon: currentFont === 'font-use-sfmono-square' ? '●' : '○',
                 children: 'SFMono Square',
                 onClick: () => handleFontChange('font-use-sfmono-square'),
-              },
-              {
-                icon: currentFont === 'font-use-server-mono' ? '●' : '○',
-                children: 'Server Mono',
-                onClick: () => handleFontChange('font-use-server-mono'),
               },
 
               // Monaspace Family
@@ -249,23 +230,13 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               // Google Fonts
               {
                 icon: '─',
-                children: '─── Google Fonts ───',
+                children: '',
                 disabled: true,
               },
               {
                 icon: currentFont === 'font-use-anonymous-pro' ? '●' : '○',
                 children: 'Anonymous Pro',
                 onClick: () => handleFontChange('font-use-anonymous-pro'),
-              },
-              {
-                icon: currentFont === 'font-use-chivo-mono' ? '●' : '○',
-                children: 'Chivo Mono',
-                onClick: () => handleFontChange('font-use-chivo-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-doto' ? '●' : '○',
-                children: 'Doto',
-                onClick: () => handleFontChange('font-use-doto'),
               },
               {
                 icon: currentFont === 'font-use-share-tech-mono' ? '●' : '○',
@@ -276,11 +247,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentFont === 'font-use-space-mono' ? '●' : '○',
                 children: 'Space Mono',
                 onClick: () => handleFontChange('font-use-space-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-syne-mono' ? '●' : '○',
-                children: 'Syne Mono',
-                onClick: () => handleFontChange('font-use-syne-mono'),
               },
               {
                 icon: currentFont === 'font-use-vt323' ? '●' : '○',
@@ -354,23 +320,18 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-light' ? '●' : '○',
-                children: 'White',
+                children: 'Highlight',
                 onClick: () => handleThemeChange('theme-light'),
               },
               {
-                icon: currentTheme === 'theme-minority' ? '●' : '○',
-                children: 'Minority Report',
-                onClick: () => handleThemeChange('theme-minority'),
+                icon: currentTheme === 'theme-aperture' ? '●' : '○',
+                children: 'Aperture',
+                onClick: () => handleThemeChange('theme-aperture'),
               },
               {
                 icon: currentTheme === 'theme-westworld' ? '●' : '○',
                 children: 'Westworld',
                 onClick: () => handleThemeChange('theme-westworld'),
-              },
-              {
-                icon: currentTheme === 'theme-aperture' ? '●' : '○',
-                children: 'Aperture Science',
-                onClick: () => handleThemeChange('theme-aperture'),
               },
 
               // Dark themes - spacer
@@ -386,12 +347,12 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-blue' ? '●' : '○',
-                children: 'Safe Blue',
+                children: 'BSOD',
                 onClick: () => handleThemeChange('theme-blue'),
               },
               {
                 icon: currentTheme === 'theme-green' ? '●' : '○',
-                children: 'Neon Green',
+                children: 'Matrix',
                 onClick: () => handleThemeChange('theme-green'),
               },
 
@@ -401,30 +362,21 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 children: '',
                 disabled: true,
               },
+
+              {
+                icon: currentTheme === 'theme-black-green' ? '●' : '○',
+                children: 'Phosphor',
+                onClick: () => handleThemeChange('theme-black-green'),
+              },
               {
                 icon: currentTheme === 'theme-black-amber' || !currentTheme ? '●' : '○',
-                children: 'Amber CRT',
+                children: 'Sulfur',
                 onClick: () => handleThemeChange('theme-black-amber'),
               },
               {
                 icon: currentTheme === 'theme-black-red' ? '●' : '○',
-                children: 'Code Red',
+                children: 'Neon',
                 onClick: () => handleThemeChange('theme-black-red'),
-              },
-              {
-                icon: currentTheme === 'theme-black-teal' ? '●' : '○',
-                children: 'Bioluminescent',
-                onClick: () => handleThemeChange('theme-black-teal'),
-              },
-              {
-                icon: currentTheme === 'theme-black-green' ? '●' : '○',
-                children: 'AS/400',
-                onClick: () => handleThemeChange('theme-black-green'),
-              },
-              {
-                icon: currentTheme === 'theme-wopr' ? '●' : '○',
-                children: 'WOPR',
-                onClick: () => handleThemeChange('theme-wopr'),
               },
 
               // Sci-Fi themes
@@ -446,28 +398,13 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: currentTheme === 'theme-blade' ? '●' : '○',
-                children: 'Blade Runner 2049',
+                children: '2049',
                 onClick: () => handleThemeChange('theme-blade'),
               },
               {
                 icon: currentTheme === 'theme-nostromo' ? '●' : '○',
                 children: 'Nostromo',
                 onClick: () => handleThemeChange('theme-nostromo'),
-              },
-              {
-                icon: currentTheme === 'theme-tron' ? '●' : '○',
-                children: 'Tron',
-                onClick: () => handleThemeChange('theme-tron'),
-              },
-              {
-                icon: currentTheme === 'theme-gits' ? '●' : '○',
-                children: 'GitS',
-                onClick: () => handleThemeChange('theme-gits'),
-              },
-              {
-                icon: currentTheme === 'theme-mcrn' ? '●' : '○',
-                children: 'MCRN',
-                onClick: () => handleThemeChange('theme-mcrn'),
               },
               {
                 icon: currentTheme === 'theme-nerv' ? '●' : '○',
@@ -478,11 +415,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentTheme === 'theme-akira' ? '●' : '○',
                 children: 'Neo-Tokyo',
                 onClick: () => handleThemeChange('theme-akira'),
-              },
-              {
-                icon: currentTheme === 'theme-deus' ? '●' : '○',
-                children: 'Deus Ex',
-                onClick: () => handleThemeChange('theme-deus'),
               },
 
               // Retro/Gaming themes - spacer
@@ -500,11 +432,6 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: currentTheme === 'theme-macos9' ? '●' : '○',
                 children: 'Mac OS 9',
                 onClick: () => handleThemeChange('theme-macos9'),
-              },
-              {
-                icon: currentTheme === 'theme-hotline' ? '●' : '○',
-                children: 'Hotline Miami',
-                onClick: () => handleThemeChange('theme-hotline'),
               },
               {
                 icon: currentTheme === 'theme-outrun' ? '●' : '○',

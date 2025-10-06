@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "tsdown",
+    "build:watch": "tsdown --watch",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {

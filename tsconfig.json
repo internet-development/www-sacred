@@ -1,65 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@root/*": [
-        "./*"
-      ],
-      "@system/*": [
-        "./system/*"
-      ],
-      "@demos/*": [
-        "./demos/*"
-      ],
-      "@common/*": [
-        "./common/*"
-      ],
-      "@data/*": [
-        "./data/*"
-      ],
-      "@components/*": [
-        "./components/*"
-      ],
-      "@pages/*": [
-        "./pages/*"
-      ],
-      "@modules/*": [
-        "./modules/*"
-      ]
-    },
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "composite": true,
+    "types": ["node", "react"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2022",
+    "outDir": "dist",
   },
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
+  "references": [
+    { "path": "./packages/components" }
   ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+  "exclude": ["node_modules", "**/dist"]
 }

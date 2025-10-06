@@ -1,0 +1,359 @@
+{
+  "name": "@srcl/ui",
+  "version": "1.1.7",
+  "description": "SRCL is an open-source React component and style repository that helps you build web applications, desktop applications, and static websites with terminal aesthetics.",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "sass": "1.92.1",
+    "rollup-plugin-styles": "^4.0.0",
+    "@types/node": "^24.5.1",
+    "@types/react": "^19.1.13",
+    "rollup-plugin-scss": "^4.0.1",
+    "tsdown": "^0.15.2",
+    "typescript": "^5.9.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./Accordion": {
+      "import": "./dist/components/Accordion/index.js",
+      "require": "./dist/components/Accordion/index.cjs"
+    },
+    "./ActionBar": {
+      "import": "./dist/components/ActionBar/index.js",
+      "require": "./dist/components/ActionBar/index.cjs"
+    },
+    "./ActionButton": {
+      "import": "./dist/components/ActionButton/index.js",
+      "require": "./dist/components/ActionButton/index.cjs"
+    },
+    "./ActionListItem": {
+      "import": "./dist/components/ActionListItem/index.js",
+      "require": "./dist/components/ActionListItem/index.cjs"
+    },
+    "./AlertBanner": {
+      "import": "./dist/components/AlertBanner/index.js",
+      "require": "./dist/components/AlertBanner/index.cjs"
+    },
+    "./Avatar": {
+      "import": "./dist/components/Avatar/index.js",
+      "require": "./dist/components/Avatar/index.cjs"
+    },
+    "./Badge": {
+      "import": "./dist/components/Badge/index.js",
+      "require": "./dist/components/Badge/index.cjs"
+    },
+    "./BarLoader": {
+      "import": "./dist/components/BarLoader/index.js",
+      "require": "./dist/components/BarLoader/index.cjs"
+    },
+    "./BarProgress": {
+      "import": "./dist/components/BarProgress/index.js",
+      "require": "./dist/components/BarProgress/index.cjs"
+    },
+    "./Block": {
+      "import": "./dist/components/Block/index.js",
+      "require": "./dist/components/Block/index.cjs"
+    },
+    "./BlockLoader": {
+      "import": "./dist/components/BlockLoader/index.js",
+      "require": "./dist/components/BlockLoader/index.cjs"
+    },
+    "./BreadCrumbs": {
+      "import": "./dist/components/BreadCrumbs/index.js",
+      "require": "./dist/components/BreadCrumbs/index.cjs"
+    },
+    "./Button": {
+      "import": "./dist/components/Button/index.js",
+      "require": "./dist/components/Button/index.cjs"
+    },
+    "./ButtonGroup": {
+      "import": "./dist/components/ButtonGroup/index.js",
+      "require": "./dist/components/ButtonGroup/index.cjs"
+    },
+    "./CanvasPlatformer": {
+      "import": "./dist/components/CanvasPlatformer/index.js",
+      "require": "./dist/components/CanvasPlatformer/index.cjs"
+    },
+    "./CanvasSnake": {
+      "import": "./dist/components/CanvasSnake/index.js",
+      "require": "./dist/components/CanvasSnake/index.cjs"
+    },
+    "./Card": {
+      "import": "./dist/components/Card/index.js",
+      "require": "./dist/components/Card/index.cjs"
+    },
+    "./CardDouble": {
+      "import": "./dist/components/CardDouble/index.js",
+      "require": "./dist/components/CardDouble/index.cjs"
+    },
+    "./Checkbox": {
+      "import": "./dist/components/Checkbox/index.js",
+      "require": "./dist/components/Checkbox/index.cjs"
+    },
+    "./Chessboard": {
+      "import": "./dist/components/Chessboard/index.js",
+      "require": "./dist/components/Chessboard/index.cjs"
+    },
+    "./CodeBlock": {
+      "import": "./dist/components/CodeBlock/index.js",
+      "require": "./dist/components/CodeBlock/index.cjs"
+    },
+    "./ComboBox": {
+      "import": "./dist/components/ComboBox/index.js",
+      "require": "./dist/components/ComboBox/index.cjs"
+    },
+    "./ContentFluid": {
+      "import": "./dist/components/ContentFluid/index.js",
+      "require": "./dist/components/ContentFluid/index.cjs"
+    },
+    "./DataTable": {
+      "import": "./dist/components/DataTable/index.js",
+      "require": "./dist/components/DataTable/index.cjs"
+    },
+    "./DatePicker": {
+      "import": "./dist/components/DatePicker/index.js",
+      "require": "./dist/components/DatePicker/index.cjs"
+    },
+    "./DebugGrid": {
+      "import": "./dist/components/DebugGrid/index.js",
+      "require": "./dist/components/DebugGrid/index.cjs"
+    },
+    "./Dialog": {
+      "import": "./dist/components/Dialog/index.js",
+      "require": "./dist/components/Dialog/index.cjs"
+    },
+    "./Divider": {
+      "import": "./dist/components/Divider/index.js",
+      "require": "./dist/components/Divider/index.cjs"
+    },
+    "./DOMSnake": {
+      "import": "./dist/components/DOMSnake/index.js",
+      "require": "./dist/components/DOMSnake/index.cjs"
+    },
+    "./Drawer": {
+      "import": "./dist/components/Drawer/index.js",
+      "require": "./dist/components/Drawer/index.cjs"
+    },
+    "./DropdownMenu": {
+      "import": "./dist/components/DropdownMenu/index.js",
+      "require": "./dist/components/DropdownMenu/index.cjs"
+    },
+    "./DropdownMenuTrigger": {
+      "import": "./dist/components/DropdownMenuTrigger/index.js",
+      "require": "./dist/components/DropdownMenuTrigger/index.cjs"
+    },
+    "./Grid": {
+      "import": "./dist/components/Grid/index.js",
+      "require": "./dist/components/Grid/index.cjs"
+    },
+    "./HoverComponentTrigger": {
+      "import": "./dist/components/HoverComponentTrigger/index.js",
+      "require": "./dist/components/HoverComponentTrigger/index.cjs"
+    },
+    "./Indent": {
+      "import": "./dist/components/Indent/index.js",
+      "require": "./dist/components/Indent/index.cjs"
+    },
+    "./Input": {
+      "import": "./dist/components/Input/index.js",
+      "require": "./dist/components/Input/index.cjs"
+    },
+    "./ListItem": {
+      "import": "./dist/components/ListItem/index.js",
+      "require": "./dist/components/ListItem/index.cjs"
+    },
+    "./MatrixLoader": {
+      "import": "./dist/components/MatrixLoader/index.js",
+      "require": "./dist/components/MatrixLoader/index.cjs"
+    },
+    "./Message": {
+      "import": "./dist/components/Message/index.js",
+      "require": "./dist/components/Message/index.cjs"
+    },
+    "./MessageViewer": {
+      "import": "./dist/components/MessageViewer/index.js",
+      "require": "./dist/components/MessageViewer/index.cjs"
+    },
+    "./ModalAlert": {
+      "import": "./dist/components/ModalAlert/index.js",
+      "require": "./dist/components/ModalAlert/index.cjs"
+    },
+    "./ModalCanvasPlatformer": {
+      "import": "./dist/components/ModalCanvasPlatformer/index.js",
+      "require": "./dist/components/ModalCanvasPlatformer/index.cjs"
+    },
+    "./ModalCanvasSnake": {
+      "import": "./dist/components/ModalCanvasSnake/index.js",
+      "require": "./dist/components/ModalCanvasSnake/index.cjs"
+    },
+    "./ModalChess": {
+      "import": "./dist/components/ModalChess/index.js",
+      "require": "./dist/components/ModalChess/index.cjs"
+    },
+    "./ModalCreateAccount": {
+      "import": "./dist/components/ModalCreateAccount/index.js",
+      "require": "./dist/components/ModalCreateAccount/index.cjs"
+    },
+    "./ModalDOMSnake": {
+      "import": "./dist/components/ModalDOMSnake/index.js",
+      "require": "./dist/components/ModalDOMSnake/index.cjs"
+    },
+    "./ModalError": {
+      "import": "./dist/components/ModalError/index.js",
+      "require": "./dist/components/ModalError/index.cjs"
+    },
+    "./ModalMatrixModes": {
+      "import": "./dist/components/ModalMatrixModes/index.js",
+      "require": "./dist/components/ModalMatrixModes/index.cjs"
+    },
+    "./ModalStack": {
+      "import": "./dist/components/ModalStack/index.js",
+      "require": "./dist/components/ModalStack/index.cjs"
+    },
+    "./ModalTrigger": {
+      "import": "./dist/components/ModalTrigger/index.js",
+      "require": "./dist/components/ModalTrigger/index.cjs"
+    },
+    "./Navigation": {
+      "import": "./dist/components/Navigation/index.js",
+      "require": "./dist/components/Navigation/index.cjs"
+    },
+    "./NumberRangeSlider": {
+      "import": "./dist/components/NumberRangeSlider/index.js",
+      "require": "./dist/components/NumberRangeSlider/index.cjs"
+    },
+    "./OutsideElementEvent": {
+      "import": "./dist/components/OutsideElementEvent/index.js",
+      "require": "./dist/components/OutsideElementEvent/index.cjs"
+    },
+    "./Popover": {
+      "import": "./dist/components/Popover/index.js",
+      "require": "./dist/components/Popover/index.cjs"
+    },
+    "./RadioButton": {
+      "import": "./dist/components/RadioButton/index.js",
+      "require": "./dist/components/RadioButton/index.cjs"
+    },
+    "./Row": {
+      "import": "./dist/components/Row/index.js",
+      "require": "./dist/components/Row/index.cjs"
+    },
+    "./RowEllipsis": {
+      "import": "./dist/components/RowEllipsis/index.js",
+      "require": "./dist/components/RowEllipsis/index.cjs"
+    },
+    "./RowSpaceBetween": {
+      "import": "./dist/components/RowSpaceBetween/index.js",
+      "require": "./dist/components/RowSpaceBetween/index.cjs"
+    },
+    "./Select": {
+      "import": "./dist/components/Select/index.js",
+      "require": "./dist/components/Select/index.cjs"
+    },
+    "./SidebarLayout": {
+      "import": "./dist/components/SidebarLayout/index.js",
+      "require": "./dist/components/SidebarLayout/index.cjs"
+    },
+    "./Table": {
+      "import": "./dist/components/Table/index.js",
+      "require": "./dist/components/Table/index.cjs"
+    },
+    "./TableColumn": {
+      "import": "./dist/components/TableColumn/index.js",
+      "require": "./dist/components/TableColumn/index.cjs"
+    },
+    "./TableRow": {
+      "import": "./dist/components/TableRow/index.js",
+      "require": "./dist/components/TableRow/index.cjs"
+    },
+    "./Text": {
+      "import": "./dist/components/Text/index.js",
+      "require": "./dist/components/Text/index.cjs"
+    },
+    "./TextArea": {
+      "import": "./dist/components/TextArea/index.js",
+      "require": "./dist/components/TextArea/index.cjs"
+    },
+    "./Tooltip": {
+      "import": "./dist/components/Tooltip/index.js",
+      "require": "./dist/components/Tooltip/index.cjs"
+    },
+    "./TreeView": {
+      "import": "./dist/components/TreeView/index.js",
+      "require": "./dist/components/TreeView/index.cjs"
+    },
+    "./context": {
+      "import": "./dist/context/index.js",
+      "require": "./dist/context/index.cjs"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs"
+    },
+    "./modules/cors": {
+      "import": "./dist/modules/cors.js",
+      "require": "./dist/modules/cors.cjs"
+    },
+    "./modules/hotkeys": {
+      "import": "./dist/modules/hotkeys/index.js",
+      "require": "./dist/modules/hotkeys/index.cjs"
+    },
+    "./modules/hotkeys/is-hotkey-pressed": {
+      "import": "./dist/modules/hotkeys/is-hotkey-pressed.js",
+      "require": "./dist/modules/hotkeys/is-hotkey-pressed.cjs"
+    },
+    "./modules/hotkeys/parse-hotkeys": {
+      "import": "./dist/modules/hotkeys/parse-hotkeys.js",
+      "require": "./dist/modules/hotkeys/parse-hotkeys.cjs"
+    },
+    "./modules/hotkeys/types": {
+      "import": "./dist/modules/hotkeys/types.js",
+      "require": "./dist/modules/hotkeys/types.cjs"
+    },
+    "./modules/hotkeys/use-deep-equal-memo": {
+      "import": "./dist/modules/hotkeys/use-deep-equal-memo.js",
+      "require": "./dist/modules/hotkeys/use-deep-equal-memo.cjs"
+    },
+    "./modules/hotkeys/use-hotkeys": {
+      "import": "./dist/modules/hotkeys/use-hotkeys.js",
+      "require": "./dist/modules/hotkeys/use-hotkeys.cjs"
+    },
+    "./modules/hotkeys/use-record-hotkeys": {
+      "import": "./dist/modules/hotkeys/use-record-hotkeys.js",
+      "require": "./dist/modules/hotkeys/use-record-hotkeys.cjs"
+    },
+    "./modules/hotkeys/validators": {
+      "import": "./dist/modules/hotkeys/validators.js",
+      "require": "./dist/modules/hotkeys/validators.cjs"
+    },
+    "./modules/object-assign": {
+      "import": "./dist/modules/object-assign.js",
+      "require": "./dist/modules/object-assign.cjs"
+    },
+    "./modules/vary": {
+      "import": "./dist/modules/vary.js",
+      "require": "./dist/modules/vary.cjs"
+    },
+    "./utilities": {
+      "import": "./dist/utilities/index.js",
+      "require": "./dist/utilities/index.cjs"
+    },
+    "./package.json": "./package.json"
+  }
+}

@@ -12,7 +12,7 @@ yarn.lock
 node_modules
 dist
 analytics.txt
-*.tsbuildinfo
+package-lock.json
 
 /**/*/.DS_STORE
 /**/*/node_modules

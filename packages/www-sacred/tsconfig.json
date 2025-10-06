@@ -1,0 +1,74 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "declaration": true,
+    "composite": true,
+    "paths": {
+      "@root/*": [
+        "./*"
+      ],
+      "@system/*": [
+        "./system/*"
+      ],
+      "@demos/*": [
+        "./demos/*"
+      ],
+      "@common/*": [
+        "./common/*"
+      ],
+      "@data/*": [
+        "./data/*"
+      ],
+      "@examples/*": [
+        "./examples/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@page/*": [
+        "./page/*"
+      ],
+      "@svg/*": [
+        "./svg/*"
+      ]
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "outDir": "./",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true,
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "package.json"
+  ]
+}

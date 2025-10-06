@@ -1,0 +1,23 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(88px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.root {
+  animation: fadeIn 0.3s ease-out;
+  background: var(--theme-background-modal);
+  box-shadow: 0 0 0 1ch var(--theme-border-subdued);
+  display: block;
+  font-weight: 400;
+  margin: 0 auto;
+  max-width: 64ch;
+  padding: calc(var(--font-size) * var(--theme-line-height-base)) 2ch calc(var(--font-size) * var(--theme-line-height-base)) 2ch;
+  user-select: none;
+  width: 100%;
+}

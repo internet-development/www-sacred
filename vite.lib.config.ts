@@ -45,6 +45,10 @@ export default defineConfig({
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
         global: path.resolve(__dirname, 'src/global.ts'),
+        'modules/hotkeys/index': path.resolve(
+          __dirname,
+          'modules/hotkeys/index.ts',
+        ),
       },
       // Only ESM for optimal tree-shaking in consumers
       formats: ['es'],

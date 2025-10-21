@@ -8,45 +8,58 @@ const fontExtensions = new Set(['.woff', '.woff2', '.ttf', '.otf', '.eot']);
 async function injectCssImports(outputDir: string) {
   const modulesDir = path.join(outputDir, 'components');
 
-  let entries;
-  try {
-    entries = await fs.readdir(modulesDir, { withFileTypes: true });
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-      return;
-    }
-    throw error;
-  }
-
-  for (const entry of entries) {
-    if (!entry.isFile() || !entry.name.endsWith('.module.scss.js')) {
-      continue;
-    }
-
-    const modulePath = path.join(modulesDir, entry.name);
-    const cssFilePath = path.join(
-      outputDir,
-      'assets',
-      'components',
-      entry.name.replace('.module.scss.js', '.css'),
-    );
-
+  async function walk(currentDir: string) {
+    let entries;
     try {
-      await fs.access(cssFilePath);
-    } catch {
-      continue;
+      entries = await fs.readdir(currentDir, { withFileTypes: true });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return;
+      }
+      throw error;
     }
 
-    const relativeImport = path
-      .relative(path.dirname(modulePath), cssFilePath)
-      .replace(/\\/g, '/');
+    for (const entry of entries) {
+      const entryPath = path.join(currentDir, entry.name);
 
-    let code = await fs.readFile(modulePath, 'utf8');
-    if (!code.includes(`"${relativeImport}"`) && !code.includes(`'${relativeImport}'`)) {
-      code = `import "${relativeImport}";\n${code}`;
-      await fs.writeFile(modulePath, code, 'utf8');
+      if (entry.isDirectory()) {
+        await walk(entryPath);
+        continue;
+      }
+
+      if (!entry.isFile() || !entry.name.endsWith('.module.scss.js')) {
+        continue;
+      }
+
+      const relativeModulePath = path
+        .relative(modulesDir, entryPath)
+        .replace(/\\/g, '/');
+      const cssFilePath = path.join(
+        outputDir,
+        'assets',
+        'components',
+        relativeModulePath.replace('.module.scss.js', '.css'),
+      );
+
+      try {
+        await fs.access(cssFilePath);
+      } catch {
+        continue;
+      }
+
+      const relativeImport = path
+        .relative(path.dirname(entryPath), cssFilePath)
+        .replace(/\\/g, '/');
+
+      let code = await fs.readFile(entryPath, 'utf8');
+      if (!code.includes(`"${relativeImport}"`) && !code.includes(`'${relativeImport}'`)) {
+        code = `import "${relativeImport}";\n${code}`;
+        await fs.writeFile(entryPath, code, 'utf8');
+      }
     }
   }
+
+  await walk(modulesDir);
 }
 
 async function copyFontsRecursive(sourceDir: string, targetDir: string) {

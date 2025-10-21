@@ -5,6 +5,50 @@ import path from 'path';
 
 const fontExtensions = new Set(['.woff', '.woff2', '.ttf', '.otf', '.eot']);
 
+async function injectCssImports(outputDir: string) {
+  const modulesDir = path.join(outputDir, 'components');
+
+  let entries;
+  try {
+    entries = await fs.readdir(modulesDir, { withFileTypes: true });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return;
+    }
+    throw error;
+  }
+
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith('.module.scss.js')) {
+      continue;
+    }
+
+    const modulePath = path.join(modulesDir, entry.name);
+    const cssFilePath = path.join(
+      outputDir,
+      'assets',
+      'components',
+      entry.name.replace('.module.scss.js', '.css'),
+    );
+
+    try {
+      await fs.access(cssFilePath);
+    } catch {
+      continue;
+    }
+
+    const relativeImport = path
+      .relative(path.dirname(modulePath), cssFilePath)
+      .replace(/\\/g, '/');
+
+    let code = await fs.readFile(modulePath, 'utf8');
+    if (!code.includes(`"${relativeImport}"`) && !code.includes(`'${relativeImport}'`)) {
+      code = `import "${relativeImport}";\n${code}`;
+      await fs.writeFile(modulePath, code, 'utf8');
+    }
+  }
+}
+
 async function copyFontsRecursive(sourceDir: string, targetDir: string) {
   const entries = await fs.readdir(sourceDir, { withFileTypes: true });
   await fs.mkdir(targetDir, { recursive: true });
@@ -30,12 +74,12 @@ const copyFontAssetsPlugin = () => ({
     try {
       await copyFontsRecursive(sourceDir, targetDir);
     } catch (error) {
-      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-        // No fonts to copy; ignore.
-        return;
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+        throw error;
       }
-      throw error;
     }
+
+    await injectCssImports(path.resolve(__dirname, 'dist'));
   },
 });
 
@@ -106,7 +150,17 @@ export default defineConfig({
         // keep all other assets under dist/assets
         assetFileNames: (assetInfo) => {
           const name = assetInfo.name || '';
-          return name === 'global.css' ? 'src/[name][extname]' : 'assets/[name][extname]';
+
+          if (name === 'global.css') {
+            return 'src/[name][extname]';
+          }
+
+          const parsed = path.parse(name);
+          const isModuleCss = parsed.ext === '.css' && parsed.name.endsWith('.module');
+          const dir = parsed.dir ? `${parsed.dir}/` : '';
+          const baseName = isModuleCss ? parsed.name.replace(/\.module$/, '') : parsed.name;
+
+          return `assets/${dir}${baseName}${parsed.ext}`;
         },
       },
     },

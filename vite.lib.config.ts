@@ -52,7 +52,7 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         // Emit each module as its own file
         preserveModules: true,

@@ -14,6 +14,8 @@
     "build": "tsc && vite build",
     "build:server": "tsc -p tsconfig.server.json",
     "build:lib": "tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json && vite build -c vite.lib.config.ts",
+    "prepare": "npm run build:lib",
+    "prepublishOnly": "npm run build:lib",
     "start": "NODE_ENV=production node dist/server/index.js",
     "preview": "vite preview --port 10000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -116,6 +118,7 @@
   ],
   "files": [
     "dist",
+    "global.css",
     "global.scss"
   ]
 }

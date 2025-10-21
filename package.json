@@ -60,21 +60,13 @@
       "types": "./dist/common/*.d.ts",
       "import": "./dist/common/*.js"
     },
-    "./pages/*": {
-      "types": "./dist/src/pages/*.d.ts",
-      "import": "./dist/src/pages/*.js"
-    },
-    "./HomePage": {
-      "types": "./dist/src/pages/HomePage.d.ts",
-      "import": "./dist/src/pages/HomePage.js"
-    },
-    "./ShowcasePage": {
-      "types": "./dist/src/pages/ShowcasePage.d.ts",
-      "import": "./dist/src/pages/ShowcasePage.js"
-    },
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
       "import": "./dist/lib/*.js"
+    },
+    "./modules/hotkeys": {
+      "types": "./dist/modules/hotkeys/index.d.ts",
+      "import": "./dist/modules/hotkeys/index.js"
     },
     "./modules/hotkeys/*": {
       "types": "./dist/modules/hotkeys/*.d.ts",
@@ -91,17 +83,11 @@
       "common/*": [
         "dist/common/*"
       ],
-      "pages/*": [
-        "dist/src/pages/*"
-      ],
-      "HomePage": [
-        "dist/src/pages/HomePage"
-      ],
-      "ShowcasePage": [
-        "dist/src/pages/ShowcasePage"
-      ],
       "lib/*": [
         "dist/lib/*"
+      ],
+      "modules/hotkeys": [
+        "dist/modules/hotkeys/index"
       ],
       "modules/hotkeys/*": [
         "dist/modules/hotkeys/*"
@@ -114,11 +100,14 @@
   "module": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "sideEffects": [
-    "**/*.scss"
+    "**/*.scss",
+    "dist/**/*.css"
   ],
   "files": [
     "dist",
     "global.css",
-    "global.scss"
+    "global.scss",
+    "src/styles",
+    "src/assets/fonts"
   ]
 }

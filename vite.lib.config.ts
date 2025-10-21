@@ -1,6 +1,100 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs/promises';
 import path from 'path';
+
+const fontExtensions = new Set(['.woff', '.woff2', '.ttf', '.otf', '.eot']);
+
+async function injectCssImports(outputDir: string) {
+  const modulesDir = path.join(outputDir, 'components');
+
+  async function walk(currentDir: string) {
+    let entries;
+    try {
+      entries = await fs.readdir(currentDir, { withFileTypes: true });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return;
+      }
+      throw error;
+    }
+
+    for (const entry of entries) {
+      const entryPath = path.join(currentDir, entry.name);
+
+      if (entry.isDirectory()) {
+        await walk(entryPath);
+        continue;
+      }
+
+      if (!entry.isFile() || !entry.name.endsWith('.module.scss.js')) {
+        continue;
+      }
+
+      const relativeModulePath = path
+        .relative(modulesDir, entryPath)
+        .replace(/\\/g, '/');
+      const cssFilePath = path.join(
+        outputDir,
+        'assets',
+        'components',
+        relativeModulePath.replace('.module.scss.js', '.css'),
+      );
+
+      try {
+        await fs.access(cssFilePath);
+      } catch {
+        continue;
+      }
+
+      const relativeImport = path
+        .relative(path.dirname(entryPath), cssFilePath)
+        .replace(/\\/g, '/');
+
+      let code = await fs.readFile(entryPath, 'utf8');
+      if (!code.includes(`"${relativeImport}"`) && !code.includes(`'${relativeImport}'`)) {
+        code = `import "${relativeImport}";\n${code}`;
+        await fs.writeFile(entryPath, code, 'utf8');
+      }
+    }
+  }
+
+  await walk(modulesDir);
+}
+
+async function copyFontsRecursive(sourceDir: string, targetDir: string) {
+  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
+  await fs.mkdir(targetDir, { recursive: true });
+
+  for (const entry of entries) {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const targetPath = path.join(targetDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyFontsRecursive(sourcePath, targetPath);
+    } else if (fontExtensions.has(path.extname(entry.name).toLowerCase())) {
+      await fs.copyFile(sourcePath, targetPath);
+    }
+  }
+}
+
+const copyFontAssetsPlugin = () => ({
+  name: 'copy-font-assets',
+  async closeBundle() {
+    const sourceDir = path.resolve(__dirname, 'src/assets/fonts');
+    const targetDir = path.resolve(__dirname, 'dist/assets/fonts');
+
+    try {
+      await copyFontsRecursive(sourceDir, targetDir);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+        throw error;
+      }
+    }
+
+    await injectCssImports(path.resolve(__dirname, 'dist'));
+  },
+});
 
 /**
  * Vite library build for SRCL (Pattern B: subpath exports with preserved modules)
@@ -18,7 +112,7 @@ import path from 'path';
  * - Rollup will output relative imports between emitted files. Declarations should be emitted separately via tsc.
  */
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), copyFontAssetsPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -69,7 +163,17 @@ export default defineConfig({
         // keep all other assets under dist/assets
         assetFileNames: (assetInfo) => {
           const name = assetInfo.name || '';
-          return name === 'global.css' ? 'src/[name][extname]' : 'assets/[name][extname]';
+
+          if (name === 'global.css') {
+            return 'src/[name][extname]';
+          }
+
+          const parsed = path.parse(name);
+          const isModuleCss = parsed.ext === '.css' && parsed.name.endsWith('.module');
+          const dir = parsed.dir ? `${parsed.dir}/` : '';
+          const baseName = isModuleCss ? parsed.name.replace(/\.module$/, '') : parsed.name;
+
+          return `assets/${dir}${baseName}${parsed.ext}`;
         },
       },
     },

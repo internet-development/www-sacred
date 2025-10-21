@@ -6,7 +6,9 @@ HTTP request sent, awaiting response... 200 OK
 Length: unspecified [image/jpeg]
 Saving to: ‘index.html?u=https:%2F%2Fsep.yimg.com%2Fca%2FI%2Fanimebooks-com_2271_1440410633’
 
-             index.html?u=     [<=>                                    ]       0  --.-KB/s               index.html?u=https:%2F%2Fs     [ <=>                                   ]  47.76K  --.-KB/s    in 0.1s    
+
+             index.html?u=     [<=>                                    ]       0  --.-KB/s               
+index.html?u=https:%2F%2Fs     [ <=>                                   ]  47.76K  --.-KB/s    in 0.1s    
 
 2022-12-20 11:18:16 (462 KB/s) - ‘index.html?u=https:%2F%2Fsep.yimg.com%2Fca%2FI%2Fanimebooks-com_2271_1440410633’ saved [48907]
 

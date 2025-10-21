@@ -9,8 +9,6 @@
 
 /* Layout and structure */
 export { default as Grid } from '../components/Grid';
-export { default as HomePage } from './pages/HomePage';
-export { default as ShowcasePage } from './pages/ShowcasePage';
 export { default as Row } from '../components/Row';
 export { default as RowEllipsis } from '../components/RowEllipsis';
 export { default as RowSpaceBetween } from '../components/RowSpaceBetween';
@@ -38,6 +36,12 @@ export { default as ListItem } from '../components/ListItem';
 export { default as AlertBanner } from '../components/AlertBanner';
 export { default as Message } from '../components/Message';
 export { default as MessageViewer } from '../components/MessageViewer';
+export { default as ActionBar } from '../components/ActionBar';
+export { toggleDebugGrid } from '../components/DebugGrid';
+export {
+  onHandleFontChange,
+  onHandleThemeChange,
+} from '../common/utilities';
 
 /* Inputs and forms */
 export { default as Input } from '../components/Input';

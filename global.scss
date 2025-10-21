@@ -75,9 +75,10 @@
 
 @font-face {
   font-family: 'ServerMono';
-  src: url('/fonts/server-mono/ServerMono-Regular.woff2') format('woff2'),
-       url('/fonts/server-mono/ServerMono-Regular.woff') format('woff'),
-       url('/fonts/server-mono/ServerMono-Regular.otf') format('opentype');
+  src:
+    url('/fonts/server-mono/ServerMono-Regular.woff2') format('woff2'),
+    url('/fonts/server-mono/ServerMono-Regular.woff') format('woff'),
+    url('/fonts/server-mono/ServerMono-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -110,16 +111,18 @@
 
 @font-face {
   font-family: 'TT2020';
-  src: url('/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
-       url('/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
+  src:
+    url('/fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'),
+    url('/fonts/tt2020/TT2020Base-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Latin Modern Mono';
-  src: url('/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
-       url('/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
+  src:
+    url('/fonts/latin-modern-mono/lmmonolt10-regular.woff2') format('woff2'),
+    url('/fonts/latin-modern-mono/lmmono10-regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
@@ -999,20 +1002,20 @@ body {
   --color-teal-10: rgba(217, 251, 251, 1);
 
   --color-amber-100: rgba(20, 12, 0, 1);
-    --color-amber-90: rgba(51, 31, 0, 1);
-    --color-amber-100-4: rgba(20, 12, 0, 0.4);
-    --color-amber-80: rgba(82, 49, 0, 1);
-    --color-amber-70: rgba(112, 68, 0, 1);
-    --color-amber-70-4: rgba(112, 68, 0, 0.4);
-    --color-amber-70-3: rgba(112, 68, 0, 0.3);
-    --color-amber-60: rgba(143, 86, 0, 1);
-    --color-amber-60-7: rgba(143, 86, 0, 0.7);
-    --color-amber-60-3: rgba(143, 86, 0, 0.3);
-    --color-amber-50: rgba(255, 191, 0, 1);
-    --color-amber-40: rgba(255, 204, 51, 1);
-    --color-amber-30: rgba(255, 217, 102, 1);
-    --color-amber-20: rgba(255, 230, 153, 1);
-    --color-amber-10: rgba(255, 242, 204, 1);
+  --color-amber-90: rgba(51, 31, 0, 1);
+  --color-amber-100-4: rgba(20, 12, 0, 0.4);
+  --color-amber-80: rgba(82, 49, 0, 1);
+  --color-amber-70: rgba(112, 68, 0, 1);
+  --color-amber-70-4: rgba(112, 68, 0, 0.4);
+  --color-amber-70-3: rgba(112, 68, 0, 0.3);
+  --color-amber-60: rgba(143, 86, 0, 1);
+  --color-amber-60-7: rgba(143, 86, 0, 0.7);
+  --color-amber-60-3: rgba(143, 86, 0, 0.3);
+  --color-amber-50: rgba(255, 191, 0, 1);
+  --color-amber-40: rgba(255, 204, 51, 1);
+  --color-amber-30: rgba(255, 217, 102, 1);
+  --color-amber-20: rgba(255, 230, 153, 1);
+  --color-amber-10: rgba(255, 242, 204, 1);
 
   --color-white: rgba(255, 255, 255, 1);
   --color-white-1: rgba(255, 255, 255, 0.1);

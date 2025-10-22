@@ -83,9 +83,4 @@ export { default as Accordion } from '../components/Accordion';
 export { default as DebugGrid } from '../components/DebugGrid';
 export { default as Dither } from '../components/dither';
 
-/* Fun demos (optional for consumers) */
-export { default as CanvasPlatformer } from '../components/CanvasPlatformer';
-export { default as CanvasSnake } from '../components/CanvasSnake';
-export { default as DOMSnake } from '../components/DOMSnake';
-export { default as Chessboard } from '../components/Chessboard';
-export { default as TreeView } from '../components/TreeView';
+/* Optional demos are available via subpath imports only (e.g., `srcl/components/CanvasPlatformer`). */

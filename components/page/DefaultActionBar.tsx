@@ -227,83 +227,25 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 onClick: () => handleFontChange('font-use-monaspace-xenon'),
               },
 
-              // Google Fonts
-              {
-                icon: '─',
-                children: '',
-                disabled: true,
-              },
-              {
-                icon: currentFont === 'font-use-anonymous-pro' ? '●' : '○',
-                children: 'Anonymous Pro',
-                onClick: () => handleFontChange('font-use-anonymous-pro'),
-              },
-              {
-                icon: currentFont === 'font-use-share-tech-mono' ? '●' : '○',
-                children: 'Share Tech Mono',
-                onClick: () => handleFontChange('font-use-share-tech-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-space-mono' ? '●' : '○',
-                children: 'Space Mono',
-                onClick: () => handleFontChange('font-use-space-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-vt323' ? '●' : '○',
-                children: 'VT323',
-                onClick: () => handleFontChange('font-use-vt323'),
-              },
-              {
-                icon: currentFont === 'font-use-victor-mono' ? '●' : '○',
-                children: 'Victor Mono',
-                onClick: () => handleFontChange('font-use-victor-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-workbench' ? '●' : '○',
-                children: 'Workbench',
-                onClick: () => handleFontChange('font-use-workbench'),
-              },
-              {
-                icon: currentFont === 'font-use-xanh-mono' ? '●' : '○',
-                children: 'Xanh Mono',
-                onClick: () => handleFontChange('font-use-xanh-mono'),
-              },
-
-              // Downloaded fonts - spacer
               {
                 icon: '',
                 children: '',
                 disabled: true,
               },
               {
+                icon: currentFont === 'font-use-jet-brains-mono' ? '●' : '○',
+                children: 'JetBrains Mono',
+                onClick: () => handleFontChange('font-use-jet-brains-mono'),
+              },
+              {
+                icon: currentFont === 'font-use-server-mono' ? '●' : '○',
+                children: 'Server Mono',
+                onClick: () => handleFontChange('font-use-server-mono'),
+              },
+              {
                 icon: currentFont === 'font-use-atkinson-hyperlegible-mono' ? '●' : '○',
                 children: 'Atkinson Hyperlegible Mono',
                 onClick: () => handleFontChange('font-use-atkinson-hyperlegible-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-berkeley-mono' ? '●' : '○',
-                children: 'Berkeley Mono™',
-                onClick: () => handleFontChange('font-use-berkeley-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-julia-mono' ? '●' : '○',
-                children: 'JuliaMono',
-                onClick: () => handleFontChange('font-use-julia-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-tt2020' ? '●' : '○',
-                children: 'TT2020',
-                onClick: () => handleFontChange('font-use-tt2020'),
-              },
-              {
-                icon: currentFont === 'font-use-latin-modern-mono' ? '●' : '○',
-                children: 'Latin Modern Mono',
-                onClick: () => handleFontChange('font-use-latin-modern-mono'),
-              },
-              {
-                icon: currentFont === 'font-use-serious-shanns' ? '●' : '○',
-                children: 'Serious Shanns',
-                onClick: () => handleFontChange('font-use-serious-shanns'),
               },
             ],
           },

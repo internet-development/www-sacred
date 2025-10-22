@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import crypto from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
 
 const fontExtensions = new Set(['.woff', '.woff2', '.ttf', '.otf', '.eot']);
+const fontUrlPattern = /url\((?:'|\")?(?:\.\.\/|\.\/src\/)assets\/fonts\/([^'\")]+)(?:'|\")?\)/g;
 
 async function injectCssImports(outputDir: string) {
   const modulesDir = path.join(outputDir, 'components');
@@ -62,20 +64,89 @@ async function injectCssImports(outputDir: string) {
   await walk(modulesDir);
 }
 
-async function copyFontsRecursive(sourceDir: string, targetDir: string) {
-  const entries = await fs.readdir(sourceDir, { withFileTypes: true });
-  await fs.mkdir(targetDir, { recursive: true });
+async function collectReferencedFonts(): Promise<Set<string>> {
+  const filesToScan = [path.resolve(__dirname, 'global.scss')];
+  const referenced = new Set<string>();
 
-  for (const entry of entries) {
-    const sourcePath = path.join(sourceDir, entry.name);
-    const targetPath = path.join(targetDir, entry.name);
+  for (const filePath of filesToScan) {
+    let content: string;
+    try {
+      content = await fs.readFile(filePath, 'utf8');
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        continue;
+      }
+      throw error;
+    }
 
-    if (entry.isDirectory()) {
-      await copyFontsRecursive(sourcePath, targetPath);
-    } else if (fontExtensions.has(path.extname(entry.name).toLowerCase())) {
-      await fs.copyFile(sourcePath, targetPath);
+    let match: RegExpExecArray | null;
+    while ((match = fontUrlPattern.exec(content)) !== null) {
+      const relativeFontPath = match[1].replace(/\\/g, '/');
+      referenced.add(`fonts/${relativeFontPath}`);
     }
   }
+
+  return referenced;
+}
+
+async function copyFontsWithHash(
+  sourceDir: string,
+  targetDir: string,
+  referencedFonts: Set<string>,
+) {
+  const manifest = new Map<string, string>();
+
+  const walk = async (currentDir: string) => {
+    let entries;
+    try {
+      entries = await fs.readdir(currentDir, { withFileTypes: true });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return;
+      }
+      throw error;
+    }
+
+    for (const entry of entries) {
+      const sourcePath = path.join(currentDir, entry.name);
+
+      if (entry.isDirectory()) {
+        await walk(sourcePath);
+        continue;
+      }
+
+      const extension = path.extname(entry.name).toLowerCase();
+      if (!fontExtensions.has(extension)) {
+        continue;
+      }
+
+      const fileBuffer = await fs.readFile(sourcePath);
+      const hash = crypto.createHash('sha256').update(fileBuffer).digest('hex').slice(0, 8);
+      const relativePath = path.relative(sourceDir, sourcePath);
+      const relativeDir = path.dirname(relativePath);
+      const targetSubDir = path.join(targetDir, relativeDir);
+
+      const parsed = path.parse(entry.name);
+      const posixDir = relativeDir === '.' ? '' : `${relativeDir.split(path.sep).join('/')}/`;
+      const manifestKey = `fonts/${posixDir}${parsed.base}`;
+      if (!referencedFonts.has(manifestKey)) {
+        continue;
+      }
+
+      const hashedName = `${parsed.name}-${hash}${parsed.ext}`;
+
+      await fs.mkdir(targetSubDir, { recursive: true });
+
+      const targetPath = path.join(targetSubDir, hashedName);
+      await fs.writeFile(targetPath, fileBuffer);
+
+      manifest.set(manifestKey, `fonts/${posixDir}${hashedName}`);
+    }
+  };
+
+  await walk(sourceDir);
+
+  return manifest;
 }
 
 const copyFontAssetsPlugin = () => ({
@@ -83,12 +154,33 @@ const copyFontAssetsPlugin = () => ({
   async closeBundle() {
     const sourceDir = path.resolve(__dirname, 'src/assets/fonts');
     const targetDir = path.resolve(__dirname, 'dist/assets/fonts');
+    const cssPath = path.resolve(__dirname, 'dist/src/global.css');
+    const referencedFonts = await collectReferencedFonts();
 
-    try {
-      await copyFontsRecursive(sourceDir, targetDir);
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
-        throw error;
+    const manifest = await copyFontsWithHash(sourceDir, targetDir, referencedFonts);
+
+    if (manifest.size > 0) {
+      try {
+        let css = await fs.readFile(cssPath, 'utf8');
+
+        for (const [original, hashed] of manifest) {
+          const replacements = [
+            { from: `../assets/${original}`, to: `../assets/${hashed}` },
+            { from: `./src/assets/${original}`, to: `../assets/${hashed}` },
+          ];
+
+          for (const { from, to } of replacements) {
+            if (css.includes(from)) {
+              css = css.split(from).join(to);
+            }
+          }
+        }
+
+        await fs.writeFile(cssPath, css, 'utf8');
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+          throw error;
+        }
       }
     }
 
@@ -169,11 +261,20 @@ export default defineConfig({
           }
 
           const parsed = path.parse(name);
+          const normalizedDir = parsed.dir ? parsed.dir.split(path.sep).join('/') : '';
+          const dir = normalizedDir ? `${normalizedDir}/` : '';
           const isModuleCss = parsed.ext === '.css' && parsed.name.endsWith('.module');
-          const dir = parsed.dir ? `${parsed.dir}/` : '';
-          const baseName = isModuleCss ? parsed.name.replace(/\.module$/, '') : parsed.name;
 
-          return `assets/${dir}${baseName}${parsed.ext}`;
+          if (isModuleCss) {
+            const baseName = parsed.name.replace(/\.module$/, '');
+            return `assets/${dir}${baseName}${parsed.ext}`;
+          }
+
+          if (fontExtensions.has(parsed.ext.toLowerCase())) {
+            return `assets/${dir}${parsed.name}-[hash]${parsed.ext}`;
+          }
+
+          return `assets/${dir}${parsed.name}-[hash]${parsed.ext}`;
         },
       },
     },

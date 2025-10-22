@@ -14,15 +14,5 @@
 
 import '../global.scss';
 
-// Ensure font assets referenced from the global stylesheet are copied into the
-// library build output. The eager glob registers each file with Vite/Rollup so
-// hashed assets are emitted even though we only reference them from CSS.
-const fontAssets = import.meta.glob('./assets/fonts/**/*.{woff,woff2,ttf,otf,eot}', {
-  import: 'default',
-  eager: true,
-});
-
-void fontAssets;
-
 // Mark as a module with no exports to satisfy isolatedModules
 export {};

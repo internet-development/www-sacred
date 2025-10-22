@@ -98,6 +98,7 @@
     }
   },
   "module": "./dist/src/index.js",
+  "style": "./dist/src/global.css",
   "types": "./dist/src/index.d.ts",
   "sideEffects": [
     "**/*.scss",
@@ -108,6 +109,17 @@
     "global.css",
     "global.scss",
     "src/styles",
-    "src/assets/fonts"
+    "src/assets/fonts/monaspace/MonaspaceArgon-Regular.woff2",
+    "src/assets/fonts/monaspace/MonaspaceKrypton-Regular.woff2",
+    "src/assets/fonts/monaspace/MonaspaceNeon-Regular.woff2",
+    "src/assets/fonts/monaspace/MonaspaceRadon-Regular.woff2",
+    "src/assets/fonts/monaspace/MonaspaceXenon-Regular.woff2",
+    "src/assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2",
+    "src/assets/fonts/server-mono/ServerMono-Regular.woff2",
+    "src/assets/fonts/server-mono/ServerMono-Regular.woff",
+    "src/assets/fonts/server-mono/ServerMono-Regular.otf",
+    "src/assets/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-VariableFont_wght.ttf",
+    "src/assets/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Italic-VariableFont_wght.ttf",
+    "src/assets/fonts/Atkinson_Hyperlegible_Mono/OFL.txt"
   ]
 }

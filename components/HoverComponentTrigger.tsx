@@ -97,7 +97,7 @@ function HoverComponentTrigger({ children, text, component }: HoverComponentTrig
     <div ref={triggerRef} className={styles.root} data-detector-ignore onMouseEnter={onMouseEnter} onClick={onClick} onFocus={onHandleFocus}>
       {React.cloneElement(children, {
         tabIndex: 0,
-      })}
+      } as any)}
       {popoverElement}
     </div>
   );

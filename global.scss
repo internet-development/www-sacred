@@ -521,6 +521,7 @@ body {
 
   font-size: var(--font-size);
   font-optical-sizing: auto;
+  text-rendering: geometricPrecision;
   font-weight: 400;
   font-variant-numeric: tabular-nums lining-nums;
 

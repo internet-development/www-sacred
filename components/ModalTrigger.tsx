@@ -17,9 +17,7 @@ function ModalTrigger({ children, modal, modalProps = {} }: ModalTriggerProps) {
     open(modal, modalProps);
   };
 
-  return React.cloneElement(children, {
-    onClick: onHandleOpenModal,
-  });
+  return <span onClick={onHandleOpenModal}>{children}</span>;
 }
 
 export default ModalTrigger;

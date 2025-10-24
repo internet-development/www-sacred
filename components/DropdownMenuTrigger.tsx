@@ -111,14 +111,26 @@ function DropdownMenuTrigger({ children, items, hotkey }: DropdownMenuTriggerPro
       )
     : null;
 
+  const mergeRefs = React.useCallback(
+    (node: HTMLElement | null) => {
+      triggerRef.current = node;
+
+      if (typeof (children as any).ref === 'function') {
+        (children as any).ref(node);
+      } else if ((children as any).ref) {
+        (children as any).ref.current = node;
+      }
+    },
+    [children]
+  );
+
   return (
     <div className={styles.root}>
       {React.cloneElement(children, {
         tabIndex: 0,
         onClick,
-        // @ts-ignore
-        ref: triggerRef,
-      })}
+        ref: mergeRefs,
+      } as any)}
       {element}
     </div>
   );

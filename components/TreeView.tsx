@@ -44,11 +44,14 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
         <div>
           {React.Children.map(children, (child, index) =>
             React.isValidElement(child)
-              ? React.cloneElement(child as React.ReactElement<TreeViewProps>, {
-                  depth: depth + 1,
-                  isLastChild: index === React.Children.count(children) - 1,
-                  parentLines: updatedParentLines,
-                })
+              ? React.cloneElement(
+                  child as React.ReactElement<TreeViewProps>,
+                  {
+                    depth: depth + 1,
+                    isLastChild: index === React.Children.count(children) - 1,
+                    parentLines: updatedParentLines,
+                  } as any
+                )
               : child
           )}
         </div>

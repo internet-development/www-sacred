@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'Panama-Regular';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/me/mono.woff') format('woff');
+}
+
+@font-face {
   font-family: 'DepartureMono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/2ed59eb2-a4a6-490c-8d70-757b68af681d.woff') format('woff');
 }
@@ -324,6 +329,10 @@ body.theme-black-green {
   --theme-button-background: var(--color-green-90);
   --theme-focused-foreground: var(--color-gray-30);
   --theme-focused-foreground-subdued: var(--color-gray-40);
+}
+
+body.font-use-panama-mono {
+  --font-family-mono: 'Panama-Regular', sans-serif;
 }
 
 body.font-use-berkeley-mono {

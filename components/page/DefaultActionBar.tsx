@@ -166,6 +166,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'Kommuna Mono™',
+                onClick: () => Utilities.onHandleFontChange('font-use-kommuna-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Panama Mono™',
                 onClick: () => Utilities.onHandleFontChange('font-use-panama-mono'),
               },

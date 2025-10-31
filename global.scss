@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: 'Kommuna-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a9233f90-3df3-4cb3-b630-ef10c8359a2f.woff') format('woff2');
+}
+
+@font-face {
   font-family: 'DepartureMono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/2ed59eb2-a4a6-490c-8d70-757b68af681d.woff') format('woff');
 }
@@ -333,6 +338,10 @@ body.theme-black-green {
 
 body.font-use-panama-mono {
   --font-family-mono: 'Panama-Regular', sans-serif;
+}
+
+body.font-use-kommuna-mono {
+  --font-family-mono: 'Kommuna-Regular', sans-serif;
 }
 
 body.font-use-berkeley-mono {

@@ -217,23 +217,6 @@ section {
   display: block;
 }
 
-body.theme-blue {
-  --theme-overlay: var(--color-blue-20-5);
-  --theme-background: var(--color-blue-80);
-  --theme-background-modal: var(--color-blue-70);
-  --theme-background-modal-footer: var(--color-blue-90);
-  --theme-background-input: var(--color-blue-60);
-  --theme-border: var(--color-blue-70);
-  --theme-border-subdued: var(--color-blue-60-2);
-  --theme-text: var(--color-blue-10);
-  --theme-button: var(--color-blue-10);
-  --theme-button-text: var(--color-blue-80);
-  --theme-button-foreground: var(--color-blue-60);
-  --theme-button-background: var(--color-blue-70);
-  --theme-focused-foreground: var(--color-blue-50);
-  --theme-focused-foreground-subdued: var(--color-blue-50-5);
-}
-
 body.theme-light {
   --theme-overlay: var(--color-black-100-4);
   --theme-background: var(--color-white);
@@ -268,72 +251,220 @@ body.theme-dark {
   --theme-focused-foreground-subdued: var(--color-daybreak-10-5);
 }
 
-body.theme-green {
-  --theme-overlay: var(--color-neon-green-100-4);
-  --theme-background: rgba(44, 255, 5);
-  --theme-background-modal: var(--color-neon-green-50);
-  --theme-background-modal-footer: var(--color-neon-green-50-5);
-  --theme-background-input: var(--color-neon-green-30);
-  --theme-border: var(--color-neon-green-60);
-  --theme-border-subdued: var(--color-neon-green-60-3);
-  --theme-text: var(--color-neon-green-100);
-  --theme-button: var(--color-neon-green-100);
-  --theme-button-text: var(--color-neon-green-10);
-  --theme-button-foreground: var(--color-neon-green-80);
-  --theme-button-background: var(--color-neon-green-70);
-  --theme-focused-foreground: rgba(255, 82, 243, 1);
-  --theme-focused-foreground-subdued: rgba(255, 82, 243, 0.5);
+body.tint-green {
+  --tint: #39ff44;
 }
 
-body.theme-black-red {
-  --theme-overlay: var(--color-red-100-4);
-  --theme-background: var(--color-black-100);
-  --theme-background-modal: var(--color-red-70);
-  --theme-background-modal-footer: var(--color-red-80);
-  --theme-background-input: var(--color-red-60);
-  --theme-border: var(--color-red-60-7);
-  --theme-border-subdued: var(--color-red-60-3);
-  --theme-text: var(--color-red-30);
-  --theme-button: var(--color-red-100);
-  --theme-button-text: var(--color-red-20);
-  --theme-button-foreground: var(--color-red-80);
-  --theme-button-background: var(--color-red-90);
-  --theme-focused-foreground: var(--color-gray-70);
-  --theme-focused-foreground-subdued: var(--color-red-70-4);
+body.tint-blue {
+  --tint: #0047ff;
 }
 
-body.theme-black-teal {
-  --theme-overlay: var(--color-teal-100-4);
-  --theme-background: var(--color-black-100);
-  --theme-background-modal: var(--color-teal-70);
-  --theme-background-modal-footer: var(--color-teal-80);
-  --theme-background-input: var(--color-teal-60);
-  --theme-border: var(--color-teal-60-7);
-  --theme-border-subdued: var(--color-teal-60-3);
-  --theme-text: var(--color-teal-30);
-  --theme-button: var(--color-teal-100);
-  --theme-button-text: var(--color-teal-20);
-  --theme-button-foreground: var(--color-teal-80);
-  --theme-button-background: var(--color-teal-90);
-  --theme-focused-foreground: var(--color-gray-70);
-  --theme-focused-foreground-subdued: var(--color-teal-70-4);
+body.tint-red {
+  --tint: #ff0000;
 }
 
-body.theme-black-green {
-  --theme-overlay: var(--color-black-100-4);
-  --theme-background: var(--color-black-100);
-  --theme-background-modal: var(--color-gray-90);
-  --theme-background-modal-footer: var(--color-gray-80);
-  --theme-background-input: var(--color-gray-70);
-  --theme-border: var(--color-gray-80);
-  --theme-border-subdued: var(--color-gray-70-3);
-  --theme-text: var(--color-green-50);
-  --theme-button: var(--color-green-50);
-  --theme-button-text: var(--color-green-80);
-  --theme-button-foreground: var(--color-green-80);
-  --theme-button-background: var(--color-green-90);
-  --theme-focused-foreground: var(--color-gray-30);
-  --theme-focused-foreground-subdued: var(--color-gray-40);
+body.tint-yellow {
+  --tint: #ffea78;
+}
+
+body.tint-purple {
+  --tint: #8000ff;
+}
+
+body.tint-orange {
+  --tint: #FFAC1C;
+}
+
+body.theme-light.tint-green {
+  --theme-background: oklch(from var(--tint) 0.985 calc(c * 0.08) h);
+  --theme-background-modal: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.1) h);
+  --theme-border: oklch(from var(--tint) 0.88 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.9 calc(c * 0.18) h);
+  --theme-text: oklch(from var(--tint) 0.25 calc(c * 0.4) h);
+  --theme-button: oklch(from var(--tint) 0.25 calc(c * 0.4) h);
+  --theme-button-text: oklch(from var(--tint) 0.985 calc(c * 0.08) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.9 calc(c * 0.18) h);
+  --theme-button-background: oklch(from var(--tint) 0.88 calc(c * 0.25) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.6 calc(c * 1.1) h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.6 calc(c * 1.1) h / 0.5);
+}
+
+body.theme-light.tint-blue {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
+}
+
+body.theme-light.tint-red {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
+}
+
+body.theme-light.tint-yellow {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
+}
+
+body.theme-light.tint-purple {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
+}
+
+body.theme-light.tint-orange {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
+}
+
+body.theme-dark.tint-green {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-blue {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-red {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-yellow {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-purple {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-orange {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
 }
 
 body.font-use-panama-mono {

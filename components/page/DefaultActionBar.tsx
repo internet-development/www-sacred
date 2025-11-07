@@ -120,6 +120,26 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
 
   useGlobalNavigationHotkeys();
 
+  React.useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const applyTheme = (e: MediaQueryList | MediaQueryListEvent) => {
+      if (e.matches) {
+        Utilities.onHandleAppearanceChange('theme-dark');
+      } else {
+        Utilities.onHandleAppearanceChange('');
+      }
+    };
+
+    applyTheme(prefersDark);
+
+    prefersDark.addEventListener('change', applyTheme);
+
+    return () => {
+      prefersDark.removeEventListener('change', applyTheme);
+    };
+  }, []);
+
   return (
     <div className={styles.root}>
       <ActionBar
@@ -192,44 +212,61 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             ],
           },
           {
+            hotkey: '⌃+A',
+            body: 'Appearance',
+            openHotkey: 'ctrl+a',
+            items: [
+              {
+                icon: '⊹',
+                children: 'Light',
+                onClick: () => Utilities.onHandleAppearanceChange(''),
+              },
+              {
+                icon: '⊹',
+                children: 'Dark',
+                onClick: () => Utilities.onHandleAppearanceChange('theme-dark'),
+              },
+            ],
+          },
+          {
             hotkey: '⌃+T',
-            body: 'Theme',
+            body: 'Mode',
             openHotkey: 'ctrl+t',
             items: [
               {
                 icon: '⊹',
-                children: 'Refined White [DEFAULT]',
-                onClick: () => Utilities.onHandleThemeChange(''),
+                children: 'None',
+                onClick: () => Utilities.onHandleAppearanceModeChange(''),
               },
               {
                 icon: '⊹',
-                children: 'Black Midnight Vapor',
-                onClick: () => Utilities.onHandleThemeChange('theme-dark'),
+                children: 'Blue',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-blue'),
               },
               {
                 icon: '⊹',
-                children: 'U-571 Code Red',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-red'),
+                children: 'Green',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-green'),
               },
               {
                 icon: '⊹',
-                children: 'Digital Bioluminescence',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-teal'),
+                children: 'Orange',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-orange'),
               },
               {
                 icon: '⊹',
-                children: 'Operation Safe Blue',
-                onClick: () => Utilities.onHandleThemeChange('theme-blue'),
+                children: 'Purple',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-purple'),
               },
               {
                 icon: '⊹',
-                children: 'Neon Green Garden',
-                onClick: () => Utilities.onHandleThemeChange('theme-green'),
+                children: 'Red',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-red'),
               },
               {
                 icon: '⊹',
-                children: 'Kirkland Signature AS/400',
-                onClick: () => Utilities.onHandleThemeChange('theme-black-green'),
+                children: 'Yellow',
+                onClick: () => Utilities.onHandleAppearanceModeChange('tint-yellow'),
               },
             ],
           },

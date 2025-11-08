@@ -17,7 +17,7 @@ export const dynamic = 'force-static';
 export async function generateMetadata({ params, searchParams }) {
   const title = `${Package.name}: Concept I`;
   const description = Package.description;
-  const url = 'https://sacred.computer/conept-1';
+  const url = 'https://sacred.computer/concept-1';
   const handle = '@internetxstudio';
 
   return {

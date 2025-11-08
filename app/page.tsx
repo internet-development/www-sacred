@@ -246,7 +246,7 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1958569334726668288/GFE8mhKI_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1748647089633169408/B7vd7ito_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1890125319224598528/ZILr9OGp_400x400.jpg" href="https://internet.dev" target="_blank" />
-            <Avatar src="https://pbs.twimg.com/profile_images/1919579065444663300/cxCRW91y_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/1986336564105084928/XI1HgBjs_400x400.jpg" href="https://internet.dev" target="_blank" />
 
             <Avatar src="https://avatars.githubusercontent.com/u/10610892?v=4" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1947754354368536576/Jc96WEuk_400x400.jpg" href="https://internet.dev" target="_blank" />
@@ -274,7 +274,7 @@ export default async function Page(props) {
                 Webmaster
               </Indent>
             </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1919579065444663300/cxCRW91y_400x400.jpg" href="https://x.com/caidanwilliams" target="_blank">
+            <Avatar src="https://pbs.twimg.com/profile_images/1986336564105084928/XI1HgBjs_400x400.jpg" href="https://x.com/caidanwilliams" target="_blank">
               <Indent>
                 CAIDAN WILLIAMS
                 <br />

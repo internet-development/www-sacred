@@ -4,6 +4,31 @@
 }
 
 @font-face {
+  font-family: 'CodeNewRomanMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/d6f52c63-d8c3-44a8-8989-b1e554d4a132.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IntelOneMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6c948c21-10b9-43ba-8a3e-162fca1d33cf.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MPlus-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e3eac277-a8a1-4f27-9205-ae7d74c8b759.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'UbuntuSansMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a7ef1855-4ad2-4b2d-8f81-e85c59f0cced.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JuliaMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/332a2ce1-beb6-41bc-a5ef-bf12528e9d1d.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'Panama-Regular';
   src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/me/mono.woff') format('woff');
 }
@@ -503,6 +528,22 @@ body.theme-dark.tint-pink {
   --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
 }
 
+body.font-use-code-new-roman-mono {
+  --font-family-mono: 'CodeNewRomanMono-Regular', sans-serif;
+}
+
+body.font-use-intel-one-mono {
+  --font-family-mono: 'IntelOneMono-Regular', sans-serif;
+}
+
+body.font-use-m1-plus-mono {
+  --font-family-mono: 'MPlus-Regular', sans-serif;
+}
+
+body.font-use-ubuntu-mono {
+  --font-family-mono: 'UbuntuSansMono-Regular', sans-serif;
+}
+
 body.font-use-panama-mono {
   --font-family-mono: 'Panama-Regular', sans-serif;
 }
@@ -513,6 +554,10 @@ body.font-use-kommuna-mono {
 
 body.font-use-berkeley-mono {
   --font-family-mono: 'TX02Mono-Regular', sans-serif;
+}
+
+body.font-use-julia-mono {
+  --font-family-mono: 'JuliaMono-Regular', sans-serif;
 }
 
 body.font-use-commit-mono {

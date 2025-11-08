@@ -156,6 +156,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'CodeNewRoman Mono 2.0 [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-code-new-roman-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Departure Mono [MIT]',
                 onClick: () => Utilities.onHandleFontChange('font-use-departure-mono'),
               },
@@ -176,6 +181,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'Intel One Mono 1.4.0 [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-intel-one-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Iosevka Term [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-iosevka-term'),
               },
@@ -186,8 +196,18 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'Julia Mono 0.061 [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-julia-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Kommuna Mono™',
                 onClick: () => Utilities.onHandleFontChange('font-use-kommuna-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'M1 Plus Mono [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-m1-plus-mono'),
               },
               {
                 icon: '⊹',
@@ -208,6 +228,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: '⊹',
                 children: 'TX-02 Berkeley Mono™',
                 onClick: () => Utilities.onHandleFontChange('font-use-berkeley-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Ubuntu Sans Mono 1.006 [UBL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-ubuntu-mono'),
               },
             ],
           },

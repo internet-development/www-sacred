@@ -151,6 +151,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               {
                 icon: '⊹',
+                children: 'Chicago 12-1 Mono [BY-SA 3.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-chicago-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Commit Mono V143 [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-commit-mono'),
               },

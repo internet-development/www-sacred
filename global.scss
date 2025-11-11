@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'ChicagoMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a1a3c9f3-362c-4865-930b-aa93a0b7633f.woff') format('woff');
+}
+
+@font-face {
   font-family: 'CommitMono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/3fecb478-80cf-41c5-b834-8562ab0baae0.woff2') format('woff2');
 }
@@ -530,6 +535,10 @@ body.theme-dark.tint-pink {
 
 body.font-use-code-new-roman-mono {
   --font-family-mono: 'CodeNewRomanMono-Regular', sans-serif;
+}
+
+body.font-use-chicago-mono {
+  --font-family-mono: 'ChicagoMono-Regular', sans-serif;
 }
 
 body.font-use-intel-one-mono {

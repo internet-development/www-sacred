@@ -151,7 +151,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               {
                 icon: '⊹',
-                children: 'Chicago 12-1 Mono [BY-SA 3.0]',
+                children: 'Chicago FLF Proportional [MIT]',
                 onClick: () => Utilities.onHandleFontChange('font-use-chicago-mono'),
               },
               {
@@ -206,8 +206,33 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Kommuna Mono™',
+                children: 'Kommuna Mono™ Trial',
                 onClick: () => Utilities.onHandleFontChange('font-use-kommuna-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Argon Variable [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-argon-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Krypton Variable [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-krypton-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Neon Variable [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-neon-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Radon Variable [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-radon-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Monaspace Xenon Variable [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-monaspace-xenon-mono'),
               },
               {
                 icon: '⊹',
@@ -216,7 +241,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Panama Mono™',
+                children: 'Panama Mono™ Trial',
                 onClick: () => Utilities.onHandleFontChange('font-use-panama-mono'),
               },
               {
@@ -231,7 +256,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'TX-02 Berkeley Mono™',
+                children: 'TX-02 Berkeley Mono™ Trial',
                 onClick: () => Utilities.onHandleFontChange('font-use-berkeley-mono'),
               },
               {

@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'TX02Mono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e049dfb6-9c5d-4ac4-97c2-eb6e95c61d09.woff2') format('woff2');
+}
+
+body.font-use-berkeley-mono {
+  --font-family-mono: 'TX02Mono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'ChicagoMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/f45417e0-69fa-42c4-abd7-4df907ef4c67.woff') format('woff');
+}
+
+body.font-use-chicago-mono {
+  --font-family-mono: 'ChicagoMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'CodeNewRomanMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/d6f52c63-d8c3-44a8-8989-b1e554d4a132.woff2') format('woff2');
+}
+
+body.font-use-code-new-roman-mono {
+  --font-family-mono: 'CodeNewRomanMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'CommitMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/3fecb478-80cf-41c5-b834-8562ab0baae0.woff2') format('woff2');
+}
+
+body.font-use-commit-mono {
+  --font-family-mono: 'CommitMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'DepartureMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/2ed59eb2-a4a6-490c-8d70-757b68af681d.woff') format('woff');
+}
+
+body.font-use-departure-mono {
+  --font-family-mono: 'DepartureMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'FiraCode-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6cf7752d-f7c3-48b2-8149-2d0d39bc008a.woff') format('woff');
+}
+
+body.font-use-fira-code {
+  --font-family-mono: 'FiraCode-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'FragmentMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/102755cd-b36a-4db8-907e-c915b322107a.woff2') format('woff2');
+}
+
+body.font-use-fragment-mono {
+  --font-family-mono: 'FragmentMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'GeistMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/996b00fb-4b7a-403d-8da2-ce2225450681.woff2') format('woff2');
+}
+
+body.font-use-geist-mono {
+  --font-family-mono: 'GeistMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'IntelOneMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6c948c21-10b9-43ba-8a3e-162fca1d33cf.woff2') format('woff2');
+}
+
+body.font-use-intel-one-mono {
+  --font-family-mono: 'IntelOneMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'IosevkaTerm-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6397be61-3ea4-459d-8a3e-fd95168cb214.woff2') format('woff2');
+}
+
+body.font-use-iosevka-term {
+  --font-family-mono: 'IosevkaTerm-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono-Regular';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/JetBrainsMono-Regular.woff2') format('woff');
+}
+
+body.font-use-jet-brains-mono {
+  --font-family-mono: 'JetBrainsMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'JuliaMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/332a2ce1-beb6-41bc-a5ef-bf12528e9d1d.woff2') format('woff2');
+}
+
+body.font-use-julia-mono {
+  --font-family-mono: 'JuliaMono-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'Kommuna-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a9233f90-3df3-4cb3-b630-ef10c8359a2f.woff') format('woff2');
+}
+
+body.font-use-kommuna-mono {
+  --font-family-mono: 'Kommuna-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'MonaspaceArgon-Variable';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/5d1c5170-4c1c-4426-9b95-5163bd4818d9.woff2') format('woff');
+}
+
+body.font-use-monaspace-argon-mono {
+  --font-family-mono: 'MonaspaceArgon-Variable', sans-serif;
+}
+
+@font-face {
+  font-family: 'MonaspaceKrypton-Variable';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6bf3c131-4156-4534-b7c9-53cbf64784ef.woff2') format('woff');
+}
+
+body.font-use-monaspace-krypton-mono {
+  --font-family-mono: 'MonaspaceKrypton-Variable', sans-serif;
+}
+
+@font-face {
+  font-family: 'MonaspaceNeon-Variable';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/95529f9d-81bc-49e7-91bc-239f352b2549.woff2') format('woff');
+}
+
+body.font-use-monaspace-neon-mono {
+  --font-family-mono: 'MonaspaceNeon-Variable', sans-serif;
+}
+
+@font-face {
+  font-family: 'MonaspaceRadon-Variable';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/fdbb01b6-0ef1-42d2-87bd-8b8e6751a3cc.woff2') format('woff');
+}
+
+body.font-use-monaspace-radon-mono {
+  --font-family-mono: 'MonaspaceRadon-Variable', sans-serif;
+}
+
+@font-face {
+  font-family: 'MonaspaceXenon-Variable';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/9fd45c79-5a6b-4832-af7b-51fd0cf4411a.woff2') format('woff');
+}
+
+body.font-use-monaspace-xenon-mono {
+  --font-family-mono: 'MonaspaceXenon-Variable', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'MPlus-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e3eac277-a8a1-4f27-9205-ae7d74c8b759.woff') format('woff');
+}
+
+body.font-use-m1-plus-mono {
+  --font-family-mono: 'MPlus-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'Panama-Regular';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/me/mono.woff') format('woff');
+}
+
+body.font-use-panama-mono {
+  --font-family-mono: 'Panama-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'ServerMono';
+  src: url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body.font-use-server-mono {
+  --font-family-mono: 'ServerMono', sans-serif;
+}
+
+@font-face {
+  font-family: 'SFMonoSquare-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/d94a73b5-d1c5-4a97-9b2d-18e5941833f6.woff') format('woff');
+}
+
+body.font-use-sfmono-square {
+  --font-family-mono: 'SFMonoSquare-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'UbuntuSansMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a7ef1855-4ad2-4b2d-8f81-e85c59f0cced.woff2') format('woff2');
+}
+
+body.font-use-ubuntu-mono {
+  --font-family-mono: 'UbuntuSansMono-Regular', sans-serif;
+}
+
+

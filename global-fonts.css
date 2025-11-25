@@ -1,4 +1,106 @@
 @font-face {
+  font-family: 'Web437-Sanyo-MB-C775-2Y';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/435488d6-5f95-47b7-90ec-bb15add89171.woff') format('woff2');
+}
+
+body.font-use-web437-sanyo-mb-c775-2y {
+  --font-family-mono: 'Web437-Sanyo-MB-C775-2Y', sans-serif;
+}
+
+@font-face {
+  font-family: 'Web437-Pheonix-EGA-8X8-2Y';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/bddab573-f73e-493d-bacd-0138eb5a6c93.woff') format('woff2');
+}
+
+body.font-use-web437-pheonix-ega-8x8-2y {
+  --font-family-mono: 'Web437-Pheonix-EGA-8X8-2Y', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'WebPlus-AST-PremiumExec';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/33694a1b-8b35-4056-95f2-c671a52a9d9c.woff') format('woff2');
+}
+
+body.font-use-webplus-ast-premiumexec {
+  --font-family-mono: 'WebPlus-AST-PremiumExec', sans-serif;
+}
+
+@font-face {
+  font-family: 'Web437-Nix8810-M16';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/20bec0a2-763c-43fe-9703-caeebed4fa21.woff') format('woff2');
+}
+
+body.font-use-web437-nix8810-m16 {
+  --font-family-mono: 'Web437-Nix8810-M16', sans-serif;
+}
+
+@font-face {
+  font-family: 'ToshibaTxL1-8x16';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/50966f5b-3013-472a-b359-24d4914da599.woff') format('woff2');
+}
+
+body.font-use-toshiba-tx-l1-8x16 {
+  --font-family-mono: 'ToshibaTxL1-8x16', sans-serif;
+}
+
+@font-face {
+  font-family: 'Web437-DOS-V-ANK16';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/d85fae6d-a2f7-4e12-a27a-c4a90430cbac.woff') format('woff2');
+}
+
+body.font-use-web437-dos-v-ank16 {
+  --font-family-mono: 'Web437-DOS-V-ANK16', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'Web437-DOS-V-ANK19';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/736818cd-ac1b-4b35-86cc-64592ac2fbd8.woff') format('woff2');
+}
+
+body.font-use-web437-dos-v-ank19 {
+  --font-family-mono: 'Web437-DOS-V-ANK19', sans-serif;
+}
+
+@font-face {
+  font-family: 'Web437-DOS-V-ANK24';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/46ea33d9-b161-49de-a0b1-81836c300eda.woff') format('woff2');
+}
+
+body.font-use-web437-dos-v-ank24 {
+  --font-family-mono: 'Web437-DOS-V-ANK24', sans-serif;
+}
+
+@font-face {
+  font-family: 'Web437-DOS-V-ANK30';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/7b9ac71d-201f-4c95-83b5-5f6839c4522d.woff') format('woff2');
+}
+
+body.font-use-web437-dos-v-ank30 {
+  --font-family-mono: 'Web437-DOS-V-ANK30', sans-serif;
+}
+
+@font-face {
+  font-family: 'WebPlus-IBM-BIOS';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/f92d111d-e27c-4264-89c7-7b0769d0146f.woff') format('woff2');
+}
+
+body.font-use-web-plus-ibm-bios {
+  --font-family-mono: 'WebPlus-IBM-BIOS', sans-serif;
+}
+
+@font-face {
+  font-family: 'WebPlus-IBM-VGA-8X16';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e775815e-b21f-4b1b-9144-28ceb6a19ee7.woff') format('woff2');
+}
+
+body.font-use-web-plus-ibm-vga-8x16 {
+  --font-family-mono: 'WebPlus-IBM-VGA-8X16', sans-serif;
+}
+
+
+@font-face {
   font-family: 'TX02Mono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e049dfb6-9c5d-4ac4-97c2-eb6e95c61d09.woff2') format('woff2');
 }

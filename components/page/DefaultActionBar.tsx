@@ -206,7 +206,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Kommuna Mono™ Trial',
+                children: 'Kommuna Mono™ Trial [type.tmpstate.net]',
                 onClick: () => Utilities.onHandleFontChange('font-use-kommuna-mono'),
               },
               {
@@ -241,8 +241,63 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Panama Mono™ Trial',
+                children: 'Panama Mono™ Trial [type.tmpstate.net]',
                 onClick: () => Utilities.onHandleFontChange('font-use-panama-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 DOS/V re. ANK16 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-dos-v-ank16'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 DOS/V re. ANK19 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-dos-v-ank19'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 DOS/V re. ANK24 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-dos-v-ank24'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 DOS/V re. ANK30 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-dos-v-ank30'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 Nix8810 M16 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-nix8810-m16'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 Pheonix EGA 8X8 2Y [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-pheonix-ega-8x8-2y'),
+              },
+              {
+                icon: '⊹',
+                children: 'Web437 Sanyo MB C775 2Y [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web437-sanyo-mb-c775-2y'),
+              },
+              {
+                icon: '⊹',
+                children: 'WebPlus AST PremiumExec [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-webplus-ast-premiumexec'),
+              },
+              {
+                icon: '⊹',
+                children: 'WebPlus IBM BIOS [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web-plus-ibm-bios'),
+              },
+              {
+                icon: '⊹',
+                children: 'WebPlus IBM VGA 8X16 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-web-plus-ibm-vga-8x16'),
+              },
+              {
+                icon: '⊹',
+                children: 'WebPlus ToshibaTxL1-8x16 [int10h.org] [VileR] [CC BY-SA 4.0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-toshiba-tx-l1-8x16'),
               },
               {
                 icon: '⊹',
@@ -256,7 +311,7 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'TX-02 Berkeley Mono™ Trial',
+                children: 'TX-02 Berkeley Mono™ Trial [usgraphics.com]',
                 onClick: () => Utilities.onHandleFontChange('font-use-berkeley-mono'),
               },
               {

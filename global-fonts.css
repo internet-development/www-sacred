@@ -1,4 +1,13 @@
 @font-face {
+  font-family: 'GlassTTY-TrueType-VT220';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/4c1b74be-d536-4594-a33f-69879d054d27.woff') format('woff');
+}
+
+body.font-use-glasstty-vt220 {
+  --font-family-mono: 'GlassTTY-TrueType-VT220', sans-serif;
+}
+
+@font-face {
   font-family: 'Web437-Sanyo-MB-C775-2Y';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/435488d6-5f95-47b7-90ec-bb15add89171.woff') format('woff2');
 }
@@ -15,7 +24,6 @@ body.font-use-web437-sanyo-mb-c775-2y {
 body.font-use-web437-pheonix-ega-8x8-2y {
   --font-family-mono: 'Web437-Pheonix-EGA-8X8-2Y', sans-serif;
 }
-
 
 @font-face {
   font-family: 'WebPlus-AST-PremiumExec';
@@ -52,7 +60,6 @@ body.font-use-toshiba-tx-l1-8x16 {
 body.font-use-web437-dos-v-ank16 {
   --font-family-mono: 'Web437-DOS-V-ANK16', sans-serif;
 }
-
 
 @font-face {
   font-family: 'Web437-DOS-V-ANK19';
@@ -98,7 +105,6 @@ body.font-use-web-plus-ibm-bios {
 body.font-use-web-plus-ibm-vga-8x16 {
   --font-family-mono: 'WebPlus-IBM-VGA-8X16', sans-serif;
 }
-
 
 @font-face {
   font-family: 'TX02Mono-Regular';
@@ -262,7 +268,6 @@ body.font-use-monaspace-xenon-mono {
   --font-family-mono: 'MonaspaceXenon-Variable', sans-serif;
 }
 
-
 @font-face {
   font-family: 'MPlus-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e3eac277-a8a1-4f27-9205-ae7d74c8b759.woff') format('woff');
@@ -283,9 +288,10 @@ body.font-use-panama-mono {
 
 @font-face {
   font-family: 'ServerMono';
-  src: url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff') format('woff'),
-       url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.otf') format('opentype');
+  src:
+    url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -311,5 +317,3 @@ body.font-use-sfmono-square {
 body.font-use-ubuntu-mono {
   --font-family-mono: 'UbuntuSansMono-Regular', sans-serif;
 }
-
-

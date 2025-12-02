@@ -6,17 +6,28 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "bracketSpacing": true,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "arrowParens": "always",
   "requirePragma": false,
   "insertPragma": false,
   "proseWrap": "preserve",
-  "parser": "babel-ts",
   "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
     {
       "files": "*.js",
       "options": {
         "parser": "babel"
+      }
+    },
+    {
+      "files": ["*.scss", "*.css"],
+      "options": {
+        "parser": "scss"
       }
     }
   ]

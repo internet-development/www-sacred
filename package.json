@@ -5,7 +5,7 @@
     "node": ">=18"
   },
   "license": "MIT",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "scripts": {
     "dev": "next -p 10000",
     "build": "next build",
@@ -13,14 +13,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^16.0.1",
+    "next": "^16.0.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "sass": "1.93.2"
+    "sass": "1.94.2"
   },
   "devDependencies": {
     "@types/node": "^24.9.1",
     "@types/react": "^19.2.2",
+    "baseline-browser-mapping": "^2.8.32",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

@@ -181,6 +181,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'GlassTTY: TrueType VT220 [NO LICENSE]',
+                onClick: () => Utilities.onHandleFontChange('font-use-glasstty-vt220'),
+              },
+              {
+                icon: '⊹',
                 children: 'Geist Mono [OFL] [DEFAULT]',
                 onClick: () => Utilities.onHandleFontChange(''),
               },

@@ -251,6 +251,7 @@ export default async function Page(props) {
 
             <Avatar src="https://avatars.githubusercontent.com/u/10610892?v=4" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/1992336125411950592/TzjQtKFk_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://internet.dev" target="_blank" />
             <br />
             <br />
@@ -292,6 +293,13 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://x.com/hellohsuh" target="_blank">
               <Indent>
                 HANNAH SUH
+                <br />
+                Webmaster
+              </Indent>
+            </Avatar>
+            <Avatar src="https://pbs.twimg.com/profile_images/1992336125411950592/TzjQtKFk_400x400.jpg" href="https://x.com/LouanneMMurphy" target="_blank">
+              <Indent>
+                LOUANNE MURPHY
                 <br />
                 Webmaster
               </Indent>

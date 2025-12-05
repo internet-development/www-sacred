@@ -658,6 +658,40 @@ int main() {
             </CodeBlock>
           </Card>
           <br />
+          <br />
+          Below is an example of a package.json that illustrates Internet Development Studio Company’s dedication to maintaining a low-dependency approach, which is one of the reasons our clients value our work.
+          <br />
+          <br />
+          <Card title="PACKAGE.JSON">
+            <CodeBlock>
+              {`{
+  "name": "www-intdev-example",
+  "description": "www-intdev-example",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next -p 10000",
+    "build": "next build",
+    "start": "PORT=10000 next start"
+  },
+  "dependencies": {
+    "next": "^16.0.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}`}
+            </CodeBlock>
+          </Card>
+          <br />
         </Accordion>
 
         <Accordion defaultValue={true} title="COMBOBOX">

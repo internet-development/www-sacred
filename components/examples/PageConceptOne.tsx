@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/examples/PageConceptOne.module.scss';
+import styles from '@components/examples/PageConceptOne.module.css';
 
 import * as React from 'react';
 

@@ -1,4 +1,4 @@
-import styles from '@components/Tooltip.module.scss';
+import styles from '@components/Tooltip.module.css';
 
 import * as React from 'react';
 

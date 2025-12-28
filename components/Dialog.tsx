@@ -1,4 +1,4 @@
-import styles from '@components/Dialog.module.scss';
+import styles from '@components/Dialog.module.css';
 
 import * as React from 'react';
 

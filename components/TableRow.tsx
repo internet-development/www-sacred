@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/TableRow.module.scss';
+import styles from '@components/TableRow.module.css';
 
 import * as React from 'react';
 

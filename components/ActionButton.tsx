@@ -1,4 +1,4 @@
-import styles from '@components/ActionButton.module.scss';
+import styles from '@components/ActionButton.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

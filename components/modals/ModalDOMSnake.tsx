@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/modals/ModalCanvasSnake.module.scss';
+import styles from '@components/modals/ModalCanvasSnake.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

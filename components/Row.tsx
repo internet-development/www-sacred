@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/Row.module.scss';
+import styles from '@components/Row.module.css';
 
 import * as React from 'react';
 

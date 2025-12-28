@@ -1,4 +1,4 @@
-import styles from '@components/Popover.module.scss';
+import styles from '@components/Popover.module.css';
 
 import * as React from 'react';
 

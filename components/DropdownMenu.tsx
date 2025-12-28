@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/DropdownMenu.module.scss';
+import styles from '@components/DropdownMenu.module.css';
 
 import * as React from 'react';
 

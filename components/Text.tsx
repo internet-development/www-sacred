@@ -1,4 +1,4 @@
-import styles from '@components/Text.module.scss';
+import styles from '@components/Text.module.css';
 
 import * as React from 'react';
 

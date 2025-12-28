@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/ListItem.module.scss';
+import styles from '@components/ListItem.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

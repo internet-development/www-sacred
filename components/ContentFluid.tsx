@@ -1,4 +1,4 @@
-import styles from '@components/ContentFluid.module.scss';
+import styles from '@components/ContentFluid.module.css';
 
 import * as React from 'react';
 

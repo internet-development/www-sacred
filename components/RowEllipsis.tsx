@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/RowEllipsis.module.scss';
+import styles from '@components/RowEllipsis.module.css';
 
 import * as React from 'react';
 

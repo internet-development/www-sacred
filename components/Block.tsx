@@ -1,4 +1,4 @@
-import styles from '@components/Block.module.scss';
+import styles from '@components/Block.module.css';
 
 import * as React from 'react';
 

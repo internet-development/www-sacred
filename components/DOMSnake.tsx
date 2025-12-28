@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import styles from './DOMSnake.module.scss';
+import styles from './DOMSnake.module.css';
 import ActionButton from './ActionButton';
 
 interface SnakeGameProps {

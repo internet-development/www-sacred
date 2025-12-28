@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/DataTable.module.scss';
+import styles from '@components/DataTable.module.css';
 
 import * as React from 'react';
 

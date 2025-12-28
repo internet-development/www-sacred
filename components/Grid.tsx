@@ -1,4 +1,4 @@
-import styles from '@components/Grid.module.scss';
+import styles from '@components/Grid.module.css';
 
 import * as React from 'react';
 

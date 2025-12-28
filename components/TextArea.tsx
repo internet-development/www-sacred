@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/TextArea.module.scss';
+import styles from '@components/TextArea.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

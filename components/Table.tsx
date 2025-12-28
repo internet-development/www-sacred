@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/Table.module.scss';
+import styles from '@components/Table.module.css';
 
 import * as React from 'react';
 

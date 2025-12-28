@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/page/DefaultActionBar.module.scss';
+import styles from '@components/page/DefaultActionBar.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
@@ -173,6 +173,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: '⊹',
                 children: 'Fira Code [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-fira-code'),
+              },
+              {
+                icon: '⊹',
+                children: 'Fixedsys Excelsior [CC0]',
+                onClick: () => Utilities.onHandleFontChange('font-use-fixedsys-excelsior'),
               },
               {
                 icon: '⊹',

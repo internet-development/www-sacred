@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/BlockLoader.module.scss';
+import styles from '@components/BlockLoader.module.css';
 
 import * as React from 'react';
 

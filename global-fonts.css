@@ -1,4 +1,13 @@
 @font-face {
+  font-family: 'Fixedsys-Excelsior';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/365aa3bc-a62d-49d4-806f-b6fe1e799722.woff') format('woff');
+}
+
+body.font-use-fixedsys-excelsior {
+  --font-family-mono: 'Fixedsys-Excelsior', sans-serif;
+}
+
+@font-face {
   font-family: 'GlassTTY-TrueType-VT220';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/4c1b74be-d536-4594-a33f-69879d054d27.woff') format('woff');
 }

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import styles from '@components/BarLoader.module.scss';
+import styles from '@components/BarLoader.module.css';
 
 interface BarLoaderProps {
   intervalRate?: number;

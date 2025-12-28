@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/examples/Denabase.module.scss';
+import styles from '@components/examples/Denabase.module.css';
 
 import * as React from 'react';
 

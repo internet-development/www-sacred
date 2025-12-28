@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@components/Badge.module.scss';
+import styles from '@components/Badge.module.css';
 
 import * as React from 'react';
 

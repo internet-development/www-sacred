@@ -1,4 +1,4 @@
-import styles from '@components/RadioButton.module.scss';
+import styles from '@components/RadioButton.module.css';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

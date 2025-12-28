@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import styles from '@components/Input.module.scss';
+import styles from '@components/Input.module.css';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   caretChars?: string | any;

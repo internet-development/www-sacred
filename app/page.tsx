@@ -766,10 +766,10 @@ int main() {
             </Dialog>
             <br />
             <br />
-            <Dialog title="GOODBYE">
-              The 2024 session is nearly out of time.
+            <Dialog title="START OVER">
+              The 2025 session is nearly out of time.
               <br />
-              Save progress and load 2025?
+              Delete progress and start over in 2026?
             </Dialog>
             <br />
             <br />

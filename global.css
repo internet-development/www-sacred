@@ -216,16 +216,23 @@ body.tint-pink {
 }
 
 body.tint-cherry {
-  --theme-background-tint: rgba(58, 28, 42, 0.15);
-  --theme-foreground-tint: rgba(74, 32, 50, 0.2);
-  --theme-border: rgba(122, 32, 63, 0.5);
-  --theme-focused-foreground: #2a0f1b;
-  --theme-focused-background: #f7dbe4;
-  --theme-focused-active: #5c1a35;
-  --theme-button-background: rgba(92, 26, 53, 0.3);
-  --theme-button-background-hover: rgba(122, 32, 63, 0.4);
-  --theme-action-button-background-hover: rgba(122, 32, 63, 0.25);
   --tint: #8b2252;
+}
+
+body.theme-light.tint-cherry {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
 }
 
 body.theme-light.tint-green {
@@ -437,6 +444,22 @@ body.theme-dark.tint-orange {
 }
 
 body.theme-dark.tint-pink {
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
+}
+
+body.theme-dark.tint-cherry {
   --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
   --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
   --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);

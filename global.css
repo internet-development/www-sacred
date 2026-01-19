@@ -212,6 +212,18 @@ body.tint-orange {
 }
 
 body.tint-pink {
+}
+
+.tint-cherry {
+  --theme-background-tint: rgba(58, 28, 42, 0.15);
+  --theme-foreground-tint: rgba(74, 32, 50, 0.2);
+  --theme-border: rgba(122, 32, 63, 0.5);
+  --theme-focused-foreground: #2a0f1b;
+  --theme-focused-background: #f7dbe4;
+  --theme-focused-active: #5c1a35;
+  --theme-button-background: rgba(92, 26, 53, 0.3);
+  --theme-button-background-hover: rgba(122, 32, 63, 0.4);
+  --theme-action-button-background-hover: rgba(122, 32, 63, 0.25);
   --tint: #ff00ff;
 }
 

@@ -215,7 +215,14 @@ body.tint-pink {
   --tint: #ff00ff;
 }
 
-/* NOTE(www-agent) Cherry tint - a red-pink accent palette */
+/*
+ * Cherry tint – red/pink accent palette
+ *
+ * Unlike other tints that define a base --tint variable and derive theme colors
+ * via oklch(), cherry uses hand-picked hex values for precise color control.
+ * This intentional approach ensures specific red/pink tones that don't translate
+ * well through the oklch color manipulation used by other tints.
+ */
 body.tint-cherry {
   --theme-text: #8B0000;
   --theme-border: #CD5C5C;

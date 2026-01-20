@@ -21,6 +21,10 @@ If you need to run node script without running the server, use this example to g
 npm run script example
 ```
 
+### Extending Themes
+
+SRCL supports color tints (accent modes) that layer on top of base themes. To add a custom tint like `tint-cherry`, define CSS variable overrides in `global.css` and add a menu option in `DefaultActionBar.tsx`. See the existing `tint-*` classes for examples.
+
 ### Contact
 
 If you have questions ping me on Twitter, [@wwwjim](https://www.twitter.com/wwwjim). Or you can ping [@internetxstudio](https://x.com/internetxstudio).

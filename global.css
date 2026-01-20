@@ -217,17 +217,39 @@ body.tint-pink {
 
 /* NOTE(www-agent) Cherry tint - a deep, restrained cherry tone distinct from red and pink */
 body.tint-cherry {
-  --theme-focused-foreground: #8B2942;
-  --theme-focused-background: #F5E6E9;
-  --theme-button-foreground: #8B2942;
-  --theme-border-focus: #A63D56;
+  --tint: #8B2942;
+}
+
+body.theme-light.tint-cherry {
+  --theme-background: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from var(--tint) 0.94 calc(c * 0.12) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-background-input: oklch(from var(--tint) 0.97 calc(c * 0.08) h);
+  --theme-border: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-text: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button: oklch(from var(--tint) 0.2 calc(c * 0.3) h);
+  --theme-button-text: oklch(from var(--tint) 0.99 calc(c * 0.1) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.92 calc(c * 0.15) h);
+  --theme-button-background: oklch(from var(--tint) 0.9 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.65 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.65 c h / 0.5);
 }
 
 body.theme-dark.tint-cherry {
-  --theme-focused-foreground: #E8B4C0;
-  --theme-focused-background: #4A1A28;
-  --theme-button-foreground: #E8B4C0;
-  --theme-border-focus: #C75D75;
+  --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);
+  --theme-background-input: oklch(from var(--tint) 0.35 calc(c * 0.18) h);
+  --theme-border: oklch(from var(--tint) 0.45 calc(c * 0.25) h);
+  --theme-border-subdued: oklch(from var(--tint) 0.45 calc(c * 0.25) h / 0.6);
+  --theme-text: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button: oklch(from var(--tint) 0.88 calc(c * 0.2) h);
+  --theme-button-text: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
+  --theme-button-foreground: oklch(from var(--tint) 0.35 calc(c * 0.25) h);
+  --theme-button-background: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
+  --theme-focused-foreground: oklch(from var(--tint) 0.7 c h);
+  --theme-focused-foreground-subdued: oklch(from var(--tint) 0.7 c h / 0.5);
 }
 
 body.theme-light.tint-green {

@@ -13,10 +13,6 @@ Go to `http://localhost:10000` in your browser of choice.
 
 We use [Vercel](https://vercel.com/home) for hosting.
 
-### Appearance Modes
-
-SRCL supports tint modes that layer accent colors on top of light/dark themes: Blue, Green, Orange, Purple, Red, Yellow, Pink, and Cherry.
-
 ### Scripts (Optional)
 
 If you need to run node script without running the server, use this example to get started

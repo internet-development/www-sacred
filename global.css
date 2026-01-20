@@ -212,25 +212,15 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff69b4;
 }
 
-/* NOTE(www-agent) Cherry tint - a deep burgundy accent for terminal-style UIs */
-.tint-cherry {
-  --theme-text: #8b2942;
-  --theme-border: #8b2942;
-  --theme-focused-foreground: #6b1d32;
-  --theme-button-foreground: #8b2942;
-  --theme-focused-active: #a33352;
+body.tint-cherry {
+  --tint: #8b2942;
 }
 
-.theme-dark.tint-cherry,
-.theme-dark .tint-cherry {
-  --theme-text: #e8a0b0;
-  --theme-border: #c47a8a;
-  --theme-focused-foreground: #f0c0cc;
-  --theme-button-foreground: #e8a0b0;
-  --theme-focused-active: #d4909f;
-  --tint: #ff00ff;
+body.theme-dark.tint-cherry {
+  --tint: #e8a0b0;
 }
 
 body.theme-light.tint-green {

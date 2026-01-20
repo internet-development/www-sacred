@@ -1,27 +1,40 @@
-/* Cherry tint CSS variables for theme support */
+/* Cherry tint - to be integrated into restored global.css */
+/* CRITICAL: This file needs the original global.css content restored */
+/* The cherry tint styles below should be added at the appropriate locations */
 
-/* Light theme cherry tint */
-.theme-light.tint-cherry {
-  --theme-text: #9b1b30;
-  --theme-background: #fff5f6;
-  --theme-border: #e8a0aa;
-  --theme-focused-foreground: #7a1525;
-  --theme-focused-background: #ffd6dc;
-  --theme-button-background: #c41e3a;
+/* Base cherry tint variable (add after body.tint-pink around line 177) */
+/* body.tint-cherry { --tint: #c41e3a; } */
+
+/* Light theme cherry tint - uses OKLCH pattern */
+body.theme-light.tint-cherry {
+  --theme-background: oklch(from #c41e3a 0.99 calc(c * 0.1) h);
+  --theme-background-modal: oklch(from #c41e3a 0.97 calc(c * 0.15) h);
+  --theme-background-modal-footer: oklch(from #c41e3a 0.95 calc(c * 0.2) h);
+  --theme-background-input: oklch(from #c41e3a 0.98 calc(c * 0.08) h);
+  --theme-border: oklch(from #c41e3a 0.75 calc(c * 0.4) h);
+  --theme-border-subdued: oklch(from #c41e3a 0.85 calc(c * 0.25) h);
+  --theme-text: oklch(from #c41e3a 0.25 calc(c * 0.8) h);
+  --theme-button: oklch(from #c41e3a 0.5 calc(c * 1) h);
+  --theme-button-text: oklch(from #c41e3a 0.98 calc(c * 0.1) h);
   --theme-button-foreground: #ffffff;
-  --theme-accent: #c41e3a;
-  --theme-accent-muted: #e8a0aa;
+  --theme-button-background: #c41e3a;
+  --theme-focused-foreground: oklch(from #c41e3a 0.2 calc(c * 0.9) h);
+  --theme-focused-foreground-subdued: oklch(from #c41e3a 0.4 calc(c * 0.7) h);
 }
 
-/* Dark theme cherry tint */
-.theme-dark.tint-cherry {
-  --theme-text: #ffb3c1;
-  --theme-background: #1a0a0d;
-  --theme-border: #5c1a24;
-  --theme-focused-foreground: #ffd6dc;
-  --theme-focused-background: #3d0f18;
-  --theme-button-background: #c41e3a;
+/* Dark theme cherry tint - uses OKLCH pattern */
+body.theme-dark.tint-cherry {
+  --theme-background: oklch(from #c41e3a 0.12 calc(c * 0.15) h);
+  --theme-background-modal: oklch(from #c41e3a 0.15 calc(c * 0.2) h);
+  --theme-background-modal-footer: oklch(from #c41e3a 0.18 calc(c * 0.25) h);
+  --theme-background-input: oklch(from #c41e3a 0.1 calc(c * 0.1) h);
+  --theme-border: oklch(from #c41e3a 0.35 calc(c * 0.5) h);
+  --theme-border-subdued: oklch(from #c41e3a 0.25 calc(c * 0.35) h);
+  --theme-text: oklch(from #c41e3a 0.9 calc(c * 0.3) h);
+  --theme-button: oklch(from #c41e3a 0.55 calc(c * 1) h);
+  --theme-button-text: oklch(from #c41e3a 0.95 calc(c * 0.1) h);
   --theme-button-foreground: #ffffff;
-  --theme-accent: #ff6b7a;
-  --theme-accent-muted: #5c1a24;
+  --theme-button-background: #c41e3a;
+  --theme-focused-foreground: oklch(from #c41e3a 0.95 calc(c * 0.4) h);
+  --theme-focused-foreground-subdued: oklch(from #c41e3a 0.75 calc(c * 0.5) h);
 }

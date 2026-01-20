@@ -620,3 +620,17 @@ body {
     background: var(--theme-border);
   }
 }
+
+.tint-cherry {
+  --theme-text: #8b1e2d;
+  --theme-border: #5c0f1a;
+  --theme-focused-foreground: #b14452;
+  --theme-focused-background: rgba(139, 30, 45, 0.15);
+}
+
+.theme-dark.tint-cherry {
+  --theme-text: #f2b8bf;
+  --theme-border: #8b1e2d;
+  --theme-focused-foreground: #b14452;
+  --theme-focused-background: rgba(139, 30, 45, 0.25);
+}

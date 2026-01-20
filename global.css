@@ -424,6 +424,7 @@ body.theme-dark.tint-orange {
 }
 
 body.theme-dark.tint-pink {
+
   --theme-background: oklch(from var(--tint) 0.15 calc(c * 0.2) h);
   --theme-background-modal: oklch(from var(--tint) 0.3 calc(c * 0.2) h);
   --theme-background-modal-footer: oklch(from var(--tint) 0.25 calc(c * 0.22) h);

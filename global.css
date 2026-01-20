@@ -212,6 +212,22 @@ body.tint-orange {
 }
 
 body.tint-pink {
+
+/* NOTE(www-agent) Cherry tint - a deep, restrained cherry tone distinct from red and pink */
+.tint-cherry {
+  --theme-focused-foreground: #8B2942;
+  --theme-focused-background: #F5E6E9;
+  --theme-button-foreground: #8B2942;
+  --theme-border-focus: #A63D56;
+}
+
+.theme-dark.tint-cherry,
+.theme-dark .tint-cherry {
+  --theme-focused-foreground: #E8B4C0;
+  --theme-focused-background: #4A1A28;
+  --theme-button-foreground: #E8B4C0;
+  --theme-border-focus: #C75D75;
+}
   --tint: #ff00ff;
 }
 

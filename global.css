@@ -212,8 +212,11 @@ body.tint-orange {
 }
 
 body.tint-pink {
-
   --tint: #ff00ff;
+}
+
+body.tint-cherry {
+  --tint: #de3163;
 }
 
 body.theme-light.tint-green {

@@ -215,30 +215,26 @@ body.tint-pink {
   --tint: #ff00ff;
 }
 
-/* Cherry is an accent-only tint. It must NOT define --theme-background* or base text color variables.
-   It only overrides accent/focus/border/button variables to provide a cherry-colored UI accent. */
+/* Cherry is an accent-only tint. It must NOT define --tint, --theme-background*, --theme-text,
+   or any base foreground/text color variables. This ensures Cherry cannot influence backgrounds,
+   surfaces, or derived color tokens that rely on --tint elsewhere in the codebase.
+   Cherry ONLY overrides accent/focus/border/button variables to provide a cherry-colored UI accent.
+   Intentionally NOT overridden: --tint, --theme-background, --theme-background-*, --theme-text. */
 body.tint-cherry {
-  --tint: #9b2c50;
   --theme-focused-foreground: #7a1f3d;
-  --theme-focused-background: #fce4ec;
-  --theme-border-subdued: #c97c91;
-  --theme-border: #a84868;
+  --theme-focused-foreground-subdued: rgba(122, 31, 61, 0.5);
   --theme-button-foreground: #ffffff;
   --theme-button-background: #9b2c50;
-  --theme-button-background-focus: #7a1f3d;
-  --theme-button-border: #7a1f3d;
 }
 
+/* Cherry dark mode: accent-only overrides. Same restrictions as light mode.
+   Intentionally NOT overridden: --tint, --theme-background, --theme-background-*, --theme-text.
+   This preserves readability when switching between Light/Dark themes. */
 body.theme-dark.tint-cherry {
-  --tint: #c45a7c;
   --theme-focused-foreground: #fce4ec;
-  --theme-focused-background: #4a1228;
-  --theme-border-subdued: #8b4560;
-  --theme-border: #c97c91;
+  --theme-focused-foreground-subdued: rgba(252, 228, 236, 0.5);
   --theme-button-foreground: #ffffff;
   --theme-button-background: #9b2c50;
-  --theme-button-background-focus: #c45a7c;
-  --theme-button-border: #c97c91;
 }
 
 body.theme-light.tint-green {

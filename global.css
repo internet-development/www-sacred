@@ -212,6 +212,15 @@ body.tint-orange {
 }
 
 body.tint-pink {
+}
+
+.tint-cherry {
+  --theme-accent: #8C1D3D;
+  --theme-accent-strong: #B3264F;
+  --theme-accent-muted: #5E162C;
+  --theme-focused-border: #B3264F;
+  --theme-focused-foreground: #F2D7DE;
+  --theme-selection: rgba(140, 29, 61, 0.35);
   --tint: #ff00ff;
 }
 

@@ -57,7 +57,7 @@ export function onHandleAppearanceModeChange(className?: string) {
   }
 }
 
-// Supported tint values for onHandleAppearanceModeChange:
+// Supported tint values for onHandleAppearanceModeChange and onHandleAppearanceChange:
 // tint-blue, tint-green, tint-orange, tint-purple,
 // tint-red, tint-yellow, tint-pink, tint-cherry
 

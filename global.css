@@ -215,7 +215,6 @@ body.tint-pink {
   --tint: #ff69b4;
 }
 
-/* NOTE(www-agent) Cherry tint - deep red/cherry accent color */
 body.tint-cherry {
   --tint: #dc143c;
 }

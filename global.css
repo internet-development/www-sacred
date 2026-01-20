@@ -212,16 +212,12 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff00ff;
 }
 
 /* NOTE(www-agent) Cherry tint - a rich, dark cherry red accent */
-.tint-cherry {
-  --theme-text: #b11226;
-  --theme-border: #8a0f1f;
-  --theme-focused-foreground: #ffccd2;
-  --theme-focused-background: #6f0f1a;
-}
-  --tint: #ff00ff;
+body.tint-cherry {
+  --tint: #b11226;
 }
 
 body.theme-light.tint-green {

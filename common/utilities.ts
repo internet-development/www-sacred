@@ -43,23 +43,32 @@ export function getDomainFromEmailWithoutAnySubdomain(email: string): string {
   return mainDomain;
 }
 
+// Supported tint class names
+export const SUPPORTED_TINTS = [
+  'tint-blue',
+  'tint-green',
+  'tint-orange',
+  'tint-purple',
+  'tint-red',
+  'tint-yellow',
+  'tint-pink',
+  'tint-cherry',
+] as const;
+
+export type SupportedTint = (typeof SUPPORTED_TINTS)[number];
+
 export function onHandleAppearanceModeChange(className?: string) {
   const body = document.body;
 
-  body.classList.forEach((existingClass) => {
-    if (existingClass.startsWith('tint-')) {
-      body.classList.remove(existingClass);
-    }
+  // Remove all supported tint classes
+  SUPPORTED_TINTS.forEach((tint) => {
+    body.classList.remove(tint);
   });
 
   if (className) {
     body.classList.add(className);
   }
 }
-
-// Supported tint values for onHandleAppearanceModeChange and onHandleAppearanceChange:
-// tint-blue, tint-green, tint-orange, tint-purple,
-// tint-red, tint-yellow, tint-pink, tint-cherry
 
 export function onHandleAppearanceChange(className?: string) {
   const body = document.body;

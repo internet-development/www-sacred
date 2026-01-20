@@ -620,3 +620,20 @@ body {
     background: var(--theme-border);
   }
 }
+
+/* Cherry tint theme */
+.tint-cherry {
+  --theme-accent: #a02040;
+  --theme-accent-contrast: #ffffff;
+  --theme-accent-hover: #c02850;
+  --theme-accent-active: #801830;
+  --theme-focused-foreground: #a02040;
+}
+
+.theme-dark.tint-cherry {
+  --theme-accent: #e04060;
+  --theme-accent-contrast: #000000;
+  --theme-accent-hover: #ff5070;
+  --theme-accent-active: #c03050;
+  --theme-focused-foreground: #e04060;
+}

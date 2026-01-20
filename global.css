@@ -212,9 +212,11 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff69b4;
 }
 
-.tint-cherry {
+body.tint-cherry {
+  --tint: #9b2c50;
   --theme-focused-foreground: #7a1f3d;
   --theme-focused-background: #fce4ec;
   --theme-border-subdued: #c97c91;
@@ -225,8 +227,8 @@ body.tint-pink {
   --theme-button-border: #7a1f3d;
 }
 
-.theme-dark.tint-cherry,
-.theme-dark .tint-cherry {
+body.theme-dark.tint-cherry {
+  --tint: #c45a7c;
   --theme-focused-foreground: #fce4ec;
   --theme-focused-background: #4a1228;
   --theme-border-subdued: #8b4560;
@@ -235,7 +237,6 @@ body.tint-pink {
   --theme-button-background: #9b2c50;
   --theme-button-background-focus: #c45a7c;
   --theme-button-border: #c97c91;
-  --tint: #ff00ff;
 }
 
 body.theme-light.tint-green {

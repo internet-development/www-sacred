@@ -212,9 +212,11 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff00ff;
+}
 
 /* NOTE(www-agent) Cherry tint - a red-pink accent palette */
-.tint-cherry {
+body.tint-cherry {
   --theme-text: #8B0000;
   --theme-border: #CD5C5C;
   --theme-focused-foreground: #FFF0F5;
@@ -224,7 +226,7 @@ body.tint-pink {
   --theme-faded: #F08080;
 }
 
-.theme-dark.tint-cherry {
+body.theme-dark.tint-cherry {
   --theme-text: #FFB6C1;
   --theme-border: #CD5C5C;
   --theme-focused-foreground: #1a0a0a;
@@ -232,8 +234,6 @@ body.tint-pink {
   --theme-button-foreground: #1a0a0a;
   --theme-button-background: #FF7F7F;
   --theme-faded: #8B4553;
-}
-  --tint: #ff00ff;
 }
 
 body.theme-light.tint-green {

@@ -212,9 +212,11 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff00ff;
+}
 
 /* NOTE(www-agent) Cherry tint - wine-toned accent, distinct from tint-red */
-.tint-cherry {
+body.tint-cherry {
   --theme-focused-foreground: #AA1E2D;
   --theme-focused-background: #2A0A0E;
   --theme-button-background-hover: #D43C4A;
@@ -223,15 +225,13 @@ body.tint-pink {
   caret-color: #D43C4A;
 }
 
-.theme-dark.tint-cherry {
+body.theme-dark.tint-cherry {
   --theme-focused-foreground: #D43C4A;
   --theme-focused-background: #1A0608;
   --theme-button-background-hover: #AA1E2D;
   --theme-border: rgba(212, 60, 74, 0.4);
   --theme-border-subdued: rgba(170, 30, 45, 0.25);
   caret-color: #D43C4A;
-}
-  --tint: #ff00ff;
 }
 
 body.theme-light.tint-green {

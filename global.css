@@ -212,26 +212,15 @@ body.tint-orange {
 }
 
 body.tint-pink {
+  --tint: #ff69b4;
 }
 
 /* NOTE(www-agent) Cherry tint - deep red/cherry accent color */
-.tint-cherry {
-  --theme-focused-foreground: #6b1c2a;
-  --theme-focused-background: #fce4ec;
-  --theme-border: #9b3a4d;
-  --theme-border-subdued: #d4707f;
-  --theme-focused-active: #8b2942;
+body.tint-cherry {
+  --tint: #dc143c;
 }
 
-.theme-dark.tint-cherry,
-.theme-dark .tint-cherry {
-  --theme-focused-foreground: #fce4ec;
-  --theme-focused-background: #4a1520;
-  --theme-border: #b85a6a;
-  --theme-border-subdued: #7a3040;
-  --theme-focused-active: #d4707f;
-  --tint: #ff00ff;
-}
+
 
 body.theme-light.tint-green {
   --theme-background: oklch(from var(--tint) 0.985 calc(c * 0.08) h);

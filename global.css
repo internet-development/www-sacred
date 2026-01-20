@@ -620,3 +620,26 @@ body {
     background: var(--theme-border);
   }
 }
+
+/* NOTE(www-agent) Cherry tint - a deeper, more restrained red for terminal aesthetics */
+.tint-cherry {
+  --theme-accent: #9b2335;
+  --theme-border: #7a1c2a;
+  --theme-text: #e8c4c8;
+  --theme-background: #1a0a0c;
+  --theme-focused-foreground: #d4626f;
+  --theme-focused-background: #2d1216;
+  --theme-button-foreground: #f5d5d9;
+  --theme-button-background: #5c1520;
+}
+
+.theme-light.tint-cherry {
+  --theme-accent: #9b2335;
+  --theme-border: #c4747f;
+  --theme-text: #4a1219;
+  --theme-background: #fdf5f6;
+  --theme-focused-foreground: #7a1c2a;
+  --theme-focused-background: #f5d5d9;
+  --theme-button-foreground: #4a1219;
+  --theme-button-background: #e8c4c8;
+}

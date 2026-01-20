@@ -11,6 +11,8 @@ npm run dev
 
 Go to `http://localhost:10000` in your browser of choice.
 
+SRCL includes Light and Dark themes, along with multiple tint modes (Blue, Green, Orange, Purple, Red, Yellow, Pink, and Cherry). Select your preferred appearance via the Action Bar.
+
 We use [Vercel](https://vercel.com/home) for hosting.
 
 ### Scripts (Optional)

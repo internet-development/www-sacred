@@ -215,6 +215,8 @@ body.tint-pink {
   --tint: #ff00ff;
 }
 
+/* Cherry is an accent-only tint. It must NOT define --theme-background* or base text color variables.
+   It only overrides accent/focus/border/button variables to provide a cherry-colored UI accent. */
 body.tint-cherry {
   --tint: #9b2c50;
   --theme-focused-foreground: #7a1f3d;

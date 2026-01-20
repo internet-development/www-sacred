@@ -212,6 +212,29 @@ body.tint-orange {
 }
 
 body.tint-pink {
+}
+
+.tint-cherry {
+  --theme-focused-foreground: #7a1f3d;
+  --theme-focused-background: #fce4ec;
+  --theme-border-subdued: #c97c91;
+  --theme-border: #a84868;
+  --theme-button-foreground: #ffffff;
+  --theme-button-background: #9b2c50;
+  --theme-button-background-focus: #7a1f3d;
+  --theme-button-border: #7a1f3d;
+}
+
+.theme-dark.tint-cherry,
+.theme-dark .tint-cherry {
+  --theme-focused-foreground: #fce4ec;
+  --theme-focused-background: #4a1228;
+  --theme-border-subdued: #8b4560;
+  --theme-border: #c97c91;
+  --theme-button-foreground: #ffffff;
+  --theme-button-background: #9b2c50;
+  --theme-button-background-focus: #c45a7c;
+  --theme-button-border: #c97c91;
   --tint: #ff00ff;
 }
 

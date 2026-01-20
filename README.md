@@ -13,6 +13,22 @@ Go to `http://localhost:10000` in your browser of choice.
 
 We use [Vercel](https://vercel.com/home) for hosting.
 
+### Appearance Modes
+
+SRCL supports color accent modes that can be layered on top of light or dark themes. These modes are activated by adding a `tint-*` class to the `<body>` element.
+
+Available modes:
+- `tint-blue`
+- `tint-green`
+- `tint-orange`
+- `tint-purple`
+- `tint-red`
+- `tint-yellow`
+- `tint-pink`
+- `tint-cherry`
+
+You can toggle these at runtime via the Action Bar (Appearance → Mode) or programmatically using `Utilities.onHandleAppearanceModeChange('tint-cherry')`.
+
 ### Scripts (Optional)
 
 If you need to run node script without running the server, use this example to get started

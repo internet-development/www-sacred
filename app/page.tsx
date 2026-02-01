@@ -66,6 +66,7 @@ import RowSpaceBetween from '@components/RowSpaceBetween';
 import Script from 'next/script';
 import Select from '@components/Select';
 import SidebarLayout from '@components/SidebarLayout';
+import SimpleTable from '@components/SimpleTable';
 import Table from '@components/Table';
 import TableRow from '@components/TableRow';
 import TableColumn from '@components/TableColumn';
@@ -76,6 +77,14 @@ import UpdatingDataTable from '@components/examples/UpdatingDataTable';
 import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
 
 export const dynamic = 'force-static';
+
+const SIMPLE_TABLE_DATA = [
+  ['Name', 'Role', 'Location'],
+  ['Jimmy Lee', 'Staff Janitor', 'San Francisco'],
+  ['Andrew Alimbuyuguen', 'Webmaster', 'San Francisco'],
+  ['Anastasiya Uraleva', 'Webmaster', 'San Francisco'],
+  ['Elijah Seed Arita', 'Webmaster', 'Los Angeles'],
+];
 
 // NOTE(jimmylee)
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
@@ -1466,6 +1475,10 @@ int main() {
             <NumberRangeSlider defaultValue={0} min={0} max={100000} step={1} />
           </Card>
           <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="SIMPLETABLE">
+          <SimpleTable data={SIMPLE_TABLE_DATA} />
         </Accordion>
 
         <Accordion defaultValue={true} title="TABLE">

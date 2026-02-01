@@ -1469,6 +1469,10 @@ int main() {
           <br />
         </Accordion>
 
+        <Accordion defaultValue={true} title="SIMPLETABLE">
+          <SimpleTable data={SIMPLE_TABLE_DATA} />
+        </Accordion>
+
         <Accordion defaultValue={true} title="TABLE">
           A simple, declarative table component designed to streamline the creation of tables in JSX. It provides greater control over the structure and layout while evoking the aesthetics of old terminal interfaces (like MS-DOS).
           <br />

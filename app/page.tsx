@@ -78,6 +78,14 @@ import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
 
 export const dynamic = 'force-static';
 
+const SIMPLE_TABLE_DATA = [
+  ['Name', 'Role', 'Department'],
+  ['Alice Chen', 'Engineer', 'Platform'],
+  ['Bob Smith', 'Designer', 'Product'],
+  ['Carol Wu', 'Manager', 'Operations'],
+  ['Dan Lee', 'Analyst', 'Finance'],
+];
+
 // NOTE(jimmylee)
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 export async function generateMetadata({ params, searchParams }) {
@@ -1467,10 +1475,6 @@ int main() {
             <NumberRangeSlider defaultValue={0} min={0} max={100000} step={1} />
           </Card>
           <br />
-        </Accordion>
-
-        <Accordion defaultValue={true} title="SIMPLETABLE">
-          <SimpleTable data={SIMPLE_TABLE_DATA} />
         </Accordion>
 
         <Accordion defaultValue={true} title="TABLE">

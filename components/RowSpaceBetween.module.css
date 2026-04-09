@@ -3,10 +3,4 @@
   justify-content: space-between;
   outline: 0;
   border: 0;
-  transition: 200ms ease background;
-
-  &:focus,
-  &:active {
-    background: var(--theme-focused-foreground);
-  }
 }

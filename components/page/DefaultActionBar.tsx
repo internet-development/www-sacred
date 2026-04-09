@@ -11,6 +11,8 @@ import { useHotkeys } from '@modules/hotkeys';
 import ActionBar from '@components/ActionBar';
 import ButtonGroup from '@components/ButtonGroup';
 
+import { useModals } from '@components/page/ModalContext';
+
 function isElement(target: EventTarget | null): target is Element {
   return target instanceof Element;
 }
@@ -63,37 +65,47 @@ const findNextFocusableAncestor = (element: Element, direction: 'next' | 'previo
 };
 
 const useGlobalNavigationHotkeys = () => {
+  //NOTE(jimmylee): Skip elements with native keyboard activation or their own keyboard handling.
   const onHandleSubmit = (event: KeyboardEvent) => {
     const target = event.target;
-    if (Utilities.isFocusableElement(target)) {
-      event.preventDefault();
-      (target as HTMLElement).click();
-    }
+    if (!Utilities.isFocusableElement(target)) return;
+
+    const el = target as HTMLElement;
+    const tag = el.tagName;
+    if (tag === 'BUTTON' || tag === 'A' || tag === 'SELECT' || tag === 'INPUT') return;
+
+    const role = el.getAttribute('role');
+    if (role === 'menuitem' || role === 'option') return;
+
+    event.preventDefault();
+    el.click();
   };
 
   const onHandleNextFocus = (event: KeyboardEvent) => {
     const target = event.target;
+    if (!Utilities.isFocusableElement(target)) return;
 
-    if (Utilities.isFocusableElement(target)) {
-      event.preventDefault();
+    const el = target as HTMLElement;
+    if (el.closest('[role="menu"], [role="listbox"], [role="grid"]') || el.getAttribute('aria-haspopup')) return;
 
-      const nextFocusable = Utilities.findNextFocusable(target as Element, 'next');
-      if (nextFocusable) {
-        nextFocusable.focus();
-      }
+    event.preventDefault();
+    const nextFocusable = Utilities.findNextFocusable(el, 'next');
+    if (nextFocusable) {
+      nextFocusable.focus();
     }
   };
 
   const onHandlePreviousFocus = (event: KeyboardEvent) => {
     const target = event.target;
+    if (!Utilities.isFocusableElement(target)) return;
 
-    if (Utilities.isFocusableElement(target)) {
-      event.preventDefault();
+    const el = target as HTMLElement;
+    if (el.closest('[role="menu"], [role="listbox"], [role="grid"]') || el.getAttribute('aria-haspopup')) return;
 
-      const previousFocusable = Utilities.findNextFocusable(target as Element, 'previous');
-      if (previousFocusable) {
-        previousFocusable.focus();
-      }
+    event.preventDefault();
+    const previousFocusable = Utilities.findNextFocusable(el, 'previous');
+    if (previousFocusable) {
+      previousFocusable.focus();
     }
   };
 
@@ -116,7 +128,10 @@ interface DefaultActionBarProps {
 
 const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
   const [isGrid, setGrid] = React.useState(false);
+  const { close } = useModals();
+
   useHotkeys('ctrl+g', () => toggleDebugGrid());
+  useHotkeys('Escape', () => close());
 
   useGlobalNavigationHotkeys();
 

@@ -5,7 +5,7 @@ import * as React from 'react';
 import { useModals } from '@components/page/ModalContext';
 
 interface ModalTriggerProps {
-  children: React.ReactElement<{ onClick?: React.MouseEventHandler }>;
+  children: React.ReactNode;
   modal: React.ComponentType<any>;
   modalProps?: Record<string, any>;
 }
@@ -13,11 +13,11 @@ interface ModalTriggerProps {
 function ModalTrigger({ children, modal, modalProps = {} }: ModalTriggerProps) {
   const { open } = useModals();
 
-  const onHandleOpenModal = () => {
-    open(modal, modalProps);
-  };
-
-  return <span onClick={onHandleOpenModal}>{children}</span>;
+  return (
+    <span onClick={() => open(modal, modalProps)} style={{ display: 'contents' }}>
+      {children}
+    </span>
+  );
 }
 
 export default ModalTrigger;

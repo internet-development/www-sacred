@@ -36,6 +36,11 @@ scripts/cli/colors.json (#585858 / #00ff00 / #a8a8a8).
   font-weight: 400;
 }
 
+.root tbody tr:focus {
+  background: var(--theme-focused-foreground);
+  outline: 0;
+}
+
 .alignRight {
   text-align: right;
 }

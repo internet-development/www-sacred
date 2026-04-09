@@ -159,31 +159,31 @@ export default async function Page(props) {
         <ActionListItem icon={`⭢`} href="https://vercel.com/home" target="_blank">
           Try our hosting provider Vercel
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llms.txt">
+        <ActionListItem icon={`⭢`} href="/llms.txt" target="_blank">
           Read the llms.txt index of every sacred + Simulacrum contract
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/AGENTS.md">
+        <ActionListItem icon={`⭢`} href="/llm/AGENTS.md" target="_blank">
           Read the root sacred / Simulacrum AGENTS.md
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/components/AGENTS.md">
+        <ActionListItem icon={`⭢`} href="/llm/components/AGENTS.md" target="_blank">
           Read the components AGENTS.md catalog (every React primitive)
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/scripts/cli/AGENTS.md">
+        <ActionListItem icon={`⭢`} href="/llm/scripts/cli/AGENTS.md" target="_blank">
           Read the Simulacrum TypeScript framework AGENTS.md
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/scripts/python/AGENTS.md">
+        <ActionListItem icon={`⭢`} href="/llm/scripts/python/AGENTS.md" target="_blank">
           Read the Simulacrum Python mirror AGENTS.md
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-typescript-cli/SKILL.md">
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-typescript-cli/SKILL.md" target="_blank">
           Skill: port a sacred React surface to a TypeScript CLI
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-python/SKILL.md">
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-python/SKILL.md" target="_blank">
           Skill: port a sacred React surface to a Python CLI
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-react-using-same-conventions/SKILL.md">
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-react-using-same-conventions/SKILL.md" target="_blank">
           Skill: port a Simulacrum CLI screen to a sacred React surface
         </ActionListItem>
-        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md">
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md" target="_blank">
           Skill: graft a sacred component into a hostile React host
         </ActionListItem>
       </Grid>

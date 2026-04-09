@@ -29,6 +29,7 @@ const RadarMarker = (props) => {
 const DashboardRadar = (props) => {
   return (
     <Window>
+      <Card>
       <div className={styles.root}>
         <SidebarLayout
         isReversed
@@ -105,6 +106,7 @@ const DashboardRadar = (props) => {
         </Card>
         </SidebarLayout>
       </div>
+      </Card>
     </Window>
   );
 };

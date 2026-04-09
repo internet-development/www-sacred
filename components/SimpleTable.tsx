@@ -36,7 +36,7 @@ const SimpleTable: React.FC<SimpleTableProps> = ({ data, align }) => {
         </thead>
         <tbody>
           {rows.map((row, ri) => (
-            <tr key={ri}>
+            <tr key={ri} tabIndex={0}>
               {row.map((cell, ci) => {
                 let statusClass: string | undefined;
                 if (STATUS_OK.has(cell)) statusClass = styles.statusOk;

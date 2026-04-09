@@ -51,6 +51,54 @@ npm run cli:python      # render the canonical Python CLI template (alt screen, 
 - **CLI → React (sacred host):** read `skills/port-sacred-terminal-ui-to-react-using-same-conventions/SKILL.md` and any of the `components/examples/CLITemplate.tsx` / `InvoiceTemplate.tsx` / `ResultsList.tsx` files.
 - **Sacred → foreign React app:** read `skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md`.
 
+## Keyboard and hotkey system
+
+Sacred uses a vendored copy of [react-hotkeys-hook](https://github.com/JohannesKlauss/react-hotkeys-hook) at `modules/hotkeys/`. The module is self-contained CommonJS-compatible React code — no npm dependency. It provides `useHotkeys`, `HotkeysProvider`, `isHotkeyPressed`, and `useRecordHotkeys`.
+
+### Architecture
+
+- **`modules/hotkeys/parse-hotkeys.ts`** — parses key strings (`ctrl+a`, `ArrowDown`, `esc`) into a `Hotkey` descriptor with modifier flags (`alt`, `ctrl`, `meta`, `shift`, `mod`) and non-modifier key names. `mod` is a platform-aware shortcut: meta on macOS, ctrl elsewhere.
+- **`modules/hotkeys/validators.ts`** — matching logic: `isHotkeyMatchingKeyboardEvent` compares a live `KeyboardEvent` against a parsed `Hotkey`, respecting modifier state. Guards (`isHotkeyEnabledOnTag`, `isKeyboardEventTriggeredByInput`) suppress hotkeys when focus is inside form elements unless explicitly opted in.
+- **`modules/hotkeys/use-hotkeys.ts`** — the main hook. Attaches `keydown`/`keyup` listeners to either a ref'd DOM node or `document`. Supports `scopes` for conditional activation, `enableOnFormTags` / `enableOnContentEditable` overrides, `preventDefault`, and `keyup`-only mode.
+- **`modules/hotkeys/hotkeys-provider.tsx`** — React context for scope management (`enableScope`, `disableScope`, `toggleScope`) and a registry of all bound hotkeys via `BoundHotkeysProxyProvider`. `HotkeysProvider` is mounted at the app root in `components/Providers.tsx`, activating scope-based hotkey gating for the entire tree.
+- **`modules/hotkeys/is-hotkey-pressed.ts`** — global `Set<string>` tracking all currently held keys via document-level `keydown`/`keyup` listeners. Used by `useHotkeys` for multi-key combination matching. Handles the macOS meta-key quirk (clears non-modifier keys when meta is released).
+- **`modules/hotkeys/use-record-hotkeys.ts`** — records key combinations pressed by the user into a `Set<string>`, useful for UI that lets users define their own shortcuts.
+- **`modules/hotkeys/use-deep-equal-memo.ts`** — memoization helper using `Utilities.deepEqual` to prevent unnecessary re-renders when options objects are structurally equal.
+
+### Where hotkeys are registered
+
+| Component | Hotkeys | Purpose |
+| --- | --- | --- |
+| `components/page/DefaultActionBar.tsx` | `ArrowDown`, `ArrowUp`, `ArrowRight`, `ArrowLeft`, `Enter`, `Space`, `ctrl+g`, `Escape` | Global focus navigation across all focusable elements + debug grid toggle + dismiss topmost modal |
+| `components/DropdownMenuTrigger.tsx` | Configurable via `hotkey` prop (e.g. `ctrl+o`, `ctrl+a`, `ctrl+t`) | Opens/closes a dropdown menu |
+| `components/DropdownMenu.tsx` | `Escape` | Closes the active dropdown (fallback for when focus is outside the menu container) |
+| `components/modals/ModalError.tsx` | `enter` | Closes the error modal |
+| `components/modals/ModalChess.tsx` | `enter` | Closes the chess modal |
+
+### Where keyboard events are handled directly (onKeyDown / addEventListener)
+
+| Component | Keys | Purpose |
+| --- | --- | --- |
+| `components/DropdownMenu.tsx` | `ArrowDown`, `ArrowUp`, `Enter`, `Space`, `Escape` | Menu item navigation with focus wrapping, activation, and dismiss |
+| `components/DataTable.tsx` | `Enter`, arrow keys | Cell navigation and activation within the gradient table |
+| `components/ListItem.tsx` | `Enter`, arrow keys | Item activation and sequential focus traversal |
+| `components/Select.tsx` | `Enter`, `Space`, `Escape`, arrow keys | Open/close listbox, navigate and select options, dismiss |
+| `components/Input.tsx` | Native `onKeyDown` passthrough | Delegates to consumer callback |
+| `components/TextArea.tsx` | Native `onKeyDown` passthrough | Delegates to consumer callback |
+| `components/Checkbox.tsx` | Native `onKeyDown` via `<input>` | Standard checkbox toggling |
+| `components/RadioButton.tsx` | Native `onKeyDown` via `<input>` | Standard radio selection |
+| `components/ActionButton.tsx` | `Enter`, `Space` (inline) | Click activation for keyboard users |
+| `components/ActionListItem.tsx` | `Enter`, `Space` (inline) | Click activation for keyboard users |
+| `components/Accordion.tsx` | `Enter`, `Space` (inline) | Toggle open/close for keyboard users |
+| `components/TreeView.tsx` | `Enter`, `Space` (inline) | Toggle expand/collapse for keyboard users |
+| `components/CanvasPlatformer.tsx` | Arrow keys, `Space` (window listener) | Player movement and jumping |
+| `components/CanvasSnake.tsx` | Arrow keys (window listener) | Snake direction control |
+| `components/DOMSnake.tsx` | Arrow keys (window listener) | Snake direction control |
+
+### Integration with the CLI framework
+
+The CLI framework (`scripts/cli/lib/app.js`) has its own keyboard system based on Node.js `process.stdin` raw mode. It handles `q`, `Escape` (quit), arrow keys (pagination/selection), and `Enter` (selection confirm). This is completely separate from the React hotkey module — the two systems share concepts but no code.
+
 ## Working agreements
 
 - Don't commit unless the user explicitly asks. Sacred ships releases manually.

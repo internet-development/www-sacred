@@ -28,8 +28,8 @@ function DropdownMenuTrigger({ children, items, hotkey }: DropdownMenuTriggerPro
   const triggerRef = React.useRef<HTMLElement>(null);
   const elementRef = React.useRef<HTMLDivElement>(null);
 
-  const onClick = React.useCallback((event: React.MouseEvent) => {
-    event.preventDefault();
+  const onClick = React.useCallback((event?: React.MouseEvent) => {
+    if (event) event.preventDefault();
     setOpen(true);
   }, []);
 
@@ -63,6 +63,15 @@ function DropdownMenuTrigger({ children, items, hotkey }: DropdownMenuTriggerPro
       setWillClose(false);
     }
   }, [willClose]);
+
+  //NOTE(jimmylee): Return focus to the trigger element when the menu closes.
+  const prevOpen = React.useRef(false);
+  React.useEffect(() => {
+    if (prevOpen.current && !open) {
+      triggerRef.current?.focus();
+    }
+    prevOpen.current = open;
+  }, [open]);
 
   React.useEffect(() => {
     if (!open || !triggerRef.current || !elementRef.current) return;
@@ -103,8 +112,7 @@ function DropdownMenuTrigger({ children, items, hotkey }: DropdownMenuTriggerPro
               left: `${position.left}px`,
               zIndex: `var(--z-index-page-dropdown-menus)`,
             }}
-            role="dialog"
-            aria-modal="true"
+            aria-label="menu"
           />
         </OutsideElementEvent>,
         document.body

@@ -96,6 +96,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     href?: string;
     target?: string;
     onClick?: React.MouseEventHandler<HTMLDivElement | HTMLAnchorElement>;
+    role?: string;
   }
   ```
 - **Theming tokens:** `--theme-button-background`, `--theme-button-foreground`, `--theme-focused-foreground`, `--theme-text`, `--theme-line-height-base`, `--font-size`
@@ -500,7 +501,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
 ## DropdownMenu
 
 - **Path:** `components/DropdownMenu.tsx`
-- **Purpose:** Floating list of action items with optional links, modal triggers, and keyboard navigation.
+- **Purpose:** Floating list of action items with `role="menu"`, arrow-key navigation with focus wrapping, Enter/Space activation, and Escape to dismiss. Each item receives `role="menuitem"`.
 - **Props:**
   ```ts
   interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -515,7 +516,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
 ## DropdownMenuTrigger
 
 - **Path:** `components/DropdownMenuTrigger.tsx`
-- **Purpose:** Wrapper that opens an associated `DropdownMenu` on click and dismisses on outside click.
+- **Purpose:** Wrapper that opens an associated `DropdownMenu` on click or hotkey, dismisses on outside click, and returns focus to the trigger element when the menu closes.
 - **Props:**
   ```ts
   interface DropdownMenuTriggerProps {
@@ -643,7 +644,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
 ## ModalTrigger
 
 - **Path:** `components/ModalTrigger.tsx`
-- **Purpose:** Wrapper that opens a modal component on click, forwarding optional modal props.
+- **Purpose:** Injects an `onClick` into its child via `React.cloneElement` that opens a modal component, chaining with any existing `onClick` the child already has. Keyboard-accessible because the child's own `onKeyDown` handler (which calls `onClick`) fires the injected callback directly.
 - **Props:**
   ```ts
   interface ModalTriggerProps {
@@ -708,7 +709,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
 ## Providers
 
 - **Path:** `components/Providers.tsx`
-- **Purpose:** Top-level context provider wrapping the app in modal context.
+- **Purpose:** Top-level context provider wrapping the app in `HotkeysProvider` and `ModalProvider`.
 - **Props:**
   ```ts
   interface ProvidersProps {

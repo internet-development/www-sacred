@@ -1,6 +1,7 @@
 .board {
   display: inline-table;
   border-collapse: collapse;
+  touch-action: none;
 }
 
 .corner {

@@ -11,6 +11,7 @@ import Table from '@components/Table';
 import TableRow from '@components/TableRow';
 import TableColumn from '@components/TableColumn';
 import TextArea from '@components/TextArea';
+import Window from '@components/Window';
 
 type AS400Props = React.HTMLAttributes<HTMLElement> & {
   children?: React.ReactNode;
@@ -18,7 +19,7 @@ type AS400Props = React.HTMLAttributes<HTMLElement> & {
 
 const AS400 = () => {
   return (
-    <>
+    <Window>
       <Card>
         <RowSpaceBetween>
           <span style={{ minWidth: `10ch` }}>COMMAND</span>
@@ -279,7 +280,7 @@ const AS400 = () => {
           </TableRow>
         </Table>
       </Card>
-    </>
+    </Window>
   );
 };
 

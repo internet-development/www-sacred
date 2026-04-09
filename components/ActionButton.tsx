@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '@components/ActionButton.module.css';
 
 import * as React from 'react';
@@ -14,7 +16,7 @@ interface ActionButtonProps {
 
 const ActionButton = React.forwardRef<HTMLDivElement, ActionButtonProps>(({ onClick, hotkey, children, style, rootStyle, isSelected }, ref) => {
   return (
-    <div className={Utilities.classNames(styles.root, isSelected ? styles.selected : null)} style={rootStyle} onClick={onClick} tabIndex={0} ref={ref} role="button">
+    <div className={Utilities.classNames(styles.root, isSelected ? styles.selected : null)} style={rootStyle} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { if (e.key === ' ') e.preventDefault(); onClick?.(); } }} tabIndex={0} ref={ref} role="button">
       {Utilities.isEmpty(hotkey) ? null : <span className={styles.hotkey}>{hotkey}</span>}
       <span className={styles.content} style={style}>
         {children}

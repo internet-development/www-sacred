@@ -172,8 +172,7 @@ export function bytesToSize(bytes: number, decimals: number = 2) {
 }
 
 export function isEmpty(text: any) {
-  // NOTE(jimmylee):
-  // If a number gets passed in, it isn't considered empty for zero.
+  //NOTE(jimmylee): Zero is a valid value, not empty.
   if (text === 0) {
     return false;
   }

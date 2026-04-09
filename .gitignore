@@ -1,6 +1,9 @@
 .next
 .nova
 .env
+__pycache__
+*.pyc
+/**/*/__pycache__
 .env.local
 .env-custom-development
 .env-development
@@ -12,9 +15,12 @@ yarn.lock
 node_modules
 dist
 analytics.txt
+NEXT.md
+.workdir
 package-lock.json
 
 /**/*/.DS_STORE
 /**/*/node_modules
 /**/*/.next
 /**/*/.data
+/**/*/.workdir

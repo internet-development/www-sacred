@@ -12,6 +12,7 @@ import ModalError from '@components/modals/ModalError';
 import Navigation from '@components/Navigation';
 import RowEllipsis from '@components/RowEllipsis';
 import SidebarLayout from '@components/SidebarLayout';
+import Window from '@components/Window';
 
 import * as React from 'react';
 
@@ -23,8 +24,9 @@ const ChatPreviewInline = (props) => {
 
 const MessagesInterface: React.FC<MessagesInterfaceProps> = () => {
   return (
-    <div style={{ minWidth: '28ch' }}>
-      <Navigation
+    <Window>
+      <div style={{ minWidth: '28ch' }}>
+        <Navigation
         logo="✶"
         left={
           <>
@@ -482,8 +484,9 @@ const MessagesInterface: React.FC<MessagesInterfaceProps> = () => {
         <br />
         <br />
         <Input autoComplete="off" isBlink={true} label="Message" name="test_message_interface" />
-      </SidebarLayout>
-    </div>
+        </SidebarLayout>
+      </div>
+    </Window>
   );
 };
 

@@ -35,7 +35,7 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
 
   return (
     <div className={styles.root} style={style}>
-      <div tabIndex={0} role="button" onClick={onToggleShow} className={styles.item} aria-expanded={show}>
+      <div tabIndex={0} role="button" onClick={onToggleShow} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { if (e.key === ' ') e.preventDefault(); onToggleShow(); } }} className={styles.item} aria-expanded={show}>
         {prefix}
         {icon}
         {title}

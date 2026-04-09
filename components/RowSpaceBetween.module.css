@@ -5,7 +5,8 @@
   border: 0;
   transition: 200ms ease background;
 
-  &:focus {
+  &:focus,
+  &:active {
     background: var(--theme-focused-foreground);
   }
 }

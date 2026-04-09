@@ -10,10 +10,11 @@ import Divider from '@components/Divider';
 import Row from '@components/Row';
 import RowSpaceBetween from '@components/RowSpaceBetween';
 import SidebarLayout from '@components/SidebarLayout';
+import Window from '@components/Window';
 
 const Denabase = (props) => {
   return (
-    <>
+    <Window>
       <Card style={{ overflowWrap: 'break-word' }}>
         <Row>
           <RowSpaceBetween>
@@ -154,7 +155,7 @@ const Denabase = (props) => {
           </RowSpaceBetween>
         </div>
       </Card>
-    </>
+    </Window>
   );
 };
 

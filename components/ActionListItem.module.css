@@ -26,6 +26,10 @@
   &:focus .icon {
     background: var(--theme-focused-foreground);
   }
+
+  &:active .icon {
+    background: var(--theme-focused-foreground);
+  }
 }
 
 .icon {

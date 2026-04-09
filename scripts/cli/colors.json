@@ -1,0 +1,15 @@
+{
+  "termBg": "#000000",
+  "windowBg": "#3a3a3a",
+  "shadow": "#262626",
+  "tableHeader": "#585858",
+  "text": "#ffffff",
+  "success": "#00ff00",
+  "neutral": "#a8a8a8",
+  "btnHotkey": "#8a8a8a",
+  "btnLabel": "#4e4e4e",
+  "btnLabelText": "#a8a8a8",
+  "brand": "#e4f221",
+  "gradientStart": "#ffffff",
+  "gradientEnd": "#585858"
+}

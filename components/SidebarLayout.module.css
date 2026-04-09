@@ -36,6 +36,12 @@
       background: var(--theme-focused-foreground);
     }
   }
+
+  &:active {
+    .line {
+      background: var(--theme-focused-foreground);
+    }
+  }
 }
 
 .line {

@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '@components/ActionListItem.module.css';
 
 import * as React from 'react';
@@ -24,7 +26,7 @@ const ActionListItem: React.FC<ActionListItemProps> = (props) => {
   }
 
   return (
-    <div className={styles.item} onClick={onClick} style={style} tabIndex={0} role="button">
+    <div className={styles.item} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { if (e.key === ' ') e.preventDefault(); e.currentTarget.click(); } }} style={style} tabIndex={0} role="button">
       <figure className={styles.icon}>{icon}</figure>
       <span className={styles.text}>{children}</span>
     </div>

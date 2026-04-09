@@ -1,0 +1,8 @@
+.window {
+  display: block;
+  background: var(--theme-window-background);
+  box-shadow: 1ch calc(var(--theme-line-height-base) * 1rem) 0 0 var(--theme-window-shadow);
+  margin: 0;
+  padding: calc(var(--theme-line-height-base) * 1rem) min(2ch, 4vw) calc(var(--theme-line-height-base) * 1rem) min(2ch, 4vw);
+  min-width: min(24ch, 100%);
+}

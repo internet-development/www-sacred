@@ -47,6 +47,10 @@
   &:hover {
     background: var(--theme-focused-foreground);
   }
+
+  &:active {
+    background: var(--theme-focused-foreground);
+  }
 }
 
 .menu {
@@ -73,5 +77,9 @@
     background: var(--theme-focused-foreground);
     border: 0;
     outline: 0;
+  }
+
+  &:active {
+    background: var(--theme-focused-foreground);
   }
 }

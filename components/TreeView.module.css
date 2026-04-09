@@ -6,7 +6,8 @@
 .item {
   cursor: pointer;
 
-  &:focus {
+  &:focus,
+  &:active {
     outline: 0;
     border: 0;
     background: var(--theme-focused-foreground);

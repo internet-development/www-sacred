@@ -8,7 +8,8 @@
   border-spacing: 0px;
   -webkit-text-size-adjust: 100%;
 
-  &:focus {
+  &:focus,
+  &:active {
     background: var(--theme-focused-foreground);
     outline: 0;
   }

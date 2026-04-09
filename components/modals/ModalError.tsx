@@ -19,8 +19,7 @@ interface ModalErrorProps {
   title?: string;
 }
 
-// TODO(jimmylee)
-// Enter doesn't always work for some reason.
+//NOTE(jimmylee): Enter doesn't always work for some reason.
 function ModalError({ message, buttonText, title }: ModalErrorProps) {
   const { close } = useModals();
 

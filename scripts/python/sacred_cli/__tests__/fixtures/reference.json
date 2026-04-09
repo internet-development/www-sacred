@@ -1,0 +1,31 @@
+{
+  "inner_w": 40,
+  "card_top": "┌─ TITLE ──────────────────────────────┐",
+  "card_row": "│  hello                               │",
+  "card_bot": "└──────────────────────────────────────┘",
+  "card_select_row_off": "│  item                                │",
+  "card_select_row_on": "│\u001b[7m  item                                \u001b[0m│",
+  "card_header_row": "│\u001b[48;2;88;88;88m\u001b[38;2;255;255;255m  A          B                        \u001b[0m│",
+  "format_row_basic": "name       value                    ",
+  "format_row_status": "\u001b[1m\u001b[38;2;0;255;0mACTIVE\u001b[22m\u001b[39m            \u001b[38;2;168;168;168mPAID\u001b[22m\u001b[39m",
+  "button_esc": "\u001b[48;2;138;138;138m\u001b[38;2;255;255;255m ESC \u001b[22m\u001b[39m\u001b[48;2;78;78;78m\u001b[38;2;168;168;168m EXIT \u001b[0m",
+  "button_arrow": "\u001b[48;2;138;138;138m\u001b[38;2;255;255;255m ↵ \u001b[22m\u001b[39m\u001b[48;2;78;78;78m\u001b[38;2;168;168;168m SELECT \u001b[0m",
+  "button_row": "\u001b[48;2;138;138;138m\u001b[38;2;255;255;255m ESC \u001b[22m\u001b[39m\u001b[48;2;78;78;78m\u001b[38;2;168;168;168m EXIT \u001b[0m\u001b[48;2;58;58;58m                  \u001b[0m\u001b[48;2;138;138;138m\u001b[38;2;255;255;255m ↵ \u001b[22m\u001b[39m\u001b[48;2;78;78;78m\u001b[38;2;168;168;168m SELECT \u001b[0m",
+  "word_wrap": [
+    "the quick",
+    "brown fox",
+    "jumps over",
+    "the lazy dog"
+  ],
+  "kv_table": [
+    "PROJECT                 sacred",
+    "STATUS                  OK"
+  ],
+  "kv_table_gradient": [
+    "STATUS                  \u001b[38;2;255;255;255mO\u001b[38;2;88;88;88mK\u001b[22m\u001b[39m"
+  ],
+  "inner_width_80": 75,
+  "wrap_line_top": "\u001b[49m  \u001b[48;2;58;58;58mcontent\u001b[0m\u001b[48;2;58;58;58m                                 \u001b[0m\u001b[49m  \u001b[0m",
+  "wrap_line": "\u001b[49m  \u001b[48;2;58;58;58mcontent\u001b[0m\u001b[48;2;58;58;58m                                 \u001b[0m\u001b[48;2;38;38;38m \u001b[0m\u001b[49m \u001b[0m",
+  "shadow_bottom_row": "\u001b[49m   \u001b[48;2;38;38;38m                                        \u001b[0m\u001b[49m \u001b[0m"
+}

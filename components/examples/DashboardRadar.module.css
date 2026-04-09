@@ -19,6 +19,7 @@
 
 .root {
   min-width: 56ch;
+  overflow-x: auto;
 }
 
 .cross {

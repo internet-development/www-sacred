@@ -7,7 +7,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &:focus {
+  &:focus,
+  &:active {
     background: var(--theme-focused-foreground);
   }
 }

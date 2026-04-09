@@ -9,6 +9,7 @@ import Card from '@components/Card';
 import RowSpaceBetween from '@components/RowSpaceBetween';
 import SidebarLayout from '@components/SidebarLayout';
 import Sphere from '@components/svg/Sphere';
+import Window from '@components/Window';
 
 const RadarMarker = (props) => {
   return (
@@ -27,8 +28,9 @@ const RadarMarker = (props) => {
 
 const DashboardRadar = (props) => {
   return (
-    <div className={styles.root}>
-      <SidebarLayout
+    <Window>
+      <div className={styles.root}>
+        <SidebarLayout
         isReversed
         sidebar={
           <Card>
@@ -101,8 +103,9 @@ const DashboardRadar = (props) => {
             <RadarMarker />
           </RowSpaceBetween>
         </Card>
-      </SidebarLayout>
-    </div>
+        </SidebarLayout>
+      </div>
+    </Window>
   );
 };
 

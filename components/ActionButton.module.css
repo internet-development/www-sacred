@@ -43,11 +43,27 @@
     box-shadow: inset 0 0 0 2px var(--theme-focused-foreground);
   }
 
+  &:focus {
+    background: var(--theme-focused-foreground);
+  }
+
   &:focus .hotkey {
     background: var(--theme-focused-foreground);
   }
 
   &:focus .content {
+    box-shadow: inset 0 0 0 2px var(--theme-focused-foreground);
+  }
+
+  &:active {
+    background: var(--theme-focused-foreground);
+  }
+
+  &:active .hotkey {
+    background: var(--theme-focused-foreground);
+  }
+
+  &:active .content {
     box-shadow: inset 0 0 0 2px var(--theme-focused-foreground);
   }
 }

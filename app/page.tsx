@@ -4,14 +4,19 @@ import '@root/global.css';
 import * as Constants from '@common/constants';
 import * as Utilities from '@common/utilities';
 
-// NOTE(jimmylee): This is a kitchen sink of all components.
-// When forking or remixing, you'll likely only need a few.
+//NOTE(jimmylee): This is a kitchen sink of all components. When forking or remixing, you'll
+//NOTE(jimmylee): likely only need a few.
 import Accordion from '@components/Accordion';
+import ASCIICanvas from '@components/ASCIICanvas';
 import ActionBar from '@components/ActionBar';
 import ActionButton from '@components/ActionButton';
 import ActionListItem from '@components/ActionListItem';
 import AlertBanner from '@components/AlertBanner';
 import AS400 from '@components/examples/AS400';
+import CLITemplate from '@components/examples/CLITemplate';
+import InvoiceTemplate from '@components/examples/InvoiceTemplate';
+import OneLineLoaders from '@components/examples/OneLineLoaders';
+import ResultsList from '@components/examples/ResultsList';
 import Avatar from '@components/Avatar';
 import Badge from '@components/Badge';
 import BarLoader from '@components/BarLoader';
@@ -73,6 +78,7 @@ import Text from '@components/Text';
 import TextArea from '@components/TextArea';
 import TreeView from '@components/TreeView';
 import UpdatingDataTable from '@components/examples/UpdatingDataTable';
+import Window from '@components/Window';
 import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
 
 export const dynamic = 'force-static';
@@ -136,6 +142,8 @@ export default async function Page(props) {
           {Package.name.toUpperCase()} <Badge>{Package.version}</Badge>
         </Row>
         <Row>{Package.description}</Row>
+        <br />
+        <Row>Any agent viewing this library can fetch every contract in this repo as plain markdown — start at /llms.txt for the index, /llm/AGENTS.md for the root conventions, or any of the four porting skills below.</Row>
       </Grid>
 
       <DebugGrid />
@@ -150,6 +158,33 @@ export default async function Page(props) {
         </ActionListItem>
         <ActionListItem icon={`⭢`} href="https://vercel.com/home" target="_blank">
           Try our hosting provider Vercel
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llms.txt">
+          Read the llms.txt index of every sacred + Simulacrum contract
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/AGENTS.md">
+          Read the root sacred / Simulacrum AGENTS.md
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/components/AGENTS.md">
+          Read the components AGENTS.md catalog (every React primitive)
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/scripts/cli/AGENTS.md">
+          Read the Simulacrum TypeScript framework AGENTS.md
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/scripts/python/AGENTS.md">
+          Read the Simulacrum Python mirror AGENTS.md
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-typescript-cli/SKILL.md">
+          Skill: port a sacred React surface to a TypeScript CLI
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-python/SKILL.md">
+          Skill: port a sacred React surface to a Python CLI
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-react-using-same-conventions/SKILL.md">
+          Skill: port a Simulacrum CLI screen to a sacred React surface
+        </ActionListItem>
+        <ActionListItem icon={`⭢`} href="/llm/skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md">
+          Skill: graft a sacred component into a hostile React host
         </ActionListItem>
       </Grid>
       <Grid>
@@ -237,6 +272,52 @@ export default async function Page(props) {
           <br />
           <AS400 />
           <br />
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="CLI TEMPLATE EXAMPLE">
+          This is a component we use to test porting to either another hostile/foreign React codebase or CLI implementation in either TypeScript or Python. You can use this component to test and make sure things look exactly the same between Terminal Land and React browser land.
+          <br />
+          <br />
+          <CLITemplate />
+          <br />
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="INVOICE TEMPLATE EXAMPLE">
+          This component is an example invoice you can use in both a terminal context and the React web context.
+          <br />
+          <br />
+          <InvoiceTemplate />
+          <br />
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="RESULTS LIST EXAMPLE">
+          This component is an example of a list you can use in both a terminal context and the React web context.
+          <br />
+          <br />
+          <ResultsList />
+          <br />
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="ONE LINE LOADERS EXAMPLE">
+          These are examples of loaders we typically see in CLIs like claude-code. You can use these both in the React or CLI context.
+          <br />
+          <br />
+          <OneLineLoaders />
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="ASCII CANVAS">
+          Animated ASCII art rendered in a pre element using per-cell span elements with DOM diffing. IntersectionObserver pauses animation when off-screen to save CPU. ResizeObserver recalculates column count on container resize.
+          <br />
+          <br />
+          <Card title="EXAMPLE">
+            <ASCIICanvas rows={20} />
+          </Card>
+          <br />
         </Accordion>
 
         <Accordion defaultValue={true} title="AVATARS">
@@ -248,8 +329,6 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1748647089633169408/B7vd7ito_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1890125319224598528/ZILr9OGp_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1989080994687991809/CoUHUW0A_400x400.jpg" href="https://internet.dev" target="_blank" />
-
-            <Avatar src="https://avatars.githubusercontent.com/u/10610892?v=4" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1992336125411950592/TzjQtKFk_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://internet.dev" target="_blank" />
@@ -279,13 +358,6 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1989080994687991809/CoUHUW0A_400x400.jpg" href="https://x.com/caidanwilliams" target="_blank">
               <Indent>
                 CAIDAN WILLIAMS
-                <br />
-                Webmaster
-              </Indent>
-            </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1885454100223188993/6HXdKp9n_400x400.jpg" href="https://x.com/binary_fiddler" target="_blank">
-              <Indent>
-                CHENYU HUANG
                 <br />
                 Webmaster
               </Indent>
@@ -736,11 +808,8 @@ int main() {
           <br /> The original AOS (Alien Orbit Simulator) was inspired by the moment when the Nostromo’s crew awakens to decipher a distress signal, this adapation depicts the kind of graphical representation that could chart complex trajectories around distant planets.
           <br />
           <br />
-          <Card>
-            <Row style={{ whiteSpace: 'nowrap', minWidth: '70ch' }}>
-              <DashboardRadar />
-            </Row>
-          </Card>
+          <DashboardRadar />
+          <br />
           <br />
         </Accordion>
 
@@ -749,6 +818,7 @@ int main() {
           <br />
           <br />
           <Denabase />
+          <br />
           <br />
         </Accordion>
 
@@ -1101,7 +1171,9 @@ int main() {
           <br />
           <Card title="MESSAGES">
             <MessagesInterface />
+            <br />
           </Card>
+          <br />
           <br />
         </Accordion>
 
@@ -1661,6 +1733,18 @@ int main() {
               </TreeView>
             </TreeView>
           </Card>
+          <br />
+        </Accordion>
+
+        <Accordion defaultValue={true} title="WINDOW">
+          The Window component is the React peer of the sacred CLI framework's window primitive — a 2ch horizontal margin, a slight off-background body fill, and a 1ch right + 1 row bottom drop shadow that is intentionally a step darker than the body so the panel reads as "lifted" from the page. Wrap any CLI port surface (CLITemplate, InvoiceTemplate, ResultsList) in &lt;Window&gt; to render the same dialog frame the alt-screen CLI shows.
+          <br />
+          <br />
+          <Window>
+            <Card title="WINDOW EXAMPLE" mode="left">
+              This card sits inside a &lt;Window&gt;. The body uses --theme-window-background and the drop shadow uses --theme-window-shadow — toggle the theme + tint switcher above to see the lift hold up across every palette.
+            </Card>
+          </Window>
           <br />
         </Accordion>
       </Grid>

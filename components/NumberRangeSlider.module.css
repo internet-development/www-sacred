@@ -36,6 +36,10 @@
     cursor: pointer;
   }
 
+  &:active {
+    background: linear-gradient(to right, transparent, var(--theme-focused-foreground));
+  }
+
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -48,7 +52,6 @@
     border-radius: 0;
   }
 
-  /* Customizing the track */
   &::-webkit-slider-runnable-track {
     height: calc(var(--font-size) * var(--theme-line-height-base));
     background: var(--theme-border-subdued);

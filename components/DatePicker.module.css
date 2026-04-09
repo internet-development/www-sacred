@@ -22,7 +22,8 @@
   outline: 0;
   padding: 0 1ch 0 1ch;
 
-  &:focus {
+  &:focus,
+  &:active {
     background: var(--theme-focused-foreground);
     outline: 0;
   }
@@ -56,7 +57,8 @@
   padding: 0 1ch 0 1ch;
   text-align: center;
 
-  &:focus {
+  &:focus,
+  &:active {
     background: var(--theme-focused-foreground);
   }
 }

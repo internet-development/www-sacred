@@ -5,7 +5,7 @@
 }
 
 .placeholder {
-  background: var(--theme-border);
+  background: var(--theme-window-shadow);
   display: inline-block;
   width: 4ch;
   height: calc(var(--font-size) * var(--theme-line-height-base) * 2);
@@ -13,7 +13,8 @@
   flex-shrink: 0;
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:active {
     &::before {
       content: '';
       top: 0;
@@ -41,7 +42,8 @@ a.root {
   flex-shrink: 0;
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:active {
     background: unset;
     background-size: cover;
     background-position: 50% 50%;

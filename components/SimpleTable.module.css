@@ -1,0 +1,50 @@
+/*
+NOTE(jimmylee):
+Simple fluid table for Sacred Computer. The CLI framework's `formatRow` +
+`cardHeaderRow` primitives map onto this exact CSS surface, so the React port and
+the terminal port render the same rows from the same data array. Background tokens
+reference the ANSI palette in global.css so the colors are byte-equal to
+scripts/cli/colors.json (#585858 / #00ff00 / #a8a8a8).
+*/
+
+.scrollWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.root {
+  padding: 0;
+  border-collapse: collapse;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  width: 100%;
+}
+
+.root td {
+  padding: 0 2ch 0 0;
+  vertical-align: top;
+}
+
+.root td:last-child {
+  padding-right: 0;
+}
+
+.root thead td {
+  background: var(--ansi-240-gray-35);
+  color: var(--color-white);
+  font-weight: 400;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.statusOk {
+  color: var(--ansi-10-lime);
+  font-weight: 700;
+}
+
+.statusOff {
+  color: var(--ansi-248-gray-66);
+}

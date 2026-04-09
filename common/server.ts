@@ -2,8 +2,7 @@ import * as Utilities from '@common/utilities';
 
 import Cors from '@modules/cors';
 
-// NOTE(jimmylee)
-// import aesjs from 'aes-js';
+//NOTE(jimmylee): aesjs is needed for server-side decryption but omitted from the open-source build.
 /*
 Some endpoints on https://api.internet.dev require server-side decryption. Without it, you won’t be able to perform actions like password recovery or Google authentication. To enable these features, you’ll need to set two environment variables with the correct values, and have an active partnership with us.
 

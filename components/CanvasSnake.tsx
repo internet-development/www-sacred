@@ -1,5 +1,9 @@
 'use client';
 
+//NOTE(jimmylee): Snake game rendered via pre/span grid instead of canvas.
+//NOTE(jimmylee): Same DOM diffing, IntersectionObserver, and ResizeObserver patterns as ASCIICanvas.
+//NOTE(jimmylee): Game logic is identical to the original — grid-based movement, wrap-on-collision reset.
+
 import styles from '@components/CanvasSnake.module.css';
 
 import * as React from 'react';
@@ -10,13 +14,6 @@ interface SnakeProps {
   rows?: number;
 }
 
-// TODO(jimmylee)
-// Move these constants into a separate file
-// Dynamically compute these constants since we're going to
-// Support t-shirt sizes for the system.
-const LINE_HEIGHT = 20;
-const CHARACTER_WIDTH = 9.6;
-
 interface Position {
   x: number;
   y: number;
@@ -25,7 +22,7 @@ interface Position {
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
 const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
-  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+  const preRef = React.useRef<HTMLPreElement>(null);
   const [focused, setFocused] = React.useState(false);
   const directionRef = React.useRef<Direction>('RIGHT');
   const snakeRef = React.useRef<Position[]>([]);
@@ -34,96 +31,229 @@ const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
   const gridHeightRef = React.useRef<number>(0);
   const lastMoveTimeRef = React.useRef<number>(0);
   const moveInterval = 150;
-  const animationFrameRef = React.useRef<number | null>(null);
+  const frameRef = React.useRef<number>(0);
+  const visibleRef = React.useRef<boolean>(false);
+  const gridRef = React.useRef<HTMLSpanElement[]>([]);
+  const prevColsRef = React.useRef<number>(0);
+  const prevCharsRef = React.useRef<string[]>([]);
+  const prevColorsRef = React.useRef<string[]>([]);
+  const focusedRef = React.useRef<boolean>(false);
 
-  const reset = React.useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  const reset = React.useCallback((cols: number, gridRows: number) => {
+    gridWidthRef.current = cols;
+    gridHeightRef.current = gridRows;
 
-    const w = canvas.width;
-    const h = canvas.height;
-    const gridWidth = Math.floor(w / CHARACTER_WIDTH);
-    const gridHeight = Math.floor(h / LINE_HEIGHT);
+    const startX = Math.floor(cols / 2);
+    const startY = Math.floor(gridRows / 2);
 
-    gridWidthRef.current = gridWidth;
-    gridHeightRef.current = gridHeight;
-
-    const startX = Math.floor(gridWidth / 2);
-    const startY = Math.floor(gridHeight / 2);
-
-    snakeRef.current = [
-      { x: startX - 13, y: startY },
-      { x: startX - 12, y: startY },
-      { x: startX - 11, y: startY },
-      { x: startX - 10, y: startY },
-      { x: startX - 9, y: startY },
-      { x: startX - 8, y: startY },
-      { x: startX - 7, y: startY },
-      { x: startX - 6, y: startY },
-      { x: startX - 5, y: startY },
-      { x: startX - 4, y: startY },
-      { x: startX - 3, y: startY },
-      { x: startX - 2, y: startY },
-      { x: startX - 1, y: startY },
-      { x: startX, y: startY },
-    ];
-
+    const snake: Position[] = [];
+    for (let i = 13; i >= 0; i--) {
+      snake.push({ x: startX - i, y: startY });
+    }
+    snakeRef.current = snake;
     directionRef.current = 'RIGHT';
 
     fruitRef.current = {
-      x: Math.floor(Math.random() * gridWidth),
-      y: Math.floor(Math.random() * gridHeight),
+      x: Math.floor(Math.random() * cols),
+      y: Math.floor(Math.random() * gridRows),
     };
 
     lastMoveTimeRef.current = performance.now();
   }, []);
 
   React.useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const el = preRef.current;
+    if (!el) return;
 
-    const parent = canvas.parentElement;
-    if (!parent) return;
+    let cancelled = false;
 
-    const onHandleResizeCanvas = () => {
-      const parentWidth = parent.clientWidth;
-      const canvasHeight = rows * LINE_HEIGHT;
-      canvas.width = parentWidth;
-      canvas.height = canvasHeight;
-      reset();
+    const measure = document.createElement('span');
+    measure.style.visibility = 'hidden';
+    measure.style.position = 'absolute';
+    measure.style.whiteSpace = 'pre';
+    measure.textContent = 'X';
+    el.appendChild(measure);
+
+    const themeTextColor = getComputedStyle(document.body).getPropertyValue('--theme-text').trim();
+    const themeFocusedColor = getComputedStyle(document.body).getPropertyValue('--theme-focused-foreground').trim();
+
+    const buildGrid = (cols: number) => {
+      if (cols === prevColsRef.current) return;
+      prevColsRef.current = cols;
+      while (el.firstChild && el.firstChild !== measure) {
+        el.removeChild(el.firstChild);
+      }
+
+      const frag = document.createDocumentFragment();
+      const spans: HTMLSpanElement[] = [];
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const s = document.createElement('span');
+          s.textContent = ' ';
+          spans.push(s);
+          frag.appendChild(s);
+        }
+        if (y < rows - 1) frag.appendChild(document.createTextNode('\n'));
+      }
+
+      el.insertBefore(frag, measure);
+      gridRef.current = spans;
+      prevCharsRef.current = new Array(cols * rows).fill('');
+      prevColorsRef.current = new Array(cols * rows).fill('');
+      reset(cols, rows);
     };
 
-    onHandleResizeCanvas();
-    window.addEventListener('resize', onHandleResizeCanvas);
+    const updateCols = () => {
+      const chW = measure.getBoundingClientRect().width;
+      if (chW > 0) {
+        const cols = Math.floor(el.clientWidth / chW);
+        buildGrid(cols);
+      }
+    };
+    updateCols();
+
+    const resizeObs = new ResizeObserver(updateCols);
+    resizeObs.observe(el);
+
+    const interObs = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = visibleRef.current;
+        visibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !wasVisible) {
+          frameRef.current = requestAnimationFrame(loop);
+        }
+      },
+      { threshold: 0 }
+    );
+    interObs.observe(el);
+
+    const moveSnake = () => {
+      const snake = snakeRef.current;
+      const dir = directionRef.current;
+      const head = snake[snake.length - 1];
+      const newHead: Position = { x: head.x, y: head.y };
+
+      if (dir === 'LEFT') newHead.x -= 1;
+      if (dir === 'RIGHT') newHead.x += 1;
+      if (dir === 'UP') newHead.y -= 1;
+      if (dir === 'DOWN') newHead.y += 1;
+
+      const cols = gridWidthRef.current;
+      if (newHead.x < 0 || newHead.x >= cols || newHead.y < 0 || newHead.y >= rows) {
+        reset(cols, rows);
+        return;
+      }
+
+      for (const seg of snake) {
+        if (seg.x === newHead.x && seg.y === newHead.y) {
+          reset(cols, rows);
+          return;
+        }
+      }
+
+      snake.push(newHead);
+      if (newHead.x === fruitRef.current.x && newHead.y === fruitRef.current.y) {
+        let fruitPos: Position;
+        while (true) {
+          fruitPos = {
+            x: Math.floor(Math.random() * cols),
+            y: Math.floor(Math.random() * rows),
+          };
+          if (!snake.some((s) => s.x === fruitPos.x && s.y === fruitPos.y)) break;
+        }
+        fruitRef.current = fruitPos;
+      } else {
+        snake.shift();
+      }
+    };
+
+    const loop = (time: number) => {
+      if (!visibleRef.current || cancelled) return;
+
+      const cols = gridWidthRef.current;
+      const grid = gridRef.current;
+      const total = cols * rows;
+      const pChars = prevCharsRef.current;
+      const pColors = prevColorsRef.current;
+
+      if (focusedRef.current && time - lastMoveTimeRef.current > moveInterval) {
+        moveSnake();
+        lastMoveTimeRef.current = time;
+      }
+
+      const snakeSet = new Set<number>();
+      for (const seg of snakeRef.current) {
+        snakeSet.add(seg.y * cols + seg.x);
+      }
+      const fruitIdx = fruitRef.current.y * cols + fruitRef.current.x;
+
+      for (let idx = 0; idx < total && idx < grid.length; idx++) {
+        const s = grid[idx];
+        let ch: string;
+        let color: string;
+
+        if (snakeSet.has(idx)) {
+          ch = '█';
+          color = themeTextColor;
+        } else if (idx === fruitIdx) {
+          ch = '█';
+          color = themeFocusedColor;
+        } else {
+          ch = ' ';
+          color = '';
+        }
+
+        if (ch !== pChars[idx]) {
+          s.textContent = ch;
+          pChars[idx] = ch;
+        }
+        if (color !== pColors[idx]) {
+          s.style.color = color;
+          pColors[idx] = color;
+        }
+      }
+
+      frameRef.current = requestAnimationFrame(loop);
+    };
+
+    frameRef.current = requestAnimationFrame(loop);
+
     return () => {
-      window.removeEventListener('resize', onHandleResizeCanvas);
+      cancelled = true;
+      cancelAnimationFrame(frameRef.current);
+      resizeObs.disconnect();
+      interObs.disconnect();
+      if (measure.parentNode) measure.parentNode.removeChild(measure);
     };
   }, [rows, reset]);
 
   React.useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const el = preRef.current;
+    if (!el) return;
 
-    const onHandleFocus = () => {
+    const onFocus = () => {
       setFocused(true);
+      focusedRef.current = true;
     };
-    const onHandleBlur = () => {
+    const onBlur = () => {
       setFocused(false);
+      focusedRef.current = false;
     };
 
-    canvas.tabIndex = 0;
-    canvas.addEventListener('focus', onHandleFocus);
-    canvas.addEventListener('blur', onHandleBlur);
+    el.tabIndex = 0;
+    el.addEventListener('focus', onFocus);
+    el.addEventListener('blur', onBlur);
 
     return () => {
-      canvas.removeEventListener('focus', onHandleFocus);
-      canvas.removeEventListener('blur', onHandleBlur);
+      el.removeEventListener('focus', onFocus);
+      el.removeEventListener('blur', onBlur);
     };
   }, []);
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!focused) return;
+      if (!focusedRef.current) return;
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
         e.preventDefault();
         e.stopPropagation();
@@ -139,191 +269,50 @@ const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown, { capture: true });
     };
-  }, [focused]);
+  }, []);
 
+  //NOTE(jimmylee): Swipe gestures for mobile — swipe direction maps to snake direction change.
   React.useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const el = preRef.current;
+    if (!el) return;
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    let startX = 0;
+    let startY = 0;
 
-    const themeBorderColor = getComputedStyle(document.body).getPropertyValue('--theme-text').trim();
-    const themeTextColor = getComputedStyle(document.body).getPropertyValue('--theme-focused-foreground').trim();
+    const onTouchStart = (e: TouchEvent) => {
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      if (!focusedRef.current) el.focus();
+    };
 
-    const moveSnake = () => {
-      const snake = snakeRef.current;
-      const dir = directionRef.current;
-      const head = snake[snake.length - 1];
-      let newHead: Position = { x: head.x, y: head.y };
-      if (dir === 'LEFT') newHead.x -= 1;
-      if (dir === 'RIGHT') newHead.x += 1;
-      if (dir === 'UP') newHead.y -= 1;
-      if (dir === 'DOWN') newHead.y += 1;
-      if (newHead.x < 0 || newHead.x >= gridWidthRef.current || newHead.y < 0 || newHead.y >= gridHeightRef.current) {
-        reset();
-        return;
-      }
-      for (const seg of snake) {
-        if (seg.x === newHead.x && seg.y === newHead.y) {
-          reset();
-          return;
-        }
-      }
-      snake.push(newHead);
-      if (newHead.x === fruitRef.current.x && newHead.y === fruitRef.current.y) {
-        placeTarget();
+    const onTouchEnd = (e: TouchEvent) => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+
+      if (absDx < 10 && absDy < 10) return;
+
+      const currentDir = directionRef.current;
+      if (absDx > absDy) {
+        if (dx > 0 && currentDir !== 'LEFT') directionRef.current = 'RIGHT';
+        if (dx < 0 && currentDir !== 'RIGHT') directionRef.current = 'LEFT';
       } else {
-        snake.shift();
+        if (dy > 0 && currentDir !== 'UP') directionRef.current = 'DOWN';
+        if (dy < 0 && currentDir !== 'DOWN') directionRef.current = 'UP';
       }
     };
 
-    const placeTarget = () => {
-      const snake = snakeRef.current;
-      const gridW = gridWidthRef.current;
-      const gridH = gridHeightRef.current;
-      let fruitPos: Position;
-      while (true) {
-        fruitPos = {
-          x: Math.floor(Math.random() * gridW),
-          y: Math.floor(Math.random() * gridH),
-        };
-        if (!snake.some((s) => s.x === fruitPos.x && s.y === fruitPos.y)) break;
-      }
-      fruitRef.current = fruitPos;
-    };
-
-    const loop = (time: number) => {
-      if (!ctx) return;
-      if (!focused) return;
-
-      const w = canvas.width;
-      const h = canvas.height;
-
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = themeTextColor;
-      ctx.fillRect(fruitRef.current.x * CHARACTER_WIDTH, fruitRef.current.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-      ctx.fillStyle = themeBorderColor;
-      for (const segment of snakeRef.current) {
-        ctx.fillRect(segment.x * CHARACTER_WIDTH, segment.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-      }
-      if (time - lastMoveTimeRef.current > moveInterval) {
-        moveSnake();
-        lastMoveTimeRef.current = time;
-      }
-      animationFrameRef.current = requestAnimationFrame(loop);
-    };
-
-    if (focused && animationFrameRef.current === null) {
-      animationFrameRef.current = requestAnimationFrame(loop);
-    }
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
-      if (animationFrameRef.current !== null) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
-      }
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchend', onTouchEnd);
     };
-  }, [focused, reset]);
-
-  React.useEffect(() => {
-    if (!focused) {
-      if (animationFrameRef.current !== null) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
-      }
-
-      return;
-    }
-
-    if (animationFrameRef.current === null && canvasRef.current) {
-      animationFrameRef.current = requestAnimationFrame((time) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        const themeBorderColor = getComputedStyle(document.body).getPropertyValue('--theme-border').trim();
-        const themeTextColor = getComputedStyle(document.body).getPropertyValue('--theme-text').trim();
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = themeBorderColor;
-        ctx.fillRect(fruitRef.current.x * CHARACTER_WIDTH, fruitRef.current.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-        ctx.fillStyle = themeTextColor;
-
-        for (const segment of snakeRef.current) {
-          ctx.fillRect(segment.x * CHARACTER_WIDTH, segment.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-        }
-
-        lastMoveTimeRef.current = time;
-        animationFrameRef.current = requestAnimationFrame(loop);
-
-        function loop(time: number) {
-          if (!focused) return;
-          if (!ctx) return;
-          if (!canvas) return;
-
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = themeBorderColor;
-          ctx.fillRect(fruitRef.current.x * CHARACTER_WIDTH, fruitRef.current.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-          ctx.fillStyle = themeTextColor;
-          for (const segment of snakeRef.current) {
-            ctx.fillRect(segment.x * CHARACTER_WIDTH, segment.y * LINE_HEIGHT, CHARACTER_WIDTH, LINE_HEIGHT);
-          }
-          if (time - lastMoveTimeRef.current > moveInterval) {
-            moveSnake();
-            lastMoveTimeRef.current = time;
-          }
-          animationFrameRef.current = requestAnimationFrame(loop);
-        }
-
-        const moveSnake = () => {
-          const snake = snakeRef.current;
-          const dir = directionRef.current;
-          const head = snake[snake.length - 1];
-          let newHead: Position = { x: head.x, y: head.y };
-          if (dir === 'LEFT') newHead.x -= 1;
-          if (dir === 'RIGHT') newHead.x += 1;
-          if (dir === 'UP') newHead.y -= 1;
-          if (dir === 'DOWN') newHead.y += 1;
-          if (newHead.x < 0 || newHead.x >= gridWidthRef.current || newHead.y < 0 || newHead.y >= gridHeightRef.current) {
-            reset();
-            return;
-          }
-
-          for (const seg of snake) {
-            if (seg.x === newHead.x && seg.y === newHead.y) {
-              reset();
-              return;
-            }
-          }
-
-          snake.push(newHead);
-          if (newHead.x === fruitRef.current.x && newHead.y === fruitRef.current.y) {
-            placeTarget();
-          } else {
-            snake.shift();
-          }
-        };
-
-        const placeTarget = () => {
-          const snake = snakeRef.current;
-          const gridW = gridWidthRef.current;
-          const gridH = gridHeightRef.current;
-          let fruitPos: Position;
-          while (true) {
-            fruitPos = {
-              x: Math.floor(Math.random() * gridW),
-              y: Math.floor(Math.random() * gridH),
-            };
-            if (!snake.some((s) => s.x === fruitPos.x && s.y === fruitPos.y)) break;
-          }
-          fruitRef.current = fruitPos;
-        };
-      });
-    }
-  }, [focused, reset]);
+  }, []);
 
   const onHandleClickUp = () => {
     if (directionRef.current !== 'DOWN') directionRef.current = 'UP';
@@ -337,6 +326,8 @@ const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
   const onHandleClickRight = () => {
     if (directionRef.current !== 'LEFT') directionRef.current = 'RIGHT';
   };
+
+  const heightStyle = { height: `calc(var(--font-size) * var(--theme-line-height-base) * ${rows})` };
 
   return (
     <>
@@ -353,7 +344,7 @@ const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
         Right
       </ActionButton>
       <div className={styles.container}>
-        <canvas className={styles.root} ref={canvasRef} />
+        <pre ref={preRef} className={styles.root} style={heightStyle} tabIndex={0} />
       </div>
     </>
   );

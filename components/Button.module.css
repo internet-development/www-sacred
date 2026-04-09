@@ -29,6 +29,10 @@
   &:focus {
     background: var(--theme-focused-foreground);
   }
+
+  &:active {
+    background: var(--theme-focused-foreground);
+  }
 }
 
 .secondary {
@@ -43,6 +47,11 @@
   }
 
   &:focus {
+    background: var(--theme-focused-foreground);
+    box-shadow: inset 0 0 0 1px transparent;
+  }
+
+  &:active {
     background: var(--theme-focused-foreground);
     box-shadow: inset 0 0 0 1px transparent;
   }

@@ -44,7 +44,7 @@ Copy the relevant `--ansi-*`, `--color-*`, and `--theme-*` tokens from `global.c
 
 ```css
 .sacred-root {
-  /* NOTE(@YOUR_GITHUB_USERNAME): Pinned ANSI palette — do not inherit host theme tokens. */
+  /* NOTE(your_github_username): Pinned ANSI palette — do not inherit host theme tokens. */
   --color-black: #000000;
   --color-white: #ffffff;
   --color-brand: #e4f221;

@@ -1,13 +1,5 @@
 'use client';
 
-//NOTE(jimmylee): React port of the WindowCreateInvoice CLI screen — layout only, no animation header.
-//NOTE(jimmylee): Same data shape as scripts/cli/templates/template.ts so the React surface and CLI
-//NOTE(jimmylee): screen render the same line items. Uses SimpleTable instead of DataTable so a port to
-//NOTE(jimmylee): the CLI framework can be made cell-for-cell with the same column widths. The screen
-//NOTE(jimmylee): is wrapped in <Window> and the action row uses <ActionButton> + <RowSpaceBetween>
-//NOTE(jimmylee): so it stays in lockstep with CLITemplate / ResultsList — every CLI port surface uses
-//NOTE(jimmylee): the same dialog frame and action button pair the alt-screen CLI shows.
-
 import * as React from 'react';
 
 import Window from '@components/Window';

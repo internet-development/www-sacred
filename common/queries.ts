@@ -1,5 +1,4 @@
 import * as Constants from '@common/constants';
-import * as Utilities from '@common/utilities';
 
 export async function getData({ route, key, body }, qualifier = 'data') {
   let result;

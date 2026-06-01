@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-# NOTE(jimmylee): Sacred CLI — Python template demonstrating layout primitives + lifecycle.
-# NOTE(jimmylee): Run with `npm run cli:python`. Press ESC or Ctrl-C to exit.
-# NOTE(jimmylee): This is the canonical example for porting React Window* components to Python CLI screens.
-
 import os
 import sys
 

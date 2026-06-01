@@ -1,9 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const { strip } = require('../ansi');
-const { formatRow, kvTable, kvTableGradient } = require('../table');
+import { strip } from '../ansi.ts';
+import { formatRow, kvTable, kvTableGradient } from '../table.ts';
 
 const SPEC = [
   { width: 10, align: 'left' },

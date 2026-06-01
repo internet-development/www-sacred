@@ -15,7 +15,7 @@ Use this skill whenever you want a CLI version of an existing sacred React surfa
 A single `.ts` file under `scripts/cli/templates/` that:
 
 1. Uses `tsx` as a shebang or `npm run cli:typescript` as the entry point.
-2. `require`s the framework primitives (the framework is CommonJS so TypeScript consumes it via `require` for type erasure with no build step).
+2. Imports the framework primitives (`import { ... } from '../lib/card'`).
 3. Calls `createApp({ build }).start()` with a `build(page, innerW, selectedRow)` function that returns `string[]`.
 
 ## Reference implementation
@@ -23,12 +23,12 @@ A single `.ts` file under `scripts/cli/templates/` that:
 Read these files before starting:
 
 - `scripts/cli/templates/template.ts` — canonical example (run with `npm run cli:typescript`)
-- `scripts/cli/lib/ansi.js` — ANSI escapes, hex helpers, padding, gradient text
-- `scripts/cli/lib/window.js` — window frame (margin + window bg + shadow)
-- `scripts/cli/lib/card.js` — box-drawing card borders and word-wrap
-- `scripts/cli/lib/table.js` — `formatRow`, `kvTable`, `kvTableGradient`
-- `scripts/cli/lib/button.js` — `button`, `buttonRow`
-- `scripts/cli/lib/app.js` — lifecycle: alt screen, raw mode, resize, paging, selection
+- `scripts/cli/lib/ansi.ts` — ANSI escapes, hex helpers, padding, gradient text
+- `scripts/cli/lib/window.ts` — window frame (margin + window bg + shadow)
+- `scripts/cli/lib/card.ts` — box-drawing card borders and word-wrap
+- `scripts/cli/lib/table.ts` — `formatRow`, `kvTable`, `kvTableGradient`, `ColSpec` type
+- `scripts/cli/lib/button.ts` — `button`, `buttonRow`
+- `scripts/cli/lib/app.ts` — lifecycle: alt screen, raw mode, resize, paging, selection
 - `scripts/cli/colors.json` — sacred-themed color palette (single source of truth)
 
 ## React-to-CLI concept map

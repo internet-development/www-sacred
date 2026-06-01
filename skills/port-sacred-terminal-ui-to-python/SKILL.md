@@ -104,19 +104,19 @@ npm run test:python     # only the Python suite
 npm test                # JS suite + Python suite (chained)
 ```
 
-`npm run test:python` first regenerates the JS reference fixture (`scripts/python/sacred_cli/__tests__/fixtures/reference.json`) via `node scripts/cli/lib/__tests__/dump_reference.js`, then runs `python3 -m unittest discover` against `sacred_cli/__tests__`. The fixture is checked into the repo so the Python test never has to shell out — regeneration is just a guard against stale snapshots.
+`npm run test:python` first regenerates the reference fixture (`scripts/python/sacred_cli/__tests__/fixtures/reference.json`) via `tsx scripts/cli/lib/__tests__/dump_reference.ts`, then runs `python3 -m unittest discover` against `sacred_cli/__tests__`. The fixture is checked into the repo so the Python test never has to shell out — regeneration is just a guard against stale snapshots.
 
 If `python3` is not on PATH, the runner prints a warning and exits 0. Sacred contributors on minimal containers can still run `npm test` without installing Python.
 
 ### When the parity test fails
 
-A failing parity test almost always means **a JS module was changed without porting the change to its Python mirror.** To fix:
+A failing parity test almost always means **a TS module was changed without porting the change to its Python mirror.** To fix:
 
 1. Read the failing assertion (e.g. `test_format_row_status`).
-2. Open the corresponding JS module (`scripts/cli/lib/table.js`) and the Python mirror (`scripts/python/sacred_cli/table.py`) side-by-side.
-3. Port the JS change into the Python file. Snake-case the symbol names per the naming table above.
+2. Open the corresponding TS module (`scripts/cli/lib/table.ts`) and the Python mirror (`scripts/python/sacred_cli/table.py`) side-by-side.
+3. Port the change into the Python file. Snake-case the symbol names per the naming table above.
 4. Re-run `npm test`. The fixture is regenerated automatically — no manual step needed.
 
-If you genuinely need to update the contract on **both** sides, edit the JS module first, then run `npm test` to see what the parity fixture now looks like, and only then port the new behavior into Python. Never edit the fixture JSON by hand.
+If you genuinely need to update the contract on **both** sides, edit the TS module first, then run `npm test` to see what the parity fixture now looks like, and only then port the new behavior into Python. Never edit the fixture JSON by hand.
 
 The unit tests under `scripts/python/sacred_cli/__tests__/` (one file per module: `test_ansi.py`, `test_window.py`, `test_card.py`, `test_table.py`, `test_button.py`) mirror the JS tests in `scripts/cli/lib/__tests__/`. When you add a new JS test, add the equivalent Python test in the same file so the assertion sets stay synchronized.

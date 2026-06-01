@@ -1,35 +1,46 @@
-'use strict';
-
-//NOTE(jimmylee): Sacred CLI app lifecycle — alt screen, raw mode, resize, input, pagination, selection.
-//NOTE(jimmylee): Deliberately static — no per-cell animation diffing. The React side handles its own
-//NOTE(jimmylee): animations via the existing ASCII canvas and physics modules.
-//NOTE(jimmylee): createApp({ build, totalPages, interactive, onKey }).start()
-//NOTE(jimmylee): totalPages accepts a number or () => number — re-evaluated on resize, currentPage clamped.
-
-const { stdin, stdout } = process;
-const {
+import {
   RESET, moveTo, cursorHide, cursorShow, altScreenOn, altScreenOff,
   clearScreen, clearEOL, clearEOS,
-} = require('./ansi');
-const {
+} from './ansi';
+import {
   getInnerWidth, wrapLine, wrapLineTop, shadowBottomRow,
   MIN_TERM_W, bgTerm,
-} = require('./window');
+} from './window';
 
-const RESIZE_DEBOUNCE_MS = 50;
+const { stdin, stdout } = process;
 
-//NOTE(jimmylee): Shared quit helper — deduplicates quit() across createApp and createLifecycle.
-function createQuit(ctx) {
+export type InteractiveConfig = {
+  count: number | ((page: number) => number);
+  onSelect?: (row: number, page: number) => void;
+  persist?: boolean;
+};
+
+export type AppConfig = {
+  build: (page: number, innerW: number, selectedRow: number) => string[];
+  totalPages?: number | (() => number);
+  interactive?: InteractiveConfig;
+  onKey?: (data: Buffer, state: { currentPage: number; selectedRow: number; redraw: () => void }) => void;
+};
+
+const RESIZE_DEBOUNCE_MS: number = 50;
+
+type QuitCtx = {
+  resizeTimer: ReturnType<typeof setTimeout> | null;
+  onResize: (() => void) | null;
+  onData: ((data: Buffer) => void) | null;
+};
+
+function createQuit(ctx: QuitCtx): () => void {
   let quitting = false;
-  return function quit() {
+  return function quit(): void {
     if (quitting) return;
     quitting = true;
 
     if (ctx.resizeTimer) { clearTimeout(ctx.resizeTimer); ctx.resizeTimer = null; }
 
-    stdout.removeListener('resize', ctx.onResize);
+    stdout.removeListener('resize', ctx.onResize!);
     if (stdin.isTTY) {
-      stdin.removeListener('data', ctx.onData);
+      stdin.removeListener('data', ctx.onData!);
       stdin.setRawMode(false);
       stdin.pause();
     }
@@ -40,7 +51,7 @@ function createQuit(ctx) {
   };
 }
 
-function createApp(config) {
+function createApp(config: AppConfig): { start: () => void } {
   const {
     build,
     totalPages: totalPagesOpt = 1,
@@ -48,27 +59,27 @@ function createApp(config) {
     onKey,
   } = config;
 
-  const resolveTotalPages = typeof totalPagesOpt === 'function'
+  const resolveTotalPages: () => number = typeof totalPagesOpt === 'function'
     ? totalPagesOpt
     : () => totalPagesOpt;
 
-  let currentPage = 1;
-  let selectedRow = 0;
-  let lines = [];
+  let currentPage: number = 1;
+  let selectedRow: number = 0;
+  let lines: string[] = [];
 
-  const write = (s) => stdout.write(s);
-  const W = () => stdout.columns || 80;
+  const write = (s: string): boolean => stdout.write(s);
+  const W = (): number => stdout.columns || 80;
 
-  let tooNarrow = false;
+  let tooNarrow: boolean = false;
 
-  function fullBuild() {
+  function fullBuild(): void {
     const termW = W();
     const innerW = getInnerWidth(termW);
 
     if (termW < MIN_TERM_W) {
       tooNarrow = true;
       const msg = 'Terminal too narrow';
-      const wrapped = [];
+      const wrapped: string[] = [];
       const rows = stdout.rows || 24;
       for (let r = 0; r < rows; r++) {
         if (r === Math.floor(rows / 2)) {
@@ -85,7 +96,7 @@ function createApp(config) {
 
     const contentLines = build(currentPage, innerW, interactive ? selectedRow : -1);
 
-    const wrapped = [];
+    const wrapped: string[] = [];
     wrapped.push(`${bgTerm}${' '.repeat(termW)}${RESET}`);
 
     for (let i = 0; i < contentLines.length; i++) {
@@ -98,9 +109,9 @@ function createApp(config) {
     lines = wrapped;
   }
 
-  //NOTE(jimmylee): Incremental render — overwrites in place rather than clearScreen so resize and
+  //NOTE(jimmylee): Incremental render, overwrites in place rather than clearScreen so resize and
   //NOTE(jimmylee): navigation never flicker.
-  function renderStatic() {
+  function renderStatic(): void {
     let buf = '';
     for (let i = 0; i < lines.length; i++) {
       buf += moveTo(i + 1, 1) + lines[i] + clearEOL;
@@ -109,20 +120,20 @@ function createApp(config) {
     write(buf);
   }
 
-  function redraw() {
+  function redraw(): void {
     fullBuild();
     renderStatic();
   }
 
-  function start() {
+  function start(): void {
     write(`${altScreenOn}${cursorHide}${clearScreen}`);
     fullBuild();
     renderStatic();
 
-    const quitCtx = { resizeTimer: null, onResize: null, onData: null };
+    const quitCtx: QuitCtx = { resizeTimer: null, onResize: null, onData: null };
     const quit = createQuit(quitCtx);
 
-    function onResize() {
+    function onResize(): void {
       if (quitCtx.resizeTimer) clearTimeout(quitCtx.resizeTimer);
       quitCtx.resizeTimer = setTimeout(() => {
         quitCtx.resizeTimer = null;
@@ -137,16 +148,16 @@ function createApp(config) {
       }, RESIZE_DEBOUNCE_MS);
     }
 
-    function onData(data) {
+    function onData(data: Buffer): void {
       //NOTE(jimmylee): Ctrl-C (3), Esc alone (27 length 1) → quit.
       if (data[0] === 3 || (data[0] === 27 && data.length === 1)) {
         quit();
         return;
       }
-      const iCount = interactive
+      const iCount: number = interactive
         ? (typeof interactive.count === 'function' ? interactive.count(currentPage) : interactive.count)
         : 0;
-      //NOTE(jimmylee): Enter (13) — fires onSelect; persist:true keeps the screen alive for re-selection.
+      //NOTE(jimmylee): Enter (13), fires onSelect; persist:true keeps the screen alive for re-selection.
       if (data[0] === 13) {
         if (interactive && interactive.onSelect && iCount > 0) {
           interactive.onSelect(selectedRow, currentPage);
@@ -158,7 +169,7 @@ function createApp(config) {
         quit();
         return;
       }
-      //NOTE(jimmylee): Arrow keys — ESC [ A/B (up/down), C/D (right/left).
+      //NOTE(jimmylee): Arrow keys, ESC [ A/B (up/down), C/D (right/left).
       if (data[0] === 27 && data[1] === 91) {
         if (data[2] === 65 && interactive) {
           if (selectedRow > 0) { selectedRow--; redraw(); }
@@ -200,4 +211,4 @@ function createApp(config) {
   return { start };
 }
 
-module.exports = { createApp, MIN_TERM_W, RESIZE_DEBOUNCE_MS };
+export { createApp, MIN_TERM_W, RESIZE_DEBOUNCE_MS };

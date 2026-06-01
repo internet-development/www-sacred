@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-//NOTE(jimmylee): Regression guard — asserts Window.module.css uses a responsive min-width so the
+//NOTE(jimmylee): Regression guard, asserts Window.module.css uses a responsive min-width so the
 //NOTE(jimmylee): window can shrink below 24ch on narrow viewports without forcing horizontal scroll.
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

@@ -1,12 +1,9 @@
 //NOTE(jimmylee): Tests for the sacred CLI ANSI primitives. Run with `npm test`.
 
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const {
+import {
   fgHex, bgHex, strip, visLen, padR, padL, truncateVisible, gradientText, RESET_FG, COLORS,
-} = require('../ansi');
+} from '../ansi.ts';
 
 describe('fgHex / bgHex', () => {
   it('expands #ffffff to a 24-bit foreground escape', () => {

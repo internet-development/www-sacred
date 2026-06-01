@@ -1,17 +1,19 @@
-'use strict';
+import { padR, padL, RESET_FG, fgHex, BOLD, COLORS, gradientText } from './ansi';
 
-//NOTE(jimmylee): Table formatting — key-value tables (24ch key) + data tables with column specs.
+export type ColSpec = {
+  width: number;
+  align?: 'left' | 'right';
+  grow?: boolean;
+  status?: boolean;
+  gap?: number;
+};
 
-const { padR, padL, RESET_FG, fgHex, BOLD, COLORS, gradientText } = require('./ansi');
-
-//NOTE(jimmylee): formatRow renders a single table row using column specs for width, alignment,
-//NOTE(jimmylee): grow, and status coloring. ColSpec supports optional `gap` (default 1).
-function formatRow(vals, colSpec, innerW) {
-  const totalGaps = colSpec.reduce((a, c, i) => i > 0 ? a + ((c && c.gap) || 1) : a, 0);
-  const baseTotal = colSpec.reduce((a, c) => a + c.width, 0) + totalGaps;
+function formatRow(vals: string[], colSpec: ColSpec[], innerW: number): string {
+  const totalGaps = colSpec.reduce((a: number, c: ColSpec, i: number) => i > 0 ? a + ((c && c.gap) || 1) : a, 0);
+  const baseTotal = colSpec.reduce((a: number, c: ColSpec) => a + c.width, 0) + totalGaps;
   const extra = Math.max(0, (innerW - 4) - baseTotal);
-  const growIdx = colSpec.findIndex((c) => c.grow);
-  const widths = colSpec.map((c, i) => c.width + (i === growIdx ? extra : 0));
+  const growIdx = colSpec.findIndex((c: ColSpec) => c.grow);
+  const widths = colSpec.map((c: ColSpec, i: number) => c.width + (i === growIdx ? extra : 0));
 
   let line = '';
   for (let i = 0; i < vals.length; i++) {
@@ -32,21 +34,20 @@ function formatRow(vals, colSpec, innerW) {
   return line;
 }
 
-function kvTable(pairs) {
-  const lines = [];
+function kvTable(pairs: [string, string][]): string[] {
+  const lines: string[] = [];
   for (const [k, v] of pairs) {
     lines.push(`${padR(k, 24)}${v}`);
   }
   return lines;
 }
 
-//NOTE(jimmylee): Key-value table with gradient on value column (matches .gradientText td:last-child).
-function kvTableGradient(pairs) {
-  const lines = [];
+function kvTableGradient(pairs: [string, string][]): string[] {
+  const lines: string[] = [];
   for (const [k, v] of pairs) {
     lines.push(`${padR(k, 24)}${gradientText(v, COLORS.gradientStart, COLORS.gradientEnd)}`);
   }
   return lines;
 }
 
-module.exports = { formatRow, kvTable, kvTableGradient };
+export { formatRow, kvTable, kvTableGradient };

@@ -1,8 +1,5 @@
 'use client';
 
-//NOTE(jimmylee): Matrix rain effect rendered via pre/span grid instead of canvas.
-//NOTE(jimmylee): Same DOM diffing, IntersectionObserver, and ResizeObserver patterns as ASCIICanvas.
-
 import styles from '@components/MatrixLoader.module.css';
 
 import * as React from 'react';
@@ -49,11 +46,7 @@ const MatrixLoader: React.FC<MatrixLoaderProps> = ({ rows = 25, direction = 'top
 
     const themeTextColor = getComputedStyle(document.body).getPropertyValue('--theme-text').trim();
 
-    //NOTE(jimmylee): Track head positions for the rain streams. Each column (or row for LTR) has a
-    //NOTE(jimmylee): head position that advances, leaving a fading trail behind it.
     let headPositions: number[] = [];
-    //NOTE(jimmylee): Per-cell brightness values for fade trails. Decays each frame to simulate
-    //NOTE(jimmylee): the classic matrix rain fade-out effect.
     let cellBrightness: Float64Array = new Float64Array(0);
 
     const buildGrid = (cols: number) => {
@@ -123,7 +116,6 @@ const MatrixLoader: React.FC<MatrixLoaderProps> = ({ rows = 25, direction = 'top
       const pChars = prevCharsRef.current;
       const pColors = prevColorsRef.current;
 
-      //NOTE(jimmylee): Decay all cell brightness each frame to create the fade trail.
       for (let i = 0; i < total; i++) {
         cellBrightness[i] *= 0.92;
       }
@@ -170,7 +162,6 @@ const MatrixLoader: React.FC<MatrixLoaderProps> = ({ rows = 25, direction = 'top
           continue;
         }
 
-        //NOTE(jimmylee): Refresh the character occasionally to create the shimmering effect.
         if (b > 0.9 || Math.random() < 0.03) {
           const ch = randomChar(mode);
           if (ch !== pChars[idx]) {

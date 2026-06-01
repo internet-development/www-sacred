@@ -16,6 +16,7 @@ node_modules
 dist
 analytics.txt
 NEXT.md
+PRE_NEW_WORK_PLAN.md
 .workdir
 package-lock.json
 

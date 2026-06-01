@@ -1,10 +1,5 @@
 'use client';
 
-//NOTE(jimmylee): Platformer game rendered via pre/span grid instead of canvas.
-//NOTE(jimmylee): Same DOM diffing, IntersectionObserver, and ResizeObserver patterns as ASCIICanvas.
-//NOTE(jimmylee): Physics run in sub-cell floating point; rendering quantizes to grid cells.
-//NOTE(jimmylee): Click to toggle platform blocks on the grid.
-
 import styles from '@components/CanvasPlatformer.module.css';
 
 import * as React from 'react';
@@ -134,8 +129,7 @@ const CanvasPlatformer: React.FC<PlatformerProps> = ({ rows = 25 }) => {
     );
     interObs.observe(el);
 
-    //NOTE(jimmylee): Click handler — toggle platform blocks at clicked grid positions.
-    //NOTE(jimmylee): Skips when touch controls were just used to avoid accidental block toggles on mobile.
+    //NOTE(jimmylee): Skips when touch controls were just used to avoid accidental toggles on mobile.
     const handleClick = (e: MouseEvent) => {
       if (touchActiveRef.current) return;
       const rect = el.getBoundingClientRect();
@@ -182,7 +176,6 @@ const CanvasPlatformer: React.FC<PlatformerProps> = ({ rows = 25 }) => {
       if (pos.x < 0) pos.x = 0;
       if (pos.x > cols - 1) pos.x = cols - 1;
 
-      //NOTE(jimmylee): Collision detection — find the nearest platform block below the player.
       const px = Math.round(pos.x);
       let groundY = rows;
       for (let checkY = Math.floor(oldY) + 1; checkY < rows; checkY++) {
@@ -308,8 +301,6 @@ const CanvasPlatformer: React.FC<PlatformerProps> = ({ rows = 25 }) => {
     };
   }, []);
 
-  //NOTE(jimmylee): Touch regions for mobile — left third moves left, right third moves right, center jumps.
-  //NOTE(jimmylee): Multi-touch supported so the player can move and jump simultaneously.
   React.useEffect(() => {
     const el = preRef.current;
     if (!el) return;

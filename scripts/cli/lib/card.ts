@@ -1,21 +1,16 @@
-'use strict';
+import { RESET, INVERSE, visLen, bgHex, fgHex, COLORS } from './ansi';
 
-//NOTE(jimmylee): Box-drawing card borders + word wrap.
+const B = { tl: '┌', tr: '┐', bl: '└', br: '┘', h: '─', v: '│' } as const;
 
-const { RESET, INVERSE, visLen, bgHex, fgHex, COLORS } = require('./ansi');
+const MIN_CARD_W: number = 10;
 
-//NOTE(jimmylee): Box-drawing characters — matches Card.tsx border rendering.
-const B = { tl: '\u250C', tr: '\u2510', bl: '\u2514', br: '\u2518', h: '\u2500', v: '\u2502' };
-
-const MIN_CARD_W = 10;
-
-function cardTop(title, innerW) {
+function cardTop(title: string, innerW: number): string {
   const t = ` ${title} `;
   const fill = Math.max(0, innerW - 3 - t.length);
   return `${B.tl}${B.h}${t}${B.h.repeat(fill)}${B.tr}`;
 }
 
-function cardRow(content, innerW) {
+function cardRow(content: string, innerW: number): string {
   const inner = `  ${content}`;
   const vis = visLen(inner);
   const fill = innerW - 2 - vis;
@@ -23,8 +18,7 @@ function cardRow(content, innerW) {
   return `${B.v}${inner}${RESET}`;
 }
 
-//NOTE(jimmylee): Card row with table header background — matches .unstyledTable thead td.
-function cardHeaderRow(content, innerW) {
+function cardHeaderRow(content: string, innerW: number): string {
   const hdrBg = bgHex(COLORS.tableHeader);
   const hdrFg = fgHex(COLORS.text);
   const inner = `  ${content}`;
@@ -33,13 +27,13 @@ function cardHeaderRow(content, innerW) {
   return `${B.v}${hdrBg}${hdrFg}${inner}${' '.repeat(fill)}${RESET}${B.v}`;
 }
 
-function cardBot(innerW) {
+function cardBot(innerW: number): string {
   return `${B.bl}${B.h.repeat(Math.max(0, innerW - 2))}${B.br}`;
 }
 
-function wordWrap(text, maxW) {
+function wordWrap(text: string, maxW: number): string[] {
   const words = text.split(' ');
-  const lines = [];
+  const lines: string[] = [];
   let cur = '';
   for (const word of words) {
     if (cur && cur.length + 1 + word.length > maxW) {
@@ -53,8 +47,7 @@ function wordWrap(text, maxW) {
   return lines;
 }
 
-//NOTE(jimmylee): Selectable card row — inverse video when selected, normal cardRow when not.
-function cardSelectRow(content, innerW, selected) {
+function cardSelectRow(content: string, innerW: number, selected: boolean): string {
   if (!selected) return cardRow(content, innerW);
   const inner = `  ${content}`;
   const vis = visLen(inner);
@@ -62,4 +55,4 @@ function cardSelectRow(content, innerW, selected) {
   return `${B.v}${INVERSE}${inner}${' '.repeat(fill)}${RESET}${B.v}`;
 }
 
-module.exports = { B, MIN_CARD_W, cardTop, cardRow, cardSelectRow, cardHeaderRow, cardBot, wordWrap };
+export { B, MIN_CARD_W, cardTop, cardRow, cardSelectRow, cardHeaderRow, cardBot, wordWrap };

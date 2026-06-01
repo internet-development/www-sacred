@@ -81,7 +81,7 @@ function HoverComponentTrigger({ children, text, component }: HoverComponentTrig
             position: 'absolute',
             top: `${position.top}px`,
             left: `${position.left}px`,
-            zIndex: `var(--z-index-page-tooltip)`,
+            zIndex: `var(--z-index-page-tooltips)`,
           }}
         >
           {text}

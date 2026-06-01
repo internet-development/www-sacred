@@ -330,7 +330,7 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1890125319224598528/ZILr9OGp_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1989080994687991809/CoUHUW0A_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
-            <Avatar src="https://pbs.twimg.com/profile_images/1992336125411950592/TzjQtKFk_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/2044806470374400000/caZCph_V_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://internet.dev" target="_blank" />
             <br />
             <br />
@@ -369,7 +369,7 @@ export default async function Page(props) {
                 Webmaster
               </Indent>
             </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1992336125411950592/TzjQtKFk_400x400.jpg" href="https://x.com/LouanneMMurphy" target="_blank">
+            <Avatar src="https://pbs.twimg.com/profile_images/2044806470374400000/caZCph_V_400x400.jpg" href="https://x.com/LouanneMMurphy" target="_blank">
               <Indent>
                 LOUANNE MURPHY
                 <br />

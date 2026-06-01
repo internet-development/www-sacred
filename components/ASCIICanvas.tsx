@@ -1,18 +1,11 @@
 'use client';
 
-//NOTE(jimmylee): ASCIICanvas — renders animated ASCII art in a <pre> element using per-cell <span> elements.
-//NOTE(jimmylee): Ported from the animation framework in workdir/www-financial-cli-ui.
-//NOTE(jimmylee): Memory optimized: pre-allocated span grid with DOM diffing (skips unchanged cells each frame).
-//NOTE(jimmylee): IntersectionObserver pauses animation when off-screen to save CPU.
-//NOTE(jimmylee): ResizeObserver recalculates column count on container resize.
-
 import styles from '@components/ASCIICanvas.module.css';
 
 import * as React from 'react';
 
 const DENSITY = '10';
 
-//NOTE(jimmylee): Mode 2 animation — binary 1s and 0s with animated wave-based grayscale gradients.
 function animate(x: number, y: number, t: number, cols: number, rows: number): { char: string; color: string } {
   const speed = t * 8;
   const wave1 = Math.sin(x * 0.15 + speed) * Math.cos(y * 0.1 + speed * 0.7);
@@ -40,7 +33,6 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
 
     let cancelled = false;
 
-    //NOTE(jimmylee): Invisible measurement span — single 'X' character to calculate column width.
     const measure = document.createElement('span');
     measure.style.visibility = 'hidden';
     measure.style.position = 'absolute';
@@ -48,7 +40,6 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
     measure.textContent = 'X';
     el.appendChild(measure);
 
-    //NOTE(jimmylee): Pre-allocate span elements per cell. Only rebuilds when column count changes.
     const buildGrid = (cols: number) => {
       if (cols === prevColsRef.current) return;
       prevColsRef.current = cols;
@@ -88,7 +79,6 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
     const resizeObs = new ResizeObserver(updateCols);
     resizeObs.observe(el);
 
-    //NOTE(jimmylee): IntersectionObserver pauses rAF loop when element scrolls off-screen.
     const interObs = new IntersectionObserver(
       ([entry]) => {
         const wasVisible = visibleRef.current;

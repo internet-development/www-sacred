@@ -79,7 +79,7 @@ def create_app(*, build, total_pages=1, interactive=None, on_key=None):
         full_build()
         render_static()
 
-    # NOTE(jimmylee): Raw-mode entry/exit using termios. Linux/macOS only — Windows would need
+    # NOTE(jimmylee): Raw-mode entry/exit using termios. Linux/macOS only, Windows would need
     # NOTE(jimmylee): a `msvcrt`-based shim, but the React/CLI port targets POSIX terminals.
     import termios
     import tty
@@ -107,7 +107,7 @@ def create_app(*, build, total_pages=1, interactive=None, on_key=None):
         redraw()
 
     def read_key():
-        # NOTE(jimmylee): Read up to 8 bytes — enough to capture ESC [ A/B/C/D and one printable.
+        # NOTE(jimmylee): Read up to 8 bytes, enough to capture ESC [ A/B/C/D and one printable.
         try:
             data = os.read(fd, 8)
         except (OSError, KeyboardInterrupt):
@@ -142,7 +142,7 @@ def create_app(*, build, total_pages=1, interactive=None, on_key=None):
                     if callable(interactive["count"])
                     else interactive["count"]
                 )
-            # NOTE(jimmylee): Enter (13) — fires on_select; persist keeps the screen alive.
+            # NOTE(jimmylee): Enter (13), fires on_select; persist keeps the screen alive.
             if data[0] == 13:
                 if interactive and interactive.get("on_select") and i_count > 0:
                     interactive["on_select"](state["selected_row"], state["page"])
@@ -150,7 +150,7 @@ def create_app(*, build, total_pages=1, interactive=None, on_key=None):
                     redraw()
                     continue
                 quit_app()
-            # NOTE(jimmylee): Arrow keys — ESC [ A/B/C/D.
+            # NOTE(jimmylee): Arrow keys, ESC [ A/B/C/D.
             if len(data) >= 3 and data[0] == 27 and data[1] == 91:
                 if data[2] == 65 and interactive:
                     if state["selected_row"] > 0:

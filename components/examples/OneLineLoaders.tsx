@@ -1,15 +1,9 @@
 'use client';
 
-//NOTE(jimmylee): One-line braille spinners with elapsed timers. Layout only — sacred surfaces use
-//NOTE(jimmylee): the existing Card primitive for chrome. The animation itself is preserved because
-//NOTE(jimmylee): the spinners are the entire point of this component.
-
 import * as React from 'react';
 
 import Card from '@components/Card';
 
-//NOTE(jimmylee): Spinner frame data — each entry is { frames, interval }, the bare minimum needed
-//NOTE(jimmylee): to animate. Full set of 18 braille spinners for Sacred Computer.
 const SPINNERS: { frames: readonly string[]; interval: number }[] = [
   { frames: ['⠋⠋⠋⠋', '⠙⠙⠙⠙', '⠹⠹⠹⠹', '⠸⠸⠸⠸', '⠼⠼⠼⠼', '⠴⠴⠴⠴', '⠦⠦⠦⠦', '⠧⠧⠧⠧', '⠇⠇⠇⠇', '⠏⠏⠏⠏'], interval: 80 },
   { frames: ['⠁⠂⠄⡀', '⠂⠄⡀⢀', '⠄⡀⢀⠠', '⡀⢀⠠⠐', '⢀⠠⠐⠈', '⠠⠐⠈⠁', '⠐⠈⠁⠂', '⠈⠁⠂⠄'], interval: 100 },
@@ -31,7 +25,6 @@ const SPINNERS: { frames: readonly string[]; interval: number }[] = [
   { frames: ['⠁⠀⠀⠀', '⠋⠀⠀⠀', '⠟⠁⠀⠀', '⡿⠋⠀⠀', '⣿⠟⠁⠀', '⣿⡿⠋⠀', '⣿⣿⠟⠁', '⣿⣿⡿⠋', '⣿⣿⣿⠟', '⣿⣿⣿⡿', '⣿⣿⣿⣿', '⣿⣿⣿⣿', '⣾⣿⣿⣿', '⣴⣿⣿⣿', '⣠⣾⣿⣿', '⢀⣴⣿⣿', '⠀⣠⣾⣿', '⠀⢀⣴⣿', '⠀⠀⣠⣾', '⠀⠀⢀⣴', '⠀⠀⠀⣠', '⠀⠀⠀⢀', '⠀⠀⠀⠀', '⠀⠀⠀⠀'], interval: 60 },
 ];
 
-//NOTE(jimmylee): One word per spinner — synonyms of "thinking".
 const WORDS = [
   'Thinking',
   'Pondering',
@@ -69,7 +62,7 @@ interface AnimationState {
   elapsed: number;
 }
 
-//NOTE(jimmylee): setInterval at 60ms drives every spinner. rAF is unreliable on mobile — iOS Safari
+//NOTE(jimmylee): setInterval at 60ms drives every spinner. rAF is unreliable on mobile. iOS Safari
 //NOTE(jimmylee): and Chrome Android throttle or pause rAF for off-screen and backgrounded elements.
 //NOTE(jimmylee): setInterval keeps firing so the spinners always animate when scrolled into view.
 const OneLineLoaders: React.FC = () => {

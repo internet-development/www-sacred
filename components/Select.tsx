@@ -48,7 +48,6 @@ const Select: React.FC<SelectProps> = ({ name, options, placeholder, defaultValu
     handleClose();
   };
 
-  //NOTE(jimmylee): Focus the highlighted option after the listbox renders.
   React.useEffect(() => {
     if (isOpen && index >= 0) {
       const items = listRef.current?.querySelectorAll<HTMLLIElement>('[role="option"]');

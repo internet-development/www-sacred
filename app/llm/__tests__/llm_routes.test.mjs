@@ -7,6 +7,7 @@ import {
   CACHE_CONTROL,
   LLM_PREFIX,
   MARKDOWN_CONTENT_TYPE,
+  PLAINTEXT_CONTENT_TYPE,
   SACRED_ORIGIN,
   _resetDocCacheForTests,
   buildLlmsFullTxt,
@@ -18,11 +19,7 @@ import {
   serveDocByPath,
 } from '../../_lib/llm-docs.ts';
 
-//NOTE(jimmylee): URL guard for the /llm/* and /llms*.txt routes. Sacred treats the filesystem as
-//NOTE(jimmylee): the canonical doc allowlist — every AGENTS.md and SKILL.md the repo ships must be
-//NOTE(jimmylee): served by /llm/<repo-relative-path>, listed in /llms.txt, and concatenated into
-//NOTE(jimmylee): /llms-full.txt. Adding a new doc without exposing it (or removing one without
-//NOTE(jimmylee): pruning the URL set) fails CI inside the same PR.
+//NOTE(jimmylee): Guards that the /llm/* URLs stay in sync with the files on disk.
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..', '..');
@@ -57,19 +54,36 @@ function listRepoDocsFromDisk() {
   return out.sort();
 }
 
+function listComponentTsxFromDisk() {
+  const componentsDir = join(REPO_ROOT, 'components');
+  const out = [];
+  for (const entry of readdirSync(componentsDir, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.tsx')) {
+      out.push(`components/${entry.name}`);
+    }
+  }
+  return out.sort();
+}
+
 describe('app/llm/* and /llms*.txt URL surface', () => {
   _resetDocCacheForTests();
   const onDisk = listRepoDocsFromDisk();
-  const docs = listDocs();
+  const allEntries = listDocs();
+  const docs = allEntries.filter((d) => d.kind === 'doc');
+  const sources = allEntries.filter((d) => d.kind === 'source');
   const docPaths = docs.map((d) => d.repoPath).sort();
 
   it('listDocs() returns every AGENTS.md and SKILL.md in the repo', () => {
     expect(docPaths).toEqual(onDisk);
   });
 
+  it('listDocs() returns every top-level components/*.tsx as a source entry', () => {
+    const onDiskSources = listComponentTsxFromDisk();
+    const sourcePaths = sources.map((d) => d.repoPath).sort();
+    expect(sourcePaths).toEqual(onDiskSources);
+  });
+
   it('listDocs() finds the canonical sacred doc set', () => {
-    //NOTE(jimmylee): Hard floor — these files must always exist. Catches accidental deletion of
-    //NOTE(jimmylee): the catalog or any of the four porting skills.
     const required = [
       'AGENTS.md',
       'components/AGENTS.md',
@@ -85,9 +99,16 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
     }
   });
 
-  it('every doc has a sacred.computer URL derived mechanically from its repo path', () => {
-    for (const doc of docs) {
-      expect(doc.url).toBe(`${SACRED_ORIGIN}${LLM_PREFIX}/${doc.repoPath}`);
+  it('every entry has a sacred.computer URL derived mechanically from its urlPath', () => {
+    for (const entry of allEntries) {
+      expect(entry.url).toBe(`${SACRED_ORIGIN}${LLM_PREFIX}/${entry.urlPath}`);
+    }
+  });
+
+  it('source entries have .txt suffix on urlPath and text/plain content type', () => {
+    for (const src of sources) {
+      expect(src.urlPath).toBe(`${src.repoPath}.txt`);
+      expect(src.contentType).toBe(PLAINTEXT_CONTENT_TYPE);
     }
   });
 
@@ -97,9 +118,21 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
       const helperBody = await readDocBody(doc);
       expect(helperBody).toBe(onDiskBody);
 
-      const res = await serveDocByPath(doc.repoPath);
+      const res = await serveDocByPath(doc.urlPath);
       expect(res.status).toBe(200);
       expect(res.headers.get('content-type')).toBe(MARKDOWN_CONTENT_TYPE);
+      expect(res.headers.get('cache-control')).toBe(CACHE_CONTROL);
+      const text = await res.text();
+      expect(text).toBe(onDiskBody);
+    }
+  });
+
+  it('serveDocByPath returns byte-identical bodies for every source', async () => {
+    for (const src of sources) {
+      const onDiskBody = readFileSync(src.absolutePath, 'utf8');
+      const res = await serveDocByPath(src.urlPath);
+      expect(res.status).toBe(200);
+      expect(res.headers.get('content-type')).toBe(PLAINTEXT_CONTENT_TYPE);
       expect(res.headers.get('cache-control')).toBe(CACHE_CONTROL);
       const text = await res.text();
       expect(text).toBe(onDiskBody);
@@ -115,6 +148,7 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
       'foo/bar/AGENTS.md',
       '../etc/passwd',
       'skills/../AGENTS.md',
+      'components/Accordion.tsx',
       '',
     ];
     for (const path of cases) {
@@ -130,6 +164,15 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
     expect(root?.segments).toEqual(['AGENTS.md']);
   });
 
+  it('findDoc resolves source entries by urlPath', () => {
+    if (sources.length === 0) return;
+    const first = sources[0];
+    const found = findDoc(first.urlPath);
+    expect(found).not.toBeNull();
+    expect(found?.kind).toBe('source');
+    expect(found?.repoPath).toBe(first.repoPath);
+  });
+
   it('markdownResponse pins the content-type and cache-control', async () => {
     const res = markdownResponse('hello');
     expect(res.status).toBe(200);
@@ -138,24 +181,22 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
     expect(await res.text()).toBe('hello');
   });
 
-  it('llms.txt links every doc the routes serve', () => {
+  it('llms.txt links every entry the routes serve', () => {
     const body = buildLlmsTxt();
     expect(body.startsWith('# Sacred Computer\n')).toBe(true);
-    //NOTE(jimmylee): Simulacrum pairing must be named in the description block.
     expect(body).toContain('Simulacrum');
-    for (const doc of docs) {
-      expect(body, `llms.txt missing link for ${doc.repoPath}`).toContain(doc.url);
+    for (const entry of allEntries) {
+      expect(body, `llms.txt missing link for ${entry.urlPath}`).toContain(entry.url);
     }
-    //NOTE(jimmylee): Section headers exist for the three groups buildSections() emits.
     expect(body).toContain('## Repo conventions');
     expect(body).toContain('## Simulacrum (CLI framework)');
     expect(body).toContain('## Skills');
+    expect(body).toContain('## Component source');
   });
 
-  it('llms-full.txt concatenates every doc body in the same order as listDocs()', async () => {
+  it('llms-full.txt concatenates every doc body but not source files', async () => {
     const body = await buildLlmsFullTxt();
     expect(body.startsWith('# Sacred Computer — full doc bundle\n')).toBe(true);
-    //NOTE(jimmylee): Each doc body must appear verbatim and the per-doc header must be present.
     let cursor = 0;
     for (const doc of docs) {
       const docBody = readFileSync(doc.absolutePath, 'utf8');
@@ -165,6 +206,9 @@ describe('app/llm/* and /llms*.txt URL surface', () => {
       const bodyIdx = body.indexOf(docBody, headerIdx);
       expect(bodyIdx, `llms-full.txt missing body for ${doc.repoPath}`).toBeGreaterThanOrEqual(0);
       cursor = bodyIdx + docBody.length;
+    }
+    for (const src of sources) {
+      expect(body).not.toContain(`# ${src.repoPath}\n`);
     }
   });
 });

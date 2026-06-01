@@ -1,9 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const { strip } = require('../ansi');
-const { B, cardTop, cardRow, cardBot, cardSelectRow, cardHeaderRow, wordWrap } = require('../card');
+import { strip } from '../ansi.ts';
+import { B, cardTop, cardRow, cardBot, cardSelectRow, cardHeaderRow, wordWrap } from '../card.ts';
 
 describe('cardTop / cardBot', () => {
   it('renders top border with embedded title', () => {

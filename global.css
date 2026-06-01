@@ -1,11 +1,16 @@
 /*
 NOTE(jimmylee):
-Color palette for Sacred Computer. All color primitives must use values accepted
-by the ANSI/ASCII 256-color and 24-bit true color palettes — Standard (SGR 30-37,
-90-97), 256-color (SGR 38;5;n), grayscale ramp (232-255), or 24-bit true color
-(SGR 38;2;r;g;b). Do not add colors outside this spec. The OKLCH tint themes
-downstream are recalibrated against the same primitives so the React UI matches
-what the Simulacrum CLI renders.
+Color palette for Sacred Computer. The root source of truth for color is the
+Simulacrum CLI palette in scripts/cli/colors.json — those are the true, terminal-
+tested colors, the ones a real terminal actually renders. The --ansi-* primitives
+below mirror that palette in CSS, so every value must be one a terminal can show:
+Standard (SGR 30-37, 90-97), 256-color (SGR 38;5;n), the grayscale ramp (232-255),
+or 24-bit true color (SGR 38;2;r;g;b). Do not add a color outside that spec.
+
+The OKLCH tint themes further down are a WEB-ONLY behavior. A terminal cannot run
+OKLCH math; it exists purely so the React surface can derive tinted variants while
+staying inside the same perceptual band as the terminal-tested primitives. OKLCH is
+a projection of the root palette, never a new source of color.
 */
 
 a,
@@ -346,10 +351,11 @@ body.theme-dark {
 
 /*
 NOTE(jimmylee):
-OKLCH tint themes — recalibrated against the new ANSI base palette so the
-saturation and lightness ramps fall in the same perceptual range as the
-ANSI gray scale (#eeeeee → #262626) and the brand color (#e4f221). Each tint
-sets only --tint, and the body.theme-light.tint-* / body.theme-dark.tint-*
+OKLCH tint themes — web-only. These have no terminal equivalent (Simulacrum renders
+the fixed colors.json palette, never derived tints). They are recalibrated against
+the --ansi-* base so the saturation and lightness ramps fall in the same perceptual
+range as the ANSI gray scale (#eeeeee → #262626) and the brand color (#e4f221). Each
+tint sets only --tint, and the body.theme-light.tint-* / body.theme-dark.tint-*
 selectors below derive every --theme-* token from that tint via OKLCH math.
 */
 

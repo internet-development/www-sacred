@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-//NOTE(jimmylee): Regression guard — asserts SimpleTable.module.css contains overflow-x containment
+//NOTE(jimmylee): Regression guard, asserts SimpleTable.module.css contains overflow-x containment
 //NOTE(jimmylee): so the table scrolls horizontally inside its card frame on narrow viewports instead
 //NOTE(jimmylee): of forcing the entire page to scroll.
 

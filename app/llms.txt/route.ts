@@ -1,8 +1,4 @@
-//NOTE(jimmylee): https://llmstxt.org/ index for sacred. Lists every AGENTS.md and SKILL.md in the
-//NOTE(jimmylee): repo as canonical sacred.computer URLs, grouped into Repo conventions, Simulacrum
-//NOTE(jimmylee): (CLI framework), and Skills. The body is built deterministically from listDocs() so
-//NOTE(jimmylee): the set of links here is byte-identical to the set of files served by /llm/[...path]
-//NOTE(jimmylee): — the vitest URL guard fails CI if anything drifts.
+//NOTE(jimmylee): https://llmstxt.org/ index. Built from the same file list as /llm/[...path].
 
 import { buildLlmsTxt, markdownResponse } from '../_lib/llm-docs';
 

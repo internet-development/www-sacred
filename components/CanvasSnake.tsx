@@ -1,9 +1,5 @@
 'use client';
 
-//NOTE(jimmylee): Snake game rendered via pre/span grid instead of canvas.
-//NOTE(jimmylee): Same DOM diffing, IntersectionObserver, and ResizeObserver patterns as ASCIICanvas.
-//NOTE(jimmylee): Game logic is identical to the original — grid-based movement, wrap-on-collision reset.
-
 import styles from '@components/CanvasSnake.module.css';
 
 import * as React from 'react';
@@ -271,7 +267,6 @@ const CanvasSnake = ({ rows = 25 }: SnakeProps) => {
     };
   }, []);
 
-  //NOTE(jimmylee): Swipe gestures for mobile — swipe direction maps to snake direction change.
   React.useEffect(() => {
     const el = preRef.current;
     if (!el) return;

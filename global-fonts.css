@@ -125,6 +125,15 @@ body.font-use-berkeley-mono {
 }
 
 @font-face {
+  font-family: 'CascadiaMono';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/aa59c834-7699-4134-9b06-84e3fa702139.woff2') format('woff2');
+}
+
+body.font-use-cascadia-mono {
+  --font-family-mono: 'CascadiaMono', sans-serif;
+}
+
+@font-face {
   font-family: 'ChicagoMono-Regular';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/f45417e0-69fa-42c4-abd7-4df907ef4c67.woff') format('woff');
 }
@@ -203,6 +212,24 @@ body.font-use-intel-one-mono {
 
 body.font-use-iosevka-term {
   --font-family-mono: 'IosevkaTerm-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono-Condensed';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/0a44b216-12be-4966-890f-c6629a7ddcb0.woff2') format('woff2');
+}
+
+body.font-use-ioskeley-mono-condensed {
+  --font-family-mono: 'IoskeleyMono-Condensed', sans-serif;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/70beedfa-919a-451b-b156-3ebf2ff0768b.woff2') format('woff2');
+}
+
+body.font-use-ioskeley-mono-regular {
+  --font-family-mono: 'IoskeleyMono-Regular', sans-serif;
 }
 
 @font-face {

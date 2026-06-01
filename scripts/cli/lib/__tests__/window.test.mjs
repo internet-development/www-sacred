@@ -1,12 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const { strip } = require('../ansi');
-const {
+import { strip } from '../ansi.ts';
+import {
   MARGIN, SHADOW_W, MIN_INNER_W, MIN_TERM_W,
   getInnerWidth, wrapLine, wrapLineTop, shadowBottomRow, wrapLines,
-} = require('../window');
+} from '../window.ts';
 
 describe('layout constants', () => {
   it('matches the documented values', () => {

@@ -2,7 +2,6 @@
 
 from .ansi import COLORS, INVERSE, RESET, bg_hex, fg_hex, vis_len
 
-# NOTE(jimmylee): Box-drawing characters — matches Card.tsx border rendering.
 B = {"tl": "\u250C", "tr": "\u2510", "bl": "\u2514", "br": "\u2518", "h": "\u2500", "v": "\u2502"}
 
 MIN_CARD_W = 10

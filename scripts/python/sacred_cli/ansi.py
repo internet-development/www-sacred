@@ -10,9 +10,9 @@ DIM = f"{CSI}2m"
 BOLD = f"{CSI}1m"
 INVERSE = f"{CSI}7m"
 
-# NOTE(jimmylee): Reset only text attributes (bold/dim) and fg color — preserves background.
+# NOTE(jimmylee): Reset only text attributes (bold/dim) and fg color, preserves background.
 RESET_FG = f"{CSI}22m{CSI}39m"
-# NOTE(jimmylee): Default terminal background — lets the terminal's own bg color show through.
+# NOTE(jimmylee): Default terminal background, lets the terminal's own bg color show through.
 bg_default = f"{CSI}49m"
 
 
@@ -90,7 +90,7 @@ def _js_round(x: float) -> int:
     # NOTE(jimmylee): JavaScript's Math.round rounds 0.5 toward positive infinity, so 0.5 → 1
     # NOTE(jimmylee): and -0.5 → 0. Python's built-in round() uses banker's rounding (0.5 → 0),
     # NOTE(jimmylee): which would diverge from the JS framework byte-for-byte. The parity test
-    # NOTE(jimmylee): suite expects identical output between the two runtimes — use this helper
+    # NOTE(jimmylee): suite expects identical output between the two runtimes, use this helper
     # NOTE(jimmylee): wherever the JS source calls Math.round.
     import math
     return math.floor(x + 0.5)
@@ -115,7 +115,7 @@ def gradient_text(text: str, start_hex: str, end_hex: str) -> str:
     return out + RESET_FG
 
 
-# NOTE(jimmylee): Sacred color palette — same source of truth as scripts/cli/colors.json.
+# NOTE(jimmylee): Sacred color palette, same source of truth as scripts/cli/colors.json.
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _COLORS_PATH = os.path.normpath(os.path.join(_HERE, "..", "..", "cli", "colors.json"))
 with open(_COLORS_PATH, "r", encoding="utf-8") as _f:

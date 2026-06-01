@@ -65,5 +65,4 @@ a.root {
 .right {
   min-width: 10%;
   width: 100%;
-  background: var(--theme-foreground);
 }

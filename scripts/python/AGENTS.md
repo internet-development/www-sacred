@@ -9,12 +9,12 @@ The CLI framework is small enough that maintaining a parallel Python implementat
 ## Layout
 
 - `sacred_cli/__init__.py` — re-exports the public surface so templates can `from sacred_cli import ...`.
-- `sacred_cli/ansi.py` — mirrors `scripts/cli/lib/ansi.js`. Loads colors via `os.path.join(_HERE, "..", "..", "cli", "colors.json")` — do not duplicate the palette. `_js_round` (private helper) reproduces JavaScript's `Math.round` semantics so byte-level parity holds against the JS framework; do **not** replace it with Python's banker-rounding `round()`.
-- `sacred_cli/window.py` — mirrors `window.js`. `get_inner_width`, `wrap_line`, `wrap_line_top`, `shadow_bottom_row`, `wrap_lines`.
-- `sacred_cli/card.py` — mirrors `card.js`. `card_top`, `card_row`, `card_select_row`, `card_header_row`, `card_bot`, `word_wrap`. `B` is a dict instead of a JS object.
-- `sacred_cli/table.py` — mirrors `table.js`. `format_row`, `kv_table`, `kv_table_gradient`.
-- `sacred_cli/button.py` — mirrors `button.js`. `button`, `button_row`.
-- `sacred_cli/app.py` — mirrors `app.js`. `create_app(*, build, total_pages=1, interactive=None, on_key=None)` using `termios`/`tty` for POSIX raw mode.
+- `sacred_cli/ansi.py` — mirrors `ansi.ts`. Loads colors via `os.path.join(_HERE, "..", "..", "cli", "colors.json")` — do not duplicate the palette. `_js_round` (private helper) reproduces JavaScript's `Math.round` semantics so byte-level parity holds against the TS framework; do **not** replace it with Python's banker-rounding `round()`.
+- `sacred_cli/window.py` — mirrors `window.ts`. `get_inner_width`, `wrap_line`, `wrap_line_top`, `shadow_bottom_row`, `wrap_lines`.
+- `sacred_cli/card.py` — mirrors `card.ts`. `card_top`, `card_row`, `card_select_row`, `card_header_row`, `card_bot`, `word_wrap`. `B` is a dict instead of a TS object.
+- `sacred_cli/table.py` — mirrors `table.ts`. `format_row`, `kv_table`, `kv_table_gradient`.
+- `sacred_cli/button.py` — mirrors `button.ts`. `button`, `button_row`.
+- `sacred_cli/app.py` — mirrors `app.ts`. `create_app(*, build, total_pages=1, interactive=None, on_key=None)` using `termios`/`tty` for POSIX raw mode.
 - `sacred_cli/__tests__/` — unittest suite. One file per module (`test_ansi.py`, `test_window.py`, `test_card.py`, `test_table.py`, `test_button.py`) plus `test_parity.py` that asserts byte-identical output against the JS reference fixture under `fixtures/reference.json`. `_bootstrap.py` adds `scripts/python/` to `sys.path` so `import sacred_cli` works under `unittest discover` regardless of cwd. We use the `__tests__/` directory name to mirror the JS test layout under `scripts/cli/lib/__tests__/`.
 - `templates/template.py` — canonical Python template, runs with `npm run cli:python`.
 
@@ -42,9 +42,9 @@ The Python lifecycle uses `termios` + `tty` for raw mode, so it runs on macOS / 
 
 ## Tests
 
-`npm run test:python` regenerates the JS reference fixture (via `node scripts/cli/lib/__tests__/dump_reference.js`) and then runs `python3 -m unittest discover -s sacred_cli/__tests__ -t .`. The `npm test` script chains the JS suite and the Python suite, so a single command catches both kinds of regression. If `python3` is not on PATH, the runner prints a warning and exits 0 — sacred contributors on minimal containers can still run `npm test`.
+`npm run test:python` regenerates the reference fixture (via `tsx scripts/cli/lib/__tests__/dump_reference.ts`) and then runs `python3 -m unittest discover -s sacred_cli/__tests__ -t .`. The `npm test` script chains the TS suite and the Python suite, so a single command catches both kinds of regression. If `python3` is not on PATH, the runner prints a warning and exits 0 — sacred contributors on minimal containers can still run `npm test`.
 
-When the parity test fails, the cause is almost always a JS module that changed without a matching Python port. Open the failing assertion (e.g. `test_format_row_status`), read the JS source side-by-side with the Python mirror, and port the change. Re-run `npm test` — the fixture regenerates automatically.
+When the parity test fails, the cause is almost always a TS module that changed without a matching Python port. Open the failing assertion (e.g. `test_format_row_status`), read the JS source side-by-side with the Python mirror, and port the change. Re-run `npm test` — the fixture regenerates automatically.
 
 ## What this mirror deliberately does NOT have
 

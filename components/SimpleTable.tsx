@@ -2,12 +2,6 @@ import styles from '@components/SimpleTable.module.css';
 
 import * as React from 'react';
 
-//NOTE(jimmylee): Simple fluid HTML table that mirrors the CLI framework's formatRow + cardHeaderRow
-//NOTE(jimmylee): contract one-to-one. The first row of `data` is the header. Status coloring fires on
-//NOTE(jimmylee): the same tokens the CLI honours: ACTIVE/OPEN/APPROVED → bold green, CLOSED/PAID/SUSPENDED
-//NOTE(jimmylee): → gray. Use this table (not DataTable) inside CLI port examples so a port can be made
-//NOTE(jimmylee): in either direction without losing column widths or status semantics.
-
 interface SimpleTableProps {
   data: string[][];
   align?: ('left' | 'right')[];

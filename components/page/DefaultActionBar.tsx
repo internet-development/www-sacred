@@ -166,6 +166,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
             items: [
               {
                 icon: '⊹',
+                children: 'Cascadia Mono [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-cascadia-mono'),
+              },
+              {
+                icon: '⊹',
                 children: 'Chicago FLF Proportional [MIT]',
                 onClick: () => Utilities.onHandleFontChange('font-use-chicago-mono'),
               },
@@ -218,6 +223,16 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: '⊹',
                 children: 'Iosevka Term [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-iosevka-term'),
+              },
+              {
+                icon: '⊹',
+                children: 'Ioskeley Mono Condensed [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-ioskeley-mono-condensed'),
+              },
+              {
+                icon: '⊹',
+                children: 'Ioskeley Mono Regular [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-ioskeley-mono-regular'),
               },
               {
                 icon: '⊹',

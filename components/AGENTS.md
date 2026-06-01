@@ -1,24 +1,23 @@
 # AGENTS.md — components
 
-Canonical catalog of every React component sacred ships under `components/`. One entry per `.tsx` file directly under `components/`. The `examples/`, `modals/`, `svg/`, `page/`, and `detectors/` subdirectories are intentionally excluded — those are demos, modal bodies, icons, and runtime detectors that compose this library, not the library itself.
+Catalog of every React component under `components/`. One entry per `.tsx` file. Subdirectories (`examples/`, `modals/`, `svg/`, `page/`, `detectors/`) are excluded — those compose this library, they are not the library itself.
 
-The catalog is enforced by `components/__tests__/agents_md_sync.test.mjs`, which fails CI if a `.tsx` file is added under `components/` without a matching `## Heading` here, or vice versa. Adding a component without documenting it is a CI failure inside the same PR.
+Tests under `components/__tests__/` enforce that this catalog stays in sync with the source. Adding a component without documenting it here fails CI.
 
 ## How to read each entry
 
-- **Path** — repo-relative path of the source file.
-- **Purpose** — one factual sentence pulled from the source. The catalog never invents behavior.
-- **Props** — copied verbatim from the `interface` / `type Props` block in the source. If the component uses `React.forwardRef`, the inner Props type is what is shown. Sacred components are deliberately untyped or loosely typed in places — the catalog reflects that, it does not normalize.
-- **Theming tokens** — `var(--theme-*)`, `var(--ansi-*)`, `var(--color-*)`, `var(--font-*)`, and `var(--z-index-*)` references read from the matching `.module.css` file (or inline `style={{}}`). This is the contract that lets a port preserve colors across light/dark and the seven OKLCH tints. If a component has no `.module.css` and no inline tokens, the field reads `(none)`.
-- **CLI primitive** — the equivalent in the sacred CLI framework (`scripts/cli/lib/*` / `scripts/python/sacred_cli/*`). Pulled from the four port skills' mapping tables. If there is no equivalent — typically because the CLI framework is layout-only and the React component is interactive, animated, or browser-specific — the field reads `(React-only)` plus a one-phrase reason.
-- **Used by** — at least one concrete reference inside `app/page.tsx` (the kitchen sink) or `components/examples/*.tsx` so an agent can see the component in the wild.
+- **Path** — where the source file lives.
+- **Purpose** — one sentence describing what the component does.
+- **Props** — copied from the source `interface` or `type Props` block. Kept in sync by `props_sync.test.mjs`.
+- **Theming tokens** — CSS custom properties (`--theme-*`, `--ansi-*`, `--font-*`, etc.) the component uses. Kept in sync by `theming_tokens_sync.test.mjs`. If none, the field reads `(none)`.
+- **CLI primitive** — the equivalent in the CLI framework (`scripts/cli/lib/*`). If none exists, the field reads `(React-only)`.
+- **Used by** — where the component appears in the kitchen sink or examples. Kept in sync by `component_usage_sync.test.mjs`.
 
-The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL.md` files remain the **how** — they walk through the procedural side of porting and they keep their own (scoped) component mapping tables for the porting workflow they describe. If you are porting a screen, read the skill first; if you just need to know which sacred component renders X, read this catalog.
+This catalog tells you **what** each component is. The four `skills/port-sacred-terminal-ui-to-*/SKILL.md` files tell you **how** to port one.
 
-## Out of scope (gaps to fill in follow-up tasks)
+## Raw component source
 
-- **Per-prop usage examples** — the catalog lists props but does not exhaustively show every meaningful prop combination. A "Storybook-lite" surface that embeds minimal usage snippets per component is a separate, larger task.
-- **Raw `.tsx` source mirror** — an agent that has read this catalog may want to fetch the raw component source over HTTP. The `/llm/...` URL surface intentionally only exposes Markdown contracts (`AGENTS.md` and `SKILL.md`). A `/llm/components/<Name>.tsx.txt` mirror is a follow-up task with a broader allowlist; it is deliberately not part of the first ship so the public surface stays tight.
+Every `components/*.tsx` file is served at `https://sacred.computer/llm/components/<Name>.tsx.txt`. Fetch the source over HTTP without cloning the repo.
 
 ---
 
@@ -80,7 +79,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   }
   ```
 - **Theming tokens:** `--theme-button-background`, `--theme-button-foreground`, `--theme-focused-foreground`, `--theme-text`, `--font-family-mono`, `--font-size`
-- **CLI primitive:** `button(hotkey, label)` in `scripts/cli/lib/button.js` (`button(hotkey, label)` in the Python mirror). Pair with `buttonRow(...)` to get the same left/right layout.
+- **CLI primitive:** `button(hotkey, label)` in `scripts/cli/lib/button.ts` (`button(hotkey, label)` in the Python mirror). Pair with `buttonRow(...)` to get the same left/right layout.
 - **Used by:** `<ActionButton hotkey="ESC">EXIT</ActionButton>` in `components/examples/CLITemplate.tsx`, `components/examples/InvoiceTemplate.tsx`, `components/examples/ResultsList.tsx`, and the "ACTION BUTTONS" accordion in `app/page.tsx`. Every CLI port surface uses `ActionButton` (not `Button`) so it stays in lockstep with Simulacrum's `button(hotkey, label)` primitive.
 
 ## ActionListItem
@@ -132,7 +131,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     children?: React.ReactNode;
   }
   ```
-- **Theming tokens:** `--theme-window-shadow`, `--theme-focused-foreground`, `--theme-text`, `--theme-line-height-base`, `--font-size`
+- **Theming tokens:** `--theme-window-shadow`, `--theme-focused-foreground`, `--theme-line-height-base`, `--font-size`
 - **CLI primitive:** (React-only) The CLI is text-only; portraits do not exist there.
 - **Used by:** `<Avatar src="..." href="https://internet.dev" target="_blank" />` inside the "AVATARS" accordion in `app/page.tsx`.
 
@@ -258,7 +257,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     rows?: number;
   }
   ```
-- **Theming tokens:** `--theme-border`, `--theme-text`, `--theme-focused-foreground`, `--font-size`, `--theme-line-height-base`
+- **Theming tokens:** `--theme-focused-foreground`, `--font-size`, `--theme-line-height-base`
 - **CLI primitive:** (React-only) Sacred CLI ports are static; no animation diffing.
 - **Used by:** `<CanvasPlatformer rows={12} />` inside the ModalCanvasPlatformer modal triggered from `app/page.tsx`.
 
@@ -272,7 +271,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     rows?: number;
   }
   ```
-- **Theming tokens:** `--theme-text`, `--theme-focused-foreground`, `--font-size`, `--theme-line-height-base`
+- **Theming tokens:** `--theme-focused-foreground`, `--font-size`, `--theme-line-height-base`
 - **CLI primitive:** (React-only) Same reason as CanvasPlatformer.
 - **Used by:** `<CanvasSnake rows={12} />` inside the ModalCanvasSnake modal triggered from `app/page.tsx`.
 
@@ -289,7 +288,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   }
   ```
 - **Theming tokens:** `--theme-text`, `--theme-line-height-base`, `--font-size`
-- **CLI primitive:** `cardTop(title, innerW)` + `cardRow(content, innerW)` + `cardBot(innerW)` (`scripts/cli/lib/card.js`).
+- **CLI primitive:** `cardTop(title, innerW)` + `cardRow(content, innerW)` + `cardBot(innerW)` (`scripts/cli/lib/card.ts`).
 - **Used by:** `<Card title="EXAMPLE">...</Card>` repeated throughout `app/page.tsx`, and `<Card title="SACRED CLI / TEMPLATE" mode="left">` in `components/examples/CLITemplate.tsx`.
 
 ## CardDouble
@@ -306,7 +305,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   }
   ```
 - **Theming tokens:** `--theme-text`, `--theme-line-height-base`, `--font-size`
-- **CLI primitive:** (React-only) The sacred CLI framework only ships single-border cards in `scripts/cli/lib/card.js`.
+- **CLI primitive:** (React-only) The sacred CLI framework only ships single-border cards in `scripts/cli/lib/card.ts`.
 - **Used by:** `<CardDouble title={entry[0]}>...</CardDouble>` inside `components/ComboBox.tsx`.
 
 ## Checkbox
@@ -383,7 +382,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   }
   ```
 - **Theming tokens:** (none)
-- **CLI primitive:** `getInnerWidth(termW)` plus the surrounding window frame in `scripts/cli/lib/window.js` — the CLI framework computes width once and the templates fill it.
+- **CLI primitive:** `getInnerWidth(termW)` plus the surrounding window frame in `scripts/cli/lib/window.ts` — the CLI framework computes width once and the templates fill it.
 - **Used by:** `<ContentFluid>...</ContentFluid>` wraps the kitchen sink page body in `app/page.tsx`.
 
 ## DataTable
@@ -610,7 +609,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     mode?: undefined | 'greek' | 'katakana';
   }
   ```
-- **Theming tokens:** `--theme-text`, `--font-size`, `--theme-line-height-base`
+- **Theming tokens:** `--font-size`, `--theme-line-height-base`
 - **CLI primitive:** (React-only) Animation surface.
 - **Used by:** `<MatrixLoader rows={32} mode="katakana" />` inside the ModalMatrixModes modal triggered from `app/page.tsx`.
 
@@ -648,7 +647,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
 - **Props:**
   ```ts
   interface ModalTriggerProps {
-    children: React.ReactElement<{ onClick?: React.MouseEventHandler }>;
+    children: React.ReactNode;
     modal: React.ComponentType<any>;
     modalProps?: Record<string, any>;
   }
@@ -779,7 +778,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   };
   ```
 - **Theming tokens:** `--theme-focused-foreground`
-- **CLI primitive:** `truncateVisible(line, innerW)` from `scripts/cli/lib/ansi.js`.
+- **CLI primitive:** `truncateVisible(line, innerW)` from `scripts/cli/lib/ansi.ts`.
 - **Used by:** `<RowEllipsis>...</RowEllipsis>` inside list-item rows in `app/page.tsx`.
 
 ## RowSpaceBetween
@@ -792,8 +791,8 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     children?: React.ReactNode;
   };
   ```
-- **Theming tokens:** `--theme-focused-foreground`
-- **CLI primitive:** `buttonRow(left, right, innerW)` in `scripts/cli/lib/button.js`.
+- **Theming tokens:** (none)
+- **CLI primitive:** `buttonRow(left, right, innerW)` in `scripts/cli/lib/button.ts`.
 - **Used by:** `<RowSpaceBetween><span><ActionButton hotkey="ESC">EXIT</ActionButton></span><span><ActionButton hotkey="↵">SELECT</ActionButton></span></RowSpaceBetween>` in `components/examples/CLITemplate.tsx`, with the same shape repeated in `components/examples/InvoiceTemplate.tsx` (ESC EXIT / ↵ SUBMIT) and `components/examples/ResultsList.tsx` (ESC EXIT / ← PREV → NEXT).
 
 ## Select
@@ -843,7 +842,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
     align?: ('left' | 'right')[];
   }
   ```
-- **Theming tokens:** `--ansi-10-lime`, `--ansi-240-gray-35`, `--ansi-248-gray-66`, `--color-white`
+- **Theming tokens:** `--ansi-10-lime`, `--ansi-240-gray-35`, `--ansi-248-gray-66`, `--color-white`, `--theme-focused-foreground`
 - **CLI primitive:** `cardHeaderRow(formatRow(TH, COL_SPEC, innerW), innerW)` for the header plus `cardRow(formatRow(row, COL_SPEC, innerW), innerW)` for each body row. The status set is the contract — `ACTIVE`/`OPEN`/`APPROVED` and `CLOSED`/`PAID`/`SUSPENDED`.
 - **Used by:** `<SimpleTable data={PRIMITIVES} />` in `components/examples/CLITemplate.tsx`, `<SimpleTable data={LINE_ITEMS} align={LINE_ITEM_ALIGN} />` in `components/examples/InvoiceTemplate.tsx`, `<SimpleTable data={RESULTS} />` in `components/examples/ResultsList.tsx`.
 
@@ -900,7 +899,7 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   }
   ```
 - **Theming tokens:** (none)
-- **CLI primitive:** `wordWrap(text, contentW)` in `scripts/cli/lib/card.js`, fed into a sequence of `cardRow` calls.
+- **CLI primitive:** `wordWrap(text, contentW)` in `scripts/cli/lib/card.ts`, fed into a sequence of `cardRow` calls.
 - **Used by:** `<Text>...</Text>` inside the navigation strip in `app/page.tsx`.
 
 ## TextArea
@@ -964,6 +963,6 @@ The catalog is the **what**. The four `skills/port-sacred-terminal-ui-to-*/SKILL
   };
   ```
 - **Theming tokens:** `--theme-window-background`, `--theme-window-shadow`, `--theme-line-height-base`
-- **CLI primitive:** `getInnerWidth(termW)` + `wrapLine` / `wrapLineTop` / `shadowBottomRow` in `scripts/cli/lib/window.js`. Wrapping a CLI-port React surface in `<Window>` is the React-side equivalent of running the screen inside the Simulacrum alt-screen window frame.
+- **CLI primitive:** `getInnerWidth(termW)` + `wrapLine` / `wrapLineTop` / `shadowBottomRow` in `scripts/cli/lib/window.ts`. Wrapping a CLI-port React surface in `<Window>` is the React-side equivalent of running the screen inside the Simulacrum alt-screen window frame.
 - **Used by:** `<Window>...</Window>` wraps the cards + button row in `components/examples/CLITemplate.tsx`, `components/examples/InvoiceTemplate.tsx`, `components/examples/ResultsList.tsx`, `components/examples/AS400.tsx`, `components/examples/Denabase.tsx`, `components/examples/DashboardRadar.tsx`, and `components/examples/MessagesInterface.tsx`, plus the standalone "WINDOW" accordion in `app/page.tsx`.
 - **Drop shadow spacing:** Window's bottom drop shadow (1 row) extends below the component's bounding box. When a Window-wrapped component sits inside an Accordion or any container that clips or collapses whitespace, add a double `<br />` after the component so the shadow has room to render. Single `<br />` clips the shadow.

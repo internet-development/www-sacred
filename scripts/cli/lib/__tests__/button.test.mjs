@@ -1,9 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const { strip } = require('../ansi');
-const { button, buttonRow } = require('../button');
+import { strip } from '../ansi.ts';
+import { button, buttonRow } from '../button.ts';
 
 describe('button', () => {
   it('uppercases the label and surrounds with single-space pads', () => {

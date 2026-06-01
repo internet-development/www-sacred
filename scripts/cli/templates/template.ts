@@ -1,26 +1,12 @@
 #!/usr/bin/env -S npx tsx
-//NOTE(jimmylee): Sacred CLI — TypeScript template demonstrating layout primitives + lifecycle.
-//NOTE(jimmylee): Run with `npm run cli:typescript`. Press ESC or Ctrl-C to exit.
-//NOTE(jimmylee): This is the canonical example for porting React Window* components to TS CLI screens.
-
-//NOTE(jimmylee): The framework lives in scripts/cli/lib/* as zero-dependency CommonJS — TypeScript
-//NOTE(jimmylee): consumes it via `require` so we get type erasure for free without a build step.
-const { cardTop, cardRow, cardHeaderRow, cardBot, wordWrap } = require('../lib/card');
-const { formatRow, kvTable } = require('../lib/table');
-const { button, buttonRow } = require('../lib/button');
-const { createApp } = require('../lib/app');
-
-type ColSpec = {
-  width: number;
-  align?: 'left' | 'right';
-  grow?: boolean;
-  status?: boolean;
-  gap?: number;
-};
+import { cardTop, cardRow, cardHeaderRow, cardBot, wordWrap } from '../lib/card';
+import { formatRow, kvTable, type ColSpec } from '../lib/table';
+import { button, buttonRow } from '../lib/button';
+import { createApp } from '../lib/app';
 
 const SUMMARY: Array<[string, string]> = [
   ['PROJECT', 'www-sacred'],
-  ['VERSION', '1.1.19'],
+  ['VERSION', '2.0.2'],
   ['LANGUAGE', 'TypeScript'],
   ['STATUS', 'OK'],
 ];
@@ -28,12 +14,12 @@ const SUMMARY: Array<[string, string]> = [
 const TH = ['NAME', 'KIND', 'STATUS', 'UPDATED'];
 
 const ROWS: string[][] = [
-  ['ansi.js', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
-  ['window.js', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
-  ['card.js', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
-  ['table.js', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
-  ['button.js', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
-  ['app.js', 'lifecycle', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['ansi.ts', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['window.ts', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['card.ts', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['table.ts', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['button.ts', 'primitive', 'ACTIVE', '2026-04-08T09:00:00'],
+  ['app.ts', 'lifecycle', 'ACTIVE', '2026-04-08T09:00:00'],
 ];
 
 const COL_SPEC: ColSpec[] = [

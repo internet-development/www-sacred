@@ -1,14 +1,5 @@
-//NOTE(jimmylee): Shared helper for the /llm/* and /llms*.txt route handlers and their vitest sync
-//NOTE(jimmylee): guards. Walks the repo from process.cwd() once and returns every AGENTS.md and
-//NOTE(jimmylee): SKILL.md as the canonical doc allowlist. The route handlers feed the same list into
-//NOTE(jimmylee): generateStaticParams and the runtime body resolver — there is exactly one source of
-//NOTE(jimmylee): truth, the filesystem. The vitest guard fails CI if the on-disk set drifts from the
-//NOTE(jimmylee): set the routes serve, so adding a new AGENTS.md or SKILL.md without exposing it as
-//NOTE(jimmylee): a URL is impossible inside the same PR.
-
-//NOTE(jimmylee): The `_lib` segment is a Next.js private folder — Next.js excludes any directory
-//NOTE(jimmylee): whose name starts with an underscore from routing, so this file lives next to the
-//NOTE(jimmylee): routes without becoming one itself.
+//NOTE(jimmylee): Single source of truth for the /llm/* URL surface. The filesystem is the allowlist.
+//NOTE(jimmylee): _lib is a Next.js private folder so this file is not a route itself.
 
 import { readdirSync, statSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
@@ -17,43 +8,37 @@ import { join, relative, sep } from 'node:path';
 export const SACRED_ORIGIN = 'https://sacred.computer';
 export const LLM_PREFIX = '/llm';
 export const MARKDOWN_CONTENT_TYPE = 'text/markdown; charset=utf-8';
+export const PLAINTEXT_CONTENT_TYPE = 'text/plain; charset=utf-8';
 export const CACHE_CONTROL = 'public, max-age=300, s-maxage=86400';
 
 export type DocEntry = {
-  //NOTE(jimmylee): Repo-relative POSIX path of the file. The URL is mechanically derived from this.
+  kind: 'doc' | 'source';
   repoPath: string;
-  //NOTE(jimmylee): Path segments suitable for Next.js generateStaticParams() under [...path].
+  //NOTE(jimmylee): urlPath differs from repoPath for source files (e.g. Card.tsx -> Card.tsx.txt).
+  urlPath: string;
   segments: string[];
-  //NOTE(jimmylee): Absolute filesystem path used to read the file body.
   absolutePath: string;
-  //NOTE(jimmylee): Canonical sacred.computer URL for the doc.
   url: string;
+  contentType: string;
 };
 
-//NOTE(jimmylee): Repo root resolution. Next.js and vitest both run with cwd at the project root, so
-//NOTE(jimmylee): process.cwd() is reliable here. Sacred has no monorepo / workspace nesting.
 const REPO_ROOT = process.cwd();
-
-//NOTE(jimmylee): Directories we never descend into when walking the tree. node_modules and .next are
-//NOTE(jimmylee): the obvious ones; .workdir is the read-only sibling-project mirror sacred uses for
-//NOTE(jimmylee): porting reference and intentionally excludes from its own surface.
 const SKIP_DIR_NAMES = new Set(['node_modules', '.next', '.git', '.workdir']);
 
 const DOC_FILE_NAMES = new Set(['AGENTS.md', 'SKILL.md']);
 
 function isDirectorySkippable(name: string): boolean {
   if (SKIP_DIR_NAMES.has(name)) return true;
-  //NOTE(jimmylee): Skip every dot-directory by convention. Sacred docs live under regular folders.
   if (name.startsWith('.')) return true;
   return false;
 }
 
-function walk(dir: string, out: DocEntry[]) {
+function walkDocs(dir: string, out: DocEntry[]) {
   const entries = readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     if (entry.isDirectory()) {
       if (isDirectorySkippable(entry.name)) continue;
-      walk(join(dir, entry.name), out);
+      walkDocs(join(dir, entry.name), out);
       continue;
     }
     if (entry.isFile() && DOC_FILE_NAMES.has(entry.name)) {
@@ -61,25 +46,54 @@ function walk(dir: string, out: DocEntry[]) {
       const relPath = relative(REPO_ROOT, absolutePath).split(sep).join('/');
       const segments = relPath.split('/');
       out.push({
+        kind: 'doc',
         repoPath: relPath,
+        urlPath: relPath,
         segments,
         absolutePath,
         url: `${SACRED_ORIGIN}${LLM_PREFIX}/${relPath}`,
+        contentType: MARKDOWN_CONTENT_TYPE,
       });
     }
   }
 }
 
-//NOTE(jimmylee): Cached because Next.js may invoke this multiple times during a single build.
+function walkComponentSources(out: DocEntry[]) {
+  const componentsDir = join(REPO_ROOT, 'components');
+  let names: string[];
+  try {
+    names = readdirSync(componentsDir).filter((n) => {
+      return typeof n === 'string' && n.endsWith('.tsx') && statSync(join(componentsDir, n)).isFile();
+    }) as string[];
+  } catch {
+    return;
+  }
+  for (const name of names) {
+    const absolutePath = join(componentsDir, name);
+    const repoPath = `components/${name}`;
+    const urlPath = `components/${name}.txt`;
+    const segments = urlPath.split('/');
+    out.push({
+      kind: 'source',
+      repoPath,
+      urlPath,
+      segments,
+      absolutePath,
+      url: `${SACRED_ORIGIN}${LLM_PREFIX}/${urlPath}`,
+      contentType: PLAINTEXT_CONTENT_TYPE,
+    });
+  }
+}
+
 let cachedDocs: DocEntry[] | null = null;
 
 export function listDocs(): DocEntry[] {
   if (cachedDocs) return cachedDocs;
   const out: DocEntry[] = [];
-  walk(REPO_ROOT, out);
+  walkDocs(REPO_ROOT, out);
+  walkComponentSources(out);
   out.sort((a, b) => {
-    //NOTE(jimmylee): Root AGENTS.md first, then components/, then scripts/, then skills/. The order
-    //NOTE(jimmylee): is alphabetic-by-segment-depth which produces a stable, agent-readable index.
+    if (a.kind !== b.kind) return a.kind === 'doc' ? -1 : 1;
     if (a.segments.length !== b.segments.length) {
       return a.segments.length - b.segments.length;
     }
@@ -89,9 +103,9 @@ export function listDocs(): DocEntry[] {
   return out;
 }
 
-export function findDoc(repoPath: string): DocEntry | null {
+export function findDoc(urlPath: string): DocEntry | null {
   const docs = listDocs();
-  return docs.find((doc) => doc.repoPath === repoPath) ?? null;
+  return docs.find((doc) => doc.urlPath === urlPath) ?? null;
 }
 
 export async function readDocBody(doc: DocEntry): Promise<string> {
@@ -112,12 +126,15 @@ export async function serveDocByPath(requestedPath: string): Promise<Response> {
   const doc = findDoc(requestedPath);
   if (!doc) return new Response('Not Found', { status: 404 });
   const body = await readDocBody(doc);
-  return markdownResponse(body);
+  return new Response(body, {
+    status: 200,
+    headers: {
+      'Content-Type': doc.contentType,
+      'Cache-Control': CACHE_CONTROL,
+    },
+  });
 }
 
-//NOTE(jimmylee): Group docs into the four sections rendered in llms.txt — repo conventions (root +
-//NOTE(jimmylee): components catalog), CLI framework AGENTS files, and the four porting skills. The
-//NOTE(jimmylee): grouping is layout-only — every doc in listDocs() must end up in exactly one group.
 type LlmsTxtSection = { title: string; entries: { label: string; url: string }[] };
 
 function buildSections(): LlmsTxtSection[] {
@@ -125,9 +142,13 @@ function buildSections(): LlmsTxtSection[] {
   const repoConventions: LlmsTxtSection = { title: 'Repo conventions', entries: [] };
   const simulacrum: LlmsTxtSection = { title: 'Simulacrum (CLI framework)', entries: [] };
   const skills: LlmsTxtSection = { title: 'Skills', entries: [] };
+  const componentSource: LlmsTxtSection = { title: 'Component source', entries: [] };
 
   for (const doc of docs) {
-    if (doc.repoPath === 'AGENTS.md') {
+    if (doc.kind === 'source') {
+      const name = doc.repoPath.replace('components/', '');
+      componentSource.entries.push({ label: name, url: doc.url });
+    } else if (doc.repoPath === 'AGENTS.md') {
       repoConventions.entries.push({ label: 'Root AGENTS.md', url: doc.url });
     } else if (doc.repoPath === 'components/AGENTS.md') {
       repoConventions.entries.push({ label: 'Components catalog', url: doc.url });
@@ -139,13 +160,11 @@ function buildSections(): LlmsTxtSection[] {
       const slug = doc.segments[1] ?? doc.repoPath;
       skills.entries.push({ label: `skills/${slug}`, url: doc.url });
     } else {
-      //NOTE(jimmylee): Any AGENTS.md or SKILL.md added in a new directory falls through to the
-      //NOTE(jimmylee): repo-conventions section by default so the URL never goes missing.
       repoConventions.entries.push({ label: doc.repoPath, url: doc.url });
     }
   }
 
-  return [repoConventions, simulacrum, skills];
+  return [repoConventions, simulacrum, skills, componentSource];
 }
 
 export function buildLlmsTxt(): string {
@@ -175,7 +194,7 @@ export function buildLlmsTxt(): string {
 }
 
 export async function buildLlmsFullTxt(): Promise<string> {
-  const docs = listDocs();
+  const docs = listDocs().filter((d) => d.kind === 'doc');
   const parts: string[] = [];
   parts.push('# Sacred Computer — full doc bundle');
   parts.push('');
@@ -183,7 +202,9 @@ export async function buildLlmsFullTxt(): Promise<string> {
   parts.push('> order as https://sacred.computer/llms.txt. Sacred Computer (React) and Simulacrum');
   parts.push('> (CLI) are two halves of one framework — the React surface is documented in');
   parts.push('> components/AGENTS.md, the CLI surface in scripts/cli/AGENTS.md and');
-  parts.push('> scripts/python/AGENTS.md.');
+  parts.push('> scripts/python/AGENTS.md. Component source is available individually at');
+  parts.push('> https://sacred.computer/llm/components/<Name>.tsx.txt but not included in this');
+  parts.push('> bundle to keep it focused on contracts.');
   parts.push('');
   for (const doc of docs) {
     const body = await readDocBody(doc);
@@ -197,8 +218,6 @@ export async function buildLlmsFullTxt(): Promise<string> {
   return parts.join('\n');
 }
 
-//NOTE(jimmylee): Test-only escape hatch — clears the cached doc list so a unit test can re-walk the
-//NOTE(jimmylee): tree against a different cwd. Production callers should never use this.
 export function _resetDocCacheForTests(): void {
   cachedDocs = null;
 }

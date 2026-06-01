@@ -1,21 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { createRequire } from 'node:module';
 import { readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 //NOTE(jimmylee): Sync guard for components/AGENTS.md. Asserts every .tsx file directly under
 //NOTE(jimmylee): components/ has a matching `## Heading` in the catalog and vice versa. The catalog
-//NOTE(jimmylee): is the canonical surface map for sacred React components — adding a component
+//NOTE(jimmylee): is the canonical surface map for sacred React components, adding a component
 //NOTE(jimmylee): without documenting it (or removing one without deleting its entry) fails CI inside
 //NOTE(jimmylee): the same PR. Sub-directories (`examples/`, `modals/`, `svg/`, `page/`, `detectors/`)
-//NOTE(jimmylee): are intentionally excluded — they are demos / icons / runtime detectors, not the
+//NOTE(jimmylee): are intentionally excluded, they are demos / icons / runtime detectors, not the
 //NOTE(jimmylee): library surface itself.
-
-//NOTE(jimmylee): createRequire is unused at present but kept here so this file follows the same
-//NOTE(jimmylee): import shape as scripts/cli/lib/__tests__/*.test.mjs. If this catalog ever needs to
-//NOTE(jimmylee): pull in a CJS helper, the require is ready.
-const _require = createRequire(import.meta.url);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const COMPONENTS_DIR = join(__dirname, '..');

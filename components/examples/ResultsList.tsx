@@ -1,13 +1,5 @@
 'use client';
 
-//NOTE(jimmylee): React port of the WindowListBills/Cards/Expenses/Transactions CLI screens.
-//NOTE(jimmylee): Layout only — no animation header. The data set matches scripts/cli/templates so the
-//NOTE(jimmylee): React surface and CLI screen agree on the row order. Uses SimpleTable so the column
-//NOTE(jimmylee): definition maps directly onto the CLI framework's `formatRow` colSpec. The screen is
-//NOTE(jimmylee): wrapped in <Window> and the action row uses <ActionButton> + <RowSpaceBetween> so it
-//NOTE(jimmylee): stays in lockstep with CLITemplate / InvoiceTemplate — every CLI port surface uses
-//NOTE(jimmylee): the same dialog frame and action button pair the alt-screen CLI shows.
-
 import * as React from 'react';
 
 import Window from '@components/Window';

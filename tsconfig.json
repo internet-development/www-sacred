@@ -1,33 +1,20 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@root/*": [
         "./*"
       ],
-      "@system/*": [
-        "./system/*"
-      ],
-      "@demos/*": [
-        "./demos/*"
-      ],
       "@common/*": [
         "./common/*"
       ],
-      "@data/*": [
-        "./data/*"
-      ],
       "@components/*": [
         "./components/*"
-      ],
-      "@pages/*": [
-        "./pages/*"
       ],
       "@modules/*": [
         "./modules/*"
       ]
     },
-    "target": "es5",
+    "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",

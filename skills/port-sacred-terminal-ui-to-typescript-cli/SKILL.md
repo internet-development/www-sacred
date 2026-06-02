@@ -8,7 +8,7 @@ Take a React `Window*.tsx` (or any sacred component) and produce a terminal CLI 
 
 ## When to use
 
-Use this skill whenever you want a CLI version of an existing sacred React surface. Sacred ships a small zero-dependency layout framework that maps every React `<Card>` / `<DataTable>` / `<TerminalButton>` concept onto a CLI primitive. The output is identical to the React component minus the canvas-based animations — sacred renders are static.
+Use this skill whenever you want a CLI version of an existing sacred React surface. Sacred ships a small zero-dependency layout framework that maps every React `<Card>` / `<DataTable>` / `<ActionButton>` concept onto a CLI primitive. The output is identical to the React component minus the canvas-based animations — sacred renders are static.
 
 ## What you ship
 
@@ -37,12 +37,12 @@ Read these files before starting:
 | ----------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `<Card title="T">`                        | `cardTop('T', innerW)` + `cardBot(innerW)`               | Top + bottom borders                                                        |
 | Content `<div>` inside `<Card>`           | `cardRow(text, innerW)`                                  | 2ch left indent, padded to inner width                                      |
-| `unstyledTableFixedKey` + `gradientText`  | `kvTableGradient([[k, v]])`                              | 24ch key column, gradient on value                                          |
+| Key-value pair with gradient styling      | `kvTableGradient([[k, v]])`                              | 24ch key column, gradient on value                                          |
 | `<thead><tr><td>`                         | `cardHeaderRow(formatRow(TH, COL_SPEC, innerW), innerW)` | `#585858` background                                                        |
 | `<tbody><tr><td>`                         | `cardRow(formatRow(row, COL_SPEC, innerW), innerW)`      | Per-cell alignment, status coloring                                         |
-| `styles.statusAuthenticated/Disconnected` | `colSpec: { status: true }`                              | `ACTIVE`/`OPEN`/`APPROVED` → bold green; `CLOSED`/`PAID`/`SUSPENDED` → gray |
-| `<TerminalButton hotkey="ESC">`           | `button('ESC', 'exit')`                                  | Hotkey + label background pair                                              |
-| `flexRowLeft / flexRowRight`              | `buttonRow(left, right, innerW)`                         | Left + right justify with windowBg gap                                      |
+| `styles.statusOk/statusOff`               | `colSpec: { status: true }`                              | `ACTIVE`/`OPEN`/`APPROVED` → bold green; `CLOSED`/`PAID`/`SUSPENDED` → gray |
+| `<ActionButton hotkey="ESC">`             | `button('ESC', 'exit')`                                  | Hotkey + label background pair                                              |
+| `<RowSpaceBetween>`                       | `buttonRow(left, right, innerW)`                         | Left + right justify with windowBg gap                                      |
 | Word-wrapped paragraph                    | `wordWrap(text, innerW - 6)`                             | Card padding is 3ch each side                                               |
 | Animated `<ASCIICanvas>` header           | _omit_                                                   | Sacred CLI ports are static; the React side keeps the animation             |
 

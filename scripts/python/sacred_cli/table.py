@@ -1,4 +1,4 @@
-"""Table formatting. Mirrors scripts/cli/lib/table.js."""
+"""Table formatting. Mirrors scripts/cli/lib/table.ts."""
 
 from .ansi import BOLD, COLORS, RESET_FG, fg_hex, gradient_text, pad_l, pad_r
 

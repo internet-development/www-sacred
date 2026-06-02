@@ -1,6 +1,4 @@
-// NOTE(jimmylee)
-// Vendored from
-// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/index.ts
+//NOTE(jimmylee): vendored from https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/index.ts
 
 import useHotkeys from '@modules/hotkeys/use-hotkeys'
 import type { Options, Keys, HotkeyCallback } from '@modules/hotkeys/types'

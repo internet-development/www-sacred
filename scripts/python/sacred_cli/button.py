@@ -1,4 +1,4 @@
-"""Terminal buttons. Mirrors scripts/cli/lib/button.js."""
+"""Terminal buttons. Mirrors scripts/cli/lib/button.ts."""
 
 from .ansi import COLORS, RESET, RESET_FG, bg_hex, fg_hex, vis_len
 

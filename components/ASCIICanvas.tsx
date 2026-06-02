@@ -23,9 +23,9 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
   const colsRef = React.useRef<number>(40);
   const visibleRef = React.useRef<boolean>(false);
   const gridRef = React.useRef<HTMLSpanElement[]>([]);
-  const prevColsRef = React.useRef<number>(0);
-  const prevCharsRef = React.useRef<string[]>([]);
-  const prevColorsRef = React.useRef<string[]>([]);
+  const previousColsRef = React.useRef<number>(0);
+  const previousCharsRef = React.useRef<string[]>([]);
+  const previousColorsRef = React.useRef<string[]>([]);
 
   React.useEffect(() => {
     const el = preRef.current;
@@ -41,8 +41,8 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
     el.appendChild(measure);
 
     const buildGrid = (cols: number) => {
-      if (cols === prevColsRef.current) return;
-      prevColsRef.current = cols;
+      if (cols === previousColsRef.current) return;
+      previousColsRef.current = cols;
       while (el.firstChild && el.firstChild !== measure) {
         el.removeChild(el.firstChild);
       }
@@ -62,14 +62,14 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
 
       el.insertBefore(frag, measure);
       gridRef.current = spans;
-      prevCharsRef.current = new Array(cols * rows).fill('');
-      prevColorsRef.current = new Array(cols * rows).fill('');
+      previousCharsRef.current = new Array(cols * rows).fill('');
+      previousColorsRef.current = new Array(cols * rows).fill('');
     };
 
     const updateCols = () => {
-      const chW = measure.getBoundingClientRect().width;
-      if (chW > 0) {
-        const cols = Math.floor(el.clientWidth / chW);
+      const charWidth = measure.getBoundingClientRect().width;
+      if (charWidth > 0) {
+        const cols = Math.floor(el.clientWidth / charWidth);
         colsRef.current = cols;
         buildGrid(cols);
       }
@@ -78,6 +78,16 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
 
     const resizeObs = new ResizeObserver(updateCols);
     resizeObs.observe(el);
+
+    //NOTE(jimmylee): Font changes toggle a class on <body> (e.g. font-use-web-plus-ibm-bios),
+    //NOTE(jimmylee): which changes --font-family-mono. Other components reflow via CSS but
+    //NOTE(jimmylee): ASCIICanvas must rebuild its span grid because column count depends on
+    //NOTE(jimmylee): character width.
+    const fontObs = new MutationObserver(() => {
+      previousColsRef.current = 0;
+      updateCols();
+    });
+    fontObs.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
 
     const interObs = new IntersectionObserver(
       ([entry]) => {
@@ -95,24 +105,24 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
       if (!visibleRef.current || cancelled) return;
 
       const cols = colsRef.current;
-      const t = performance.now() * 0.0001;
+      const time = performance.now() * 0.0001;
       const grid = gridRef.current;
       const total = cols * rows;
-      const pChars = prevCharsRef.current;
-      const pColors = prevColorsRef.current;
+      const previousChars = previousCharsRef.current;
+      const previousColors = previousColorsRef.current;
 
-      for (let idx = 0; idx < total && idx < grid.length; idx++) {
-        const x = idx % cols;
-        const y = (idx - x) / cols;
-        const cell = animate(x, y, t, cols, rows);
-        const s = grid[idx];
-        if (cell.char !== pChars[idx]) {
-          s.textContent = cell.char;
-          pChars[idx] = cell.char;
+      for (let index = 0; index < total && index < grid.length; index++) {
+        const column = index % cols;
+        const row = (index - column) / cols;
+        const cell = animate(column, row, time, cols, rows);
+        const span = grid[index];
+        if (cell.char !== previousChars[index]) {
+          span.textContent = cell.char;
+          previousChars[index] = cell.char;
         }
-        if (cell.color !== pColors[idx]) {
-          s.style.color = cell.color;
-          pColors[idx] = cell.color;
+        if (cell.color !== previousColors[index]) {
+          span.style.color = cell.color;
+          previousColors[index] = cell.color;
         }
       }
 
@@ -125,6 +135,7 @@ const ASCIICanvas = ({ rows = 10 }: { rows?: number }) => {
       cancelled = true;
       cancelAnimationFrame(frameRef.current);
       resizeObs.disconnect();
+      fontObs.disconnect();
       interObs.disconnect();
       if (measure.parentNode) measure.parentNode.removeChild(measure);
     };

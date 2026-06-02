@@ -1,6 +1,4 @@
-// NOTE(jimmylee)
-// Vendored from
-// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/validators.ts
+//NOTE(jimmylee): vendored from https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/validators.ts
 
 import { FormTags, Hotkey, Scopes, Trigger } from '@modules/hotkeys/types'
 import { isHotkeyPressed, isReadonlyArray } from '@modules/hotkeys/is-hotkey-pressed'

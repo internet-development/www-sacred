@@ -19,7 +19,7 @@ interface ModalErrorProps {
   title?: string;
 }
 
-//NOTE(jimmylee): Enter doesn't always work for some reason.
+//NOTE(jimmylee): useHotkeys fires on keydown, but focus may not land on this modal if another modal is stacked above.
 function ModalError({ message, buttonText, title }: ModalErrorProps) {
   const { close } = useModals();
 

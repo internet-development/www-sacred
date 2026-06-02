@@ -32,9 +32,9 @@ npm run cli:typescript
 npm run cli:python
 ```
 
-`cli:typescript` runs `scripts/cli/templates/template.ts` via [tsx](https://github.com/privatenumber/tsx). `cli:python` runs `scripts/python/templates/template.py` against a snake_case Python mirror of the framework under `scripts/python/sacred_cli`. Both screens use the alt screen buffer and raw mode keyboard input — press `q` or `Esc` to exit. The same template is also mounted as a React component on the kitchen sink page (search for `CLI TEMPLATE EXAMPLE`).
+`cli:typescript` runs `scripts/cli/templates/template.ts` via [tsx](https://github.com/privatenumber/tsx). `cli:python` runs `scripts/python/templates/template.py` against a snake_case Python mirror of the framework under `scripts/python/sacred_cli`. Both screens use the alt screen buffer and raw mode keyboard input — press `Esc` or `Ctrl-C` to exit. The same template is also mounted as a React component on the kitchen sink page (search for `CLI TEMPLATE EXAMPLE`).
 
-If you want to write your own CLI screen or port a sacred React surface to a terminal, the four skills under `skills/` walk through the conventions:
+If you want to write your own CLI screen or port a sacred React surface to a terminal, the four porting skills under `skills/` walk through the conventions:
 
 - `skills/port-sacred-terminal-ui-to-typescript-cli/SKILL.md`
 - `skills/port-sacred-terminal-ui-to-python/SKILL.md`

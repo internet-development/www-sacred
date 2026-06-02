@@ -1,6 +1,4 @@
-// NOTE(jimmylee)
-// Vendored from
-// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/types.ts
+//NOTE(jimmylee): vendored from https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/types.ts
 import type { DependencyList } from 'react'
 
 export type FormTags = 'input' | 'textarea' | 'select' | 'INPUT' | 'TEXTAREA' | 'SELECT'

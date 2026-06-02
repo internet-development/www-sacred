@@ -1,4 +1,4 @@
-"""Window wrapper. Mirrors scripts/cli/lib/window.js."""
+"""Window wrapper. Mirrors scripts/cli/lib/window.ts."""
 
 from .ansi import RESET, COLORS, bg_default, bg_hex, vis_len
 

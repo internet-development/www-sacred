@@ -1,6 +1,4 @@
-// NOTE(jimmylee)
-// Vendored from
-// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/BoundHotkeysProxyProvider.tsx
+//NOTE(jimmylee): vendored from https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/BoundHotkeysProxyProvider.tsx
 
 import { createContext, ReactNode, useContext } from 'react'
 import { Hotkey } from '@modules/hotkeys/types'

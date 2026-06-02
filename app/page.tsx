@@ -83,8 +83,6 @@ import ModalDOMSnake from '@root/components/modals/ModalDOMSnake';
 
 export const dynamic = 'force-static';
 
-// NOTE(jimmylee)
-// https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;
   const description = Package.description;
@@ -131,8 +129,6 @@ export async function generateMetadata({ params, searchParams }) {
   };
 }
 
-// NOTE(jimmylee)
-// https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts
 export default async function Page(props) {
   return (
     <DefaultLayout previewPixelSRC="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png">

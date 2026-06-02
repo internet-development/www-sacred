@@ -16,7 +16,7 @@ This is not a game engine. There is no THREE.js, no physics, no 60fps simulation
 - `components/CanvasSnake.tsx`, `components/DOMSnake.tsx`, `components/CanvasPlatformer.tsx` — interactive games
 - `components/examples/OneLineLoaders.tsx`, `components/BarLoader.tsx`, `components/BlockLoader.tsx`, `components/BarProgress.tsx` — spinners
 
-`components/ASCIICanvas.tsx` is the reference implementation. It already follows most of Part 1: a pre-allocated span grid, DOM diffing against `prevCharsRef` / `prevColorsRef`, refs cached into locals before the loop, an indexed `for`, guarded property writes, and an `IntersectionObserver` that stops the loop when the element scrolls off-screen. When you write or review an animation component, hold it against that file.
+`components/ASCIICanvas.tsx` is the reference implementation. It already follows most of Part 1: a pre-allocated span grid, DOM diffing against `previousCharsRef` / `previousColorsRef`, refs cached into locals before the loop, an indexed `for`, guarded property writes, and an `IntersectionObserver` that stops the loop when the element scrolls off-screen. When you write or review an animation component, hold it against that file.
 
 Everything else in the repo — the static React components, the Simulacrum CLI framework under `scripts/cli/lib/*`, the Python mirror — runs once per interaction, not per frame. Part 1 does not apply there; Part 2 (compiler) does.
 
@@ -56,11 +56,10 @@ Every rule applies to code inside a `requestAnimationFrame` loop. Outside the an
 `ASCIICanvas` reads its refs once per frame into locals, then loops:
 
 ```typescript
-//NOTE(jimmylee): one ref read each, then the loop touches only locals
 const cols = colsRef.current;
 const grid = gridRef.current;
-const previousChars = prevCharsRef.current;
-const previousColors = prevColorsRef.current;
+const previousChars = previousCharsRef.current;
+const previousColors = previousColorsRef.current;
 
 for (let index = 0; index < total && index < grid.length; index++) {
   // ...reads previousChars[index], writes grid[index]
@@ -195,17 +194,26 @@ These are the settings actually in `tsconfig.json` and why they matter. Do not d
 ```jsonc
 {
   "compilerOptions": {
-    "target": "es2017",          // Next.js/SWC does the real downlevel; tsc target only affects lib surface
-    "moduleResolution": "bundler", // matches the bundler's resolution — correctness, not speed
-    "incremental": true,        // writes tsconfig.tsbuildinfo, skips unchanged files
-    "skipLibCheck": true,       // skips .d.ts checking — the largest single tsc speedup
-    "isolatedModules": true,    // every file transpiles independently (Next/SWC); blocks const enum
-    "resolveJsonModule": true,  // lets TypeScript import colors.json as a typed module
-    "allowJs": true,            // kept for compatibility; the Simulacrum framework is now .ts
-    "strict": false,            // only strictNullChecks is on (see below)
+    "paths": { "@root/*": ["./*"], "@common/*": ["./common/*"], "@components/*": ["./components/*"], "@modules/*": ["./modules/*"] },
+    "target": "es2017",              // Next.js/SWC does the real downlevel; tsc target only affects lib surface
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,                 // kept for compatibility; the Simulacrum framework is now .ts
+    "skipLibCheck": true,            // skips .d.ts checking — the largest single tsc speedup
+    "strict": false,                 // only strictNullChecks is on (see below)
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,                  // tsc is a checker only; Next.js/SWC emits
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",   // matches the bundler's resolution — correctness, not speed
+    "resolveJsonModule": true,       // lets TypeScript import colors.json as a typed module
+    "isolatedModules": true,         // every file transpiles independently (Next/SWC); blocks const enum
+    "jsx": "react-jsx",
+    "incremental": true,             // writes tsconfig.tsbuildinfo, skips unchanged files
+    "plugins": [{ "name": "next" }],
     "strictNullChecks": true
   },
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"]
 }
 ```
 

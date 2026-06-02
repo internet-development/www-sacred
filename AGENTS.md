@@ -16,7 +16,7 @@ Colors flow from one source: `scripts/cli/colors.json`. That file holds the term
 - `app/` — Next.js App Router. `app/page.tsx` is the kitchen sink. The `/llm/*` routes serve docs as markdown and component source as plain text so agents can fetch them without cloning.
 - `components/` — Sacred React components. Read `components/AGENTS.md` first when picking a component. `components/examples/` has larger demo surfaces. `SimpleTable` is the table for CLI ports (maps onto `formatRow` + `cardHeaderRow`). `Window` is the React peer of the CLI window frame.
 - `common/` — Constants and utilities shared across components.
-- `modules/` — Stand-alone modules (snake game, chess, etc.).
+- `modules/` — Stand-alone, dependency-free modules: the vendored `hotkeys/` library plus a few vendored Node helpers (`cors.ts`, `vary.ts`, `object-assign.ts`).
 - `scripts/cli/` — Simulacrum, the sacred CLI framework (TypeScript, zero dependencies, run via `tsx`). `lib/` is the framework, `lib/__tests__/` is the vitest suite (and the `dump_reference.ts` fixture generator), `templates/` is the canonical TS template, `colors.json` is the shared palette.
 - `scripts/python/` — Simulacrum's Python mirror. `sacred_cli/` is the package, `sacred_cli/__tests__/` is the unittest suite (and the parity test against the JS fixture), `templates/` is the canonical Python template.
 - `scripts/test_python.ts` — TypeScript orchestrator for `npm run test:python`. Probes for `python3`, regenerates the TS fixture, then invokes `python3 -m unittest discover`. Skips with a warning if `python3` is missing.
@@ -29,7 +29,7 @@ Colors flow from one source: `scripts/cli/colors.json`. That file holds the term
 - The CLI framework is intentionally zero-dependency TypeScript, run via `tsx` with no build step.
 - The Python framework mirrors the JS framework one-to-one but uses snake_case. The same `colors.json` is the single source of truth — do not duplicate the palette. The two runtimes are locked into byte-identical output by the parity suite under `scripts/python/sacred_cli/__tests__/test_parity.py`. When you change a JS module, port the change to its Python mirror in the same PR — `npm test` will fail otherwise.
 - React example components in `components/examples/*` should only depend on sacred's existing primitives (`Card`, `SimpleTable`, `Button`, `RowSpaceBetween`, etc.). The CLI port examples (`CLITemplate`, `InvoiceTemplate`, `ResultsList`) use `SimpleTable`, not `DataTable`, because `SimpleTable`'s column + status contract maps one-to-one onto `formatRow` and `cardHeaderRow`. Do not import from `scripts/cli/lib/*` from React — that code is Node-only and uses `process.stdout`.
-- Tests live in three places: `scripts/cli/lib/__tests__/` (CLI framework), `components/__tests__/` (catalog sync guards), `app/llm/__tests__/` (URL surface), and `scripts/python/sacred_cli/__tests__/` (Python + parity). The sync guards keep docs, props, theming tokens, palette colors, and URL surfaces honest against the source. `npm test` runs everything. Run it before opening a PR.
+- Tests live in four places: `scripts/cli/lib/__tests__/` (CLI framework), `components/__tests__/` (catalog sync guards), `app/llm/__tests__/` (URL surface), and `scripts/python/sacred_cli/__tests__/` (Python + parity). The sync guards keep docs, props, theming tokens, palette colors, and URL surfaces honest against the source. `npm test` runs everything. Run it before opening a PR.
 - Sacred CLI ports are static — no animation diffing system. The React side keeps its existing animation primitives (canvas snake, canvas platformer, etc.). The one exception is `OneLineLoaders.tsx` because the spinners are the entire point of that component.
 
 ## Scripts
@@ -97,7 +97,7 @@ Sacred uses a vendored copy of [react-hotkeys-hook](https://github.com/JohannesK
 
 ### Integration with the CLI framework
 
-The CLI framework (`scripts/cli/lib/app.ts`) has its own keyboard system based on Node.js `process.stdin` raw mode. It handles `q`, `Escape` (quit), arrow keys (pagination/selection), and `Enter` (selection confirm). This is completely separate from the React hotkey module — the two systems share concepts but no code.
+The CLI framework (`scripts/cli/lib/app.ts`) has its own keyboard system based on Node.js `process.stdin` raw mode. It handles `Ctrl-C`, `Escape` (quit), arrow keys (pagination/selection), and `Enter` (selection confirm). This is completely separate from the React hotkey module — the two systems share concepts but no code.
 
 ## Working agreements
 

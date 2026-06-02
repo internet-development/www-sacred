@@ -1,6 +1,8 @@
 .root {
   display: block;
   width: 100%;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size);
   line-height: calc(var(--font-size) * var(--theme-line-height-base) * 1);
   overflow: hidden;
   margin: 0;

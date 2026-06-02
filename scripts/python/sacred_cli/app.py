@@ -1,4 +1,4 @@
-"""Sacred CLI app lifecycle. Mirrors scripts/cli/lib/app.js.
+"""Sacred CLI app lifecycle. Mirrors scripts/cli/lib/app.ts.
 
 Slimmed version: alt-screen, raw mode, resize, input, pagination, and selection — but
 no animation system. Sacred ports static screens; the React side handles its own physics.

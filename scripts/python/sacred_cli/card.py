@@ -1,4 +1,4 @@
-"""Box-drawing card borders + word wrap. Mirrors scripts/cli/lib/card.js."""
+"""Box-drawing card borders + word wrap. Mirrors scripts/cli/lib/card.ts."""
 
 from .ansi import COLORS, INVERSE, RESET, bg_hex, fg_hex, vis_len
 

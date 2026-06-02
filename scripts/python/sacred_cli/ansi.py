@@ -1,4 +1,4 @@
-"""ANSI escape sequences + 24-bit color utilities. Mirrors scripts/cli/lib/ansi.js."""
+"""ANSI escape sequences + 24-bit color utilities. Mirrors scripts/cli/lib/ansi.ts."""
 
 import json
 import os

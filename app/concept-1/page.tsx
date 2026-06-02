@@ -13,8 +13,6 @@ import PageConceptOne from '@components/examples/PageConceptOne';
 
 export const dynamic = 'force-static';
 
-// NOTE(jimmylee)
-// https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 export async function generateMetadata({ params, searchParams }) {
   const title = `${Package.name}: Concept I`;
   const description = Package.description;

@@ -1,6 +1,4 @@
-// NOTE(jimmylee)
-// Vendored from
-// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/isHotkeyPressed.ts
+//NOTE(jimmylee): vendored from https://github.com/JohannesKlauss/react-hotkeys-hook/blob/main/src/isHotkeyPressed.ts
 
 import { isHotkeyModifier, mapKey } from '@modules/hotkeys/parse-hotkeys'
 ;(() => {

@@ -20,7 +20,7 @@ These are the React components that sacred ships and that the CLI framework maps
 | `components/CardDouble.tsx` | (no equivalent) | Double-bordered card with left/right titles |
 | `components/SimpleTable.tsx` | `formatRow` + `cardHeaderRow`/`cardRow` | Fluid HTML table with header background and status coloring — the canonical React surface for CLI port examples |
 | `components/DataTable.tsx` | (no direct equivalent) | Sacred's gradient-tinted table — heavier, used outside CLI ports |
-| `components/Button.tsx` | `button` + `buttonRow` | Hotkey + label button pair |
+| `components/ActionButton.tsx` | `button(hotkey, label)` | Hotkey + label button pair |
 | `components/BarLoader.tsx` | (one-line loader) | Single-row progress fill |
 | `components/RowSpaceBetween.tsx` | `buttonRow(left, right, innerW)` | Left/right justified row |
 | `components/Block.tsx` | `cardRow(text, innerW)` with word wrap | Padded text block |
@@ -32,8 +32,8 @@ These are the React components that sacred ships and that the CLI framework maps
 2. **Create the React file.** Drop it in `components/examples/` if it is a demo, or `components/` if it is a reusable surface. Use `'use client'` only if you need browser APIs (most ports do not).
 3. **Map cards to `<Card title="...">`.** Wrap content children in `<Card>`. Card renders the title bar, the framework only adds borders.
 4. **Map data tables to `<SimpleTable data={[...]} />`.** First row is the header, subsequent rows are data. `SimpleTable` is a fluid HTML table with the same column + status contract as the CLI framework's `formatRow` (`ACTIVE`/`OPEN`/`APPROVED` → bold green, `CLOSED`/`PAID`/`SUSPENDED` → gray). Use `align={['left','right',...]}` to mirror per-column alignment from the CLI's `colSpec`. Do **not** use the heavier `DataTable` here — its gradient backgrounds are not part of the CLI surface.
-5. **Map button rows to `<RowSpaceBetween>`.** Left and right buttons go in the slots provided. Use `<Button theme="SECONDARY">ESC EXIT</Button>` so the React buttons match the CLI button row visually.
-6. **Skip the animation header.** Sacred's React UI has its own animation surfaces (`canvas-platformer`, `canvas-snake`); do not re-port the CLI's static layout into one of those. The point is **layout parity**, not animation parity.
+5. **Map button rows to `<RowSpaceBetween>`.** Left and right buttons go in the slots provided. Use `<ActionButton hotkey="ESC">EXIT</ActionButton>` so the React buttons match the CLI button row visually.
+6. **Skip the animation header.** Sacred's React UI has its own animation surfaces (`CanvasPlatformer`, `CanvasSnake`); do not re-port the CLI's static layout into one of those. The point is **layout parity**, not animation parity.
 7. **Inherit theming.** Sacred's `global.css` already drives every `--theme-*` token from the active light/dark/tint theme. Do not import `scripts/cli/colors.json` from React — the React side picks up the same ANSI palette through the CSS custom properties (`var(--theme-background)` etc.).
 
 ## What NOT to do

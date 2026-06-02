@@ -45,7 +45,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```ts
   { rows?: number }
   ```
-- **Theming tokens:** `--font-size`, `--theme-line-height-base`
+- **Theming tokens:** `--font-family-mono`, `--font-size`, `--theme-line-height-base`
 - **CLI primitive:** (React-only) The CLI framework is static — animation belongs on the React side.
 - **Used by:** `<ASCIICanvas rows={20} />` in the "ASCII CANVAS" accordion in `app/page.tsx`.
 
@@ -178,7 +178,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--theme-border-subdued`
 - **CLI primitive:** (React-only) Same reason as BarLoader — the CLI is static.
-- **Used by:** `<BarProgress intervalRate={500} fillChar="█" />` inside `components/examples/OneLineLoaders.tsx`.
+- **Used by:** `<BarProgress progress={50} />` inside the "PROGRESS BARS" accordion in `app/page.tsx`.
 
 ## Block
 
@@ -192,7 +192,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--theme-text`, `--theme-line-height-base`, `--font-size`
 - **CLI primitive:** A single space inside a `cardRow`. The CLI lays out by character grid, so a `<Block>` is implicit.
-- **Used by:** `<Block style={{ opacity: 0 }} />` as a sizing spacer in `app/page.tsx`.
+- **Used by:** `<Block style={{ opacity: 0 }} />` as a sizing spacer in `components/Dialog.tsx`.
 
 ## BlockLoader
 
@@ -383,7 +383,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** (none)
 - **CLI primitive:** `getInnerWidth(termW)` plus the surrounding window frame in `scripts/cli/lib/window.ts` — the CLI framework computes width once and the templates fill it.
-- **Used by:** `<ContentFluid>...</ContentFluid>` wraps the kitchen sink page body in `app/page.tsx`.
+- **Used by:** `<ContentFluid>...</ContentFluid>` inside the "DRAWER" accordion in `app/page.tsx`.
 
 ## DataTable
 
@@ -595,7 +595,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
 - **Props:** _(untyped — accepts standard `<li>` HTML attributes)_
 - **Theming tokens:** `--theme-focused-foreground`
 - **CLI primitive:** `cardRow` with manual prefix glyphs.
-- **Used by:** Inside `Navigation` and `BreadCrumbs` examples in `app/page.tsx`.
+- **Used by:** `<ListItem>` inside the "LINK" accordion in `app/page.tsx`.
 
 ## MatrixLoader
 
@@ -638,12 +638,12 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
 - **Props:** _(no props)_
 - **Theming tokens:** `--z-index-page-modals`
 - **CLI primitive:** (React-only) The CLI alt-screen has a single layer.
-- **Used by:** Mounted by `Providers` for any `ModalTrigger` in the kitchen sink.
+- **Used by:** `<ModalStack />` mounted directly in `app/page.tsx` for any `ModalTrigger` in the kitchen sink.
 
 ## ModalTrigger
 
 - **Path:** `components/ModalTrigger.tsx`
-- **Purpose:** Injects an `onClick` into its child via `React.cloneElement` that opens a modal component, chaining with any existing `onClick` the child already has. Keyboard-accessible because the child's own `onKeyDown` handler (which calls `onClick`) fires the injected callback directly.
+- **Purpose:** Wraps its children in a `display: contents` span whose click opens the given modal component through the `useModals()` context.
 - **Props:**
   ```ts
   interface ModalTriggerProps {
@@ -674,7 +674,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--theme-border`, `--theme-focused-foreground`, `--theme-text`, `--font-size`
 - **CLI primitive:** A `buttonRow(left, right, innerW)` plus a leading `cardRow` for the title.
-- **Used by:** Top of the kitchen sink in `app/page.tsx` (search for `<Navigation`).
+- **Used by:** `<Navigation logo="✶" ...>` inside the "NAVIGATION BAR" accordion in `app/page.tsx`.
 
 ## NumberRangeSlider
 
@@ -779,7 +779,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--theme-focused-foreground`
 - **CLI primitive:** `truncateVisible(line, innerW)` from `scripts/cli/lib/ansi.ts`.
-- **Used by:** `<RowEllipsis>...</RowEllipsis>` inside list-item rows in `app/page.tsx`.
+- **Used by:** `<RowEllipsis>...</RowEllipsis>` as the dimmed single-line chat preview (`ChatPreviewInline`) in `components/examples/MessagesInterface.tsx`.
 
 ## RowSpaceBetween
 
@@ -858,7 +858,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** (none)
 - **CLI primitive:** A column of `cardRow(formatRow(...))` calls — there is no separate `<table>` analogue in the CLI.
-- **Used by:** `<Table>...</Table>` inside the navigation strip in `app/page.tsx`.
+- **Used by:** `<Table>...</Table>` inside the "TABLE" accordion in `app/page.tsx`.
 
 ## TableColumn
 
@@ -872,7 +872,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--font-size`
 - **CLI primitive:** A single cell inside `formatRow`.
-- **Used by:** Inside `<TableRow>` in the navigation strip in `app/page.tsx`.
+- **Used by:** Inside `<TableRow>` in the "TABLE" accordion in `app/page.tsx`.
 
 ## TableRow
 
@@ -886,7 +886,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** `--theme-focused-foreground`
 - **CLI primitive:** A single row inside `formatRow`.
-- **Used by:** `<TableRow>...</TableRow>` inside `<Table>` in the navigation strip in `app/page.tsx`.
+- **Used by:** `<TableRow>...</TableRow>` inside `<Table>` in the "TABLE" accordion in `app/page.tsx`.
 
 ## Text
 
@@ -900,7 +900,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   ```
 - **Theming tokens:** (none)
 - **CLI primitive:** `wordWrap(text, contentW)` in `scripts/cli/lib/card.ts`, fed into a sequence of `cardRow` calls.
-- **Used by:** `<Text>...</Text>` inside the navigation strip in `app/page.tsx`.
+- **Used by:** Imported in `app/page.tsx` but not currently rendered in the kitchen sink.
 
 ## TextArea
 

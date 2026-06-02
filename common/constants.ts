@@ -1,8 +1,6 @@
 export const MAX_SIZE_BYTES = 15728640;
 
-// NOTE(jimmylee):
-// https://github.com/internet-development/apis
-// export const API = `http://localhost:10001/api`;
+//NOTE(jimmylee): https://github.com/internet-development/apis
 export const API = `https://api.internet.dev/api`;
 
 export const Users = {

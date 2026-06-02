@@ -19,7 +19,7 @@ function formatRow(vals: string[], colSpec: ColSpec[], innerW: number): string {
   for (let i = 0; i < vals.length; i++) {
     if (i > 0) line += ' '.repeat((colSpec[i] && colSpec[i].gap) || 1);
     let v = vals[i];
-    //NOTE(jimmylee): Status coloring uses RESET_FG (not RESET) so the windowBg from card.js
+    //NOTE(jimmylee): Status coloring uses RESET_FG (not RESET) so the windowBg from card.ts
     //NOTE(jimmylee): persists across subsequent columns.
     if (colSpec[i] && colSpec[i].status) {
       if (v === 'ACTIVE' || v === 'OPEN' || v === 'APPROVED') {

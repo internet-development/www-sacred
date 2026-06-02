@@ -1,6 +1,5 @@
 .card {
   --card-double-border-width: 6px;
-  --card-double-half-gutter: (var(--font-size) * 0.5);
   --card-double-top-gutter: 6px;
 
   position: relative;

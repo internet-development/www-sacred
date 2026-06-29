@@ -834,7 +834,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
 ## SimpleTable
 
 - **Path:** `components/SimpleTable.tsx`
-- **Purpose:** Fluid HTML table that mirrors the CLI framework's `formatRow` + `cardHeaderRow` contract one-to-one. First row is the header. Status coloring fires on `ACTIVE`/`OPEN`/`APPROVED` (bold green) and `CLOSED`/`PAID`/`SUSPENDED` (gray). Use this table — not `DataTable` — for any CLI port surface. The table is wrapped in a `scrollWrapper` div with `overflow-x: auto` so it scrolls horizontally inside its container on narrow viewports instead of forcing page-level scroll.
+- **Purpose:** Fluid HTML table that mirrors the CLI framework's `formatRow` + `cardHeaderRow` contract one-to-one. First row is the header. Status coloring fires on `ACTIVE`/`OPEN`/`APPROVED` (bold green) and `CLOSED`/`PAID`/`SUSPENDED` (gray). Use this table — not `DataTable` — for any CLI port surface. The table is wrapped in a `scrollWrapper` div with `overflow-x: auto` (and `overflow-y: hidden`, to suppress the spurious native vertical bar the browser paints when only one axis is set) so it scrolls horizontally inside its container on narrow viewports instead of forcing page-level scroll. The horizontal bar uses the same custom scrollbar as `global.css` — `1ch` wide, one line tall, painted from `--theme-border` and `--theme-background` — so it reads as sacred, not native.
 - **Props:**
   ```ts
   interface SimpleTableProps {
@@ -842,7 +842,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
     align?: ('left' | 'right')[];
   }
   ```
-- **Theming tokens:** `--ansi-10-lime`, `--ansi-240-gray-35`, `--ansi-248-gray-66`, `--color-white`, `--theme-focused-foreground`
+- **Theming tokens:** `--ansi-10-lime`, `--ansi-240-gray-35`, `--ansi-248-gray-66`, `--color-white`, `--theme-background`, `--theme-border`, `--theme-focused-foreground`, `--theme-line-height-base`
 - **CLI primitive:** `cardHeaderRow(formatRow(TH, COL_SPEC, innerW), innerW)` for the header plus `cardRow(formatRow(row, COL_SPEC, innerW), innerW)` for each body row. The status set is the contract — `ACTIVE`/`OPEN`/`APPROVED` and `CLOSED`/`PAID`/`SUSPENDED`.
 - **Used by:** `<SimpleTable data={PRIMITIVES} />` in `components/examples/CLITemplate.tsx`, `<SimpleTable data={LINE_ITEMS} align={LINE_ITEM_ALIGN} />` in `components/examples/InvoiceTemplate.tsx`, `<SimpleTable data={RESULTS} />` in `components/examples/ResultsList.tsx`.
 

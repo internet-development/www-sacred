@@ -7,9 +7,37 @@ reference the ANSI palette in global.css so the colors are byte-equal to
 scripts/cli/colors.json (#585858 / #00ff00 / #a8a8a8).
 */
 
+/*
+NOTE(jimmylee):
+overflow-y is pinned to hidden because setting only overflow-x: auto makes the
+browser compute overflow-y to auto, which paints a spurious native vertical bar
+even when every row fits. The horizontal bar reuses the same custom scrollbar as
+global.css (1ch wide, one line tall) so it reads as sacred, not native.
+*/
 .scrollWrapper {
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-border) var(--theme-background);
+}
+
+.scrollWrapper::-webkit-scrollbar {
+  background: transparent;
+  height: calc(var(--theme-line-height-base) * 1rem);
+  width: 1ch;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+  background: var(--theme-background);
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-border);
 }
 
 .root {

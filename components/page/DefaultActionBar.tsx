@@ -251,6 +251,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'Mekzantine™ [Michael Micasso] [mek.gallery]',
+                onClick: () => Utilities.onHandleFontChange('font-use-mekzantine'),
+              },
+              {
+                icon: '⊹',
                 children: 'Monaspace Argon Variable [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-monaspace-argon-mono'),
               },

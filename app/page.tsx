@@ -1587,20 +1587,21 @@ int main() {
                 <TableColumn>Mitigate risks with the world’s most advanced whole genome screening for embryos.</TableColumn>
               </TableRow>
               <TableRow>
-                <TableColumn>⍓ Ordinary Objects</TableColumn>
-                <TableColumn>Next-gen design tools for AR.</TableColumn>
-              </TableRow>
-              <TableRow>
                 <TableColumn>⍓ Volantis Semiconductors</TableColumn>
                 <TableColumn>Developing semiconductor chips for AI applications.</TableColumn>
               </TableRow>
               <TableRow>
-                <TableColumn>⍓ Wilderness Labs</TableColumn>
-                <TableColumn>Enables mainstream businesses and .NET developers to create sophisticated embedded-IoT solutions.</TableColumn>
+                <TableColumn>
+                  ⍓{' '}
+                  <a href="https://whenere.world/" target="_blank">
+                    Whenere
+                  </a>
+                </TableColumn>
+                <TableColumn>Enables fans of story worlds to come together, enjoy their favorite works, mod them, share them, and distribute them.</TableColumn>
               </TableRow>
               <TableRow>
-                <TableColumn>⍓ YellowHeart</TableColumn>
-                <TableColumn>Ticketing to empower fans, artists, and sports teams.</TableColumn>
+                <TableColumn>⍓ Wilderness Labs</TableColumn>
+                <TableColumn>Enables mainstream businesses and .NET developers to create sophisticated embedded-IoT solutions.</TableColumn>
               </TableRow>
             </Table>
           </CardDouble>

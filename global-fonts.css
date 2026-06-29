@@ -260,6 +260,15 @@ body.font-use-kommuna-mono {
 }
 
 @font-face {
+  font-family: 'Mekzantine-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a05d9994-b988-49f4-9030-cd11a3bc7226.woff2') format('woff2');
+}
+
+body.font-use-mekzantine {
+  --font-family-mono: 'Mekzantine-Regular', sans-serif;
+}
+
+@font-face {
   font-family: 'MonaspaceArgon-Variable';
   src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/5d1c5170-4c1c-4426-9b95-5163bd4818d9.woff2') format('woff');
 }

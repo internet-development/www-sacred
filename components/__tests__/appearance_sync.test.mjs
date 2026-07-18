@@ -145,7 +145,7 @@ describe('appearance + mode menus ↔ global.css sync', () => {
   it('ships the documented Light default selector without wiring it to a menu entry', () => {
     //NOTE(jimmylee): body.theme-light must exist (it backs the '' Light default) but the menu reaches it
     //NOTE(jimmylee): via the empty-string call, never by class name, the same exemption shape the font
-    //NOTE(jimmylee): guard applies to body.font-use-geist-mono.
+    //NOTE(jimmylee): guard applies to body.font-use-paper-mono.
     expect(cssThemeSelectors.has(DEFAULT_THEME_SELECTOR)).toBe(true);
     expect(menuThemeClasses).not.toContain(DEFAULT_THEME_SELECTOR);
   });

@@ -332,6 +332,15 @@ body.font-use-panama-mono {
 }
 
 @font-face {
+  font-family: 'PaperMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/2927b6eb-cbe4-4594-8bf3-e8fa57efd009.woff2') format('woff2');
+}
+
+body.font-use-paper-mono {
+  --font-family-mono: 'PaperMono-Regular', sans-serif;
+}
+
+@font-face {
   font-family: 'ServerMono';
   src:
     url('https://cdn.jsdelivr.net/gh/internet-development/www-server-mono@latest/public/fonts/ServerMono-Regular.woff2') format('woff2'),

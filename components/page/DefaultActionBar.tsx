@@ -211,8 +211,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Geist Mono [OFL] [DEFAULT]',
-                onClick: () => Utilities.onHandleFontChange(''),
+                children: 'Geist Mono [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-geist-mono'),
               },
               {
                 icon: '⊹',
@@ -288,6 +288,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
                 icon: '⊹',
                 children: 'Panama Mono™ Trial [type.tmpstate.net]',
                 onClick: () => Utilities.onHandleFontChange('font-use-panama-mono'),
+              },
+              {
+                icon: '⊹',
+                children: 'Paper Mono v0.3 [OFL] [DEFAULT]',
+                onClick: () => Utilities.onHandleFontChange(''),
               },
               {
                 icon: '⊹',

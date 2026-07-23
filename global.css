@@ -601,8 +601,8 @@ section {
   --theme-button-text: var(--color-westworld-10);
   --theme-button-foreground: var(--color-westworld-40);
   --theme-button-background: var(--color-westworld-30);
-  --theme-focused-foreground: var(--color-westworld-90);
-  --theme-focused-foreground-subdued: var(--color-westworld-80);
+  --theme-focused-foreground: var(--color-westworld-80);
+  --theme-focused-foreground-subdued: var(--color-westworld-70);
 }
 
 /* Windows 95 Theme */

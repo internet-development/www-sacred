@@ -256,6 +256,11 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
+                children: 'Mekzantine Mono™ [Michael Micasso] [mek.gallery] [DEFAULT]',
+                onClick: () => Utilities.onHandleFontChange(''),
+              },
+              {
+                icon: '⊹',
                 children: 'Monaspace Argon Variable [OFL]',
                 onClick: () => Utilities.onHandleFontChange('font-use-monaspace-argon-mono'),
               },
@@ -291,8 +296,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: 'Paper Mono v0.3 [OFL] [DEFAULT]',
-                onClick: () => Utilities.onHandleFontChange(''),
+                children: 'Paper Mono v0.3 [OFL]',
+                onClick: () => Utilities.onHandleFontChange('font-use-paper-mono'),
               },
               {
                 icon: '⊹',

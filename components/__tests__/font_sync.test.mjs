@@ -17,18 +17,18 @@ const REPO_ROOT = join(COMPONENTS_DIR, '..');
 const ACTION_BAR_PATH = join(COMPONENTS_DIR, 'page', 'DefaultActionBar.tsx');
 const FONTS_CSS_PATH = join(REPO_ROOT, 'global-fonts.css');
 
-//NOTE(jimmylee): The Paper Mono default is selected via onHandleFontChange(''), the empty string strips
-//NOTE(jimmylee): all font-* classes and falls back to the base --font-family-mono (PaperMono-Regular) in
-//NOTE(jimmylee): global.css. body.font-use-paper-mono mirrors that default but is intentionally never
-//NOTE(jimmylee): wired to a menu entry, so it is the one selector exempt from the "exactly one menu
-//NOTE(jimmylee): entry" pairing rule below.
-const DEFAULT_SELECTOR = 'font-use-paper-mono';
+//NOTE(jimmylee): The Mekzantine Mono default is selected via onHandleFontChange(''), the empty string
+//NOTE(jimmylee): strips all font-* classes and falls back to the base --font-family-mono
+//NOTE(jimmylee): (MekzantineMono-Regular) in global.css. body.font-use-mekzantine-mono mirrors that
+//NOTE(jimmylee): default but is intentionally never wired to a menu entry, so it is the one selector
+//NOTE(jimmylee): exempt from the "exactly one menu entry" pairing rule below.
+const DEFAULT_SELECTOR = 'font-use-mekzantine-mono';
 
 function listMenuFontClasses() {
   const body = readFileSync(ACTION_BAR_PATH, 'utf8');
   const classes = [];
   for (const match of body.matchAll(/onHandleFontChange\(\s*'([^']*)'\s*\)/g)) {
-    //NOTE(jimmylee): The empty-string call is the Paper Mono default and points at no class. Skip it.
+    //NOTE(jimmylee): The empty-string call is the Mekzantine Mono default and points at no class. Skip it.
     if (match[1]) classes.push(match[1]);
   }
   return classes;

@@ -1,5 +1,5 @@
 [role='menuitem']:hover [class*='font-use-'],
-[role='menuitem']:focus [class*='font-use-'] {
+[role='menuitem']:focus-visible [class*='font-use-'] {
   font-family: var(--font-family-mono);
   font-size-adjust: 0.5;
   line-height: calc(var(--theme-line-height-base) * 1rem);

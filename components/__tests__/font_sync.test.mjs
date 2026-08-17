@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 //NOTE(jimmylee): Sync guard for the font picker. The Fonts menu in components/page/DefaultActionBar.tsx
-//NOTE(jimmylee): and the @font-face / body.font-use-* rules in global-fonts.css are hand-maintained on
+//NOTE(jimmylee): and the @font-face / .font-use-* rules in global-fonts.css are hand-maintained on
 //NOTE(jimmylee): both sides, adding a font means editing two files by hand. This guard fails CI inside
 //NOTE(jimmylee): the same PR when they drift: a menu entry pointing at a font-use-* class with no CSS
 //NOTE(jimmylee): rule (dead item, clicking it strips the current font and applies nothing), a CSS rule
@@ -19,7 +19,7 @@ const FONTS_CSS_PATH = join(REPO_ROOT, 'global-fonts.css');
 
 //NOTE(jimmylee): The Mekzantine Mono default is selected via onHandleFontChange(''), the empty string
 //NOTE(jimmylee): strips all font-* classes and falls back to the base --font-family-mono
-//NOTE(jimmylee): (MekzantineMono-Regular) in global.css. body.font-use-mekzantine-mono mirrors that
+//NOTE(jimmylee): (MekzantineMono-Regular) in global.css. .font-use-mekzantine-mono mirrors that
 //NOTE(jimmylee): default but is intentionally never wired to a menu entry, so it is the one selector
 //NOTE(jimmylee): exempt from the "exactly one menu entry" pairing rule below.
 const DEFAULT_SELECTOR = 'font-use-mekzantine-mono';
@@ -37,7 +37,7 @@ function listMenuFontClasses() {
 function parseCssSelectors() {
   const body = readFileSync(FONTS_CSS_PATH, 'utf8');
   const selectors = [];
-  for (const match of body.matchAll(/body\.(font-use-[a-z0-9-]+)\s*\{\s*--font-family-mono:\s*'([^']+)'/g)) {
+  for (const match of body.matchAll(/\.(font-use-[a-z0-9-]+)\s*\{\s*--font-family-mono:\s*'([^']+)'/g)) {
     selectors.push({ className: match[1], family: match[2] });
   }
   return selectors;
@@ -69,7 +69,7 @@ describe('font picker ↔ global-fonts.css sync', () => {
     expect(fontFaceFamilies.size).toBeGreaterThan(0);
   });
 
-  it('every menu font-use-* class has a matching body.font-use-* selector in global-fonts.css', () => {
+  it('every menu font-use-* class has a matching .font-use-* selector in global-fonts.css', () => {
     const dead = menuClasses.filter((name) => !cssClassNames.has(name));
     expect(
       dead,
@@ -77,7 +77,7 @@ describe('font picker ↔ global-fonts.css sync', () => {
     ).toEqual([]);
   });
 
-  it('every body.font-use-* selector is referenced by exactly one menu entry (Paper Mono default excepted)', () => {
+  it('every .font-use-* selector is referenced by exactly one menu entry (Paper Mono default excepted)', () => {
     const offenders = [];
     for (const { className } of cssSelectors) {
       if (className === DEFAULT_SELECTOR) {
@@ -95,7 +95,7 @@ describe('font picker ↔ global-fonts.css sync', () => {
     expect(offenders, `CSS selectors not paired one-to-one with a menu entry: ${offenders.join(', ')}`).toEqual([]);
   });
 
-  it('every body.font-use-* selector resolves --font-family-mono to a declared @font-face family', () => {
+  it('every .font-use-* selector resolves --font-family-mono to a declared @font-face family', () => {
     const unresolved = cssSelectors
       .filter(({ family }) => !fontFaceFamilies.has(family))
       .map(({ className, family }) => `${className} → '${family}'`);

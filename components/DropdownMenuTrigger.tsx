@@ -76,6 +76,8 @@ function DropdownMenuTrigger({ children, items, hotkey }: DropdownMenuTriggerPro
   React.useEffect(() => {
     if (!open || !triggerRef.current || !elementRef.current) return;
 
+    elementRef.current.style.width = `${elementRef.current.getBoundingClientRect().width}px`;
+
     const updatePosition = () => {
       const { placement, position } = Position.calculate(triggerRef.current!, elementRef.current!);
       setPlacement(placement);

@@ -322,23 +322,16 @@ export default async function Page(props) {
           <br />
           <Card title="EXAMPLE">
             <Avatar src="https://pbs.twimg.com/profile_images/1958569334726668288/GFE8mhKI_400x400.jpg" href="https://internet.dev" target="_blank" />
-            <Avatar src="https://pbs.twimg.com/profile_images/1748647089633169408/B7vd7ito_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1890125319224598528/ZILr9OGp_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1989080994687991809/CoUHUW0A_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/1953144649725431808/fbHIGXnV_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://internet.dev" target="_blank" />
             <br />
             <br />
             <Avatar src="https://pbs.twimg.com/profile_images/1958569334726668288/GFE8mhKI_400x400.jpg" href="https://x.com/aalimbuyuguen" target="_blank">
               <Indent>
                 ANDREW ALIMBUYUGUEN
-                <br />
-                Webmaster
-              </Indent>
-            </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1748647089633169408/B7vd7ito_400x400.jpg" href="https://x.com/ana_piligrim" target="_blank">
-              <Indent>
-                ANASTASIYA URALEVA
                 <br />
                 Webmaster
               </Indent>
@@ -360,6 +353,13 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://x.com/hellohsuh" target="_blank">
               <Indent>
                 HANNAH SUH
+                <br />
+                Webmaster
+              </Indent>
+            </Avatar>
+            <Avatar src="https://pbs.twimg.com/profile_images/1953144649725431808/fbHIGXnV_400x400.jpg" href="https://x.com/vaniagrwall" target="_blank">
+              <Indent>
+                VANI AGARWAL
                 <br />
                 Webmaster
               </Indent>

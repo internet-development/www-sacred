@@ -327,7 +327,7 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1953144649725431808/fbHIGXnV_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/2090924616269414400/q7qc0FcP_400x400.jpg" href="https://internet.dev" target="_blank" />
-            <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/2086911496098070528/eV9UzyBw_400x400.jpg" href="https://internet.dev" target="_blank" />
             <br />
             <br />
             <Avatar src="https://pbs.twimg.com/profile_images/1958569334726668288/GFE8mhKI_400x400.jpg" href="https://x.com/aalimbuyuguen" target="_blank">
@@ -372,7 +372,7 @@ export default async function Page(props) {
                 Webmaster
               </Indent>
             </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1925213285663805441/fUiKWlj2_400x400.jpg" href="https://x.com/wwwjim" target="_blank">
+            <Avatar src="https://pbs.twimg.com/profile_images/2086911496098070528/eV9UzyBw_400x400.jpg" href="https://x.com/wwwjim" target="_blank">
               <Indent>
                 JIMMY LEE
                 <br />

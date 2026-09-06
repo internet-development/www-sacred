@@ -191,8 +191,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: <span className="font-use-fira-code">Fira Code [OFL]</span>,
-                onClick: () => Utilities.onHandleFontChange('font-use-fira-code'),
+                children: <span className="font-use-fira-code">Fira Code [OFL] [DEFAULT]</span>,
+                onClick: () => Utilities.onHandleFontChange(''),
               },
               {
                 icon: '⊹',
@@ -256,8 +256,8 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
               },
               {
                 icon: '⊹',
-                children: <span className="font-use-mekzantine-mono">Mekzantine Mono™ [Michael Micasso] [mek.gallery] [DEFAULT]</span>,
-                onClick: () => Utilities.onHandleFontChange(''),
+                children: <span className="font-use-mekzantine-mono">Mekzantine Mono™ [Michael Micasso] [mek.gallery]</span>,
+                onClick: () => Utilities.onHandleFontChange('font-use-mekzantine-mono'),
               },
               {
                 icon: '⊹',

@@ -17,18 +17,18 @@ const REPO_ROOT = join(COMPONENTS_DIR, '..');
 const ACTION_BAR_PATH = join(COMPONENTS_DIR, 'page', 'DefaultActionBar.tsx');
 const FONTS_CSS_PATH = join(REPO_ROOT, 'global-fonts.css');
 
-//NOTE(jimmylee): The Mekzantine Mono default is selected via onHandleFontChange(''), the empty string
+//NOTE(jimmylee): The Fira Code default is selected via onHandleFontChange(''), the empty string
 //NOTE(jimmylee): strips all font-* classes and falls back to the base --font-family-mono
-//NOTE(jimmylee): (MekzantineMono-Regular) in global.css. .font-use-mekzantine-mono mirrors that
-//NOTE(jimmylee): default but is intentionally never wired to a menu entry, so it is the one selector
-//NOTE(jimmylee): exempt from the "exactly one menu entry" pairing rule below.
-const DEFAULT_SELECTOR = 'font-use-mekzantine-mono';
+//NOTE(jimmylee): (FiraCode-Regular) in global.css. .font-use-fira-code mirrors that default but is
+//NOTE(jimmylee): intentionally never wired to a menu entry (its [DEFAULT] row calls onHandleFontChange('')),
+//NOTE(jimmylee): so it is the one selector exempt from the "exactly one menu entry" pairing rule below.
+const DEFAULT_SELECTOR = 'font-use-fira-code';
 
 function listMenuFontClasses() {
   const body = readFileSync(ACTION_BAR_PATH, 'utf8');
   const classes = [];
   for (const match of body.matchAll(/onHandleFontChange\(\s*'([^']*)'\s*\)/g)) {
-    //NOTE(jimmylee): The empty-string call is the Mekzantine Mono default and points at no class. Skip it.
+    //NOTE(jimmylee): The empty-string call is the Fira Code default and points at no class. Skip it.
     if (match[1]) classes.push(match[1]);
   }
   return classes;
@@ -77,7 +77,7 @@ describe('font picker ↔ global-fonts.css sync', () => {
     ).toEqual([]);
   });
 
-  it('every .font-use-* selector is referenced by exactly one menu entry (Paper Mono default excepted)', () => {
+  it('every .font-use-* selector is referenced by exactly one menu entry (Fira Code default excepted)', () => {
     const offenders = [];
     for (const { className } of cssSelectors) {
       if (className === DEFAULT_SELECTOR) {

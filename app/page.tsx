@@ -327,6 +327,7 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1953144649725431808/fbHIGXnV_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/2090924616269414400/q7qc0FcP_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://osoi4zg5m42do5ig.public.blob.vercel-storage.com/rishav.avif" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/2086911496098070528/eV9UzyBw_400x400.jpg" href="https://internet.dev" target="_blank" />
             <br />
             <br />
@@ -368,6 +369,13 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/2090924616269414400/q7qc0FcP_400x400.jpg" href="https://x.com/solruck" target="_blank">
               <Indent>
                 SOL RUCK
+                <br />
+                Webmaster
+              </Indent>
+            </Avatar>
+            <Avatar src="https://osoi4zg5m42do5ig.public.blob.vercel-storage.com/rishav.avif" href="https://github.com/rishavkundu" target="_blank">
+              <Indent>
+                RISHAV KUNDU
                 <br />
                 Webmaster
               </Indent>
@@ -697,7 +705,7 @@ using asio::ip::tcp;
 
 void handle_client(tcp::socket socket) {
     try {
-        std::string message = 
+        std::string message =
             "HTTP/1.1 200 OK\\r\\n"
             "Content-Type: text/plain\\r\\n"
             "Connection: close\\r\\n"
@@ -710,11 +718,11 @@ void handle_client(tcp::socket socket) {
 int main() {
     asio::io_context context;
 
-    tcp::acceptor acceptor(context, 
+    tcp::acceptor acceptor(context,
         tcp::endpoint(tcp::v4(), 8080));
 
     std::cout << "Server running on port 8080...\\n";
-              
+
     while (true) {
         tcp::socket socket(context);
         acceptor.accept(socket);

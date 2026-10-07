@@ -324,7 +324,7 @@ export default async function Page(props) {
             <Avatar src="https://pbs.twimg.com/profile_images/1958569334726668288/GFE8mhKI_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1890125319224598528/ZILr9OGp_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1989080994687991809/CoUHUW0A_400x400.jpg" href="https://internet.dev" target="_blank" />
-            <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://internet.dev" target="_blank" />
+            <Avatar src="https://pbs.twimg.com/profile_images/2091636350445629440/4WCkh6JZ_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/1953144649725431808/fbHIGXnV_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://pbs.twimg.com/profile_images/2090924616269414400/q7qc0FcP_400x400.jpg" href="https://internet.dev" target="_blank" />
             <Avatar src="https://osoi4zg5m42do5ig.public.blob.vercel-storage.com/rishav.avif" href="https://internet.dev" target="_blank" />
@@ -352,7 +352,7 @@ export default async function Page(props) {
                 Webmaster
               </Indent>
             </Avatar>
-            <Avatar src="https://pbs.twimg.com/profile_images/1987799435091529728/Rlbo90fX_400x400.jpg" href="https://x.com/hellohsuh" target="_blank">
+            <Avatar src="https://pbs.twimg.com/profile_images/2091636350445629440/4WCkh6JZ_400x400.jpg" href="https://x.com/hellohsuh" target="_blank">
               <Indent>
                 HANNAH SUH
                 <br />

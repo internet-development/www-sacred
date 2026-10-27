@@ -176,9 +176,9 @@ export function buildLlmsTxt(): string {
   lines.push('> terminal-aesthetic applications. The React surface lives under components/');
   lines.push('> and is cataloged in components/AGENTS.md. The CLI half of sacred — Simulacrum —');
   lines.push('> lives under scripts/cli/ (TypeScript) and scripts/python/ (Python mirror) and');
-  lines.push('> renders the same primitives in a terminal alt-screen. Both halves load the same');
-  lines.push('> palette from scripts/cli/colors.json so the React UI and the CLI screens stay in');
-  lines.push('> byte-level agreement. Pick whichever runtime fits the task you were given —');
+  lines.push('> renders corresponding primitives in a terminal alt-screen. The CLI runtimes load');
+  lines.push('> scripts/cli/colors.json; React uses its mirrored CSS palette. The parity suite');
+  lines.push('> compares selected TypeScript/Python outputs. Pick the runtime for your task —');
   lines.push('> sacred is the React side, Simulacrum is the CLI side, and they are two halves');
   lines.push('> of one framework.');
   lines.push('');
@@ -198,7 +198,7 @@ export async function buildLlmsFullTxt(): Promise<string> {
   const parts: string[] = [];
   parts.push('# Sacred Computer — full doc bundle');
   parts.push('');
-  parts.push('> Concatenation of every AGENTS.md and SKILL.md in the sacred repo, in the same');
+  parts.push('> Concatenation of discovered AGENTS.md and SKILL.md documents, in the same');
   parts.push('> order as https://sacred.computer/llms.txt. Sacred Computer (React) and Simulacrum');
   parts.push('> (CLI) are two halves of one framework — the React surface is documented in');
   parts.push('> components/AGENTS.md, the CLI surface in scripts/cli/AGENTS.md and');

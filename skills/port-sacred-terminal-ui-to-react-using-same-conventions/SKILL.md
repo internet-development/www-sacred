@@ -21,9 +21,9 @@ These are the React components that sacred ships and that the CLI framework maps
 | `components/SimpleTable.tsx` | `formatRow` + `cardHeaderRow`/`cardRow` | Fluid HTML table with header background and status coloring — the canonical React surface for CLI port examples |
 | `components/DataTable.tsx` | (no direct equivalent) | Sacred's gradient-tinted table — heavier, used outside CLI ports |
 | `components/ActionButton.tsx` | `button(hotkey, label)` | Hotkey + label button pair |
-| `components/BarLoader.tsx` | (one-line loader) | Single-row progress fill |
+| `components/BarLoader.tsx` | (no animated CLI equivalent) | Single-row progress fill |
 | `components/RowSpaceBetween.tsx` | `buttonRow(left, right, innerW)` | Left/right justified row |
-| `components/Block.tsx` | `cardRow(text, innerW)` with word wrap | Padded text block |
+| `components/Block.tsx` | A character-sized spacer | Inline 1ch block; not a content container |
 | `components/Text.tsx` | gradient or plain text | Typography wrapper |
 
 ## Step-by-step
@@ -45,7 +45,7 @@ These are the React components that sacred ships and that the CLI framework maps
 
 ## Layout expectations
 
-Sacred React components are width-fluid: use them in `<ContentFluid>` or `<Block>` containers and let CSS Grid / Flexbox do the work. The CLI framework's "innerW" concept is replaced by browser layout, so you do not need to compute column widths yourself — DataTable and Card handle their own padding.
+Use `<ContentFluid>` or `<Window>` for content containers and let browser layout determine their width. `<Block>` is an inline 1ch spacer. `SimpleTable` and `Card` provide their own spacing; terminal column widths do not translate to identical browser measurements. `SimpleTable` colors recognized statuses in every body cell, whereas CLI `formatRow` requires `status: true` on each relevant column.
 
 ## Smoke test
 

@@ -5,20 +5,22 @@ description: Keep www-sacred's TypeScript fast to type-check and fast to run. Us
 
 # fast-typescript-check
 
-A performance discipline for `www-sacred`. Every rule here is justified against this codebase: either fewer CPU cycles in the components that actually run a render loop, or faster `tsc --noEmit`. Nothing is cosmetic, and nothing references machinery this repo does not have.
+A performance review guide for `www-sacred`. Use the source examples to locate work, then measure before changing an implementation. These techniques are candidates for investigation, not measured speedup guarantees.
 
 ## What runs hot here
 
-This is not a game engine. There is no THREE.js, no physics, no 60fps simulation of a world. The only per-frame code is the ASCII/canvas animation family, all driven by `requestAnimationFrame`:
+Inspect each component's clock before changing animation behavior. The animation family uses both `requestAnimationFrame` and intervals:
 
 - `components/ASCIICanvas.tsx` — animated ASCII art in a `<pre>` of per-cell `<span>` elements
 - `components/MatrixLoader.tsx` — falling-glyph matrix effect
-- `components/CanvasSnake.tsx`, `components/DOMSnake.tsx`, `components/CanvasPlatformer.tsx` — interactive games
-- `components/examples/OneLineLoaders.tsx`, `components/BarLoader.tsx`, `components/BlockLoader.tsx`, `components/BarProgress.tsx` — spinners
+- `components/CanvasSnake.tsx`, `components/CanvasPlatformer.tsx` — interactive games using animation frames
+- `components/DOMSnake.tsx` — movement driven by an interval
+- `components/examples/OneLineLoaders.tsx`, `components/BlockLoader.tsx` — interval-driven spinners
+- `components/BarLoader.tsx`, `components/BarProgress.tsx` — controlled progress or interval-driven demo progress; `BarProgress` also uses an animation frame for a measurement retry
 
 `components/ASCIICanvas.tsx` is the reference implementation. It already follows most of Part 1: a pre-allocated span grid, DOM diffing against `previousCharsRef` / `previousColorsRef`, refs cached into locals before the loop, an indexed `for`, guarded property writes, and an `IntersectionObserver` that stops the loop when the element scrolls off-screen. When you write or review an animation component, hold it against that file.
 
-Everything else in the repo — the static React components, the Simulacrum CLI framework under `scripts/cli/lib/*`, the Python mirror — runs once per interaction, not per frame. Part 1 does not apply there; Part 2 (compiler) does.
+Other components may also own timers or effects; inspect their setup and cleanup before drawing performance conclusions. The Simulacrum CLI framework under `scripts/cli/lib/*` and its Python mirror have no animation loop. Part 2 applies to TypeScript checking, not Python execution.
 
 ## Conventions
 
@@ -45,7 +47,7 @@ performance.mark('asciiFrameEnd');
 performance.measure('asciiFrame', 'asciiFrameStart', 'asciiFrameEnd');
 ```
 
-Remove the marks after profiling — they are diagnostic instrumentation (see 1.9). At 60fps a frame is 16.67ms and the browser needs ~4ms for compositing, leaving ~12ms for JavaScript. A single `ASCIICanvas` fills a grid of `cols * rows` cells every frame; if that loop owns most of the budget, the win is in the diff, not the wave math.
+Remove the marks after profiling — they are diagnostic instrumentation (see 1.9). At 60fps the total frame interval is about 16.67ms; the time available to JavaScript depends on rendering and other work. Measure the cell calculation, DOM mutation, and browser rendering separately before choosing an optimization.
 
 ## Part 1 — Runtime performance (animation components only)
 
@@ -70,7 +72,7 @@ for (let index = 0; index < total && index < grid.length; index++) {
 
 ### 1.2 Diff before you touch the DOM
 
-The single biggest cost in a DOM-rendered animation is writing to the DOM. `ASCIICanvas` only mutates a `<span>` when its content actually changed:
+`ASCIICanvas` avoids redundant DOM writes by mutating a `<span>` only when its content or color changed:
 
 ```typescript
 if (cell.char !== previousChars[index]) {
@@ -83,11 +85,11 @@ if (cell.color !== previousColors[index]) {
 }
 ```
 
-An unguarded `span.textContent = cell.char` every frame forces layout work even when the value is identical. The diff turns a full-grid repaint into only the cells that moved. Never write a DOM property unconditionally in a frame loop.
+Guarding repeated writes can reduce mutation work. Whether a particular write causes style calculation, layout, or repaint depends on the property, value, browser, and surrounding code; establish the cost with a trace.
 
 ### 1.3 Indexed for-loops, no per-frame closures
 
-Use an indexed `for`. Do not call `map` / `filter` / `forEach` / `sort` in a frame loop — each takes a fresh closure allocated every frame, which is pure GC pressure. `for...of` invokes the iterator protocol and deoptimizes in polymorphic call sites; keep it to lifecycle code (`build`, cleanup, one-shot queries).
+The reference cell loop uses an indexed `for`. Check allocation profiles before replacing other loop forms. Inline callbacks and intermediate arrays can add work, but callback reuse and engine optimization affect the result; iterator syntax alone does not prove a performance problem.
 
 ```typescript
 //NOTE(jimmylee): allocates a comparator object every frame — avoid in rAF
@@ -98,7 +100,7 @@ If a sort is genuinely needed per frame, confirm it can't be hoisted behind a ch
 
 ### 1.4 Pre-allocate; never allocate inside the frame loop
 
-`ASCIICanvas` builds its span grid once in `buildGrid(cols)` and only rebuilds when the column count changes. Each frame reuses the existing spans and the existing `previousChars` / `previousColors` arrays. Allocation inside a frame loop creates GC pressure, and a single GC pause is a visible frame skip. Allocate buffers at setup, index into them each frame.
+`ASCIICanvas` reuses spans and previous-value arrays between grid rebuilds. Width changes, effect setup, and body class/style changes can cause rebuilding. Its `animate()` helper still creates a cell object and color string per call, so it is not allocation-free. Reuse large buffers where practical and measure allocation costs before changing this representation.
 
 ### 1.5 Guard the whole loop, not each iteration
 
@@ -112,18 +114,18 @@ const loop = () => {
 };
 ```
 
-Pair this with an `IntersectionObserver` so a loader scrolled out of view costs zero CPU. This is the highest-leverage optimization in the repo: a page with several `ASCIICanvas` instances would otherwise run every one of them forever.
+The observer allows this frame loop to stop while offscreen and resume on visibility changes. Other observers and component work can still run; this does not establish zero total CPU use. Interval-driven components need their own lifecycle review.
 
 ### 1.6 Bitwise floor for positive grid math
 
-`Math.floor(x)` is a call; `x | 0` truncates in one instruction. Safe only for positive values inside 32-bit signed range — exactly the case for grid column/row indexing.
+`x | 0` coerces to a signed 32-bit integer, while `Math.floor` rounds down without that coercion. They agree for nonnegative inputs within the signed 32-bit range. Do not substitute one for the other without proving those bounds and measuring a benefit.
 
 ```typescript
 const column = index % cols;
 const row = (index - column) / cols;
 ```
 
-`ASCIICanvas` derives `row` by exact integer division (the subtraction guarantees divisibility), which avoids `Math.floor` entirely. Where you do need a floor on a known-positive value, `| 0` is the cheaper form.
+`ASCIICanvas` derives `row` by exact integer division because the subtraction guarantees divisibility. Preserve that arithmetic contract; the source does not establish a universal speed advantage for bitwise coercion.
 
 ### 1.7 Keep numbers in one type lane
 
@@ -131,7 +133,7 @@ V8 represents small integers (Smis) differently from boxed doubles. A counter th
 
 ### 1.8 Guard property writes that trigger work
 
-Setting `style.color` or `textContent` schedules style/layout work even when the value is unchanged (see 1.2). The same applies to any setter with side effects. Guard the write behind a difference check.
+Review setters with side effects and guard redundant writes where useful. Use browser measurements to determine the resulting style/layout work (see 1.2).
 
 ### 1.9 Strip diagnostic instrumentation from the frame path
 
@@ -139,7 +141,7 @@ Setting `style.color` or `textContent` schedules style/layout work even when the
 
 ### 1.10 Prefer `as const` objects over enums; ES modules over namespaces
 
-Enums compile to runtime IIFEs with reverse-mapping tables; namespaces compile to IIFEs that block tree-shaking. `as const` objects produce zero runtime code and inline cleanly. This repo has **no** enums and **no** namespaces today — keep it that way. `const enum` is doubly wrong here because `isolatedModules: true` (set in `tsconfig.json`) cannot inline it across files.
+Prefer the repository's plain objects and ES modules. The `as const` assertion is erased, but the object itself remains a runtime value. Enum and namespace emit varies by construct and transpiler; `isolatedModules` constrains cross-file assumptions, especially ambient const enums. Do not introduce a different representation as an unmeasured optimization.
 
 ```typescript
 const DIRECTION = { Up: 'UP', Down: 'DOWN', Left: 'LEFT', Right: 'RIGHT' } as const;
@@ -148,7 +150,7 @@ type Direction = (typeof DIRECTION)[keyof typeof DIRECTION];
 
 ## Part 2 — Compiler performance
 
-These reduce `tsc --noEmit` wall-clock and editor responsiveness. They apply across the whole repo, not just the animation family.
+These are candidates for reducing `tsc --noEmit` wall-clock time and improving editor responsiveness. Measure their effect before claiming a benefit. They apply across the whole repo, not just the animation family.
 
 ### 2.1 Add explicit return types on exported functions
 
@@ -167,15 +169,15 @@ export function createState(): EngineState {
 
 ### 2.2 Prefer `interface extends` over `&` intersections at boundaries
 
-Interfaces produce a single cached flat type; intersections re-merge on every use and detect no conflicts. Use `interface extends` for types that cross module boundaries. Interior types used once don't matter.
+Interfaces can make reusable object relationships easier to cache and report incompatible properties directly. Intersections can instead combine incompatible properties into `never`. Choose the correct semantics first, then use compiler diagnostics to investigate expensive relationships.
 
 ### 2.3 Keep union types small
 
-Union deduplication is pairwise (quadratic). Past ~12 members, refactor to a base type with a discriminant field instead of a wide `A | B | C | ...` union.
+Large unions can require expensive pairwise comparisons. Consider shared base types when diagnostics identify a costly union, while preserving discriminants and narrowing behavior. There is no repository-measured member-count threshold.
 
 ### 2.4 Limit recursive generic nesting
 
-Deeply nested recursive generics (`DeepPartial<T>` style) are a common cause of slow checks — each level multiplies instantiations. Keep recursion to ≤3 levels; for known shapes, write the concrete type. This repo has no such generics today; don't add one without measuring.
+Deeply nested recursive generics can increase instantiation work. Prefer concrete types for known shapes when that improves clarity, and measure costly generic relationships. A fixed recursion-depth limit is not a substitute for diagnostics.
 
 ### 2.5 `import type` for type-only imports
 
@@ -195,10 +197,10 @@ These are the settings actually in `tsconfig.json` and why they matter. Do not d
 {
   "compilerOptions": {
     "paths": { "@root/*": ["./*"], "@common/*": ["./common/*"], "@components/*": ["./components/*"], "@modules/*": ["./modules/*"] },
-    "target": "es2017",              // Next.js/SWC does the real downlevel; tsc target only affects lib surface
+    "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,                 // kept for compatibility; the Simulacrum framework is now .ts
-    "skipLibCheck": true,            // skips .d.ts checking — the largest single tsc speedup
+    "skipLibCheck": true,
     "strict": false,                 // only strictNullChecks is on (see below)
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,                  // tsc is a checker only; Next.js/SWC emits
@@ -206,7 +208,7 @@ These are the settings actually in `tsconfig.json` and why they matter. Do not d
     "module": "esnext",
     "moduleResolution": "bundler",   // matches the bundler's resolution — correctness, not speed
     "resolveJsonModule": true,       // lets TypeScript import colors.json as a typed module
-    "isolatedModules": true,         // every file transpiles independently (Next/SWC); blocks const enum
+    "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,             // writes tsconfig.tsbuildinfo, skips unchanged files
     "plugins": [{ "name": "next" }],
@@ -221,10 +223,10 @@ Notes that matter when editing this file:
 
 - `strict` is **off**; only `strictNullChecks` is enabled. Turning on full `strict` would be a large, separate diff (many components are loosely typed on purpose — see `components/AGENTS.md`). Don't flip it as a side effect.
 - The `paths` map lists only the four live aliases: `@root/*`, `@common/*`, `@components/*`, `@modules/*`. Dead aliases (`@system`, `@demos`, `@data`, `@pages`) were removed.
-- `exclude` lists `node_modules` (not the `**/node_modules` glob). TypeScript excludes `node_modules` by default, and once any `exclude` entry exists you must keep an explicit `node_modules` entry or the compiler crawls every package — which this file does.
+- `exclude` lists `node_modules` and `**/*.spec.ts`. It filters discovery through `include`; imported dependencies and referenced declarations can still enter the program. Preserve these exclusions without treating them as a guarantee that dependency types are never read.
 - There are no project references and no `verbatimModuleSyntax` / `types: []` / `moduleDetection`. The repo is small enough that none of these earn their complexity yet; revisit only if `time npx tsc --noEmit` climbs past ~30s.
 
-**Resolved:** `baseUrl` was dropped (modern resolution maps `paths` from the config file's own location) and `target` was raised from `es5` to `es2017`. `tsc --noEmit` exits 0 with no deprecation diagnostics under TypeScript 6.x.
+The manifest declares TypeScript `^7.0.2`. The configuration omits `baseUrl`, resolves the four `paths` aliases relative to the configuration file, and sets `target: es2017`. Run `npm run typecheck` with the installed compiler to establish current correctness; this document is not a record of a successful check.
 
 ### 2.7 Compiler diagnostic commands
 
@@ -237,9 +239,9 @@ Run before and after any change that touches types broadly.
 | `npx tsc --noEmit --generateTrace ./trace` then `npx @typescript/analyze-trace ./trace` | Slowest files and most expensive type instantiations. |
 | `npx tsc --explainFiles \| grep node_modules` | Surfaces packages pulled in that shouldn't be. |
 
-## Part 3 — Horizon: the native TypeScript compiler
+## Part 3 — The native TypeScript compiler
 
-Microsoft is porting `tsc` to Go (shipping as TypeScript 7.0), with ~10x type-check speedups reported on large codebases. It does not change language semantics — every rule above applies equally to both compilers. The native port makes checking faster; it does not make a quadratic union cheaper to evaluate. Available now as `@typescript/native-preview`. This repo type-checks in seconds today, so the win here is editor latency, not CI.
+TypeScript 7 is released through the standard `typescript` package and provides the native `tsc` executable. This repository already declares TypeScript 7; installing `@typescript/native-preview` is unnecessary. Consult the [TypeScript 7 release announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/) for compatibility limits. Upstream performance measurements do not establish a speedup for this repository. Measure the installed compiler and verify diagnostic-option support before using optional tracing tools; installing a trace analyzer requires separate authorization.
 
 ## Sources
 
@@ -259,7 +261,7 @@ A note on `moduleResolution: "bundler"`: blogs sometimes list it as a speed sett
 - [ ] Refs / property chains read more than once are cached in a local before the loop
 - [ ] DOM writes (`textContent`, `style.*`) are guarded by a difference check — diff, don't repaint
 - [ ] No `new` allocations and no closures (`map`/`filter`/`sort` callbacks) inside the loop
-- [ ] Buffers (span grid, previous-value arrays) are pre-allocated and reused, rebuilt only on resize
+- [ ] Buffers are reused where practical; rebuilds account for width, font, and effect changes
 - [ ] The loop early-returns when off-screen / cancelled, gated by an `IntersectionObserver`
 - [ ] Numeric variables stay in one lane (integer indices, double math)
 - [ ] No `console.log` / extra `performance.now()` left in the frame path
@@ -268,7 +270,7 @@ A note on `moduleResolution: "bundler"`: blogs sometimes list it as a speed sett
 
 - [ ] Exported functions that return complex objects have explicit return types
 - [ ] Boundary object types use `interface extends`, not `&`
-- [ ] Unions stay under ~12 members
+- [ ] Expensive unions and recursive types are investigated with compiler diagnostics
 - [ ] Type-only imports use `import type`
 - [ ] No `enum`, no `namespace`, no `const enum`
 - [ ] tsconfig edits keep an explicit `node_modules` in `exclude` and don't silently flip `strict`

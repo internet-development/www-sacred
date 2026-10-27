@@ -27,7 +27,7 @@ Colors flow from one source: `scripts/cli/colors.json`. That file holds the term
 
 - All comments use `//NOTE(jimmylee): ...` in TS/JS/CSS (no space after `//`, no `@`) and `# NOTE(jimmylee): ...` in Python. Comments explain _why_, not _what_. If the code reads clearly on its own, write no comment — and delete self-documenting comments on sight.
 - The CLI framework is intentionally zero-dependency TypeScript, run via `tsx` with no build step.
-- The Python framework mirrors the JS framework one-to-one but uses snake_case. The same `colors.json` is the single source of truth — do not duplicate the palette. The two runtimes are locked into byte-identical output by the parity suite under `scripts/python/sacred_cli/__tests__/test_parity.py`. When you change a JS module, port the change to its Python mirror in the same PR — `npm test` will fail otherwise.
+- The Python framework mirrors the JS framework one-to-one but uses snake_case. The same `colors.json` is the single source of truth — do not duplicate the palette. Selected fixed layout outputs are compared byte-for-byte by the parity suite under `scripts/python/sacred_cli/__tests__/test_parity.py`. When you change a CLI API or output contract, port the change to its Python mirror in the same PR. The tests cover selected inputs, not every behavior or interactive lifecycle.
 - React example components in `components/examples/*` should only depend on sacred's existing primitives (`Card`, `SimpleTable`, `Button`, `RowSpaceBetween`, etc.). The CLI port examples (`CLITemplate`, `InvoiceTemplate`, `ResultsList`) use `SimpleTable`, not `DataTable`, because `SimpleTable`'s column + status contract maps one-to-one onto `formatRow` and `cardHeaderRow`. Do not import from `scripts/cli/lib/*` from React — that code is Node-only and uses `process.stdout`.
 - Tests live in four places: `scripts/cli/lib/__tests__/` (CLI framework), `components/__tests__/` (catalog sync guards), `app/llm/__tests__/` (URL surface), and `scripts/python/sacred_cli/__tests__/` (Python + parity). The sync guards keep docs, props, theming tokens, palette colors, and URL surfaces honest against the source. `npm test` runs everything. Run it before opening a PR.
 - Sacred CLI ports are static — no animation diffing system. The React side keeps its existing animation primitives (canvas snake, canvas platformer, etc.). The one exception is `OneLineLoaders.tsx` because the spinners are the entire point of that component.
@@ -52,6 +52,8 @@ The default font (applied on first mount, before anyone opens the Fonts menu) is
 - `contain` also removes a row's own width contribution, so hovering the widest row would shrink the menu — which is why `components/DropdownMenuTrigger.tsx` locks the menu's natural width (`elementRef.current.style.width = ...`) when it opens. That line exists for the previews; do not remove it as a cleanup.
 
 ## Scripts
+
+Use the Node.js range declared in `package.json`: `^22.12.0 || ^24.0.0 || >=26.0.0`. The test tooling excludes Node.js 18, 20, 23, and 25.
 
 ```sh
 npm install             # install deps
@@ -120,7 +122,8 @@ The CLI framework (`scripts/cli/lib/app.ts`) has its own keyboard system based o
 
 ## Working agreements
 
-- Don't commit unless the user explicitly asks. Sacred ships releases manually.
+- The owner creates every commit and is its sole author. Agents leave changes uncommitted for owner review. Sacred ships releases manually.
+- The owner performs final visual acceptance; agents still run relevant automated correctness checks and report their limits.
 - Don't add features the task didn't ask for. If you find a tangential bug, surface it instead of fixing it silently.
 - Don't import from `.workdir/` at runtime. It is reference material only.
 - Don't break the kitchen sink. After any component change, render `app/page.tsx` mentally (or in `npm run dev`) and confirm nothing regresses.

@@ -24,7 +24,7 @@ Simulacrum, the sacred CLI framework. Zero-dependency TypeScript, run via `tsx` 
 
 ## Tests
 
-`__tests__/*.test.mjs` cover the framework. Tests are `.mjs` so they can use `vitest`'s ESM imports while pulling the TypeScript source through `createRequire`. Run with `npm test` (which also runs the Python parity suite) or `npm run test:js` to skip Python. Add a test alongside the module you change.
+`__tests__/*.test.mjs` cover the layout primitives. Tests use ESM imports from `vitest` and import the `.ts` source directly through Vitest's transform pipeline. Run with `npm test` (which also runs the Python parity suite) or `npm run test:js` to skip Python. Add a test alongside the module you change. These tests do not exercise interactive terminal lifecycle behavior.
 
 ## Parity fixture
 

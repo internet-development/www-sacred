@@ -2,10 +2,10 @@
   "name": "srcl",
   "description": "SRCL is an open-source React component and style repository that helps you build web applications, desktop applications, and static websites with terminal aesthetics.",
   "engines": {
-    "node": ">=18"
+    "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
   },
   "license": "MIT",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "scripts": {
     "dev": "next -p 10000",
     "build": "next build",
@@ -18,9 +18,9 @@
     "cli:python": "python3 scripts/python/templates/template.py"
   },
   "dependencies": {
-    "next": "^16.2.12",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "overrides": {
     "esbuild": ">=0.28.1",
@@ -28,11 +28,11 @@
     "sharp": ">=0.35.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
-    "@types/react": "^19.2.18",
-    "tsx": "^4.23.9",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.5"
   },
   "allowScripts": {
     "esbuild": true,

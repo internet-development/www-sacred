@@ -4,7 +4,7 @@ Python mirror of Simulacrum (the sacred CLI framework). Mirrors `scripts/cli/lib
 
 ## Why a Python mirror
 
-The CLI framework is small enough that maintaining a parallel Python implementation is cheap, and porting React → Python is easier when the source-of-truth API is identical to the JS version. Both runtimes load the **same** `scripts/cli/colors.json`, so terminal output is byte-identical between `npm run cli:typescript` and `npm run cli:python` modulo numeric formatting.
+The Python mirror follows the TypeScript layout API with snake_case names. Both runtimes load the **same** `scripts/cli/colors.json`. The parity suite compares selected fixed layout outputs byte-for-byte; it does not cover interactive lifecycle behavior or every possible input. The canonical templates use language-specific sample data, so their complete screens are not byte-identical.
 
 ## Layout
 

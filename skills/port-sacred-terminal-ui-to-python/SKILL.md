@@ -8,7 +8,7 @@ Take a React `Window*.tsx` (or any sacred component) and produce a terminal CLI 
 
 ## When to use
 
-Use this skill whenever you want a Python CLI version of an existing sacred React surface. Sacred ships a Python port of the layout primitives (one-to-one with the JavaScript framework) so the same React component can render identically from either runtime.
+Use this skill whenever you want a Python CLI version of an existing sacred React surface. Sacred ships a Python mirror of the TypeScript layout primitives. Use `SimpleTable` as the React status-table reference and preserve data and layout intent while adapting browser layout to terminal widths and input.
 
 ## What you ship
 
@@ -77,7 +77,7 @@ Status coloring: `ACTIVE`/`OPEN`/`APPROVED` → bold green; `CLOSED`/`PAID`/`SUS
 ## Formatting rules
 
 - Shebang `#!/usr/bin/env python3`.
-- Comments use `# NOTE(your_github_username): ...`.
+- Comments use `# NOTE(jimmylee): ...` and explain why.
 - Column headers are `UPPER_SNAKE_CASE`.
 - Dates are ISO 8601 (`2026-04-08T09:00:00`).
 - Currency uses commas (`$18,920.50`).
@@ -97,7 +97,7 @@ If you see garbled output, your terminal probably does not support 24-bit true c
 
 ## Verifying parity
 
-The Python framework is a one-to-one mirror of the JavaScript framework. The two runtimes are locked into byte-identical output by a parity test suite under `scripts/python/sacred_cli/__tests__/`:
+The Python framework mirrors the TypeScript layout API with snake_case names. The parity suite under `scripts/python/sacred_cli/__tests__/` compares selected fixed layout outputs byte-for-byte. It does not verify every input, interactive lifecycle behavior, or browser rendering:
 
 ```sh
 npm run test:python     # only the Python suite

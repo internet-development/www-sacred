@@ -4,6 +4,8 @@
 
 SRCL is an open-source React component and style repository that helps you build web applications, desktop applications, and static websites with terminal aesthetics. Its modular, easy-to-use components emphasize precise monospace character spacing and line heights, enabling you to quickly copy and paste implementations while maintaining a clean, efficient codebase.
 
+Use Node.js 22.12+ on the 22.x line, 24.x, or 26+ (`^22.12.0 || ^24.0.0 || >=26.0.0`), as required by the repository's tooling. Node.js 18, 20, 23, and 25 are outside the supported range.
+
 ```sh
 npm install
 npm run dev
@@ -15,7 +17,7 @@ We use [Vercel](https://vercel.com/home) for hosting.
 
 ### Tests
 
-Run the unit tests for the sacred CLI framework primitives:
+Run the type check, CLI primitive tests, component documentation guards, documentation-route tests, and Python tests:
 
 ```sh
 npm test
@@ -25,7 +27,7 @@ This runs three gates: TypeScript type-check, the [vitest](https://vitest.dev/) 
 
 ### Sacred CLI Templates
 
-Sacred ships a tiny zero-dependency CLI framework under `scripts/cli/lib`. The framework reads its palette from `scripts/cli/colors.json` so the terminal surface and the React surface stay in agreement. Two reference templates render the same data set in two languages:
+Sacred ships a tiny zero-dependency CLI framework under `scripts/cli/lib`. The framework reads its palette from `scripts/cli/colors.json`; `global.css` mirrors that palette for React. Two reference templates demonstrate the same layout in two languages, with language-specific sample data:
 
 ```sh
 npm run cli:typescript
@@ -43,10 +45,10 @@ If you want to write your own CLI screen or port a sacred React surface to a ter
 
 ### Documentation URLs
 
-Every doc and component source file in the repo is published at a stable URL so humans and agents can read them without cloning:
+The documentation routes publish `AGENTS.md` and `SKILL.md` files from traversed, non-hidden directories, plus top-level `components/*.tsx` source, so humans and agents can read them without cloning. Dependency, build, Git, and `.workdir` directories are excluded. Other Markdown files, including `README.md`, are outside the allowlist:
 
 - [https://sacred.computer/llms.txt](https://sacred.computer/llms.txt) — [llmstxt.org](https://llmstxt.org/) index, grouped into Repo conventions, Simulacrum (CLI framework), Skills, and Component source
-- [https://sacred.computer/llms-full.txt](https://sacred.computer/llms-full.txt) — every doc concatenated in one fetch
+- [https://sacred.computer/llms-full.txt](https://sacred.computer/llms-full.txt) — discovered instruction documents concatenated in one fetch; component source is served separately
 - [https://sacred.computer/llm/AGENTS.md](https://sacred.computer/llm/AGENTS.md) — root sacred / Simulacrum conventions
 - [https://sacred.computer/llm/components/AGENTS.md](https://sacred.computer/llm/components/AGENTS.md) — canonical catalog of every sacred React component (props, theming tokens, CLI primitive equivalent)
 - [https://sacred.computer/llm/components/Card.tsx.txt](https://sacred.computer/llm/components/Card.tsx.txt) — raw source of a component (every `components/*.tsx` follows this pattern)
@@ -58,7 +60,7 @@ Every doc and component source file in the repo is published at a stable URL so 
 - [https://sacred.computer/llm/skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md](https://sacred.computer/llm/skills/port-sacred-terminal-ui-to-hostile-react-codebase/SKILL.md)
 - [https://sacred.computer/llm/skills/fast-typescript-check/SKILL.md](https://sacred.computer/llm/skills/fast-typescript-check/SKILL.md) — keep this repo's TypeScript fast to type-check and fast to run
 
-Adding a new doc or component file to the repo automatically exposes it as a URL. Both `/llms.txt` and `/llms-full.txt` follow the [llmstxt.org](https://llmstxt.org/) convention.
+Adding an allowlisted instruction document or top-level component source makes it discoverable for the next build. Component sources use the `.tsx.txt` URL suffix. Both `/llms.txt` and `/llms-full.txt` follow the [llmstxt.org](https://llmstxt.org/) convention.
 
 ### Contact
 

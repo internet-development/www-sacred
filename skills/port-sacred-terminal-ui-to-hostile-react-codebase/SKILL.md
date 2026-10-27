@@ -44,7 +44,6 @@ Copy the relevant `--ansi-*`, `--color-*`, and `--theme-*` tokens from `global.c
 
 ```css
 .sacred-root {
-  /* NOTE(your_github_username): Pinned ANSI palette — do not inherit host theme tokens. */
   --color-black: #000000;
   --color-white: #ffffff;
   --color-brand: #e4f221;
@@ -119,7 +118,7 @@ If the host already has dark mode, you have two options:
 
 ## Reference: minimum sacred surface
 
-A useful "first port" is the `Card` + `DataTable` + `Button` triple. That gives you:
+A useful "first port" is `Window` + `Card` + `SimpleTable` + `ActionButton`. That gives you:
 
 - Box-drawing borders
 - Header/data row alignment with status coloring

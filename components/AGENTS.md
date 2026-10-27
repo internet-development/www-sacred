@@ -11,7 +11,7 @@ Tests under `components/__tests__/` enforce that this catalog stays in sync with
 - **Props** — copied from the source `interface` or `type Props` block. Kept in sync by `props_sync.test.mjs`.
 - **Theming tokens** — CSS custom properties (`--theme-*`, `--ansi-*`, `--font-*`, etc.) the component uses. Kept in sync by `theming_tokens_sync.test.mjs`. If none, the field reads `(none)`.
 - **CLI primitive** — the equivalent in the CLI framework (`scripts/cli/lib/*`). If none exists, the field reads `(React-only)`.
-- **Used by** — where the component appears in the kitchen sink or examples. Kept in sync by `component_usage_sync.test.mjs`.
+- **Used by** — where the component appears in the kitchen sink or examples. `component_usage_sync.test.mjs` checks that each component has an importer; it does not verify every documented render site.
 
 This catalog tells you **what** each component is. The four `skills/port-sacred-terminal-ui-to-*/SKILL.md` files tell you **how** to port one.
 
@@ -353,7 +353,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
   }
   ```
 - **Theming tokens:** `--theme-background`, `--theme-border-subdued`
-- **CLI primitive:** A `cardRow` per line of source. The CLI has no syntax highlighting because the framework is colorless except for status columns.
+- **CLI primitive:** A `cardRow` per line of source. The CLI provides color and gradient helpers but no syntax highlighter.
 - **Used by:** `<CodeBlock>...</CodeBlock>` inside the "CODE BLOCK" accordion in `app/page.tsx`.
 
 ## ComboBox
@@ -834,7 +834,7 @@ Every `components/*.tsx` file is served at `https://sacred.computer/llm/componen
 ## SimpleTable
 
 - **Path:** `components/SimpleTable.tsx`
-- **Purpose:** Fluid HTML table that mirrors the CLI framework's `formatRow` + `cardHeaderRow` contract one-to-one. First row is the header. Status coloring fires on `ACTIVE`/`OPEN`/`APPROVED` (bold green) and `CLOSED`/`PAID`/`SUSPENDED` (gray). Use this table — not `DataTable` — for any CLI port surface. The table is wrapped in a `scrollWrapper` div with `overflow-x: auto` (and `overflow-y: hidden`, to suppress the spurious native vertical bar the browser paints when only one axis is set) so it scrolls horizontally inside its container on narrow viewports instead of forcing page-level scroll. The horizontal bar uses the same custom scrollbar as `global.css` — `1ch` wide, one line tall, painted from `--theme-border` and `--theme-background` — so it reads as sacred, not native.
+- **Purpose:** Fluid HTML table corresponding to the CLI framework's `formatRow` + `cardHeaderRow`. First row is the header. React colors recognized statuses in every body cell; CLI columns opt in with `status: true`. Browser sizing and terminal column widths are distinct. Status coloring fires on `ACTIVE`/`OPEN`/`APPROVED` (bold green) and `CLOSED`/`PAID`/`SUSPENDED` (gray). Use this table — not `DataTable` — for any CLI port surface. The table is wrapped in a `scrollWrapper` div with `overflow-x: auto` (and `overflow-y: hidden`, to suppress the spurious native vertical bar the browser paints when only one axis is set) so it scrolls horizontally inside its container on narrow viewports instead of forcing page-level scroll. The horizontal bar uses the same custom scrollbar as `global.css` — `1ch` wide, one line tall, painted from `--theme-border` and `--theme-background` — so it reads as sacred, not native.
 - **Props:**
   ```ts
   interface SimpleTableProps {

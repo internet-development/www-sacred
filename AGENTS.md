@@ -20,7 +20,7 @@ Colors flow from one source: `scripts/cli/colors.json`. That file holds the term
 - `scripts/cli/` — Simulacrum, the sacred CLI framework (TypeScript, zero dependencies, run via `tsx`). `lib/` is the framework, `lib/__tests__/` is the vitest suite (and the `dump_reference.ts` fixture generator), `templates/` is the canonical TS template, `colors.json` is the shared palette.
 - `scripts/python/` — Simulacrum's Python mirror. `sacred_cli/` is the package, `sacred_cli/__tests__/` is the unittest suite (and the parity test against the JS fixture), `templates/` is the canonical Python template.
 - `scripts/test_python.ts` — TypeScript orchestrator for `npm run test:python`. Probes for `python3`, regenerates the TS fixture, then invokes `python3 -m unittest discover`. Skips with a warning if `python3` is missing.
-- `skills/` — Four porting skills (TS CLI, Python CLI, React-to-React, hostile React host). Read `skills/*/SKILL.md` before porting.
+- `skills/` — Four porting skills (TS CLI, Python CLI, React-to-React, hostile React host) plus `fast-typescript-check` for runtime and compiler performance. Read `skills/*/SKILL.md` before porting.
 - `.workdir/` — Read-only reference material from sibling projects. Never edit, never ship.
 
 ## Conventions
@@ -54,6 +54,8 @@ The default font (applied on first mount, before anyone opens the Fonts menu) is
 ## Scripts
 
 Use the Node.js range declared in `package.json`: `^22.12.0 || ^24.0.0 || >=26.0.0`. The test tooling excludes Node.js 18, 20, 23, and 25.
+
+The `overrides` in `package.json` are security floors set to the first patched version of each package's newest advisory. An override replaces the dependent's own range and `package-lock.json` is gitignored, so a stale floor can admit a vulnerable version while `npm audit` of the installed tree stays clean. Raise the floor when a new advisory patches above it.
 
 ```sh
 npm install             # install deps

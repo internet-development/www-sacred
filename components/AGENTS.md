@@ -2,7 +2,7 @@
 
 Catalog of every React component under `components/`. One entry per `.tsx` file. Subdirectories (`examples/`, `modals/`, `svg/`, `page/`, `detectors/`) are excluded — those compose this library, they are not the library itself.
 
-Tests under `components/__tests__/` enforce that this catalog stays in sync with the source. Adding a component without documenting it here fails CI.
+Tests under `components/__tests__/` enforce that this catalog stays in sync with the source. Adding a component without documenting it here fails `npm test`.
 
 ## How to read each entry
 

@@ -5,7 +5,7 @@
     "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
   },
   "license": "MIT",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "scripts": {
     "dev": "next -p 10000",
     "build": "next build",
@@ -24,11 +24,11 @@
   },
   "overrides": {
     "esbuild": ">=0.28.1",
-    "postcss": ">=8.5.18",
-    "sharp": ">=0.35.0"
+    "postcss": ">=8.5.23",
+    "sharp": ">=0.35.5"
   },
   "devDependencies": {
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
